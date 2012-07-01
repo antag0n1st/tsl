@@ -32,6 +32,13 @@ body{ text-align: center; font-family: 'Droid Sans',Arial,Verdana,sans-serif; fo
 .pad{ padding: 5px; }
 
 
+h1{
+    display:block;
+    font-weight: bold;
+    text-align: left;
+    font-size: 16px;
+}
+
 /*******************************************************************************/
 
 .clear { height: 100% }
@@ -51,3 +58,42 @@ body{ text-align: center; font-family: 'Droid Sans',Arial,Verdana,sans-serif; fo
 #menu li.hover  { background-color: #cfdeff }
 
 #menu ul { -webkit-box-shadow: 3px 3px 4px #999; -moz-box-shadow: 3px 3px 4px #999; box-shadow: 3px 3px 4px #999 }
+
+.header{
+    width:100%;
+    border:1px dotted black;
+}
+
+.menu{
+    float:left;
+    width:200px;
+    height:700px;
+    border:1px dotted black;
+}
+
+.footer{
+    clear:both;
+    width:100%;
+    border:1px dotted black;
+}
+
+.main{
+    float:left;
+    width:760px;
+    border:1px dotted black;
+}
+
+.article-title{
+    width:600px;
+    padding-left:0px;
+    margin:0px;
+}
+
+.article-title-holder{
+    float:left;
+    margin:10px 10px 10px 0;
+}
+
+.clear{
+    clear:both;
+}

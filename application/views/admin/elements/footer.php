@@ -5,4 +5,6 @@
  * and open the template in the editor.
  */
 ?>
-<br />The Admin footer
+<div class="footer">
+    The Admin footer
+</div>

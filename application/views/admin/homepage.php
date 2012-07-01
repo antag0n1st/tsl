@@ -1,5 +1,13 @@
 <?php
 
 
+
+
+
+Head::instance()->display();
+
 ?>
-HELLO ADMIN
+<div class="main">
+    Main content 2
+    
+</div>

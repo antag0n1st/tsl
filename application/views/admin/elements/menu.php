@@ -5,4 +5,11 @@
  * and open the template in the editor.
  */
 ?>
-<br />The admin menu
+<div class="menu">
+The admin menu
+<ul>
+    <li>
+        <a href="">Статии</a>
+    </li>    
+</ul>   
+</div>
