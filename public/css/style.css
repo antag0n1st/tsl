@@ -35,6 +35,11 @@ body{ text-align: center; font-family: 'Cuprum',Arial,Verdana,sans-serif; font-s
 
 .pad{ padding: 5px; }
 
+h3{ font-size: 20px; margin: 10px 10px 10px 0px;}
+
+a{ color: #4D4D4D;}
+a:hover{ color:black;}
+
 
 /*******************************************************************************/
 
@@ -74,4 +79,29 @@ body{ text-align: center; font-family: 'Cuprum',Arial,Verdana,sans-serif; font-s
 .search-button:hover{
     background-position: 0px 22px; 
     cursor: pointer;
+}
+
+
+
+.latest-news{ float: left;}
+.thumb {
+float: left;
+position: relative;
+margin-top: 5px;
+margin-right: 22px;
+}
+
+
+.latest-news .title {
+display: inline;
+font-family: Georgia, serif;
+font-style: italic;
+font-size: 13px;
+}
+.latest-news .date {
+text-transform: uppercase;
+font-weight: bold;
+font-size: 12px;
+color: #CFCFCF;
+display: inline;
 }
