@@ -23,7 +23,7 @@ strong{font-weight: bold;}
 /*                                                                            */
 /* Delete this style below to customize your own css                          */
 /******************************************************************************/
-body{ text-align: center;}
+body{ text-align: center; font-family: 'Droid Sans',Arial,Verdana,sans-serif; font-size: 13px; color: #4D4D4D; background-color: whiteSmoke;}
 .o { overflow: hidden;}
 .oa{ overflow: auto;}
 .l{ float: left;}

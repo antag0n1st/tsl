@@ -23,7 +23,7 @@ $.fn.menu = function() {
 	
 	function close() {
 		$(menuItem).find('> ul ul').hide();
-		ie ? $(menuItem).find('> ul').fadeOut() : $(menuItem).find('> ul').slideUp(250);
+		ie ? $(menuItem).find('> ul').fadeOut() : $(menuItem).find('> ul').slideUp(50);
 		menuItem = null;
 	}
 	
@@ -37,7 +37,7 @@ $.fn.menu = function() {
 		if (menuItem != this && !parent) close();
 		
 		$(this).addClass('hover');
-		ie ? $(this).find('> ul').fadeIn() : $(this).find('> ul').slideDown(250);
+		ie ? $(this).find('> ul').fadeIn() : $(this).find('> ul').slideDown(50);
 	}, function() {
 		$(this).removeClass('hover');
 		menuItem = this;
