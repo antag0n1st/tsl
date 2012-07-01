@@ -94,6 +94,21 @@ h1{
     margin:10px 10px 10px 0;
 }
 
+.article-new-main-holder{
+    width:605px;
+    float:left;
+}
+
+.article-new-sidebar-holder{
+    float:left;
+    width:150px;
+    height:550px;
+}
+
 .clear{
     clear:both;
+}
+
+.border{
+    border:1px dotted black;
 }
