@@ -59,6 +59,11 @@ h1{
 
 #menu ul { -webkit-box-shadow: 3px 3px 4px #999; -moz-box-shadow: 3px 3px 4px #999; box-shadow: 3px 3px 4px #999 }
 
+
+label{
+    display:block;
+}
+
 .header{
     width:100%;
     border:1px dotted black;
@@ -66,9 +71,13 @@ h1{
 
 .menu{
     float:left;
-    width:200px;
+    width:150px;
     height:700px;
     border:1px dotted black;
+}
+
+.menu li {
+    padding: 5px
 }
 
 .footer{
@@ -79,7 +88,7 @@ h1{
 
 .main{
     float:left;
-    width:760px;
+    width:810px;
     border:1px dotted black;
 }
 
@@ -101,8 +110,12 @@ h1{
 
 .article-new-sidebar-holder{
     float:left;
-    width:150px;
+    width:200px;
     height:550px;
+}
+
+.article-new-sidebar-option{
+    margin-bottom: 10px;
 }
 
 .clear{

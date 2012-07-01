@@ -1,5 +1,6 @@
 $(document).ready(function() {
-	$('#menu').menu();
+                
+
 });
 
 var ie = $.browser.msie && $.browser.version < 8.0;

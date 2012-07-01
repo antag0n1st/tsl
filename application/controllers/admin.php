@@ -17,4 +17,10 @@ class Admin extends MY_Admin_Controller {
         $data['main_content']   =   'admin/articles/new';
         $this->load->view('admin/layout/layout', $data);
     }
+    
+    public function submit_article()
+    {
+        $data['main_content']   =   'admin/articles/new';
+        $this->load->view('admin/layout/layout', $data);
+    }
 }

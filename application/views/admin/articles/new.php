@@ -1,6 +1,15 @@
 <div class="main">
 <h1>Нова статија</h1>
 
+
+<script type="text/javascript" src="<?php echo base_url(); ?>public/js/jquery-ui/js/jquery-ui-1.8.14.custom.min.js" ></script>
+<link rel="stylesheet" href="<?php echo base_url(); ?>public/js/jquery-ui/css/smoothness/jquery-ui-1.8.14.custom.css" type="text/css" />
+<script type="text/javascript" src="<?php echo base_url(); ?>public/js/jquery-ui/development-bundle/ui/jquery.ui.core.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>public/js/jquery-ui/development-bundle/ui/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>public/js/jquery-ui/development-bundle/ui/jquery.ui.datepicker.js"></script>
+
+
+
 	<script language="javascript" type="text/javascript" src="../public/js/tiny_mce/tiny_mce.js"></script>
 	<script language="javascript" type="text/javascript">
 		tinyMCE.init({
@@ -72,8 +81,22 @@
 			return false;*/
 		}
 	</script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                
+                $.datepicker.setDefaults( $.datepicker.regional[ "" ] );
+		$( "#date_published" ).datepicker({ dateFormat: 'dd.mm.yy',
+                                                    regional: 'mk'
+                                       });
+		$( "#add_calendar" ).datepicker({ dateFormat: 'dd.mm.yy',
+                                                    regional: 'mk'
+                                       });
+                
+            });
+        </script>
+         <?php echo form_open('admin/submit_article'); ?>
         <div class="article-new-main-holder">
-                <?php echo form_open('admin/submit_article'); ?>
+               
                 <div class="article-title-holder">        
                     <input type="text" class="article-title" name="title" value="Наслов на статијата" />
                 </div>
@@ -87,26 +110,60 @@
                 </div>
 
                 <div class="article-title-holder">
-                    <input type="text" class="article-title" name="title" value="Мета опис" />
+                    <input type="text" class="article-title" name="description" value="Краток опис" />
                 </div>
 
                 <input type="submit" name="submit" value="Објави" />
 
-                </form>
+              
         </div>
         <div class="article-new-sidebar-holder border">
-            Главна слика
-            <div style="margin-bottom: 10px">                   
+            <div class="article-new-sidebar-option">                   
+                <label for="featured_image">Главна слика</label>
                 <input type="file" name="featured_image" size="5" />
             </div>
-            Објави на:
-            <div style="margin-bottom: 10px">                   
-                <input type="text" size="18" />
+            <div class="article-new-sidebar-option">                   
+                <label for="date_published">Објави на:</label>
+                <input type="text" id="date_published" name="date_published" size="18" />
             </div>
-            Додади во календар
-            <div style="margin-bottom: 10px">                   
-                <input type="text" size="18" />
+            <div class="article-new-sidebar-option">                   
+                <label for="category">Категориja</label>
+                <div style="overflow-y: scroll;height:150px;width:180px;text-align: left;padding:0 0 0 10px">
+                    <input type="checkbox" name="category" value="Speakers" /> Новости<br />
+                    <input type="checkbox" name="category" value="Speakers" /> Speakers<br />
+                    <input type="checkbox" name="category" value="Learning" /> Learning<br />
+                    <input type="checkbox" name="category" value="Recruitment" /> Recruitment<br />
+                    <input type="checkbox" name="category" value="Consulting" /> Consulting<br />
+                    <input type="checkbox" name="category" value="Ekspertski_akademii" /> Експертски академии<br />
+                    <input type="checkbox" name="category" value="Treneri" /> Тренери<br />
+                </div>
             </div>
+            <div class="article-new-sidebar-option">                   
+                <label for="calendar">Додади во календар</label>
+                <input type="text" id="add_calendar" name="calendar" size="18" />
+            </div>
+            <div class="article-new-sidebar-option"> 
+                <label for="calendar_category">Настан</label>
+                <select name="calendar_category" style="width:150px">
+                    <option>Услуга кон клиентите</option>
+                    <option>Продажни вештини</option>
+                    <option>Маркетинг и PR</option>
+                    <option>Менаџмент</option>
+                    <option>Човечки ресурси</option>
+                    <option>Финансии</option>
+                    <option>Производство и дистрибуција</option>
+                    <option>Деловни вештини</option>
+                    <option>Тим билдинг</option>
+                    <option>Конференции</option>
+                    <option>Експертски академии</option>
+                </select>
+            </div>
+            <div class="article-new-sidebar-option">
+                <label for="calendar_link">Линк на календарот</label>
+                <input type="text" name="calendar_link" />
+            </div>
+            
         </div>
+          </form>
         <div class="clear"></div>
 </div>        
