@@ -29,6 +29,10 @@ body{ text-align: center; font-family: 'Cuprum',Arial,Verdana,sans-serif; font-s
 .l{ float: left;}
 .r{float: right;}
 .container{ text-align: left; width: 960px; margin: 0px auto; margin-bottom: 5px; padding: 5px;}
+
+.container .left{ width: 650px;  float: left;}
+.container .right{ width: 300px;  float: left; padding-left: 10px;}
+
 .pad{ padding: 5px; }
 
 
