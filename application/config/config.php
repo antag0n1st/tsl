@@ -368,7 +368,9 @@ $config['proxy_ips'] = '';
 
 function __autoload($class) {  
     $file_name = strtolower(preg_replace('/([a-z])([A-Z])/', '$1_$2', $class));
-    $dirs = array('classes');
+    $dirs = array('classes', // for custom business object types
+                  'core'     // for custom controller hierarchies, since CI does not allow it natively
+                  );
     foreach($dirs as $dir){
         if (file_exists(APPPATH.$dir."/".strtolower($file_name).EXT)) {  
             include_once(APPPATH.$dir."/".strtolower($file_name).EXT);  
