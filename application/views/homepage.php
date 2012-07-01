@@ -1,1 +1,3 @@
-The content of the page
+<div class="container">
+    The Content of the page
+</div>

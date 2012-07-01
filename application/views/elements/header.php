@@ -1,7 +1,3 @@
-<?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-?>
+<div class="container" style="height: 50px;">
+    The Header of the page
+</div>
