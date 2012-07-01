@@ -19,16 +19,16 @@
     </div>
 </div>
 <div class="container o" style="margin-top: 30px;">
-    
+
     <div class="left">
         The content of the page
     </div>
-    
+
     <div class="right">
         <?php $this->load->view('elements/sidebar'); ?>
     </div>
-    
-    
+
+
 </div>
 <script type="text/javascript">
     $(window).load(function() {

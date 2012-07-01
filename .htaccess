@@ -4,3 +4,8 @@ RewriteEngine on
 #AddHandler application/x-hg-php53 .php
 
 RewriteRule ^images/([a-zA-Z0-9\s\.\/,_-]+)$ public/images/$1
+
+RewriteCond $1 !^(index\.php|resources|robots\.txt)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L,QSA]

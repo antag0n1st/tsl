@@ -1,0 +1,99 @@
+html, body, div, span, applet, object, iframe, 
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, 
+a, abbr, acronym, address, big, cite, code, 
+del, dfn, em, font, img, ins, kbd, q, s, samp, 
+small, strike, strong, sub, sup, tt, var, 
+dl, dt, dd, ol, ul, li, 
+fieldset, form, label, legend, 
+table, caption, tbody, tfoot, thead, tr, th, td{margin:0; padding:0; border:0; outline:0; font-weight:inherit; font-style:inherit; font-size:100%; font-family:inherit; vertical-align:baseline}
+
+:focus{outline:0}
+body{line-height:1; color:black; background:white}
+ol, ul{list-style:none}
+
+table{border-collapse:separate; border-spacing:0}
+caption, th, td{text-align:left; font-weight:normal}
+blockquote:before, blockquote:after, 
+q:before, q:after{content:""}
+blockquote, q{quotes:""""}
+strong{font-weight: bold;}
+
+/******************************************************************************/
+/*                            YOUR CSS STARTS HERE                            */
+/*                                                                            */
+/* Delete this style below to customize your own css                          */
+/******************************************************************************/
+body{ text-align: center; font-family: 'Droid Sans',Arial,Verdana,sans-serif; font-size: 13px; color: #4D4D4D; background-color: whiteSmoke;}
+.o { overflow: hidden;}
+.oa{ overflow: auto;}
+.l{ float: left;}
+.r{float: right;}
+.container{ text-align: left; width: 960px; margin: 0px auto; margin-bottom: 5px; padding: 5px;}
+.pad{ padding: 5px; }
+
+
+h1{
+    display:block;
+    font-weight: bold;
+    text-align: left;
+    font-size: 16px;
+}
+
+/*******************************************************************************/
+
+.clear { height: 100% }
+.clear:after { content: ''; display: block; clear: both }
+
+#menu, #menu ul { list-style: none; margin: 0; padding: 0 }
+
+#menu li { background: #bdd2ff; border-right: 1px solid #fff; position: relative; float: left; white-space: nowrap }
+#menu li a { display: block; padding: 5px 20px; text-decoration: none; color: #13a }
+
+#menu ul { background: #fff; display: none; position: absolute }
+#menu ul li { background: #aabde6; border-top: 1px solid #bdd2ff; border-right: 0px solid transparent; float: none }
+
+#menu ul ul { top: -1px; left: 100% }
+
+#menu li.has_child { background-image: url('../images/down.gif'); background-position: right center; background-repeat: no-repeat; padding-right: 10px }
+#menu li.hover  { background-color: #cfdeff }
+
+#menu ul { -webkit-box-shadow: 3px 3px 4px #999; -moz-box-shadow: 3px 3px 4px #999; box-shadow: 3px 3px 4px #999 }
+
+.header{
+    width:100%;
+    border:1px dotted black;
+}
+
+.menu{
+    float:left;
+    width:200px;
+    height:700px;
+    border:1px dotted black;
+}
+
+.footer{
+    clear:both;
+    width:100%;
+    border:1px dotted black;
+}
+
+.main{
+    float:left;
+    width:760px;
+    border:1px dotted black;
+}
+
+.article-title{
+    width:600px;
+    padding-left:0px;
+    margin:0px;
+}
+
+.article-title-holder{
+    float:left;
+    margin:10px 10px 10px 0;
+}
+
+.clear{
+    clear:both;
+}
