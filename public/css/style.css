@@ -40,6 +40,8 @@ h3{ font-size: 20px; margin: 10px 10px 10px 0px;}
 a{ color: #4D4D4D;}
 a:hover{ color:black;}
 
+p{ line-height: 17px;}
+
 
 /*******************************************************************************/
 
@@ -83,7 +85,7 @@ a:hover{ color:black;}
 
 
 
-.latest-news{ float: left;}
+.latest-news{ float: left; margin-bottom: 10px;}
 .thumb {
 float: left;
 position: relative;
