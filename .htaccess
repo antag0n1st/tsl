@@ -1,0 +1,6 @@
+RewriteEngine on
+### Use PHP 5.3
+#Action application/x-hg-php53 /cgi-sys/php53
+#AddHandler application/x-hg-php53 .php
+
+RewriteRule ^images/([a-zA-Z0-9\s\.\/,_-]+)$ public/images/$1

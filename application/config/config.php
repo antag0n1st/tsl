@@ -15,7 +15,7 @@
 |
 */
 $config['base_url']	= '';
-
+date_default_timezone_set('Europe/Skopje');
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -357,6 +357,25 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+/*
+|--------------------------------------------------------------------------
+| Autoload
+|--------------------------------------------------------------------------
+| 
+| You can add more paths to load libs also
+|
+*/
+
+function __autoload($class) {  
+    $file_name = strtolower(preg_replace('/([a-z])([A-Z])/', '$1_$2', $class));
+    $dirs = array('classes');
+    foreach($dirs as $dir){
+        if (file_exists(APPPATH.$dir."/".strtolower($file_name).EXT)) {  
+            include_once(APPPATH.$dir."/".strtolower($file_name).EXT);  
+            return true;
+        }
+    }
+} 
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */
