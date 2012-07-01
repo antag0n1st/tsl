@@ -72,20 +72,41 @@
 			return false;*/
 		}
 	</script>
-        <?php echo form_open('admin/submit_article'); ?>
-        <div class="article-title-holder">        
-            <input type="text" class="article-title" name="title" value="Наслов на статијата" />
+        <div class="article-new-main-holder">
+                <?php echo form_open('admin/submit_article'); ?>
+                <div class="article-title-holder">        
+                    <input type="text" class="article-title" name="title" value="Наслов на статијата" />
+                </div>
+                <div class="clear">
+                    <textarea id="ajaxfilemanager" name="ajaxfilemanager" style="width: 600px; height: 450px">
+                <p>
+                    Објавете нова статија
+                </p>
+
+                    </textarea>
+                </div>
+
+                <div class="article-title-holder">
+                    <input type="text" class="article-title" name="title" value="Мета опис" />
+                </div>
+
+                <input type="submit" name="submit" value="Објави" />
+
+                </form>
         </div>
-        <div class="clear">
-            <textarea id="ajaxfilemanager" name="ajaxfilemanager" style="width: 600px; height: 450px">
-	<p>
-            Објавете нова статија
-        </p>
-            
-            </textarea>
+        <div class="article-new-sidebar-holder border">
+            Главна слика
+            <div style="margin-bottom: 10px">                   
+                <input type="file" name="featured_image" size="5" />
+            </div>
+            Објави на:
+            <div style="margin-bottom: 10px">                   
+                <input type="text" size="18" />
+            </div>
+            Додади во календар
+            <div style="margin-bottom: 10px">                   
+                <input type="text" size="18" />
+            </div>
         </div>
-        
-        <input type="submit" name="submit" value="Објави" />
-        
-        </form>
+        <div class="clear"></div>
 </div>        
