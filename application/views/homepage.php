@@ -3,6 +3,6 @@
     <p>this is not a conflict , it should be only a MERGE</p>
     <h1>Title Le Change</h1>
     <div>
-        CHANGES MADE BY IKO
+        CHANGES MADE BY VLADO
     </div>
 </div>
