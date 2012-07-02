@@ -1,6 +1,6 @@
 <div class="main">
 <h1>Нова статија</h1>
-
+<strong><?php if(isset($msg)) echo $msg; ?></strong>
 
 <script type="text/javascript" src="<?php echo base_url(); ?>public/js/jquery-ui/js/jquery-ui-1.8.14.custom.min.js" ></script>
 <link rel="stylesheet" href="<?php echo base_url(); ?>public/js/jquery-ui/css/smoothness/jquery-ui-1.8.14.custom.css" type="text/css" />
@@ -11,6 +11,9 @@
 
 <link rel="stylesheet" href="<?php echo base_url(); ?>public/css/jquery.ui.timepicker.css" type="text/css" />
 <script type="text/javascript" src="<?php echo base_url(); ?>public/js/jquery.ui.timepicker.js"></script>
+
+
+<script src="<?php echo base_url()?>public/js/jquery.iframe-post-form.js" type="text/javascript"></script>
 
 
 	<script language="javascript" type="text/javascript" src="../public/js/tiny_mce/tiny_mce.js"></script>
@@ -36,7 +39,7 @@
 			apply_source_formatting : true,
 			force_br_newlines : true,
 			force_p_newlines : false,	
-			relative_urls : true
+			relative_urls : false
 		});
 
 		function ajaxfilemanager(field_name, url, type, win) {
@@ -97,16 +100,65 @@
                 $( "#time_published" ).timepicker({
                                 showPeriodLabels: false
                 });
+                
+                
+                
+                
+                // ajax file upload
+                $("#btn_featured_image").click(function(){
+                    $("#upload_image_form").submit();
+                })
+                     
+                $("#upload_image_form").iframePostForm
+                ({
+                        json : true,
+                        post : function ()
+                        {
+                            alert("Post!");
+                        },
+                        complete: function (response)
+                        {
+                            alert(response.featured_image_name);
+                            var featured_img = $('#featured_image_preview');
+                            featured_img.attr('src','<?php echo base_url() . '/public/uploaded/featured/'; ?>' +
+                                                                     response.featured_image_name);
+                            featured_img.attr('width', '150px');
+                            
+                            $('.featured-image-preview-holder').css('width','150px');
+                            $('.featured-image-preview-holder').css('height','150px');
+                            
+                            $('#featured_image').val('');
+                            
+                            $('#featured_image_hidden').val(response.featured_image_name);
+                        }
+                
+                });
+                // end ajax file upload
+                
             });
         </script>
-         <?php echo form_open('admin/submit_article'); ?>
+        <div style="float:right;width:200px"><!-- featured image begin -->
+        <label for="featured_image">Главна слика</label>
+                <iframe name="iframe-post-form" id="iframe-post-form" style="width:0px;height:0px"></iframe>
+                <div class="featured-image-preview-holder" style="width:0px;height:0px">
+                    <img src="" id="featured_image_preview" alt="" width="0px" />
+                </div>
+                <?php echo form_open('admin/upload_image', array('id' => 'upload_image_form',
+                                                           'enctype'  => "multipart/form-data", 
+                                                           'target'   => "iframe-post-form")); ?>
+                <input type="file" id="featured_image" name="featured_image" size="5" />
+                <input type="button" id="btn_featured_image" name="btn" value="OK" />
+                </form>
+       </div><!-- featured image end -->
+        
+         <?php  echo form_open('admin/submit_article'); ?>
         <div class="article-new-main-holder">
                
                 <div class="article-title-holder">        
                     <input type="text" class="article-title" name="title" value="Наслов на статијата" />
                 </div>
                 <div class="clear">
-                    <textarea id="ajaxfilemanager" name="ajaxfilemanager" style="width: 600px; height: 450px">
+                    <textarea id="ajaxfilemanager" name="content" style="width: 600px; height: 450px">
                 <p>
                     Објавете нова статија
                 </p>
@@ -124,8 +176,7 @@
         </div>
         <div class="article-new-sidebar-holder border">
             <div class="article-new-sidebar-option">                   
-                <label for="featured_image">Главна слика</label>
-                <input type="file" name="featured_image" size="5" />
+                <input type="hidden" id="featured_image_hidden" name="featured_image_hidden" value="" />
             </div>
             <div class="article-new-sidebar-option">                   
                 <label for="date_published">Објави на:</label>

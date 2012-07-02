@@ -111,13 +111,19 @@ label{
 .article-new-sidebar-holder{
     float:left;
     width:200px;
-    height:550px;
+    /*height:550px;*/
 }
 
 .article-new-sidebar-option{
     margin-bottom: 10px;
 }
 
+.featured-image-preview-holder{
+    overflow: hidden; 
+    width:150px; 
+    height:150px; 
+    margin: auto;
+}
 .clear{
     clear:both;
 }
