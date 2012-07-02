@@ -30,8 +30,8 @@ body{ text-align: center; font-family: 'Cuprum',Arial,Verdana,sans-serif; font-s
 .r{float: right;}
 .container{ text-align: left; width: 960px; margin: 0px auto; margin-bottom: 5px; padding: 5px;}
 
-.container .left{ width: 650px;  float: left; background-color: whiteSmoke;}
-.container .right{ width: 300px;  float: left; padding-left: 10px;}
+.container .left{ width: 608px;  float: left; background-image: url('../images/white.png'); padding: 10px; border: 1px solid #bdbdbd; }
+.container .right{ width: 298px;  float: left; margin-left: 10px; padding: 10px; background-image: url('../images/white.png'); border: 1px solid #bdbdbd;}
 
 .pad{ padding: 5px; }
 
@@ -114,7 +114,7 @@ display: inline;
 
 .quotes{}
 
-.quotes p{ padding-left: 30px; background-image: url('../images/quote.gif'); background-repeat: no-repeat;}
+.quotes p{ padding-left: 40px; background-image: url('../images/quote.png'); background-repeat: no-repeat;}
 .quotes div{ margin-top: 10px;}
 .quotes b{ display: block;}
 .quotes span{ display: block; margin-top: 5px;}
