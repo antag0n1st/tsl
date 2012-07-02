@@ -23,19 +23,19 @@ strong{font-weight: bold;}
 /*                                                                            */
 /* Delete this style below to customize your own css                          */
 /******************************************************************************/
-body{ text-align: center; font-family: 'Cuprum',Arial,Verdana,sans-serif; font-size: 13px; color: #4D4D4D; background-image: url('../images/background.png'); }
+body{ text-align: center; font-family: 'Cuprum',Arial,Verdana,sans-serif; font-size: 13px; color: #4D4D4D;/* background-image: url('../images/background.png'); */ }
 .o { overflow: hidden;}
 .oa{ overflow: auto;}
 .l{ float: left;}
 .r{float: right;}
 .container{ text-align: left; width: 960px; margin: 0px auto; margin-bottom: 5px; padding: 5px;}
 
-.container .left{ width: 608px;  float: left; background-image: url('../images/white.png'); padding: 10px; border: 1px solid #d6d6d6; }
-.container .right{ width: 298px;  float: left; margin-left: 10px; padding: 10px; background-image: url('../images/white.png'); border: 1px solid #d6d6d6;}
+.container .left{ width: 608px;  float: left; background-image: url('../images/white.png'); padding: 10px;  border: 1px solid #d6d6d6;  }
+.container .right{ width: 298px;  float: left; margin-left: 10px; padding: 10px; background-image: url('../images/white.png');  border: 1px solid #d6d6d6; }
 
 .pad{ padding: 5px; }
 
-h3{ font-size: 20px; margin: 10px 10px 10px 0px;}
+h3{ font-size: 20px; margin: 10px 10px 10px 0px;color: #4c51bb;}
 
 a{ color: #4D4D4D;}
 a:hover{ color:black;}
@@ -114,7 +114,7 @@ display: inline;
 
 .quotes{}
 
-.quotes p{ padding-left: 40px; background-image: url('../images/quote.png'); background-repeat: no-repeat;}
+.quotes p{ padding-left: 40px; background-image: url('../images/quote.gif'); background-repeat: no-repeat;}
 .quotes div{ margin-top: 10px;}
 .quotes b{ display: block;}
 .quotes span{ display: block; margin-top: 5px;}
