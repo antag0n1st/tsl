@@ -9,6 +9,9 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>public/js/jquery-ui/development-bundle/ui/jquery.ui.datepicker.js"></script>
 
 
+<link rel="stylesheet" href="<?php echo base_url(); ?>public/css/jquery.ui.timepicker.css" type="text/css" />
+<script type="text/javascript" src="<?php echo base_url(); ?>public/js/jquery.ui.timepicker.js"></script>
+
 
 	<script language="javascript" type="text/javascript" src="../public/js/tiny_mce/tiny_mce.js"></script>
 	<script language="javascript" type="text/javascript">
@@ -91,7 +94,9 @@
 		$( "#add_calendar" ).datepicker({ dateFormat: 'dd.mm.yy',
                                                     regional: 'mk'
                                        });
-                
+                $( "#time_published" ).timepicker({
+                                showPeriodLabels: false
+                });
             });
         </script>
          <?php echo form_open('admin/submit_article'); ?>
@@ -124,18 +129,19 @@
             </div>
             <div class="article-new-sidebar-option">                   
                 <label for="date_published">Објави на:</label>
-                <input type="text" id="date_published" name="date_published" size="18" />
+                <input type="text" id="date_published" name="date_published" size="9" />
+                <input type="text" id="time_published" readonly="true" name="time_published" size="9" />
             </div>
             <div class="article-new-sidebar-option">                   
                 <label for="category">Категориja</label>
                 <div style="overflow-y: scroll;height:150px;width:180px;text-align: left;padding:0 0 0 10px">
-                    <input type="checkbox" name="category" value="Speakers" /> Новости<br />
-                    <input type="checkbox" name="category" value="Speakers" /> Speakers<br />
-                    <input type="checkbox" name="category" value="Learning" /> Learning<br />
-                    <input type="checkbox" name="category" value="Recruitment" /> Recruitment<br />
-                    <input type="checkbox" name="category" value="Consulting" /> Consulting<br />
-                    <input type="checkbox" name="category" value="Ekspertski_akademii" /> Експертски академии<br />
-                    <input type="checkbox" name="category" value="Treneri" /> Тренери<br />
+                    <input type="checkbox" name="category[]" value="Speakers" /> Новости<br />
+                    <input type="checkbox" name="category[]" value="Speakers" /> Speakers<br />
+                    <input type="checkbox" name="category[]" value="Learning" /> Learning<br />
+                    <input type="checkbox" name="category[]" value="Recruitment" /> Recruitment<br />
+                    <input type="checkbox" name="category[]" value="Consulting" /> Consulting<br />
+                    <input type="checkbox" name="category[]" value="Ekspertski_akademii" /> Експертски академии<br />
+                    <input type="checkbox" name="category[]" value="Treneri" /> Тренери<br />
                 </div>
             </div>
             <div class="article-new-sidebar-option">                   
