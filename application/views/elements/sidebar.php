@@ -1,11 +1,8 @@
-<div style="height: 100px; width: 300px; border: 1px solid blue; margin-bottom: 10px;">
-    The Calendar
+<div style="margin-bottom: 10px;">
+    <?php $this->load->view('elements/calendar'); ?>
+</div>
+<div class="separator"></div>
+<div style="margin-bottom: 10px;">
+    <?php $this->load->view('elements/quotes'); ?>
 </div>
 
-<div style="height: 100px; width: 300px; border: 1px solid blue; margin-bottom: 10px;">
-    Quotes
-</div>
-
-<div style="height: 100px; width: 300px; border: 1px solid blue; margin-bottom: 10px;">
-    Clients
-</div>
