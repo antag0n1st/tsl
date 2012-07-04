@@ -17,7 +17,7 @@ class ImageHelper {
     }
     
     
-    function __construct($base_dir = 'public/uploaded/featured/thumbnails/') {
+    function __construct($base_dir = 'public/uploaded/featured/') {
         $this->ci = & get_instance();
         $this->base_dir = $base_dir;
     }
@@ -46,8 +46,12 @@ class ImageHelper {
 
 
         $image_parts = $this->get_image_parts($image_url);        
-        $title = $this->sutable_name($title);
-        $new_image_name = $title . '-' . '.' . $image_parts['extension'];
+        
+        $new_image_name = $title; 
+        
+        
+        
+       
 
         $image_name = explode("/", $image_url);
         $image_name = end($image_name);
@@ -81,7 +85,10 @@ class ImageHelper {
         $this->ci->image_lib->resize();
         
         
-      /*  $new_height = $thumbnail_height;
+        
+        
+        
+        $new_height = $thumbnail_height;
         $new_width  = $thumbnail_width;
         if ($width / $height < $aspekt_ratio) {
             $is_wide = 0;
@@ -94,9 +101,9 @@ class ImageHelper {
         }
         $config['new_image'] = $this->base_dir .'thumbnails/'. $new_image_name;
         $this->ci->image_lib->initialize($config);
-        $this->ci->image_lib->resize();*/
+        $this->ci->image_lib->resize();
 
-        unlink($saved_image);
+        //unlink($saved_image);
         
         return array(
             'new_image_name' => $new_image_name
@@ -106,7 +113,7 @@ class ImageHelper {
 
     private function sutable_name($title) {
 
-        $title = $this->clean_string($title);
+        $title = $this->clean_string($title,true);
         $title = explode('-', $title);
         return implode('-', array_slice($title, 0, 10));
     }
@@ -117,8 +124,8 @@ class ImageHelper {
             //$str = CyrillicLatin::cyrillic2latin($str);
         }
         //$str = str_replace('-', ' ', $str);
-        $str = str_replace(array("\r\n", "\r", "\n", "\t", '-'), ' ', $str);
-        $str = preg_replace('/[^a-zA-Z0-9-\s]/', '', $str);
+        $str = str_replace(array("\r\n", "\r", "\n", "\t", '-'), '_', $str);
+        $str = preg_replace('/[^a-zA-Z0-9-\s]/', '_', $str);
 
         $str = trim($str);
         $str = strtolower($str);

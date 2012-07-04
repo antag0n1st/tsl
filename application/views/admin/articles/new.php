@@ -39,7 +39,7 @@
 			apply_source_formatting : true,
 			force_br_newlines : true,
 			force_p_newlines : false,	
-			relative_urls : false
+			relative_urls : true
 		});
 
 		function ajaxfilemanager(field_name, url, type, win) {
@@ -94,12 +94,20 @@
 		$( "#date_published" ).datepicker({ dateFormat: 'dd.mm.yy',
                                                     regional: 'mk'
                                        });
-		$( "#add_calendar" ).datepicker({ dateFormat: 'dd.mm.yy',
-                                                    regional: 'mk'
-                                       });
+                $( "#date_published" ).datepicker('setDate', new Date());
+                
                 $( "#time_published" ).timepicker({
                                 showPeriodLabels: false
                 });
+                
+                var date = new Date();
+                $( "#time_published" ).val(date.getHours() + ":" + (date.getMinutes() + 10));
+                
+                
+		$( "#add_calendar" ).datepicker({ dateFormat: 'dd.mm.yy',
+                                                    regional: 'mk'
+                                       });
+                
                 
                 
                 
@@ -114,22 +122,27 @@
                         json : true,
                         post : function ()
                         {
-                            alert("Post!");
+                            //alert("Post!");
+                            $('#progress').html('Uploading...');
                         },
                         complete: function (response)
                         {
-                            alert(response.featured_image_name);
+                           // alert(response.featured_image_name);
+                           // show the preview of the image thumbnail
                             var featured_img = $('#featured_image_preview');
-                            featured_img.attr('src','<?php echo base_url() . '/public/uploaded/featured/'; ?>' +
+                            var preview_holder = $('.featured-image-preview-holder');
+                            featured_img.attr('src','<?php echo base_url() . 'public/uploaded/featured/thumbnails/'; ?>' +
                                                                      response.featured_image_name);
                             featured_img.attr('width', '150px');
                             
-                            $('.featured-image-preview-holder').css('width','150px');
-                            $('.featured-image-preview-holder').css('height','150px');
+                            preview_holder.css('width','150px');
+                            preview_holder.css('height','150px');
                             
                             $('#featured_image').val('');
                             
                             $('#featured_image_hidden').val(response.featured_image_name);
+                            
+                             $('#progress').html('');
                         }
                 
                 });
@@ -148,6 +161,7 @@
                                                            'target'   => "iframe-post-form")); ?>
                 <input type="file" id="featured_image" name="featured_image" size="5" />
                 <input type="button" id="btn_featured_image" name="btn" value="OK" />
+                <div id="progress"></div>
                 </form>
        </div><!-- featured image end -->
         
@@ -186,13 +200,9 @@
             <div class="article-new-sidebar-option">                   
                 <label for="category">Категориja</label>
                 <div style="overflow-y: scroll;height:150px;width:180px;text-align: left;padding:0 0 0 10px">
-                    <input type="checkbox" name="category[]" value="Speakers" /> Новости<br />
-                    <input type="checkbox" name="category[]" value="Speakers" /> Speakers<br />
-                    <input type="checkbox" name="category[]" value="Learning" /> Learning<br />
-                    <input type="checkbox" name="category[]" value="Recruitment" /> Recruitment<br />
-                    <input type="checkbox" name="category[]" value="Consulting" /> Consulting<br />
-                    <input type="checkbox" name="category[]" value="Ekspertski_akademii" /> Експертски академии<br />
-                    <input type="checkbox" name="category[]" value="Treneri" /> Тренери<br />
+                    <?php foreach($categories as $category): ?>
+                        <input type="checkbox" name="category[]" value="<?php echo $category->id; ?>" /> <?php echo $category->name; ?><br />
+                    <?php endforeach; ?>
                 </div>
             </div>
             <div class="article-new-sidebar-option">                   
@@ -202,17 +212,9 @@
             <div class="article-new-sidebar-option"> 
                 <label for="calendar_category">Настан</label>
                 <select name="calendar_category" style="width:150px">
-                    <option>Услуга кон клиентите</option>
-                    <option>Продажни вештини</option>
-                    <option>Маркетинг и PR</option>
-                    <option>Менаџмент</option>
-                    <option>Човечки ресурси</option>
-                    <option>Финансии</option>
-                    <option>Производство и дистрибуција</option>
-                    <option>Деловни вештини</option>
-                    <option>Тим билдинг</option>
-                    <option>Конференции</option>
-                    <option>Експертски академии</option>
+                    <?php foreach($event_categories as $e_category): ?>
+                    <option value="<?php echo $e_category->calendar_events_categories_id; ?>"><?php echo $e_category->name; ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
             <div class="article-new-sidebar-option">

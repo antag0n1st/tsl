@@ -37,15 +37,18 @@ class TimeHelper
         return date("Y-m-d H:i:s", strtotime( $date . " + $hours_to_add hours" ) );
     }
     
-    private static function convert_datetime($str) {
+    public static function convert_datetime($str, $delim = '.') {
 
     list($date, $time) = explode(' ', $str);
-    list($year, $month, $day) = explode('-', $date);
-    list($hour, $minute, $second) = explode(':', $time);
+    list($day, $month, $year) = explode($delim, $date);
+    
+    
+    list($hour, $minute) = explode(':', $time);
 
-    $timestamp = mktime($hour, $minute, $second, $month, $day, $year);
+    
+    $timestamp = mktime($hour, $minute, 0, $month, $day, $year);
 
-    return $timestamp;
+    return date("Y-m-d H:i:s", $timestamp );
     }
     
     public static function RelativeTime($time, $now = false)
