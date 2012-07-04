@@ -2,18 +2,20 @@
     <div class="flexslider">
         <ul class="slides">
             <li>
-                <img src="<?php echo base_url() . 'images/slider/experta.jpg'; ?>" />
+                <img src="<?php echo base_url() . 'images/slider/slider1.jpg'; ?>" />
                 <p class="flex-caption">Captions and cupcakes. Winning combination.</p>
             </li>
             <li>
-                <a href="#"><img src="<?php echo base_url() . 'images/slider/inacup_pumpkin.jpg'; ?>" /></a>
+                <a href="#"><img src="<?php echo base_url() . 'images/slider/slider2.jpg'; ?>" /></a>
                 <p class="flex-caption">This image is wrapped in a link!</p>
             </li>
             <li>
-                <img src="<?php echo base_url() . 'images/slider/inacup_donut.jpg'; ?>" />
+                <img src="<?php echo base_url() . 'images/slider/slider3.jpg'; ?>" />
+                <p class="flex-caption">This image is wrapped in a link!</p>
             </li>
             <li>
-                <img src="<?php echo base_url() . 'images/slider/inacup_vanilla.jpg'; ?>" />
+                <img src="<?php echo base_url() . 'images/slider/slider4.jpg'; ?>" />
+                <p class="flex-caption">This image is wrapped in a link!</p>
             </li>
         </ul>
     </div>
