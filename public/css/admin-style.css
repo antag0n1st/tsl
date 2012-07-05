@@ -80,6 +80,11 @@ label{
     padding: 5px
 }
 
+.menu span {
+    text-align:left;
+    font-weight: bold;
+}
+
 .footer{
     clear:both;
     width:100%;

@@ -16,7 +16,7 @@
 <script src="<?php echo base_url()?>public/js/jquery.iframe-post-form.js" type="text/javascript"></script>
 
 
-	<script language="javascript" type="text/javascript" src="../public/js/tiny_mce/tiny_mce.js"></script>
+	<script language="javascript" type="text/javascript" src="../../public/js/tiny_mce/tiny_mce.js"></script>
 	<script language="javascript" type="text/javascript">
 		tinyMCE.init({
 			mode : "exact",
@@ -94,14 +94,18 @@
 		$( "#date_published" ).datepicker({ dateFormat: 'dd.mm.yy',
                                                     regional: 'mk'
                                        });
-                $( "#date_published" ).datepicker('setDate', new Date());
+                $( "#date_published" ).datepicker('setDate', <?php FieldHelper::field($article->id,"new Date('$article->date_published')","new Date()"); ?> );
                 
                 $( "#time_published" ).timepicker({
                                 showPeriodLabels: false
                 });
                 
-                var date = new Date();
-                $( "#time_published" ).val(date.getHours() + ":" + (date.getMinutes() + 10));
+                var date =  <?php FieldHelper::field($article->id,"new Date('$article->date_published')","new Date()"); ?>;
+                var timePublished = date.getHours() + ":" + (date.getMinutes()); 
+                   
+                    
+                                        ;
+                $( "#time_published" ).val(timePublished);
                 
                 
 		$( "#add_calendar" ).datepicker({ dateFormat: 'dd.mm.yy',
@@ -148,15 +152,52 @@
                 });
                 // end ajax file upload
                 
+                // autosave
+                
+                setInterval('autosaveArticle()',60000); // autosave every minute
+                
+                // end autosave
+                
             });
+            
+            function autosaveArticle(){ 
+
+                        $("#autosave_status").html('Autosaving...');
+                        
+                        var cat = $("input[name='category[]']:checked").map(function(i,n) {
+                                return $(n).val();
+                        }).get(); //get converts it to an array
+                        
+                                
+                                
+                                $.post('submit_article', 
+                                       { 
+                                         article_id     :  $('#article_id').val(),
+                                         title          :  $('#article_title').val(),
+                                         description    :  $('#article_description').val(),
+                                         content        :  tinyMCE.activeEditor.getContent(),//$('#ajaxfilemanager').val(),
+                                         date_published :  $('#date_published').val(),
+                                         time_published :  $('#time_published').val(),
+                                         status         :  2, // autosave!
+                                         featured_image_hidden : $('#featured_image_hidden').val(),
+                                         'category[]'       :  cat
+                                       },
+                                       function(data){
+                                           //alert(data.id);
+                                           $('#article_id').val(data.id);
+                                           $("#autosave_status").html('');
+                                       }, 
+                                       "json");                    
+                }
+             
         </script>
         <div style="float:right;width:200px"><!-- featured image begin -->
         <label for="featured_image">Главна слика</label>
                 <iframe name="iframe-post-form" id="iframe-post-form" style="width:0px;height:0px"></iframe>
-                <div class="featured-image-preview-holder" style="width:0px;height:0px">
-                    <img src="" id="featured_image_preview" alt="" width="0px" />
+                <div class="featured-image-preview-holder" style="<?php FieldHelper::field($article->id,"width:150px;height:150px","width:0px;height:0px"); ?>">
+                    <img src="<?php FieldHelper::field($article->id,base_url() . 'public/uploaded/featured/thumbnails/' . $article->featured_image,""); ?>" id="featured_image_preview" alt="" width="150px" />
                 </div>
-                <?php echo form_open('admin/upload_image', array('id' => 'upload_image_form',
+                <?php echo form_open('admin/articles/upload_image', array('id' => 'upload_image_form',
                                                            'enctype'  => "multipart/form-data", 
                                                            'target'   => "iframe-post-form")); ?>
                 <input type="file" id="featured_image" name="featured_image" size="5" />
@@ -165,32 +206,35 @@
                 </form>
        </div><!-- featured image end -->
         
-         <?php  echo form_open('admin/submit_article'); ?>
+         <?php  echo form_open('admin/articles/submit_article' , array('id' => 'submit_article_form')); ?>
+       <input type="hidden" id="article_id" name="article_id" value="<?php echo $article->id; ?>" />
+       <input type="hidden" id="status" name="status" value="1" />
         <div class="article-new-main-holder">
                
                 <div class="article-title-holder">        
-                    <input type="text" class="article-title" name="title" value="Наслов на статијата" />
+                    <input type="text" id="article_title" class="article-title" name="title" value="<?php FieldHelper::field($article->id,$article->title,"Наслов на статијата"); ?>" />
                 </div>
                 <div class="clear">
                     <textarea id="ajaxfilemanager" name="content" style="width: 600px; height: 450px">
                 <p>
-                    Објавете нова статија
+                    <?php FieldHelper::field($article->id,$article->content,"Објавете нова статија"); ?>
                 </p>
 
                     </textarea>
                 </div>
 
                 <div class="article-title-holder">
-                    <input type="text" class="article-title" name="description" value="Краток опис" />
+                    <input type="text" id="article_description" class="article-title" name="description" value="<?php FieldHelper::field($article->id,$article->description,"Краток опис"); ?>" />
                 </div>
 
+            
+                
                 <input type="submit" name="submit" value="Објави" />
-
               
         </div>
         <div class="article-new-sidebar-holder border">
             <div class="article-new-sidebar-option">                   
-                <input type="hidden" id="featured_image_hidden" name="featured_image_hidden" value="" />
+                <input type="hidden" id="featured_image_hidden" name="featured_image_hidden" value="<?php FieldHelper::field($article->id,$article->featured_image,""); ?>" />
             </div>
             <div class="article-new-sidebar-option">                   
                 <label for="date_published">Објави на:</label>
@@ -201,7 +245,7 @@
                 <label for="category">Категориja</label>
                 <div style="overflow-y: scroll;height:150px;width:180px;text-align: left;padding:0 0 0 10px">
                     <?php foreach($categories as $category): ?>
-                        <input type="checkbox" name="category[]" value="<?php echo $category->id; ?>" /> <?php echo $category->name; ?><br />
+                    <input type="checkbox" <?php if(isset($saved_categories) and in_array($category->id, $saved_categories)){ echo 'checked="checked"';  } ?> id="checkbox_category" name="category[]" value="<?php echo $category->id; ?>" /> <?php echo $category->name; ?><br />
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -213,7 +257,7 @@
                 <label for="calendar_category">Настан</label>
                 <select name="calendar_category" style="width:150px">
                     <?php foreach($event_categories as $e_category): ?>
-                    <option value="<?php echo $e_category->calendar_events_categories_id; ?>"><?php echo $e_category->name; ?></option>
+                    <option value="<?php echo $e_category->id; ?>"><?php echo $e_category->name; ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -223,6 +267,7 @@
             </div>
             
         </div>
+                <span id="autosave_status"></span>
           </form>
         <div class="clear"></div>
 </div>        

@@ -10,10 +10,43 @@
  */
 class Articles_model extends CI_Model {
     
+    
     function __construct() {
         parent::__construct();
         $this->load->database();
     }
+    
+    public function get_articles($options = array(),$limit = 0, $offset = 0){
+        
+        //$options = $this->_default(array('status' => '1'), $options);
+        
+        foreach($options as $key => $option)
+        {
+            $this->db->where($key, $option);
+        }
+        $this->db->from('articles');
+        $this->db->select('id,
+                           title,
+                           description,
+                           content,
+                           date_created,
+                           date_published,
+                           slug,
+                           featured_image,
+                           status');
+        
+        if($limit){
+            $this->db->limit($limit);
+        }
+        if($offset){
+            $this->db->offset($offset);
+        }
+        
+        $result = $this->db->get();
+        
+        return $result->result();
+    }
+    
     
     
     public function insert_article($data)
@@ -22,6 +55,12 @@ class Articles_model extends CI_Model {
         return $this->db->insert_id();
     }
     
+    
+    public function update_article($data)
+    {
+        $this->db->where('id', $data->id);
+        $this->db->update('articles',$data);
+    }
     
     public function insert_article_categories($article_id, $categories){
         if(is_array($categories) and count($categories) > 0)
@@ -32,6 +71,17 @@ class Articles_model extends CI_Model {
                                                             'categories_id' => $category)
                                 );
             }
+        }
+    }
+    
+    public function update_article_categories($article_id,$categories)
+    {
+        if(is_array($categories) and count($categories) > 0)
+        {
+            $this->db->where('articles_id', $article_id);
+            $this->db->delete('articles_categories');
+            
+            $this->insert_article_categories($article_id, $categories);
         }
     }
     
@@ -65,9 +115,9 @@ class Articles_model extends CI_Model {
         
         $categories = array();
         
-        /*foreach($result->result() as $c){
+        foreach($result->result() as $c){
             $category = new EventCategory();
-            $category->id    =  $c->categories_id;
+            $category->id    =  $c->calendar_events_categories_id;
             $category->name  =  $c->name;
             $category->slug  =  $c->slug;
             $category->color =  $c->color;
@@ -76,8 +126,54 @@ class Articles_model extends CI_Model {
             $categories[] = $category;
         }
         
-        return $categories;*/
+        return $categories;
         return $result->result();
+    }
+    
+    
+     /**
+     * _default method combines the options array with a set of defaults giving the values in the options array priority.
+     *
+     * @param array $defaults
+     * @param array $options
+     * @return array
+     */
+    function _default($defaults, $options) {
+        return array_merge($defaults, $options);
+    }
+    
+    
+    /**
+     * _required method returns false if the $data array does not contain all of the keys assigned by the $required array.
+     *
+     * @param array $required
+     * @param array $data
+     * @return bool
+     */
+    function _required($required, $data) {
+        foreach ($required as $field)
+            if (!isset($data[$field]))
+                return false;
+        return true;
+    }
+    
+    function arrayToObject($array) {
+        if (!is_array($array)) {
+            return $array;
+        }
+
+        $object = new stdClass();
+        if (is_array($array) && count($array) > 0) {
+            foreach ($array as $name => $value) {
+                $name = strtolower(trim($name));
+                if (!empty($name)) {
+                    $object->$name = arrayToObject($value);
+                }
+            }
+            return $object;
+        } else {
+            return FALSE;
+        }
     }
 }
 
