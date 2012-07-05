@@ -23,6 +23,12 @@ class Articles_model extends CI_Model {
     }
     
     
+    public function update_article($data)
+    {
+        $this->db->where('id', $data->id);
+        $this->db->update('articles',$data);
+    }
+    
     public function insert_article_categories($article_id, $categories){
         if(is_array($categories) and count($categories) > 0)
         {
@@ -32,6 +38,17 @@ class Articles_model extends CI_Model {
                                                             'categories_id' => $category)
                                 );
             }
+        }
+    }
+    
+    public function update_article_categories($article_id,$categories)
+    {
+        if(is_array($categories) and count($categories) > 0)
+        {
+            $this->db->where('articles_id', $article_id);
+            $this->db->delete('articles_categories');
+            
+            $this->insert_article_categories($article_id, $categories);
         }
     }
     
@@ -65,9 +82,9 @@ class Articles_model extends CI_Model {
         
         $categories = array();
         
-        /*foreach($result->result() as $c){
+        foreach($result->result() as $c){
             $category = new EventCategory();
-            $category->id    =  $c->categories_id;
+            $category->id    =  $c->calendar_events_categories_id;
             $category->name  =  $c->name;
             $category->slug  =  $c->slug;
             $category->color =  $c->color;
@@ -76,7 +93,7 @@ class Articles_model extends CI_Model {
             $categories[] = $category;
         }
         
-        return $categories;*/
+        return $categories;
         return $result->result();
     }
 }

@@ -8,7 +8,7 @@
 * @property CI_DB_forge $dbforge
 * @property Articles_model $articles_model
 */
-class Admin extends MY_Admin_Controller {
+class Articles extends MY_Admin_Controller {
     
     public function index()
     {
@@ -24,6 +24,8 @@ class Admin extends MY_Admin_Controller {
         
         $this->load->model('articles_model');
         
+        $data['article']  = new Article();
+        
         $data['categories'] = $this->articles_model->get_categories();
         $data['event_categories'] = $this->articles_model->get_event_categories();
         
@@ -34,43 +36,53 @@ class Admin extends MY_Admin_Controller {
     public function submit_article()
     {
         $this->load->model('articles_model');
-        
-        $article = array();
+        $data = array();
+        $article = new Article();
         
         // fill article data
-        $article['title']           =   $this->input->post('title');
-        $article['content']         =   $this->input->post('content');
-        $article['description']     =   $this->input->post('description');
+        $article->id              =   $this->input->post('article_id');
+        $article->title           =   $this->input->post('title');
+        $article->content         =   $this->input->post('content');
+        $article->description     =   $this->input->post('description');
           
-        $article['date_published']  =    TimeHelper::convert_datetime(
+        $article->date_published  =    TimeHelper::convert_datetime(
                                             $this->input->post('date_published') . ' ' .
                                             $this->input->post('time_published')
                                             );
-        $article['date_created']    =   TimeHelper::DateTimeAdjusted();
-        $article['slug']            =   CyrillicLatin::seo_friendly($article['title']);
-        $article['status']       =   1;
+        $article->date_created    =   TimeHelper::DateTimeAdjusted();
+        $article->slug            =   CyrillicLatin::seo_friendly($article->title);
+        
+        $article->status          =   $this->input->post('status');
         
         $featured_image_hidden = $this->input->post('featured_image_hidden');
         if(isset($featured_image_hidden) and $featured_image_hidden != null)
         {
-            $article['featured_image']  =   $featured_image_hidden;
+            $article->featured_image  =   $featured_image_hidden;
         }
         else
         {
-            $article['featured_image'] = 'default_featured_image.jpg';
+            $article->featured_image = 'default_featured_image.jpg';
+        }
+        
+        // save the article
+        if($article->id == 0)
+        {
+            $article->id = $this->articles_model->insert_article($article); 
+        }
+        else
+        {
+            $this->articles_model->update_article($article); 
         }
         
         
-        $article_id = 0;
-        // save the article
-        $article_id = $this->articles_model->insert_article($article);
-        
-        
-        if($article_id > 0)
-        {
             // save the categories
             $categories = $this->input->post('category');
-            $this->articles_model->insert_article_categories($article_id, $categories);
+            if(!isset($categories) or $categories == null){
+                $categories = array();
+            }
+            
+            $this->articles_model->update_article_categories($article->id, $categories);
+          
             
             // is it an event?
             $event = array();
@@ -84,28 +96,27 @@ class Admin extends MY_Admin_Controller {
                 
                 $event['id'] = $this->articles_model->insert_calendar_event($event);
             }
-            
-            
-            
-            
-        }
         
-        
-        
-        
-        if($article_id == 0){
+        if($article->id == 0){
             $data['msg']    =   'Статијата не е зачувана!';
         }
         else{
             $data['msg']    =   'Статијата е успешно зачувана';
         }
         
+        
+        
+        $data['article'] = $article;
         $data['categories'] = $this->articles_model->get_categories();
+        $data['saved_categories'] = $categories;
         $data['event_categories'] = $this->articles_model->get_event_categories();
-        
         $data['main_content']   =   'admin/articles/new';
-        
-        $this->load->view('admin/layout/layout', $data);
+        if($article->status == 2){ // autosave
+            echo json_encode($article);
+        }
+        else{
+            $this->load->view('admin/layout/layout', $data);
+        }
     }
     
     
