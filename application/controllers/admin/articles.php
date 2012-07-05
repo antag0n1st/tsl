@@ -9,16 +9,7 @@
 * @property Articles_model $articles_model
 */
 class Articles extends MY_Admin_Controller {
-    
-    public function index()
-    {
-        Head::instance()->title = "TSL Admin";
-        
-        
-        $data['main_content']   =   'admin/homepage';
-        $this->load->view('admin/layout/layout', $data);
-    }
-    
+            
     
     public function new_article(){
         
@@ -167,5 +158,38 @@ class Articles extends MY_Admin_Controller {
         echo json_encode(array('status' => $status,
             'msg' => $msg,
             'featured_image_name' => $file_name));
+    }
+    
+    
+    public function show_articles()
+    {
+        $this->load->model('articles_model');
+        $this->load->library('pagination');
+
+        $per_page = 3;
+        
+        $articles = array();
+        $articles = $this->articles_model->get_articles(array(),$per_page,$this->uri->segment(4));
+       // echo count($articles);
+        $config = array();
+        
+        $config['base_url'] =  base_url() . 'admin/articles/show_articles/';// 'http://example.com/index.php/test/page/';
+        
+        
+        
+        $config['total_rows'] = $this->db->count_all_results('articles');
+        $config['per_page'] = $per_page; 
+        $config['uri_segment'] = '4'; 
+
+        $this->pagination->initialize($config); 
+        
+        $data = array();
+        $data['articles']       =   $articles;
+        $data['main_content']   =   'admin/articles/articles';
+        
+        
+        $this->load->view('admin/layout/layout', $data);
+        
+        //echo $this->pagination->create_links();
     }
 }
