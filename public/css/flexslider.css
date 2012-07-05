@@ -61,9 +61,10 @@ padding: 37px 33px 40px 40px;
 -moz-border-radius: 7px;
 border-radius: 7px;
 color: #FFF;
+font-size: 15px;
 
 } /*{width: 96%; padding: 2%; margin: 0; position: absolute; left: 0; bottom: 0; background: rgba(0,0,0,.3); color: #fff; text-shadow: 0 -1px 0 rgba(0,0,0,.3); font-size: 14px; line-height: 18px;}*/
-
+.flex-caption h2{ font-size: 20px; margin: 0px 10px 10px 0px;}
 /* Direction Nav */
 .flex-direction-nav { height: 0; }
 .flex-direction-nav a {width: 52px; height: 52px; margin: -13px 0 0; display: block; background: url(../images/bg_direction_nav.png) no-repeat; position: absolute; top: 50%; cursor: pointer; text-indent: -999em;}
