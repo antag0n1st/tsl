@@ -34,7 +34,7 @@
             <input type="file" id="featured_image" name="featured_image" size="5" />
             <input class="button round" type="button" id="btn_featured_image"  name="btn" value="OK" />
             <div id="progress"></div>
-
+            </form>
         </div><!-- featured image end -->
         <br />
         <?php echo form_open('admin/articles/submit_article', array('id' => 'submit_article_form')); ?>
@@ -109,7 +109,7 @@
         </div>
         <span id="autosave_status"></span>
     </div>
-
+</form>
 </div>        
 
 
