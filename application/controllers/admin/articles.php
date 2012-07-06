@@ -128,7 +128,7 @@ class Articles extends MY_Admin_Controller {
             $this->load->library('upload', $config);
 
 
-            $file_name = 'default.jpg';
+            $file_name = 'default_featured_image.jpg';
             if (!$this->upload->do_upload($file_element_name)) {
                 $status = 'error';
                 $msg = $this->upload->display_errors('', '');
@@ -146,7 +146,7 @@ class Articles extends MY_Admin_Controller {
                     
 
                     $image_helper = new ImageHelper();
-                    $image_helper->save_image(base_url() . $config['upload_path'] . $file_name, $file_name, 200, 126, 150, 150);
+                    $image_helper->save_image(base_url() . $config['upload_path'] . $file_name, $file_name, 650, 250, 150, 150);
                 } else {
                     unlink($data['full_path']);
                     $status = "error";
