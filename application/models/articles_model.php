@@ -48,6 +48,32 @@ class Articles_model extends CI_Model {
     }
     
     
+    public function get_latest_news() {
+
+       
+            $query  = " SELECT a.* ";
+            $query .= " FROM articles as a ";
+            $query .= " JOIN articles_categories as ac ";
+            $query .= " ON a.id = ac.articles_id ";
+            $query .= " JOIN categories as c ";
+            $query .= " ON ac.categories_id = c.categories_id ";
+            $query .= " WHERE status = 1 ";
+            $query .= " AND c.categories_id = 1 ";
+            $query .= " LIMIT 4 ";
+            
+            $result = $this->db->query($query);
+            
+            $return = array();
+
+            foreach ($result->result() as $row)
+            {
+                $return[] = $row;
+            }
+            
+            return $return;
+    }
+    
+    
     
     public function insert_article($data)
     {
