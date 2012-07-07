@@ -1,30 +1,27 @@
 <div class="container o">
     <h3>Сите статии</h3>
 
-    <div class="article-grid-holder">    
+    <div style="margin:20px 0px 0px 0px">    
 <?php foreach($articles as $article): ?>
-<div class="article-grid-row">
-    <div class="article-grid-thumbnail">
+<div style="width:950px">
+    <div style="float:left;width:240px;height:100px;overflow:hidden;">
         <a href="<?php echo base_url();?>admin/articles/edit_article/<?php echo $article->id; ?>">
             <img src="<?php echo base_url(); ?>public/uploaded/featured/thumbnails/<?php echo $article->featured_image; ?>" alt="" width="240" />
         </a>
     </div>
-    <div class="article-grid-title">
+    <div style="padding:0 0 0 10px;float:left;width:350px;height:70px">
         <a href="<?php echo base_url();?>admin/articles/edit_article/<?php echo $article->id; ?>">
             <?php echo $article->title; ?>
         </a>
     </div>
-    <div class="article-grid-date">
+    <div style="float:left;width:120px;height:70px">
         <?php echo date("d.m.Y H:i", strtotime($article->date_published) ); ?>
     </div>
-    <div class="article-grid-status">
+    <div style="float:left;width:80px;height:70px">
         <?php FieldHelper::status_field($article->status); ?>
     </div>
-    <div class="article-grid-edit-links">
-        <a href="<?php echo base_url();?>admin/articles/edit_article/<?php echo $article->id; ?>" title="Измени">
-        <img src="<?php echo base_url()?>public/images/edit_pencil.png" alt="" style="width:24px" />
-        </a> | 
-        <a href="#" class="delete-link" title="Избриши" rel="<?php echo $article->id; ?>"><img src="<?php echo base_url()?>public/images/delete_red.png" alt="" style="width:24px"  /></a>
+    <div style="float:left;width:125px">
+        <a href="<?php echo base_url();?>admin/articles/edit_article/<?php echo $article->id; ?>">Измени</a> | <a href="#">Избриши</a>
     </div>
     <?php echo $article->id; ?>
     <div class="clear"></div>
@@ -36,9 +33,3 @@
     </div>
 <?php echo $this->pagination->create_links(); ?>
 </div>
-
-<script type="text/javascript">
-    $(".delete-link").click(function(){
-        alert('TODO: Delete this article');
-    });
-</script>

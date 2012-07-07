@@ -213,14 +213,4 @@ class Articles extends MY_Admin_Controller {
         
         $this->load->view('admin/layout/layout', $data);
     }
-    
-    
-    public function delete_article($article_id)
-    {
-        if(is_numeric($article_id))
-        {
-            $this->load->model('articles_model');
-            $this->articles_model->delete_article($article_id);
-        }
-    }
 }
