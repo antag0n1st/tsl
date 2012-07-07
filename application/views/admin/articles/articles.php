@@ -22,9 +22,8 @@
     </div>
     <div class="article-grid-edit-links">
         <a href="<?php echo base_url();?>admin/articles/edit_article/<?php echo $article->id; ?>" title="Измени">
-        <img src="<?php echo base_url()?>public/images/edit_pencil.png" alt="" style="width:24px" />
-        </a> | 
-        <a href="#" class="delete-link" title="Избриши" rel="<?php echo $article->id; ?>"><img src="<?php echo base_url()?>public/images/delete_red.png" alt="" style="width:24px"  /></a>
+        <img src="<?php echo base_url()?>public/images/edit_pencil_24_24.png" alt="" /></a>&nbsp;|&nbsp;
+        <a href="#" class="delete-link" title="Избриши" rel="<?php echo $article->id; ?>"><img src="<?php echo base_url()?>public/images/delete_red_24_24.png" alt=""  /></a>
     </div>
     <?php echo $article->id; ?>
     <div class="clear"></div>
@@ -39,6 +38,11 @@
 
 <script type="text/javascript">
     $(".delete-link").click(function(){
-        alert('TODO: Delete this article');
+        
+        if(window.confirm('Дали сте сигурни дека сакате да избришете?'))
+        {
+            var articleId = $(this).attr('rel');
+            window.location = "<?php echo base_url()?>admin/articles/delete_article/" + articleId;
+        }
     });
 </script>

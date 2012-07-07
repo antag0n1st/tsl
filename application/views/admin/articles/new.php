@@ -275,7 +275,7 @@
                         
                                 
                                 
-        $.post('submit_article', 
+        $.post('<?php echo base_url()?>admin/articles/submit_article', 
         { 
             article_id     :  $('#article_id').val(),
             title          :  $('#article_title').val(),
@@ -288,9 +288,8 @@
             'category[]'       :  cat
         },
         function(data){
-            //alert(data.id);
-            $('#article_id').val(data.id);
             $("#autosave_status").html('');
+            $('#article_id').val(data.id);
         }, 
         "json");                    
     }

@@ -130,6 +130,7 @@ class Articles extends MY_Admin_Controller {
             echo json_encode($article);
         }
         else{
+            //redirect('admin/articles/edit_article/' . $article->id);
             $this->load->view('admin/layout/layout', $data);
         }
     }
@@ -221,6 +222,7 @@ class Articles extends MY_Admin_Controller {
         {
             $this->load->model('articles_model');
             $this->articles_model->delete_article($article_id);
+            redirect(base_url() . 'admin/articles/show_articles');
         }
     }
 }
