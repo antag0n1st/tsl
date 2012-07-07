@@ -11,6 +11,11 @@
 class Articles extends MY_Admin_Controller {
             
     
+    public function index()
+    {
+        $this->show_articles();
+    }
+    
     public function new_article(){
         
         $this->load->model('articles_model');

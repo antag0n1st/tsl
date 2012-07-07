@@ -23,6 +23,11 @@ class FieldHelper{
         }
         
     }
+    
+    public static function date_field($date)
+    {
+        echo date("d.m.Y H:i", strtotime($date) );
+    }
 
 }
 ?>
