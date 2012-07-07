@@ -35,7 +35,7 @@ body{ text-align: center; font-family: 'Cuprum',Arial,Verdana,sans-serif; font-s
 
 .pad{ padding: 5px; }
 
-h3{ font-size: 20px; margin: 10px 10px 10px 0px;color: #4c51bb;}
+h3{ font-size: 20px; margin: 0px 10px 10px 0px;color: #4c51bb;}
 
 a{ color: #4D4D4D;}
 a:hover{ color:black;}
@@ -158,3 +158,9 @@ display: inline;
 -moz-border-radius: 5px;
 border-radius: 5px;
 }
+
+.content{ font-family: 'arial'; }
+
+.content ul{margin: 10px 0px;}
+.content ul li{ padding-left: 15px; margin: 5px 0px; background-image: url('../images/arrow.gif'); background-repeat: no-repeat; background-position: 5px 4px;}
+.img-container{ overflow: hidden; width: 608px ; padding: 0px; margin: 0px;}
