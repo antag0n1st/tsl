@@ -275,7 +275,7 @@
                         
                                 
                                 
-        $.post('submit_article', 
+        $.post('<?php echo base_url()?>admin/articles/submit_article', 
         { 
             article_id     :  $('#article_id').val(),
             title          :  $('#article_title').val(),
@@ -283,7 +283,7 @@
             content        :  tinyMCE.activeEditor.getContent(),//$('#ajaxfilemanager').val(),
             date_published :  $('#date_published').val(),
             time_published :  $('#time_published').val(),
-            status         :  2, // autosave!
+            status         :  <?php FieldHelper::field($article->id, 1, 2); ?>, // autosave!
             featured_image_hidden : $('#featured_image_hidden').val(),
             'category[]'       :  cat
         },

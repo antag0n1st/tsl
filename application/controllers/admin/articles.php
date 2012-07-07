@@ -130,6 +130,7 @@ class Articles extends MY_Admin_Controller {
             echo json_encode($article);
         }
         else{
+            //redirect('admin/articles/edit_article/' . $article->id);
             $this->load->view('admin/layout/layout', $data);
         }
     }
