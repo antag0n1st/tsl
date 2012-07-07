@@ -23,7 +23,7 @@ strong{font-weight: bold;}
 /*                                                                            */
 /* Delete this style below to customize your own css                          */
 /******************************************************************************/
-body{ text-align: center; font-family: 'Cuprum',Arial,Verdana,sans-serif; font-size: 13px; color: #4D4D4D;/* background-image: url('../images/background.png'); */ }
+body{ text-align: center; font-family: 'Cuprum',Arial,Verdana,sans-serif; font-size: 13px; color: #4D4D4D; background-image: url('../images/bg_header.png'); background-repeat: repeat-x; }
 .o { overflow: hidden;}
 .oa{ overflow: auto;}
 .l{ float: left;}
@@ -51,11 +51,12 @@ line-height: 17px; }
 
 .clear { height: 100% }
 .clear:after { content: ''; display: block; clear: both }
-#menu{  border-bottom: 1px solid #4C51BB;}
-#menu, #menu ul { list-style: none; margin: 0; padding: 0 ;z-index: 1; }
 
-#menu li { background: white; border-right: 1px solid #fff; position: relative; float: left; white-space: nowrap }
-#menu li a { display: block; padding: 5px 16px; text-decoration: none; color: #4D4D4D; font-size: 15px; }
+#menu, #menu ul { list-style: none; margin: 0; padding: 0 ;z-index: 1; }
+#menu{  background-image: url('../images/menu.png'); padding-left: 5px; border: 1px solid #2c619a;}
+
+#menu li { background-image: url('../images/menu.png'); border-right: 1px solid #454aac; position: relative; float: left; white-space: nowrap }
+#menu li a { display: block; padding: 6px 16px; text-decoration: none; color: #0e1f31; font-size: 15px; text-shadow: 1px 1px #3c8fe6; }
 
 #menu ul { background: #fff; display: none; position: absolute }
 #menu ul li { background: white; border-top: 1px solid #bdd2ff; border-right: 0px solid transparent; float: none }

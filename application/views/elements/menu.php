@@ -1,6 +1,6 @@
 <div class="container" >
 
-    <ul id="menu" class="clear">
+    <ul id="menu" class="clear round">
         <li><a href="#">За Нас</a></li>
         <li><a href="#">Learning</a></li>
         <li><a href="#">Speakers</a>
