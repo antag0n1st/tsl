@@ -118,6 +118,31 @@ class Articles_model extends CI_Model {
         return $this->db->insert_id();
     }
     
+    public function get_events()
+            
+            
+            
+    {       
+            // 07/25/2012
+            $query  = " SELECT * , DATE_FORMAT(date_happen,'%m/%d/%Y') as d ";
+            $query .= " FROM calendar_events ce ";
+            $query .= " JOIN `calendar_events_categories` c ";
+            $query .= " ON `c`.`calendar_events_categories_id` = `ce`.`event_categories_id` ";
+            $query .= " WHERE `date_happen` > '".TimeHelper::DateTimeAdjusted()."' ";
+            
+            $result = $this->db->query($query);
+            
+            $return = array();
+
+            foreach ($result->result() as $row)
+            {
+                $return[] = $row;
+            }
+            
+            return $return;
+
+    }
+    
     
     public function get_categories()
     {

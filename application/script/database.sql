@@ -61,6 +61,7 @@ CREATE TABLE IF NOT EXISTS `articles_categories` (
 -- Table structure for table `calendar_events`
 --
 
+
 CREATE TABLE IF NOT EXISTS `calendar_events` (
   `calendar_events_id` int(11) NOT NULL AUTO_INCREMENT,
   `date_created` datetime NOT NULL,
@@ -68,11 +69,27 @@ CREATE TABLE IF NOT EXISTS `calendar_events` (
   `calendar_link` varchar(1024) COLLATE utf8_unicode_ci NOT NULL,
   `event_categories_id` int(11) NOT NULL,
   PRIMARY KEY (`calendar_events_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `calendar_events`
 --
+
+INSERT INTO `calendar_events` (`calendar_events_id`, `date_created`, `date_happen`, `calendar_link`, `event_categories_id`) VALUES
+(1, '2012-07-06 02:44:06', '2012-07-04 00:00:00', 'http://google.com', 4),
+(2, '2012-07-07 01:52:21', '2012-07-09 00:00:00', 'http://facebook.com', 2),
+(3, '2012-07-07 14:20:58', '2012-07-28 14:21:04', 'http://twitter.com', 2),
+(4, '2012-07-07 00:00:00', '2012-07-10 00:00:00', 'http://time.mk', 1),
+(5, '2012-07-07 00:00:00', '2012-07-11 00:00:00', 'http://time.mk', 2),
+(6, '2012-07-07 00:00:00', '2012-07-12 00:00:00', 'http://time.mk', 3),
+(7, '2012-07-07 00:00:00', '2012-07-15 00:00:00', 'http://time.mk', 4),
+(8, '2012-07-07 00:00:00', '2012-07-23 00:00:00', 'http://time.mk', 5),
+(9, '2012-07-07 00:00:00', '2012-07-24 00:00:00', 'http://time.mk', 6),
+(10, '2012-07-07 00:00:00', '2012-08-01 00:00:00', 'http://time.mk', 7),
+(11, '2012-07-07 00:00:00', '2012-08-04 00:00:00', 'http://time.mk', 8),
+(12, '2012-07-07 00:00:00', '2012-08-06 00:00:00', 'http://time.mk', 9),
+(13, '2012-07-07 00:00:00', '2012-08-11 00:00:00', 'http://time.mk', 10),
+(14, '2012-07-07 00:00:00', '2012-08-20 00:00:00', 'http://time.mk', 11);
 
 
 -- --------------------------------------------------------

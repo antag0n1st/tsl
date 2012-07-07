@@ -3,11 +3,44 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>public/js/jquery-ui/development-bundle/ui/jquery.ui.core.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>public/js/jquery-ui/development-bundle/ui/jquery.ui.widget.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>public/js/jquery-ui/development-bundle/ui/jquery.ui.datepicker.js"></script>
+<?php 
+echo '<style type="text/css">';
+foreach($event_categories as $event_category){
+    /* @var $event_category EventCategory  */
+    
+    echo '
+    .'.$event_category->slug.'  {
+        background-color: '.$event_category->color.';
+    }
+    .'.$event_category->slug.' a  {
+        background-color: '.$event_category->color.' !important;
+        background-image: none !important;
+        color: white !important;
+    }
+    ';
+} 
+echo '</style>';
+?>
+
+
+
+
 <script type="text/javascript">
     $(document).ready(function() {
+        <?php 
+        $_events = array(); foreach($events as $event){
+           
+            $_events[] = '{ Date: new Date("'.$event->d.'"), link : "'.$event->calendar_link.'" , color: "'.$event->color.'" , slug: "'.$event->slug.'" }';
+        }
+       
+        ?>
+        var events = [ 
+            <?php  echo implode(',', $_events); ?>
+        ];
                 
         $.datepicker.setDefaults( $.datepicker.regional[ "" ] );
-        $( "#date_published" ).datepicker({ dateFormat: 'dd.mm.yy',
+
+        $( "#date_published" ).datepicker({ dateFormat: 'm/d/yy',
             regional: 'mk' , 
             dayNames:["Недела", "Понеделник", "Вторник", "Среда", "Четврток", "Петок", "Сабота"] , 
             dayNamesMin:["Нед", "Пон", "Вто", "Сре", "Чет", "Пет", "Саб"] ,
@@ -15,10 +48,44 @@
             firstDay: 1 , 
             monthNames:["Јануари", "Фебруари", "Март", "Април", "Мај", "Јуни", "Јули", "Август", "Септември", "Октомври", "Ноември", "Декември"] , 
             
+            beforeShowDay: function(date) {
+                
+                var result = [true, '', null];
+                var matching = $.grep(events, function(event) {
+                    return (event.Date.valueOf() === date.valueOf()) ;
+                });
+                
+                if (matching.length) {
+                    result = [true, matching[0].slug, null];
+                }
+                return result;
+            },
+            
+            onSelect: function(dateText) {
+                var date,
+                selectedDate = new Date(dateText),
+                i = 0,
+                event = null;
+                
+                while (i < events.length && !event) {
+                    date = events[i].Date;
+                    
+                    if (selectedDate.valueOf() === date.valueOf()) {
+                        event = events[i];
+                    }
+                    i++;
+                }
+                if (event) {
+                    window.open(event.link);
+                }
+            }
         });
         
     });
+    
+    
 </script>
+
 
 <div id="date_published"></div>
 

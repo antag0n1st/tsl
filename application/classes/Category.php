@@ -14,6 +14,7 @@ class Category {
     public $id;
     public $name;
     public $slug;
+    public $color;
 }
 
 ?>
