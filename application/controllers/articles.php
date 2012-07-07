@@ -12,6 +12,12 @@ class Articles extends MY_Controller {
                 $article = $this->articles_model->get_articles(array('id' => $article_id));
                 if(isset($article[0])){
                     $article = $article[0];
+                    Head::instance()->title = $article->title;
+                    Head::instance()->description  = $article->description;
+                    
+                    Head::instance()->fb_title = $article->title;
+                    Head::instance()->fb_description = $article->description;
+                    Head::instance()->fb_image_url = base_url().'public/uploaded/featured/'.$article->featured_image;
                 }
                 
                 $data['article'] = $article;

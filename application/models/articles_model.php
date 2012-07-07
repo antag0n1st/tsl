@@ -51,7 +51,7 @@ class Articles_model extends CI_Model {
     public function get_latest_news() {
 
        
-            $query  = " SELECT a.* ";
+            $query  = " SELECT a.* , DATE_FORMAT(a.date_published,'%d.%m.%Y') as d ";
             $query .= " FROM articles as a ";
             $query .= " JOIN articles_categories as ac ";
             $query .= " ON a.id = ac.articles_id ";
