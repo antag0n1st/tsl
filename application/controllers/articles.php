@@ -2,13 +2,13 @@
 
 class Articles extends MY_Controller {
 
-	public function index()
+	public function index($article_id = 0)
 	{
             $data['main_content'] = 'article';
             $this->load->view('layout/layout',$data);
-           
-            
         }
+        
+        
 }
 
 ?>
