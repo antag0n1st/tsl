@@ -62,6 +62,27 @@ class Articles_model extends CI_Model {
         $this->db->update('articles',$data);
     }
     
+    public function get_article_categories($article_id)
+    {
+        if(is_numeric($article_id))
+        {
+            $this->db->where('articles_id',$article_id);
+            $this->db->from('articles_categories ac');
+            $this->db->join('categories c', 'c.categories_id = ac.categories_id');
+            $this->db->select('c.categories_id as categories_id');
+            $result = $this->db->get();
+            
+            $results = array();
+            
+            foreach($result->result() as $r)
+            {
+                $results[] = $r->categories_id;
+            }
+            return $results;
+        }
+        return array();
+    }
+    
     public function insert_article_categories($article_id, $categories){
         if(is_array($categories) and count($categories) > 0)
         {

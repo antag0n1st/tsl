@@ -14,6 +14,15 @@ class FieldHelper{
             echo $value_not_exists;
         }
     }
+    
+    public static function status_field($status){
+        if($status == 1)
+            echo "Објавен";
+        else if ($status == 2){
+            echo "Необјавен";
+        }
+        
+    }
 
 }
 ?>

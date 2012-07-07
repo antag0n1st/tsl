@@ -24,6 +24,30 @@ class Articles extends MY_Admin_Controller {
         $this->load->view('admin/layout/layout', $data);
     }
     
+    public function edit_article($article_id)
+    {
+        if(is_numeric($article_id))
+        {
+            $this->load->model('articles_model');
+            $article = $this->articles_model->get_articles(array('id'   =>  $article_id));
+            if(count($article) == 1)
+            {
+                $data['article']  = $article[0];
+                $categories       = $this->articles_model->get_article_categories($article_id);
+                
+                //print_r($categories);
+                
+                $data['categories'] = $this->articles_model->get_categories();
+                $data['event_categories'] = $this->articles_model->get_event_categories();
+                $data['saved_categories'] = $categories;
+                $data['main_content']   =   'admin/articles/new';
+                $this->load->view('admin/layout/layout', $data);
+            }
+        }
+    }
+    
+    
+    
     public function submit_article()
     {
         $this->load->model('articles_model');
@@ -166,14 +190,13 @@ class Articles extends MY_Admin_Controller {
         $this->load->model('articles_model');
         $this->load->library('pagination');
 
-        $per_page = 3;
+        $per_page = 5;
         
         $articles = array();
         $articles = $this->articles_model->get_articles(array(),$per_page,$this->uri->segment(4));
-       // echo count($articles);
         $config = array();
         
-        $config['base_url'] =  base_url() . 'admin/articles/show_articles/';// 'http://example.com/index.php/test/page/';
+        $config['base_url'] =  base_url() . 'admin/articles/show_articles/';
         
         
         
@@ -189,7 +212,5 @@ class Articles extends MY_Admin_Controller {
         
         
         $this->load->view('admin/layout/layout', $data);
-        
-        //echo $this->pagination->create_links();
     }
 }

@@ -23,8 +23,8 @@
         <div><!-- featured image begin -->
             <label for="featured_image">Главна слика:</label>
             <iframe name="iframe-post-form" id="iframe-post-form" style="width:0px;height:0px"></iframe>
-            <div class="featured-image-preview-holder" style="<?php FieldHelper::field($article->id, "width:150px;height:150px", "width:0px;height:0px"); ?>">
-                <img src="<?php FieldHelper::field($article->id, base_url() . 'public/uploaded/featured/thumbnails/' . $article->featured_image, ""); ?>" id="featured_image_preview" alt="" width="150px" />
+            <div class="featured-image-preview-holder" style="<?php FieldHelper::field($article->id, "width:610px;height:235px", "width:0px;height:0px"); ?>">
+                <img src="<?php FieldHelper::field($article->id, base_url() . 'public/uploaded/featured/' . $article->featured_image, ""); ?>" id="featured_image_preview" alt="" width="610px" />
             </div>
             <?php
             echo form_open('admin/articles/upload_image', array('id' => 'upload_image_form',
@@ -121,7 +121,7 @@
 <script src="<?php echo base_url() ?>public/js/jquery.iframe-post-form.js" type="text/javascript"></script>
 
 
-<script language="javascript" type="text/javascript" src="../../public/js/tiny_mce/tiny_mce.js"></script>
+<script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>public/js/tiny_mce/tiny_mce.js"></script>
 <script language="javascript" type="text/javascript">
     tinyMCE.init({
         mode : "exact",
@@ -240,12 +240,12 @@
                 // show the preview of the image thumbnail
                 var featured_img = $('#featured_image_preview');
                 var preview_holder = $('.featured-image-preview-holder');
-                featured_img.attr('src','<?php echo base_url() . 'public/uploaded/featured/thumbnails/'; ?>' +
+                featured_img.attr('src','<?php echo base_url() . 'public/uploaded/featured/'; ?>' +
                     response.featured_image_name);
-                featured_img.attr('width', '150px');
+                featured_img.attr('width', '610px');
                             
-                preview_holder.css('width','150px');
-                preview_holder.css('height','150px');
+                preview_holder.css('width','610px');
+                preview_holder.css('height','235px');
                             
                 $('#featured_image').val('');
                             
