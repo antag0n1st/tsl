@@ -1,0 +1,1 @@
+<h2>This page with display article details</h2>
