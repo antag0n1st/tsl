@@ -12,6 +12,18 @@ class CalendarEvent {
     }
     
     
+    public function is_valid()
+    {
+        if(trim($this->date_happen)   != ""   and 
+           trim($this->date_happen)   != ""   and
+           trim($this->calendar_link) != ""   and
+           is_numeric($this->event_categories_id))
+        {
+            return true;
+        }
+        return false;
+    }
+    
 }
 
 ?>

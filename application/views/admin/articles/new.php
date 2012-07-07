@@ -23,7 +23,7 @@
         <div><!-- featured image begin -->
             <label for="featured_image">Главна слика:</label>
             <iframe name="iframe-post-form" id="iframe-post-form" style="width:0px;height:0px"></iframe>
-            <div class="featured-image-preview-holder" style="<?php FieldHelper::field($article->id, "width:610px;height:235px", "width:0px;height:0px"); ?>">
+            <div class="featured-image-preview-holder" style="<?php FieldHelper::field($article->id, "width:610px;height:235px", "width:0px;height:0px"); ?>;overflow:hidden;">
                 <img src="<?php FieldHelper::field($article->id, base_url() . 'public/uploaded/featured/' . $article->featured_image, ""); ?>" id="featured_image_preview" alt="" width="610px" />
             </div>
             <?php
@@ -87,24 +87,6 @@
                 </div>
             </div>
             <div class="separator"></div>
-            <div>                   
-                <label for="calendar">Додади во календар:</label>
-                <input type="text" id="add_calendar" name="calendar" style="width: 130px; cursor: pointer;" />
-            </div>
-            <div class="separator"></div>
-            <div> 
-                <label for="calendar_category">Настан:</label>
-                <select name="calendar_category" style="width: 235px;" >
-                <?php foreach ($event_categories as $e_category): ?>
-                                        <option value="<?php echo $e_category->id; ?>"><?php echo $e_category->name; ?></option>
-                <?php endforeach; ?>
-                </select>
-            </div>
-            <div class="separator"></div>
-            <div>
-                <label for="calendar_link">Линк на календарот:</label>
-                <input type="text" name="calendar_link" style="width: 287px;" />
-            </div>
 
         </div>
         <span id="autosave_status"></span>
@@ -212,10 +194,6 @@
         ;
         $( "#time_published" ).val(timePublished);
                 
-                
-        $( "#add_calendar" ).datepicker({ dateFormat: 'dd.mm.yy',
-            regional: 'mk'
-        });
                 
                 
                 

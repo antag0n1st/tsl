@@ -75,6 +75,16 @@ class Events_model extends CI_Model {
         return $this->db->insert_id();
     }
     
+    public function update_calendar_event($data){
+        $this->db->where('calendar_events_id', $data->calendar_events_id);
+        $this->db->update('calendar_events',$data);
+    }
+    
+    public function delete_calendar_event($event_id){
+        $this->db->where('calendar_events_id', $event_id);
+        $this->db->delete('calendar_events');
+    }
+    
     
 }
 

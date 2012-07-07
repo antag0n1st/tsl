@@ -5,7 +5,9 @@
         <?php foreach($events as $event): ?>
         <div>
             <div style="float:left;width:200px">
-                <?php FieldHelper::date_field($event->date_happen); ?>
+                <a href="<?php echo base_url();?>admin/events/edit_event/<?php echo $event->calendar_events_id; ?>" title="Измени">
+                    <?php FieldHelper::date_field($event->date_happen); ?>
+                </a>
             </div>
             <div style="float:left;width:550px">
                 <?php echo $event->calendar_link; ?>
@@ -26,3 +28,14 @@
     </div>
     <?php echo $this->pagination->create_links(); ?>
 </div>    
+
+<script type="text/javascript">
+    $(".delete-link").click(function(){
+        
+        if(window.confirm('Дали сте сигурни дека сакате да избришете?'))
+        {
+            var eventId = $(this).attr('rel');
+            window.location = "<?php echo base_url()?>admin/events/delete_event/" + eventId;
+        }
+    });
+</script>

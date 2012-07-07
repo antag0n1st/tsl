@@ -23,7 +23,6 @@ class Articles extends MY_Admin_Controller {
         $data['article']  = new Article();
         
         $data['categories'] = $this->articles_model->get_categories();
-        $data['event_categories'] = $this->articles_model->get_event_categories();
         
         $data['main_content']   =   'admin/articles/new';
         $this->load->view('admin/layout/layout', $data);
@@ -43,7 +42,6 @@ class Articles extends MY_Admin_Controller {
                 //print_r($categories);
                 
                 $data['categories'] = $this->articles_model->get_categories();
-                $data['event_categories'] = $this->articles_model->get_event_categories();
                 $data['saved_categories'] = $categories;
                 $data['main_content']   =   'admin/articles/new';
                 $this->load->view('admin/layout/layout', $data);
@@ -102,21 +100,7 @@ class Articles extends MY_Admin_Controller {
             }
             
             $this->articles_model->update_article_categories($article->id, $categories);
-          
-            
-            // is it an event?
-            $event = array();
-            $event['date_happen']   =   $this->input->post('calendar');
-            if(isset($event['date_happen']) and $event['date_happen'] != null)
-            {
-                $event['date_happen']               = TimeHelper::convert_datetime($event['date_happen'] . ' 00:00');
-                $event['date_created']              = TimeHelper::DateTimeAdjusted();
-                $event['calendar_link']             = $this->input->post('calendar_link');
-                $event['event_categories_id']    = $this->input->post('calendar_category');
-                
-                $event['id'] = $this->articles_model->insert_calendar_event($event);
-            }
-        
+
         if($article->id == 0){
             $data['msg']    =   'Статијата не е зачувана!';
         }
@@ -129,7 +113,6 @@ class Articles extends MY_Admin_Controller {
         $data['article'] = $article;
         $data['categories'] = $this->articles_model->get_categories();
         $data['saved_categories'] = $categories;
-        $data['event_categories'] = $this->articles_model->get_event_categories();
         $data['main_content']   =   'admin/articles/new';
         if($article->status == 2){ // autosave
             echo json_encode($article);

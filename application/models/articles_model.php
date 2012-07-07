@@ -59,6 +59,7 @@ class Articles_model extends CI_Model {
             $query .= " ON ac.categories_id = c.categories_id ";
             $query .= " WHERE status = 1 ";
             $query .= " AND c.categories_id = 1 ";
+            $query .= " ORDER BY a.date_published DESC ";
             $query .= " LIMIT 4 ";
             
             $result = $this->db->query($query);
@@ -91,8 +92,7 @@ class Articles_model extends CI_Model {
     public function delete_article($article_id)
     {
         $this->db->where('id', $article_id);
-        $this->db->set('status', 0);
-        $this->db->update('articles');
+        $this->db->delete('articles');
     }
     
     public function get_article_categories($article_id)
