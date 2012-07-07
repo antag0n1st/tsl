@@ -1,6 +1,7 @@
 <div class="container o" style="margin-top: 10px;">
 
     <div class="left">
+        <?php if($article): ?>
         <div class="img-container">
             <img alt="" src="<?php echo base_url().'public/uploaded/featured/'.$article->featured_image; ?>" />
         </div>
@@ -9,7 +10,7 @@
             <div class="content">
                 <?php echo $article->content; ?>
             </div>
-            
+        <?php endif; ?>
     </div>
 
     <div class="right">
