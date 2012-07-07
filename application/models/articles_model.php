@@ -18,7 +18,7 @@ class Articles_model extends CI_Model {
     
     public function get_articles($options = array(),$limit = 0, $offset = 0){
         
-        //$options = $this->_default(array('status' => '1'), $options);
+        $options = $this->_default(array('status <>' => '0'), $options);
         
         foreach($options as $key => $option)
         {
@@ -60,6 +60,13 @@ class Articles_model extends CI_Model {
     {
         $this->db->where('id', $data->id);
         $this->db->update('articles',$data);
+    }
+    
+    public function delete_article($article_id)
+    {
+        $this->db->where('id', $article_id);
+        $this->db->set('status', 0);
+        $this->db->update('articles');
     }
     
     public function get_article_categories($article_id)
