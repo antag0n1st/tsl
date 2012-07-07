@@ -283,14 +283,13 @@
             content        :  tinyMCE.activeEditor.getContent(),//$('#ajaxfilemanager').val(),
             date_published :  $('#date_published').val(),
             time_published :  $('#time_published').val(),
-            status         :  <?php FieldHelper::field($article->id, 1, 2); ?>, // autosave!
+            status         :  2, // autosave!
             featured_image_hidden : $('#featured_image_hidden').val(),
             'category[]'       :  cat
         },
         function(data){
-            //alert(data.id);
-            $('#article_id').val(data.id);
             $("#autosave_status").html('');
+            $('#article_id').val(data.id);
         }, 
         "json");                    
     }

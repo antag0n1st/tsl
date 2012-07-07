@@ -38,6 +38,11 @@
 
 <script type="text/javascript">
     $(".delete-link").click(function(){
-        alert('TODO: Delete this article');
+        
+        if(window.confirm('Дали сте сигурни дека сакате да избришете?'))
+        {
+            var articleId = $(this).attr('rel');
+            window.location = "<?php echo base_url()?>admin/articles/delete_article/" + articleId;
+        }
     });
 </script>
