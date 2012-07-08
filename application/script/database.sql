@@ -161,3 +161,9 @@ CREATE TABLE IF NOT EXISTS `slides` (
   `order_index` int(11) NOT NULL,
   PRIMARY KEY (`slides_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+INSERT INTO `slides` (`slides_id`, `title`, `description`, `link`, `image`, `date_created`, `order_index`) VALUES
+(2, 'Добредојдовте', '<p>      Можете да се надевате на успех, a можете и да                          се обучите за успех.</p>                                          <p>                         Triple S Learning - брзи, интезивни тренинг                      програми дизајнирани за Вашиот успех...</p>', '#', 'slider1.jpg', '2012-07-08 12:44:02', 1),
+(3, 'This image is wrapped in a link!', 'This image is wrapped in a link!', '#', 'slider2.jpg', '2012-07-08 12:44:31', 2),
+(4, 'This image is wrapped in a link!', 'This image is wrapped in a link!', '#', 'slider3.jpg', '2012-07-08 12:44:56', 3),
+(5, 'This image is wrapped in a link!', 'This image is wrapped in a link!', '#', 'slider4.jpg', '2012-07-08 12:45:17', 4);
