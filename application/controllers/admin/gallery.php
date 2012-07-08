@@ -70,15 +70,6 @@ class Gallery extends MY_Admin_Controller {
         $this->show_gallries();
     }
     
-    public function choose_gallery(){
-        $this->load->model('gallery_model');
-        
-        $galleries = $this->gallery_model->get_galleries();
-        
-        $data['galleries']   =   $galleries;
-        $data['main_content']   =   'admin/gallery/choose_gallery';
-        $this->load->view('admin/layout/layout', $data);
-    }
     
     public function add_photos($id_gallery){
         

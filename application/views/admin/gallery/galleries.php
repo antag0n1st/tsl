@@ -7,6 +7,7 @@
                     <th>id</th>
                     <th>Опис</th>
                     <th>Група</th>
+                    <th style="width: 70px;">Додади</th>
                     <th style="width: 70px;">Измени</th>
                     <th style="width: 70px;">Избриши</th>                    
                 </tr>
@@ -17,8 +18,10 @@
                     <td><?php echo $gallery->id_gallery; ?></td>
                     <td><?php echo $gallery->description; ?></td>
                     <td><?php echo $gallery->name; ?></td>
-                    <th><a href="<?php echo base_url().'admin/gallery/edit_gallery/'.$gallery->id_gallery; ?>"><img alt="" title="Измени" src="<?php echo base_url().'images/edit-7.png' ?>" /></a></th>
-                    <th><a onclick="return confirm_delete();" href="<?php echo base_url().'admin/gallery/delete_gallery/'.$gallery->id_gallery; ?>"><img alt="" title="Избриши" src="<?php echo base_url().'images/edit-delete-icon.png' ?>" /></a></th>
+                    <td><a href="<?php echo base_url().'admin/gallery/add_photos/'.$gallery->id_gallery; ?>"><img alt="" title="Додади" src="<?php echo base_url().'images/add.png' ?>" /></a></td>
+                    <td><a href="<?php echo base_url().'admin/gallery/edit_gallery/'.$gallery->id_gallery; ?>"><img alt="" title="Измени" src="<?php echo base_url().'images/edit-7.png' ?>" /></a></td>
+                    <td><a onclick="return confirm_delete();" href="<?php echo base_url().'admin/gallery/delete_gallery/'.$gallery->id_gallery; ?>"><img alt="" title="Избриши" src="<?php echo base_url().'images/edit-delete-icon.png' ?>" /></a></td>
+                    
                 </tr>
                 <?php endforeach; ?>
             </tbody>

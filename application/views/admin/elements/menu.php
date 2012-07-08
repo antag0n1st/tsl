@@ -32,7 +32,6 @@
             <ul>
                 <li><a href="<?php echo base_url(); ?>admin/gallery/new_gallery">Нова Галерија</a></li>
                 <li><a href="<?php echo base_url(); ?>admin/gallery">Сите галерии</a></li>
-                <li><a href="<?php echo base_url(); ?>admin/gallery/choose_gallery">Додавање на слики</a></li>
             </ul>
         </li>
         <li><a href="#">Цитати</a></li>
