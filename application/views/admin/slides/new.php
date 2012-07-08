@@ -26,16 +26,16 @@
         <input type="hidden" id="featured_image_hidden" name="featured_image_hidden" value="<?php FieldHelper::field($slide->slides_id, $slide->image, ""); ?>" />
         <div class="separator"></div>
         <label for="title" class="block">Наслов:</label>
-        <input type="text" id="title" name="title" value="" class="full" />
+        <input type="text" id="title" name="title" value="<?php FieldHelper::field($slide->slides_id, $slide->title, ""); ?>" class="full" />
         <div class="separator"></div>
             
         <label for="description" class="block">Опис:</label>
         
-        <input type="text" id="description" name="description" value="" class="full" />
+        <input type="text" id="description" name="description" value="<?php FieldHelper::field($slide->slides_id, $slide->description, ""); ?>" class="full" />
         <div class="separator"></div>
         
         <label for="link" class="block">Линк:</label>
-        <input type="text" id="link" name="link" value="" class="full" />
+        <input type="text" id="link" name="link" value="<?php FieldHelper::field($slide->slides_id, $slide->link, ""); ?>" class="full" />
         <div class="separator"></div>
         
         <input class="button round" type="submit" name="submit" value="Објави" />

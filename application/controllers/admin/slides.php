@@ -23,6 +23,24 @@ class Slides extends MY_Admin_Controller {
         $this->load->view('admin/layout/layout', $data);
     }
     
+    public function edit_slide($slide_id)
+    {    
+        if(is_numeric($slide_id))
+        {
+            $this->load->model('slides_model');
+            $slide = $this->slides_model->get_slides(array('slides_id'  =>  $slide_id));
+            if(count($slide) == 1)
+            {
+                $slide = $slide[0];
+                $data['slide']  =   $slide;
+                $data['main_content']   =   'admin/slides/new';
+                $this->load->view('admin/layout/layout', $data);
+            }
+            
+        }
+        
+    }
+    
     public function submit_slide()
     {
         $this->load->model('slides_model');
@@ -66,6 +84,28 @@ class Slides extends MY_Admin_Controller {
         $data['main_content']   =   'admin/slides/new';
         $this->load->view('admin/layout/layout', $data);
     }
+    
+    public function show_slides()
+    {
+        $this->load->model('slides_model');
+        $slides =  $this->slides_model->get_slides(); 
+        
+        $data['slides'] = $slides;
+        
+        $data['main_content']   =   'admin/slides/slides';
+        $this->load->view('admin/layout/layout', $data);
+    }
+    
+    public function delete_slide($slide_id)
+    {
+        if(is_numeric($slide_id))
+        {
+            $this->load->model('slides_model');
+            $this->slides_model->delete_slide($slide_id);
+             redirect(base_url() . 'admin/slides/show_slides');
+        }
+    }
+    
     
      public function upload_image() {
         $status = "";
