@@ -126,7 +126,7 @@
         apply_source_formatting : true,
         force_br_newlines : true,
         force_p_newlines : false,	
-        relative_urls : true
+        relative_urls : false
     });
 
     function ajaxfilemanager(field_name, url, type, win) {

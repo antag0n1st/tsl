@@ -89,6 +89,12 @@ class Articles_model extends CI_Model {
         $this->db->update('articles',$data);
     }
     
+    public function delete_article_categories($article_id)
+    {
+        $this->db->where('articles_id', $article_id);
+        $this->db->delete('articles_categories');
+    }
+    
     public function delete_article($article_id)
     {
         $this->db->where('id', $article_id);
