@@ -181,15 +181,17 @@ CREATE TABLE IF NOT EXISTS `galleries` (
   `date_created` datetime DEFAULT NULL,
   PRIMARY KEY (`id_gallery`),
   KEY `gallery_group_id` (`gallery_group_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `galleries`
 --
 
 INSERT INTO `galleries` (`id_gallery`, `gallery_group_id`, `description`, `date_created`) VALUES
-(1, 3, 'Brian Tracy (Ноември, 2007)', '2012-07-08 14:39:45'),
-(3, 2, 'Доделување на\r\nсертификати (Март, 2011)', '2012-07-08 14:41:14');
+(1, 3, 'Brian Tracy (Ноември, 2007)', '2012-07-08 16:43:32'),
+(3, 2, 'Доделување на\r\nсертификати (Март, 2011)', '2012-07-08 14:41:14'),
+(7, 3, 'Brian Tracy (Ноември, 2007)', '2012-07-08 16:08:00');
+
 
 CREATE TABLE IF NOT EXISTS `gallery_photos` (
   `id_gallery_photos` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -198,7 +200,17 @@ CREATE TABLE IF NOT EXISTS `gallery_photos` (
   `description` text COLLATE utf8_unicode_ci,
   `date_created` datetime DEFAULT NULL,
   PRIMARY KEY (`id_gallery_photos`,`galleries_id_gallery`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `gallery_photos`
+--
+
+INSERT INTO `gallery_photos` (`id_gallery_photos`, `galleries_id_gallery`, `image`, `description`, `date_created`) VALUES
+(1, 1, 'b-01.jpg', 'Регистрација на гости', '2012-07-08 00:00:00'),
+(3, 1, 'b-02.jpg', 'REgistracija', '2012-07-08 00:00:00'),
+(4, 3, 't-01.jpg', 'Отворање на настанот', '2012-07-08 00:00:00'),
+(5, 7, 't-04.jpg', 'Отворање на настанот', '2012-07-08 00:00:00');
 
 
 
