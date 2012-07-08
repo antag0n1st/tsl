@@ -167,3 +167,57 @@ INSERT INTO `slides` (`slides_id`, `title`, `description`, `link`, `image`, `dat
 (3, 'This image is wrapped in a link!', 'This image is wrapped in a link!', '#', 'slider2.jpg', '2012-07-08 12:44:31', 2),
 (4, 'This image is wrapped in a link!', 'This image is wrapped in a link!', '#', 'slider3.jpg', '2012-07-08 12:44:56', 3),
 (5, 'This image is wrapped in a link!', 'This image is wrapped in a link!', '#', 'slider4.jpg', '2012-07-08 12:45:17', 4);
+
+
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS `galleries` (
+  `id_gallery` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `gallery_group_id` int(10) NOT NULL,
+  `description` varchar(1020) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_gallery`),
+  KEY `gallery_group_id` (`gallery_group_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `galleries`
+--
+
+INSERT INTO `galleries` (`id_gallery`, `gallery_group_id`, `description`, `date_created`) VALUES
+(1, 3, 'Brian Tracy (Ноември, 2007)', '2012-07-08 14:39:45'),
+(3, 2, 'Доделување на\r\nсертификати (Март, 2011)', '2012-07-08 14:41:14');
+
+CREATE TABLE IF NOT EXISTS `gallery_photos` (
+  `id_gallery_photos` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `galleries_id_gallery` int(10) unsigned NOT NULL,
+  `image` varchar(510) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8_unicode_ci,
+  `date_created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_gallery_photos`,`galleries_id_gallery`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+
+
+CREATE TABLE IF NOT EXISTS `gallery_groups` (
+  `id_gallery_group` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `date_created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_gallery_group`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `gallery_groups`
+--
+
+INSERT INTO `gallery_groups` (`id_gallery_group`, `name`, `date_created`) VALUES
+(1, 'TRIPLE S GROUP', '2012-07-08 00:00:00'),
+(2, 'ОБУКИ', '2012-07-08 00:00:00'),
+(3, 'КОНФЕРЕНЦИИ', '2012-07-08 00:00:00');
+
+
+
+
