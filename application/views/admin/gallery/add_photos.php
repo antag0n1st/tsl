@@ -28,7 +28,7 @@
     <div class="separator"></div>
     <h3>Слики</h3>
     <div>
-        <table>
+        <table class="table">
             <thead>
                 <tr>
                     <th>id</th>

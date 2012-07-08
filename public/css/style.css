@@ -208,7 +208,7 @@ fieldset input[type=button]{
     margin: 2px 0 20px 10px;
 }
 
-.container table{
+.table{
     font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 12px;
 	margin: 0px;
@@ -217,17 +217,17 @@ fieldset input[type=button]{
 	border-collapse: collapse;
 }
 
-.container table thead tr th{
+.table thead tr th{
     font-size: 14px;
 	font-weight: normal;
 	padding: 10px 8px;
 	color: #4C51BB;
 }
 
-.container table td{
+.table td{
     padding: 8px;
 	color: #4C51BB;
 }
-.container table .odd{background: #e8edff; }
+.table .odd{background: #e8edff; }
 
 

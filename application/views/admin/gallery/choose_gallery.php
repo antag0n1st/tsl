@@ -1,7 +1,7 @@
 <div class="container o">
     <h3>Изберете Галерија</h3>
     <div>
-        <table>
+        <table class="table">
             <thead>
                 <tr>
                     <th>id</th>
