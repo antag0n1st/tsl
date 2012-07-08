@@ -39,6 +39,7 @@ class Slides_model extends CI_Model {
         if($offset){
             $this->db->offset($offset);
         }
+        $this->db->order_by('order_index', 'ASC');
         
         $result = $this->db->get();
         
