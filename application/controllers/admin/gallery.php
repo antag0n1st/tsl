@@ -19,7 +19,7 @@ class Gallery extends MY_Admin_Controller {
         
         $this->load->model('gallery_model');
         
-        $galleries = $this->gallery_model->get_gallries();
+        $galleries = $this->gallery_model->get_galleries();
         
         $data['galleries']   =   $galleries;
         $data['main_content']   =   'admin/gallery/galleries';
@@ -73,7 +73,7 @@ class Gallery extends MY_Admin_Controller {
     public function choose_gallery(){
         $this->load->model('gallery_model');
         
-        $galleries = $this->gallery_model->get_gallries();
+        $galleries = $this->gallery_model->get_galleries();
         
         $data['galleries']   =   $galleries;
         $data['main_content']   =   'admin/gallery/choose_gallery';
@@ -85,7 +85,7 @@ class Gallery extends MY_Admin_Controller {
         $this->load->model('gallery_model');
         $photos = $this->gallery_model->get_photos(array('galleries_id_gallery' => $id_gallery));
         
-        $gallery = $this->gallery_model->get_gallries(array('id_gallery' => $id_gallery),1);
+        $gallery = $this->gallery_model->get_galleries(array('id_gallery' => $id_gallery),1);
         $gallery = $gallery[0];
         
         $groups = $this->gallery_model->get_groups(array('id_gallery_group' => $gallery->gallery_group_id));
@@ -114,7 +114,7 @@ class Gallery extends MY_Admin_Controller {
         
         $this->load->model('gallery_model');        
         $groups = $this->gallery_model->get_groups();  
-        $gallery = $this->gallery_model->get_gallries(array('id_gallery' => $gallery_id),1);
+        $gallery = $this->gallery_model->get_galleries(array('id_gallery' => $gallery_id),1);
         $gallery = $gallery[0];
         $data['groups']   =   $groups;
         

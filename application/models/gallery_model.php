@@ -16,7 +16,7 @@ class Gallery_model extends CI_Model {
         $this->load->database();
     }
     
-    public function get_gallries($options = array(),$limit = 0, $offset = 0)
+    public function get_galleries($options = array(),$limit = 0, $offset = 0)
     {
         
         //$options = $this->_default(array('status <>' => '0'), $options);
@@ -45,9 +45,35 @@ class Gallery_model extends CI_Model {
         return $result->result();
     }
     
-    
-    
-    
+    public function get_galleries_and_photos($options = array(), $limit = 0, $offset = 0) {
+
+        foreach ($options as $key => $option) {
+            $this->db->where($key, $option);
+        }
+        $this->db->from('galleries as g');
+        $this->db->select('g.id_gallery,
+                           g.description,
+                           g.date_created,
+                           gg.name,
+                           g.gallery_group_id,
+                           gp.image');
+        $this->db->join('gallery_groups as gg', 'g.gallery_group_id = gg.id_gallery_group');
+        $this->db->join('gallery_photos as gp','g.id_gallery = gp.galleries_id_gallery');
+        $this->db->group_by('g.id_gallery');
+        $this->db->order_by('g.gallery_group_id,g.id_gallery');
+
+        if ($limit) {
+            $this->db->limit($limit);
+        }
+        if ($offset) {
+            $this->db->offset($offset);
+        }
+
+        $result = $this->db->get();
+
+        return $result->result();
+    }
+
     public function get_groups($options = array()){
         $this->db->from('gallery_groups');
         $this->db->select('id_gallery_group,

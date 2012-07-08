@@ -13,7 +13,7 @@
         <li><a href="#">Consulting</a></li>
         <li><a href="#">Експертски Академии</a></li>
         <li><a href="#">Тренери</a></li>
-        <li><a href="#">Галерија</a></li>
+        <li><a href="<?php echo base_url().'gallery'; ?>">Галерија</a></li>
         <li><a href="#">Новости</a></li>
         <li><a href="#">Референци</a></li>
     </ul>
