@@ -181,16 +181,21 @@ CREATE TABLE IF NOT EXISTS `galleries` (
   `date_created` datetime DEFAULT NULL,
   PRIMARY KEY (`id_gallery`),
   KEY `gallery_group_id` (`gallery_group_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `galleries`
 --
 
 INSERT INTO `galleries` (`id_gallery`, `gallery_group_id`, `description`, `date_created`) VALUES
-(1, 3, 'Brian Tracy (Ноември, 2007)', '2012-07-08 16:43:32'),
+(1, 3, 'Brian Tracy (Ноември, 2007)', '2012-07-08 17:17:55'),
 (3, 2, 'Доделување на\r\nсертификати (Март, 2011)', '2012-07-08 14:41:14'),
-(7, 3, 'Brian Tracy (Ноември, 2007)', '2012-07-08 16:08:00');
+(7, 3, 'Brian Tracy (Ноември, 2007)', '2012-07-08 16:08:00'),
+(9, 1, 'blab lab al', '2012-07-08 17:31:30'),
+(10, 1, 'vtora', '2012-07-08 17:31:50'),
+(11, 1, 'treta', '2012-07-08 17:31:55'),
+(12, 1, 'cetvrta', '2012-07-08 17:32:01'),
+(13, 1, 'peta', '2012-07-08 17:32:06');
 
 
 
