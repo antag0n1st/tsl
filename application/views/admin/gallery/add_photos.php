@@ -43,10 +43,23 @@
                     <td><?php echo $photo->id_gallery_photos; ?></td>
                     <td><img alt="" src="<?php echo base_url().'public/uploaded/gallery/thumbnails/'. $photo->image; ?>" /></td>
                     <td><?php echo $photo->description; ?></td>
-                    <th><a href="<?php echo base_url().'admin/gallery/delete_photo/'.$gallery->id_gallery.'/'.$photo->id_gallery_photos; ?>"><img alt="" title="Избриши" src="<?php echo base_url().'images/edit-delete-icon.png' ?>" /></a></th>
+                    <th><a onclick="return confirm_delete();" href="<?php echo base_url().'admin/gallery/delete_photo/'.$gallery->id_gallery.'/'.$photo->id_gallery_photos; ?>"><img alt="" title="Избриши" src="<?php echo base_url().'images/edit-delete-icon.png' ?>" /></a></th>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
     </div>
 </div>  
+<script type="text/javascript">
+    function confirm_delete(){
+        var r=confirm("Дали сакате да ја избришете сликата ?");
+            if (r==true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+    }
+</script>
