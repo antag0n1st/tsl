@@ -107,6 +107,29 @@ class Slides extends MY_Admin_Controller {
     }
     
     
+    public function update_slide_order()
+    {
+        $this->load->model('slides_model');
+        
+        parse_str($_POST['pages'], $pageOrder);
+        
+        foreach ($pageOrder['page'] as $key => $value) {
+                $id = $value;
+                $order_index = $key;
+            
+                $slide = $this->slides_model->get_slides(array('slides_id'    =>  $id));
+                
+                if(count($slide) == 1)
+                {
+                    $slide = $slide[0];
+                    //echo $slide->slides_id . ": " . $slide->order_index . ": " . $key . '\n';
+                    $slide->order_index = $order_index;
+                    $this->slides_model->update_slide($slide);
+               }
+        }
+        
+    }
+    
      public function upload_image() {
         $status = "";
         $msg = "";
