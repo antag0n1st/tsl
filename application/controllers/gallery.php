@@ -10,9 +10,6 @@ class Gallery extends MY_Controller {
 	public function index()
 	{
             
-                Head::instance()->load_js('jquery.flexslider-min');
-                Head::instance()->load_css('flexslider');
-                
                 
                 $this->load->model('articles_model');
                 $this->load->model('gallery_model');
@@ -27,6 +24,31 @@ class Gallery extends MY_Controller {
                 $data['event_categories'] = $event_categories;
               
 		$this->load->view('layout/layout',$data);
+        }
+        
+        public function browse_gallery($id_gallery){
+            
+                Head::instance()->load_css('lightbox');
+                head::instance()->load_js('lightbox');
+            
+                $this->load->model('articles_model');
+                $this->load->model('gallery_model');
+                
+                $gallery = $this->gallery_model->get_galleries(array('id_gallery' => $id_gallery),1);
+                $gallery = $gallery[0];
+                
+                $events = $this->articles_model->get_events();                
+                $event_categories = $this->articles_model->get_event_categories();
+                $photos  = $this->gallery_model->get_photos(array('galleries_id_gallery' => $id_gallery));
+                
+                $data['gallery'] = $gallery;
+                $data['photos'] = $photos;
+                $data['main_content'] = 'gallery_browse';
+                $data['events'] = $events;
+                $data['event_categories'] = $event_categories;
+              
+		$this->load->view('layout/layout',$data);
+            
         }
 }
 ?>
