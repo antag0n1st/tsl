@@ -135,7 +135,6 @@ display: inline;
 
 .follow-us{ overflow: hidden;}
 .follow-us h3{ float: left; margin-right: 20px; margin-top: 5px;}
-.follow-us a{}
 .follow-us img{ margin-right: 5px; float: left;}
 
 
@@ -167,3 +166,35 @@ border-radius: 5px;
 
 .social-buttons{ margin-top: 10px;}
 .social-buttons h3{float: left; margin-right: 20px;}
+
+
+.container fieldset{ width: 570px;}
+fieldset input[type=text]{
+    float: left;
+    font-size: 12px;
+    padding: 4px 2px;
+    border: solid 1px #AACFE4;
+    width: 450px;
+    margin: 2px 0 20px 10px;
+}
+fieldset label{
+    display: block;
+text-align: right;
+width: 100px;
+float: left;
+}
+fieldset select{float: left;
+    font-size: 12px;
+    padding: 4px 2px;
+    border: solid 1px #AACFE4;
+    width: 450px;
+    margin: 2px 0 20px 10px;}
+fieldset textarea{float: left;
+    font-size: 12px;
+    padding: 4px 2px;
+    border: solid 1px #AACFE4;
+    width: 450px;
+    margin: 2px 0 20px 10px;}
+fieldset input[type=submit]{
+    margin-left: 110px;
+}

@@ -21,10 +21,6 @@ foreach($event_categories as $event_category){
 } 
 echo '</style>';
 ?>
-
-
-
-
 <script type="text/javascript">
     $(document).ready(function() {
         <?php 
@@ -86,20 +82,11 @@ echo '</style>';
     
 </script>
 
-
+<h3>Отворени обуки</h3>
 <div id="date_published"></div>
 
 <div class="legend">
-  <!-- #868686 -->  <div><span style="background-color: #868686;"></span>Услуга кон клиентите</div>
-  <!-- #ef1d1d -->  <div><span style="background-color: #ef1d1d;"></span>Продажни вештини</div>
-  <!-- #edb7b7 -->  <div><span style="background-color: #edb7b7;"></span>Маркетинг и PR</div>
-  <!-- #7771ee -->  <div><span style="background-color: #7771ee;"></span>Менаџмент</div>
-  <!-- #d7ed1f -->  <div><span style="background-color: #d7ed1f;"></span>Човечки ресурси</div>
-  <!-- #ab348b -->  <div><span style="background-color: #ab348b;"></span>Финансии</div>
-  <!-- #2ada74 -->  <div><span style="background-color: #2ada74;"></span>Производство и дистрибуција</div>
-  <!-- #eca72f -->  <div><span style="background-color: #eca72f;"></span>Деловни вештини</div>    
-  <!-- #10125f -->  <div><span style="background-color: #10125f;"></span>Тим билдинг</div>
-  <!-- #186752 -->  <div><span style="background-color: #186752;"></span>Конференции</div>
-  <!-- #000000 -->  <div><span style="background-color: #000000;"></span>Експертски академии</div>
-    
+  <?php foreach($event_categories as $event_category): ?>
+    <div><span style="background-color: <?php echo $event_category->color; ?>;"></span><?php echo $event_category->name; ?></div>
+  <?php endforeach; ?>
 </div>
