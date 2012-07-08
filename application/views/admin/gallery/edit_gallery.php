@@ -7,12 +7,14 @@
         <fieldset>
             <input type="hidden" name="id_gallery" value="<?php echo $gallery->id_gallery; ?>" />
             <label>Опис:</label><textarea name="description"><?php echo $gallery->description; ?></textarea>
-            <label>Група:</label>
+            <div class="separator"></div>
+            <label class="block">Група:</label>
             <select name="group">
                 <?php foreach($groups as $group): ?>
                 <option <?php echo ($gallery->gallery_group_id ==$group->id_gallery_group ) ? 'selected=selected': ''; ?> value="<?php echo $group->id_gallery_group; ?>"><?php echo $group->name; ?></option>
                 <?php endforeach; ?>
             </select>
+            <div class="separator"></div>
             <input type="submit" value="Зачувај" class="button round" />
         </fieldset>
     <?php echo form_close(); ?>
