@@ -181,16 +181,22 @@ CREATE TABLE IF NOT EXISTS `galleries` (
   `date_created` datetime DEFAULT NULL,
   PRIMARY KEY (`id_gallery`),
   KEY `gallery_group_id` (`gallery_group_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `galleries`
 --
 
 INSERT INTO `galleries` (`id_gallery`, `gallery_group_id`, `description`, `date_created`) VALUES
-(1, 3, 'Brian Tracy (Ноември, 2007)', '2012-07-08 16:43:32'),
+(1, 3, 'Brian Tracy (Ноември, 2007)', '2012-07-08 17:17:55'),
 (3, 2, 'Доделување на\r\nсертификати (Март, 2011)', '2012-07-08 14:41:14'),
-(7, 3, 'Brian Tracy (Ноември, 2007)', '2012-07-08 16:08:00');
+(7, 3, 'Brian Tracy (Ноември, 2007)', '2012-07-08 16:08:00'),
+(9, 1, 'blab lab al', '2012-07-08 17:31:30'),
+(10, 1, 'vtora', '2012-07-08 17:31:50'),
+(11, 1, 'treta', '2012-07-08 17:31:55'),
+(12, 1, 'cetvrta', '2012-07-08 17:32:01'),
+(13, 1, 'peta', '2012-07-08 17:32:06');
+
 
 
 CREATE TABLE IF NOT EXISTS `gallery_photos` (
@@ -200,7 +206,7 @@ CREATE TABLE IF NOT EXISTS `gallery_photos` (
   `description` text COLLATE utf8_unicode_ci,
   `date_created` datetime DEFAULT NULL,
   PRIMARY KEY (`id_gallery_photos`,`galleries_id_gallery`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=28 ;
 
 --
 -- Dumping data for table `gallery_photos`
@@ -210,7 +216,29 @@ INSERT INTO `gallery_photos` (`id_gallery_photos`, `galleries_id_gallery`, `imag
 (1, 1, 'b-01.jpg', 'Регистрација на гости', '2012-07-08 00:00:00'),
 (3, 1, 'b-02.jpg', 'REgistracija', '2012-07-08 00:00:00'),
 (4, 3, 't-01.jpg', 'Отворање на настанот', '2012-07-08 00:00:00'),
-(5, 7, 't-04.jpg', 'Отворање на настанот', '2012-07-08 00:00:00');
+(5, 7, 't-04.jpg', 'Отворање на настанот', '2012-07-08 00:00:00'),
+(6, 7, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(7, 7, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(8, 7, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(9, 7, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(10, 7, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(11, 7, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(12, 7, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(13, 7, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(14, 7, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(15, 9, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(16, 9, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(17, 10, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(18, 10, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(19, 10, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(20, 10, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(21, 10, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(22, 10, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(23, 10, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(24, 11, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(25, 12, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(26, 12, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(27, 13, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00');
 
 
 
