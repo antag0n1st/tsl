@@ -29,7 +29,8 @@ class Gallery_model extends CI_Model {
         $this->db->select('g.id_gallery,
                            g.description,
                            g.date_created,
-                           gg.name');
+                           gg.name,
+                           g.gallery_group_id');
         $this->db->join('gallery_groups as gg','g.gallery_group_id = gg.id_gallery_group');
         
         if($limit){
@@ -44,11 +45,35 @@ class Gallery_model extends CI_Model {
         return $result->result();
     }
     
-    public function get_groups(){
+    
+    
+    
+    public function get_groups($options = array()){
         $this->db->from('gallery_groups');
         $this->db->select('id_gallery_group,
                            name,
                            date_created');
+        
+        foreach($options as $key => $option)
+        {
+            $this->db->where($key, $option);
+        }
+        
+        $result = $this->db->get();
+        
+        return $result->result();
+    }
+    
+    public function get_photos($options = array()){
+        $this->db->from('gallery_photos');
+        $this->db->select('id_gallery_photos,
+                           image,
+                           description,
+                           date_created');
+        foreach($options as $key => $option)
+        {
+            $this->db->where($key, $option);
+        }
         $result = $this->db->get();
         
         return $result->result();
@@ -83,8 +108,8 @@ class Gallery_model extends CI_Model {
         return $this->db->insert_id();
     }
 
-    public function delete_gallery_photo($id_gallery){
-        $this->db->where('id_gallery_photos', $id_gallery);
+    public function delete_gallery_photo($id_gallery_photos){
+        $this->db->where('id_gallery_photos', $id_gallery_photos);
         $this->db->delete('gallery_photos');
     }
     
