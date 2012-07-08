@@ -20,7 +20,12 @@
                 <li><a href="<?php echo base_url(); ?>admin/events/show_events">Сите настани</a></li>
             </ul>
         </li>
-        <li><a href="#">Слајдови</a></li>
+        <li><a href="#">Слајдови</a>
+             <ul>
+                <li><a href="<?php echo base_url(); ?>admin/slides/new_slide">Нов слајд</a></li>
+                <li><a href="<?php echo base_url(); ?>admin/slides/show_slides">Сите слајдови</a></li>
+            </ul>
+        </li>
         <li><a href="#">Мени</a></li>
         <li><a href="#">Newsletter</a></li>
         <li><a href="#">Галерии</a></li>

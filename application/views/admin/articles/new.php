@@ -21,7 +21,7 @@
         <strong><?php if (isset($msg)) echo $msg; ?></strong>
 
         <div><!-- featured image begin -->
-            <label for="featured_image">Главна слика:</label>
+            <label for="featured_image">Главна слика:</label><span class="small">(препорачани димензии: 608 x 250)</span>
             <iframe name="iframe-post-form" id="iframe-post-form" style="width:0px;height:0px"></iframe>
             <div class="featured-image-preview-holder" style="<?php FieldHelper::field($article->id, "width:610px;height:235px", "width:0px;height:0px"); ?>;overflow:hidden;">
                 <img src="<?php FieldHelper::field($article->id, base_url() . 'public/uploaded/featured/' . $article->featured_image, ""); ?>" id="featured_image_preview" alt="" width="610px" />
