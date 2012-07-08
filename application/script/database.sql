@@ -149,3 +149,15 @@ INSERT INTO `categories` (`categories_id`, `name`, `slug`) VALUES
 (5, 'Consulting', 'consulting'),
 (6, 'Експертски академии', 'ekspertski-akademii'),
 (7, 'Тренери', 'treneri');
+
+
+CREATE TABLE IF NOT EXISTS `slides` (
+  `slides_id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(2500) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(2500) COLLATE utf8_unicode_ci NOT NULL,
+  `link` varchar(5000) COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `date_created` datetime NOT NULL,
+  `order_index` int(11) NOT NULL,
+  PRIMARY KEY (`slides_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
