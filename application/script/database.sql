@@ -193,6 +193,7 @@ INSERT INTO `galleries` (`id_gallery`, `gallery_group_id`, `description`, `date_
 (7, 3, 'Brian Tracy (Ноември, 2007)', '2012-07-08 16:08:00');
 
 
+
 CREATE TABLE IF NOT EXISTS `gallery_photos` (
   `id_gallery_photos` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `galleries_id_gallery` int(10) unsigned NOT NULL,
@@ -200,7 +201,7 @@ CREATE TABLE IF NOT EXISTS `gallery_photos` (
   `description` text COLLATE utf8_unicode_ci,
   `date_created` datetime DEFAULT NULL,
   PRIMARY KEY (`id_gallery_photos`,`galleries_id_gallery`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=28 ;
 
 --
 -- Dumping data for table `gallery_photos`
@@ -210,7 +211,29 @@ INSERT INTO `gallery_photos` (`id_gallery_photos`, `galleries_id_gallery`, `imag
 (1, 1, 'b-01.jpg', 'Регистрација на гости', '2012-07-08 00:00:00'),
 (3, 1, 'b-02.jpg', 'REgistracija', '2012-07-08 00:00:00'),
 (4, 3, 't-01.jpg', 'Отворање на настанот', '2012-07-08 00:00:00'),
-(5, 7, 't-04.jpg', 'Отворање на настанот', '2012-07-08 00:00:00');
+(5, 7, 't-04.jpg', 'Отворање на настанот', '2012-07-08 00:00:00'),
+(6, 7, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(7, 7, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(8, 7, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(9, 7, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(10, 7, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(11, 7, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(12, 7, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(13, 7, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(14, 7, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(15, 9, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(16, 9, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(17, 10, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(18, 10, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(19, 10, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(20, 10, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(21, 10, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(22, 10, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(23, 10, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(24, 11, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(25, 12, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(26, 12, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
+(27, 13, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00');
 
 
 
