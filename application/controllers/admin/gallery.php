@@ -6,7 +6,7 @@
 * @property CI_Email $email
 * @property CI_DB_active_record $db
 * @property CI_DB_forge $dbforge
-* @property Events_model $events_model
+* @property Gallery_model $gallery_model
 */
 class Gallery extends MY_Admin_Controller {
   
@@ -59,7 +59,97 @@ class Gallery extends MY_Admin_Controller {
         $this->show_gallries();
         
     }
-    public function submit_photos(){}
+    public function submit_photos()
+    {
+        $this->load->model('gallery_model');
+        
+        $photo = new GalleryPhotos();
+        
+        $photo->image                = $this->input->post('featured_image_hidden');
+        $photo->description          = $this->input->post('description');
+        $photo->galleries_id_gallery = $this->input->post('id_gallery');
+        $photo->date_created         = TimeHelper::DateTimeAdjusted();
+        
+        $id_gallery = $photo->galleries_id_gallery;
+        
+        if($photo->is_valid())
+        {
+            $this->gallery_model->insert_gallery_photo($photo);
+            $msg = "Сликата е успешно зачувана";
+        }
+        else
+        {
+            $msg = "Сликата не е зачувана. Проверете дали сте ги пополниле сите полиња";
+        }
+        
+        
+        
+        $groups = $this->gallery_model->get_groups();
+        
+        $data['msg']   =   $msg;
+        $photos = $this->gallery_model->get_photos(array('galleries_id_gallery' => $id_gallery));
+        
+        $gallery = $this->gallery_model->get_galleries(array('id_gallery' => $id_gallery),1);
+        $gallery = $gallery[0];
+        
+        $groups = $this->gallery_model->get_groups(array('id_gallery_group' => $gallery->gallery_group_id));
+        $group = $groups[0];
+        
+        $data['group'] = $group;
+        $data['gallery'] = $gallery;
+        $data['photos'] = $photos;
+        $data['id_gallery']   =   $id_gallery;
+        $data['main_content']   =   'admin/gallery/add_photos';
+        $this->load->view('admin/layout/layout', $data);
+        
+        
+        
+    }
+    
+     public function upload_image() {
+        $status = "";
+        $msg = "";
+        $file_element_name = 'featured_image';
+
+
+
+
+        if ($status != "error") {
+            $config['upload_path'] = /* base_url() . */'public/uploaded/gallery/originals/';
+            $config['allowed_types'] = 'gif|jpg|png|doc|txt';
+            $config['max_size'] = 1024 * 8;
+            $config['encrypt_name'] = FALSE;
+
+            $this->load->library('upload', $config);
+
+
+            $file_name = 'default_featured_image.jpg';
+            if (!$this->upload->do_upload($file_element_name)) {
+                $status = 'error';
+                $msg = $this->upload->display_errors('', '');
+            } else {
+                $data = $this->upload->data();
+
+                if (count($data) > 0) {
+                    $status = "success";
+                    $msg = "File successfully uploaded";
+                    $file_name = $data['file_name'];
+ 
+                    $image_helper = new ImageHelper('public/uploaded/gallery/');
+                    $image_helper->save_image(base_url() . $config['upload_path'] . $file_name, $file_name, 640, 400, 132, 96);
+                } else {
+                    unlink($data['full_path']);
+                    $status = "error";
+                    $msg = "Something went wrong when saving the file, please try again.";
+                }
+            }
+            @unlink($_FILES[$file_element_name]);
+        }
+        echo json_encode(array('status' => $status,
+            'msg' => $msg,
+            'featured_image_name' => $file_name));
+    }
+    
     
     public function delete_gallery($id_gallery){
         
