@@ -16,7 +16,7 @@ class Events_model extends CI_Model {
         $this->load->database();
     }
     
-    public function get_events($options = array(),$limit = 0, $offset = 0)
+    public function get_events($options = array(),$limit = 0, $offset = 0, $order_by = 'calendar_events_id DESC')
     {
         
         //$options = $this->_default(array('status <>' => '0'), $options);
@@ -37,6 +37,9 @@ class Events_model extends CI_Model {
         }
         if($offset){
             $this->db->offset($offset);
+        }
+        if($order_by){
+            $this->db->order_by($order_by);
         }
         
         $result = $this->db->get();

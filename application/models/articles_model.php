@@ -16,7 +16,7 @@ class Articles_model extends CI_Model {
         $this->load->database();
     }
     
-    public function get_articles($options = array(),$limit = 0, $offset = 0){
+    public function get_articles($options = array(),$limit = 0, $offset = 0, $order_by = 'ID DESC'){
         
         $options = $this->_default(array('status <>' => '0'), $options);
         
@@ -40,6 +40,10 @@ class Articles_model extends CI_Model {
         }
         if($offset){
             $this->db->offset($offset);
+        }
+        if($order_by)
+        {
+            $this->db->order_by($order_by);
         }
         
         $result = $this->db->get();

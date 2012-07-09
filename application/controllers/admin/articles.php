@@ -89,6 +89,17 @@ class Articles extends MY_Admin_Controller {
         }
         else
         {
+            $existing_article = $this->articles_model->get_articles(array('id' => $article->id));
+            if(count($existing_article) == 1) // if we are updating a published article through autosave
+            {
+                $existing_article = $existing_article[0];
+                if($article->status == 2 and
+                   $existing_article->status == 1)
+                {
+                    $article->status = 1;    // then keep the article published
+                }
+            }
+            
             $this->articles_model->update_article($article); 
         }
         
