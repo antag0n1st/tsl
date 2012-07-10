@@ -12,7 +12,7 @@ class Quotes extends MY_Admin_Controller {
     
     public function index()
     {
-        $this->new_quote();
+        $this->show_quotes();
     }
     
     public function new_quote()
@@ -23,6 +23,25 @@ class Quotes extends MY_Admin_Controller {
         $data['main_content']   =   'admin/quotes/new';
         $this->load->view('admin/layout/layout', $data);
     }
+    
+    public function edit_quote($quote_id)
+    {
+        if(is_numeric($quote_id))
+        {
+            $this->load->model('quotes_model');
+            $options = array('quotes_id' => $quote_id);
+            $quote = $this->quotes_model->get_quotes($options,1);
+            if(count($quote) == 1)
+            {
+                $quote = $quote[0];
+                $data = array();
+                $data['quote']  =   $quote;
+                $data['main_content']   =   'admin/quotes/new';
+                $this->load->view('admin/layout/layout', $data);
+            }
+        }
+    }
+    
     public function submit_quote()
     {
         $this->load->model('quotes_model');
@@ -82,6 +101,16 @@ class Quotes extends MY_Admin_Controller {
         $data['quotes'] =   $quotes;
         $data['main_content']   =   'admin/quotes/quotes';
         $this->load->view('admin/layout/layout', $data);
+    }
+    
+    public function delete_quote($quote_id)
+    {
+        if(is_numeric($quote_id))
+        {
+            $this->load->model('quotes_model');
+            $this->quotes_model->delete_slide($quote_id);
+            redirect(base_url() . 'admin/quotes/show_quotes');
+        }
     }
     
 }
