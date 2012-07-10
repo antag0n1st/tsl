@@ -30,11 +30,16 @@
         <li><a href="#">Newsletter</a></li>
         <li><a href="#">Галерии</a>
             <ul>
-                <li><a href="<?php echo base_url(); ?>admin/gallery/new_gallery">Нова Галерија</a></li>
+                <li><a href="<?php echo base_url(); ?>admin/gallery/new_gallery">Нова галерија</a></li>
                 <li><a href="<?php echo base_url(); ?>admin/gallery">Сите галерии</a></li>
             </ul>
         </li>
-        <li><a href="#">Цитати</a></li>
+        <li><a href="#">Цитати</a>
+            <ul>
+                <li><a href="<?php echo base_url(); ?>admin/quotes/new_quote">Нов цитат</a></li>
+                <li><a href="<?php echo base_url(); ?>admin/quotes/show_quotes">Сите цитати</a></li>
+            </ul>
+        </li>
         <li><a href="#">Клиенти</a></li>
     </ul>   
 </div>

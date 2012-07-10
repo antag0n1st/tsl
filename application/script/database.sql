@@ -260,4 +260,22 @@ INSERT INTO `gallery_groups` (`id_gallery_group`, `name`, `date_created`) VALUES
 
 
 
+CREATE TABLE IF NOT EXISTS `quotes` (
+  `quotes_id` int(11) NOT NULL AUTO_INCREMENT,
+  `description` varchar(5000) COLLATE utf8_unicode_ci NOT NULL,
+  `author` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `date_created` datetime NOT NULL,
+  PRIMARY KEY (`quotes_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
+--
+-- Dumping data for table `quotes`
+--
+
+INSERT INTO `quotes` (`quotes_id`, `description`, `author`, `date_created`) VALUES
+(1, 'Ова е најдобриот цитат', 'Непознат', '2012-07-10 09:22:56'),
+(2, 'citiram', 'mitiram', '2012-07-10 09:31:20'),
+(3, 'ajdeee', 'e ajdee', '2012-07-10 09:32:11'),
+(4, 'mi trebaat uste citati', 'uste citati', '2012-07-10 09:32:36'),
+(5, 'ajde uste eden citat', 'ajdeeee', '2012-07-10 09:32:52'),
+(6, 'abe sve e okej', 'okej e da', '2012-07-10 09:33:42');

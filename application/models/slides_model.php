@@ -16,7 +16,7 @@ class Slides_model extends CI_Model {
     }
     
     
-    public function get_slides($options = array(),$limit = 0, $offset = 0)
+    public function get_slides($options = array(),$limit = 0, $offset = 0, $order_by = 'order_index ASC')
     {
         //$options = $this->_default(array('status <>' => '0'), $options);
         
@@ -39,7 +39,10 @@ class Slides_model extends CI_Model {
         if($offset){
             $this->db->offset($offset);
         }
-        $this->db->order_by('order_index', 'ASC');
+        if($order_by){
+            $this->db->order_by($order_by);
+        }
+        
         
         $result = $this->db->get();
         

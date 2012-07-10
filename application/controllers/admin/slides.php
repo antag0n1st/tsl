@@ -11,7 +11,7 @@
 class Slides extends MY_Admin_Controller {
     public function index()
     {
-        $this->new_slide();
+        $this->show_slides();
     }
     
     public function new_slide()
