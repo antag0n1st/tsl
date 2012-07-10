@@ -40,6 +40,11 @@
                 <li><a href="<?php echo base_url(); ?>admin/quotes/show_quotes">Сите цитати</a></li>
             </ul>
         </li>
-        <li><a href="#">Клиенти</a></li>
+        <li><a href="#">Клиенти</a>
+            <ul>
+                <li><a href="<?php echo base_url(); ?>admin/clients/new_client">Нов клиент</a></li>
+                <li><a href="<?php echo base_url(); ?>admin/quotes/show_clients">Сите клиенти</a></li>
+            </ul>
+        </li>
     </ul>   
 </div>
