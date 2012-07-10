@@ -5,7 +5,12 @@
 <div style="margin-bottom: 10px;">
     <?php $this->load->view('elements/quotes'); ?>
 </div>
-
+<div class="separator"></div>
+<div class="o">
+    <a href="#">
+        <img alt="" style="float: left;margin-right: 10px;" src="<?php echo base_url().'images/tick.png'; ?>" />    <h3 style="float: left;margin-top: 5px;">Страници на успех</h3>
+    </a>
+</div>
 <div class="separator"></div>
 
 <div class="follow-us" style="margin-bottom: 10px;">

@@ -19,16 +19,13 @@
                 <p><?php echo $news->description; ?></p>
             </div>
             <?php endforeach; ?>
+            <div class="separator"></div>
+            <h3>Наши Клиенти</h3>
             
-            <h3>Наша мисија</h3>
-            <p>
-                SEPTEMBER 4, 2012 | Neque porro quisquam est qui
-Sed ut perspiciatis unde omnis iste nSed tempor lectus in risus. Nullam vestibulum, odio ac pulvinaratus error sit voluSed tempor lectus in risus. Nullam vestibulum, odio ac pulvinarptatem accusantium doloremque laudantium, totam rem...
- AUGUST 5, 2012 | Nam libero tempore, cum soluta nobis
-Nam libero tempore, cum soluta nobis estSed tempor lectus in risus. Nullam vestibulum, odio ac pulvinar eligendi Sed tempor lectus in risus. Nullam vestibulum, odio ac pulvinaroptio cumque nihil impedit quo minus id quod maxime placeat...
- SEPTEMBER 4, 2012 | Neque porro quisquam est qui
-Sed ut perspiciatis unde omnis iste nSed tempor lectus in risus. Nullam vestibulum, odio ac pulvinaratus error sit voluSed tempor lectus in risus. Nullam vestibulum, odio ac pulvinarptatem accusantium doloremque laudantium, totam rem..
-            </p>
+            
+            <?php $this->load->view('elements/clients_rotarot'); ?>
+            
+            
 
     </div>
 

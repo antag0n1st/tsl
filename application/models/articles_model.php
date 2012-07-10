@@ -165,6 +165,7 @@ class Articles_model extends CI_Model {
             $query .= " JOIN `calendar_events_categories` c ";
             $query .= " ON `c`.`calendar_events_categories_id` = `ce`.`event_categories_id` ";
             $query .= " WHERE `date_happen` > '".TimeHelper::DateTimeAdjusted()."' ";
+            $query .= " ORDER BY date_happen ASC ";
             
             $result = $this->db->query($query);
             

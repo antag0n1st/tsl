@@ -37,6 +37,7 @@ echo '</style>';
         $.datepicker.setDefaults( $.datepicker.regional[ "" ] );
 
         $( "#date_published" ).datepicker({ dateFormat: 'm/d/yy',
+            defaultDate : '<?php echo isset($events[0]) ? $events[0]->d : ''; ?>' ,
             regional: 'mk' , 
             dayNames:["Недела", "Понеделник", "Вторник", "Среда", "Четврток", "Петок", "Сабота"] , 
             dayNamesMin:["Нед", "Пон", "Вто", "Сре", "Чет", "Пет", "Саб"] ,

@@ -34,8 +34,11 @@ body{ text-align: center; font-family: 'Cuprum',Arial,Verdana,sans-serif; font-s
 .container .right{ width: 298px;  float: left; margin-left: 10px; padding: 10px; background-image: url('../images/white.png');  border: 1px solid #d6d6d6; }
 
 .pad{ padding: 5px; }
+h1{font-size: 23px; color: #4c51bb; }
+h3{ font-size: 21px; margin: 0px 10px 10px 0px;color: #4c51bb;}
 
-h3{ font-size: 20px; margin: 0px 10px 10px 0px;color: #4c51bb;}
+a h3{ text-decoration: underline;}
+a h3:hover{ color: black;}
 
 a{ color: #4D4D4D;}
 a:hover{ color:black;}
@@ -55,7 +58,7 @@ line-height: 17px; }
 #menu, #menu ul { list-style: none; margin: 0; padding: 0 ;z-index: 1; }
 
 #menu li { background: white; border-right: 1px solid #fff; position: relative; float: left; white-space: nowrap }
-#menu li a { display: block; padding: 5px 16px; text-decoration: none; color: #4D4D4D; font-size: 15px; }
+#menu li a { display: block; padding: 5px 15px; text-decoration: none; color: #4D4D4D; font-size: 16px; }
 
 #menu ul { background: #fff; display: none; position: absolute }
 #menu ul li { background: white; border-top: 1px solid #bdd2ff; border-right: 0px solid transparent; float: none }
@@ -69,9 +72,9 @@ line-height: 17px; }
 
 /******************************************************************************/
 
-.search-box{ float: right; width: 340px; margin-top: 40px; }
+.search-box{ float: right; width: 340px; margin-top: 60px; }
 
-.search-box input{width: 300px; color: #ababab;}
+.search-box input{width: 300px; color: #ababab; margin-bottom: 5px;}
 
 .search-button {
     width: 22px;
