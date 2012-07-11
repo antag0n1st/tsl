@@ -111,3 +111,13 @@ select{ padding: 2px 5px 2px 5px;}
     width:250px;
     padding: 0 0 0 20px;
 }
+
+.clients-grid-logo{
+    float:left;
+    width:250px;
+}
+
+.clients-grid-title{
+    float:left;
+    width:350px;
+}

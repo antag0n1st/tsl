@@ -23,6 +23,24 @@ class Clients extends MY_Admin_Controller {
         $this->load->view('admin/layout/layout', $data);
     }
     
+    public function edit_client($client_id)
+    {
+        if(is_numeric($client_id) )
+        {
+            $this->load->model('clients_model');
+            $options = array('clients_id'   =>  $client_id);
+            $client = $this->clients_model->get_clients($options);
+            if(count($client) == 1)
+            {
+                $client = $client[0];
+                $data['client'] =   $client;
+                $data['main_content']   =   'admin/clients/new';
+                $this->load->view('admin/layout/layout', $data);
+            }
+            
+        }
+    }
+    
     public function submit_client()
     {
         $this->load->model('clients_model');
@@ -107,6 +125,44 @@ class Clients extends MY_Admin_Controller {
             'featured_image_name' => $file_name));
     }
     
+    
+     public function show_clients(){
+        $this->load->model('clients_model');
+        $this->load->library('pagination');
+
+        $per_page = 10;
+        
+        $clients = array();
+        $clients = $this->clients_model->get_clients(array(),$per_page,$this->uri->segment(4));
+        $config = array();
+        
+        $config['base_url'] =  base_url() . 'admin/clients/show_clients/';
+        
+        
+        
+        $config['total_rows'] = $this->clients_model->count_all_clients();
+        $config['per_page'] = $per_page; 
+        $config['uri_segment'] = '4'; 
+
+        $this->pagination->initialize($config); 
+        
+        $data = array();
+        $data['clients']       =   $clients;
+        
+        $data['main_content']   =   'admin/clients/clients';
+        $this->load->view('admin/layout/layout', $data);
+     }
+     
+     public function delete_client($client_id)
+     {
+        if(is_numeric($client_id))
+        {
+             $this->load->model('clients_model');
+             $this->clients_model->delete_client($client_id);
+             redirect(base_url() . 'admin/clients/show_clients');
+        }
+         
+     }
     
 }
 

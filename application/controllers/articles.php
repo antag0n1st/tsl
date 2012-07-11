@@ -6,6 +6,7 @@ class Articles extends MY_Controller {
 	{
             
                 $this->load->model('articles_model');
+                $this->load->model('quotes_model');
                 $events = $this->articles_model->get_events();                
                 $event_categories = $this->articles_model->get_event_categories();
                 
@@ -19,7 +20,8 @@ class Articles extends MY_Controller {
                     Head::instance()->fb_description = $article->description;
                     Head::instance()->fb_image_url = base_url().'public/uploaded/featured/'.$article->featured_image;
                 }
-                
+                $quote = $this->quotes_model->get_quote_of_the_day();
+                $data['quote']      = $quote;
                 $data['article'] = $article;
                 $data['events'] = $events;
                 $data['event_categories'] = $event_categories;                 

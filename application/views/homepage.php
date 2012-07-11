@@ -22,7 +22,6 @@
             <div class="separator"></div>
             <h3>Наши Клиенти</h3>
             
-            
             <?php $this->load->view('elements/clients_rotarot'); ?>
             
             

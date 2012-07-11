@@ -59,11 +59,11 @@ class Clients_model extends CI_Model {
         $this->db->update('clients',$data);
     }
     
-    public function delete_slide($quote_id){
-        $this->db->where('clients_id', $quote_id);
+    public function delete_client($client_id){
+        $this->db->where('clients_id', $client_id);
         $this->db->delete('clients');
     }
-    public function get_total_quotes()
+    public function count_all_clients()
     {
         return $this->db->count_all_results('clients');
     }
