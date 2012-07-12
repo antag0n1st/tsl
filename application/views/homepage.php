@@ -8,14 +8,14 @@
             <?php foreach($latest_news as $news): ?>
            <div class="latest-news">
                 <div class="thumb">
-                    <a href="<?php echo base_url().'articles/index/'.$news->id; ?>">
+                    <a href="<?php echo base_url().'articles/'.$news->id . '-' . $news->slug; ?>">
                         <img src="<?php echo base_url().'public/uploaded/featured/thumbnails/'.$news->featured_image; ?>" alt="" width="120px" height="60px">
                         <span class="overlay"></span>
                     </a>
                 </div> 
 
                 <p class="date"><?php echo $news->d; ?> | </p>
-                <h4 class="title"><a href="<?php echo base_url().'articles/index/'.$news->id; ?>"><?php echo $news->title; ?></a></h4>
+                <h4 class="title"><a href="<?php echo base_url().'articles/'.$news->id . '-' . $news->slug; ?>"><?php echo $news->title; ?></a></h4>
                 <p><?php echo $news->description; ?></p>
             </div>
             <?php endforeach; ?>

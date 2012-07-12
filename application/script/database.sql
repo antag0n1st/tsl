@@ -327,3 +327,37 @@ INSERT INTO `clients` (`clients_id`, `name`, `image`, `link`, `date_created`) VA
 (28, 'Д-р Пановски', 'Dr-Panovski.png', '#', '2012-07-11 01:39:54'),
 (29, 'Натусана', 'Natusana.png', '#', '2012-07-11 01:40:17'),
 (30, 'belupo', 'belupo.png', '#', '2012-07-11 01:40:49');
+
+
+
+
+
+--
+-- Table structure for table `menu_items`
+--
+
+CREATE TABLE IF NOT EXISTS `menu_items` (
+  `menu_items_id` int(11) NOT NULL AUTO_INCREMENT,
+  `text` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `link` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
+  `parent_id` int(11) NOT NULL DEFAULT '0',
+  `date_created` datetime NOT NULL,
+  `order_index` int(11) NOT NULL,
+  PRIMARY KEY (`menu_items_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `menu_items`
+--
+
+INSERT INTO `menu_items` (`menu_items_id`, `text`, `link`, `parent_id`, `date_created`, `order_index`) VALUES
+(1, 'За нас', 'articles/51-za-nas', 0, '2012-07-12 11:24:14', 100),
+(2, 'Learning', 'category/3-learning', 0, '2012-07-12 11:26:02', 200),
+(3, 'Speakers', 'category/2-speakers', 0, '2012-07-12 11:27:33', 300),
+(4, 'Speaker 1', 'articles/52-speaker-1', 3, '2012-07-12 11:31:22', 301),
+(5, 'Speaker 2', 'articles/53-speaker-2', 3, '2012-07-12 11:31:40', 302);
+
+
+INSERT INTO `articles` (`id`, `title`, `description`, `content`, `date_created`, `date_published`, `slug`, `featured_image`, `status`) VALUES 
+(52, 'Speaker 1', 'Статија за Speaker 1', '<p>Ова е статија за Speaker 1</p>', '2012-07-12 11:31:42', '2012-07-12 11:29:00', 'speaker-1', 'default_featured_image.jpg', 1),
+(53, 'Speaker 2', 'Статија за Speaker 2	', '<p>Статија за Speaker 2</p>', '2012-07-12 11:36:47', '2012-07-12 11:35:00', 'speaker-2', 'default_featured_image.jpg', 1);

@@ -26,7 +26,12 @@
                 <li><a href="<?php echo base_url(); ?>admin/slides/show_slides">Сите слајдови</a></li>
             </ul>
         </li>
-        <li><a href="#">Мени</a></li>
+        <li><a href="#">Мени</a>
+            <ul>
+                <li><a href="<?php echo base_url(); ?>admin/menu/new_menu_item">Нов линк</a></li>
+                <li><a href="<?php echo base_url(); ?>admin/menu/show_menu_items">Сите линкови</a></li>
+            </ul>
+        </li>
         <li><a href="#">Newsletter</a></li>
         <li><a href="#">Галерии</a>
             <ul>
