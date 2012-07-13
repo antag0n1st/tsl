@@ -363,3 +363,28 @@ INSERT INTO `menu_items` (`menu_items_id`, `text`, `link`, `parent_id`, `date_cr
 INSERT INTO `articles` (`id`, `title`, `description`, `content`, `date_created`, `date_published`, `slug`, `featured_image`, `status`) VALUES 
 (52, 'Speaker 1', 'Статија за Speaker 1', '<p>Ова е статија за Speaker 1</p>', '2012-07-12 11:31:42', '2012-07-12 11:29:00', 'speaker-1', 'default_featured_image.jpg', 1),
 (53, 'Speaker 2', 'Статија за Speaker 2	', '<p>Статија за Speaker 2</p>', '2012-07-12 11:36:47', '2012-07-12 11:35:00', 'speaker-2', 'default_featured_image.jpg', 1);
+
+
+
+
+CREATE TABLE IF NOT EXISTS `sidebar` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `content` text COLLATE utf8_bin,
+  `position` int(10) unsigned DEFAULT NULL,
+  `is_deletable` int(10) unsigned DEFAULT NULL,
+  `type` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `sidebar`
+--
+
+INSERT INTO `sidebar` (`id`, `name`, `content`, `position`, `is_deletable`, `type`) VALUES
+(1, 'calendar', 'elements/calendar', 0, 0, 'view'),
+(2, 'quotes', 'elements/quotes', 1, 0, 'view'),
+(3, 'success_pages', '<a href="#">\r\n        <img alt="" style="float: left;margin-right: 10px;" src="<?php echo base_url().''images/tick.png''; ?>" />    <h3 style="float: left;margin-top: 5px;">Страници на успех</h3>\r\n    </a>', 2, 0, 'content'),
+(4, 'social links', '<h3>Следи не:</h3>\r\n        <a target="_balnk" href="http://www.facebook.com//login.php#!/pages/Triple-S-Learning/321852101858?ref=ts"><img alt="" src="<?php echo base_url().''images/icon-facebook.png''; ?>" /></a>\r\n        <a target="_balnk" href="http://www.linkedin.com/in/tripleslearning"><img alt="" src="<?php echo base_url().''images/icon-linkedin.png''; ?>" /></a>\r\n        <a target="_balnk" href="http://twitter.com/TripleSGroup"><img alt="" src="<?php echo base_url().''images/icon-twitter.png''; ?>" /></a>\r\n        <a target="_balnk" href="http://www.youtube.com/user/TripleSLearning"><img alt="" src="<?php echo base_url().''images/icon-youtube.png''; ?>" /></a>\r\n        <a target="_balnk" href="#"><img alt="" src="<?php echo base_url().''images/icon-rss.png''; ?>" /></a>\r\n', 3, 0, 'content');
+
+
