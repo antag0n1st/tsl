@@ -266,16 +266,100 @@ CREATE TABLE IF NOT EXISTS `quotes` (
   `author` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `date_created` datetime NOT NULL,
   PRIMARY KEY (`quotes_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `quotes`
 --
 
 INSERT INTO `quotes` (`quotes_id`, `description`, `author`, `date_created`) VALUES
-(1, 'Ова е најдобриот цитат', 'Непознат', '2012-07-10 09:22:56'),
-(2, 'citiram', 'mitiram', '2012-07-10 09:31:20'),
-(3, 'ajdeee', 'e ajdee', '2012-07-10 09:32:11'),
-(4, 'mi trebaat uste citati', 'uste citati', '2012-07-10 09:32:36'),
-(5, 'ajde uste eden citat', 'ajdeeee', '2012-07-10 09:32:52'),
-(6, 'abe sve e okej', 'okej e da', '2012-07-10 09:33:42');
+(1, 'It''s not the strongest of the species that survives, nor the most intelligent, but the one most responsive to change', 'Charles Darwin', '2012-07-10 22:54:25'),
+(2, 'Obstacles are those frightful things you see when you take your eyes off your goal', 'Henry Ford', '2012-07-10 22:56:10'),
+(3, 'Time stays long enough for anyone who will use it', 'Leonardo Da Vinci', '2012-07-10 22:56:47'),
+(4, 'We all have possibilities we don''t know about. We can do things we don''t even dream we can do', 'Dale Carnegie', '2012-07-10 22:59:14'),
+(5, 'Make measurable progress in reasonable time.', 'Jim Rohn', '2012-07-10 23:00:37'),
+(7, 'The best way to sell yourself to others is first to sell the others to yourself.', 'Napoleon Hill', '2012-07-10 23:00:58'),
+(8, 'Invest three percent of your income in yourself (self-development) in order to guarantee your future', 'Brian Tracy', '2012-07-10 23:04:01');
+
+
+
+CREATE TABLE IF NOT EXISTS `clients` (
+  `clients_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `link` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `date_created` datetime NOT NULL,
+  PRIMARY KEY (`clients_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=31 ;
+
+--
+-- Dumping data for table `clients`
+--
+
+INSERT INTO `clients` (`clients_id`, `name`, `image`, `link`, `date_created`) VALUES
+(1, 'T-mobile', 't-mobile.png', '#', '2012-07-11 01:22:27'),
+(2, 'T-home', 't-home.png', '#', '2012-07-11 01:22:56'),
+(3, 'One', 'one.png', '#', '2012-07-11 01:23:24'),
+(4, 'VIP', 'vip.png', '#', '2012-07-11 01:23:57'),
+(5, 'NLB Тутунска банка', 'NLB-Tutunska-banka.png', '#', '2012-07-11 01:24:56'),
+(6, 'Охридска Банка', 'Ohridska-banka.png', '#', '2012-07-11 01:25:35'),
+(7, 'ProCredit Банка', 'Pro-Credit-banka.png', '#', '2012-07-11 01:26:02'),
+(8, 'ТТК Банка', 'TTK-banka.png', '#', '2012-07-11 01:26:29'),
+(9, 'Moжности', 'moznosti.png', '#', '2012-07-11 01:26:54'),
+(10, 'QBE', 'QBE.png', '#', '2012-07-11 01:29:02'),
+(11, 'Eurolink', 'eurolink.png', '#', '2012-07-11 01:30:03'),
+(12, 'Hypo Alpe Adria', 'Hypo-Alpe-Adria.png', '#', '2012-07-11 01:30:27'),
+(13, 'eurostandard банка', 'eurostandard-banka.png', '#', '2012-07-11 01:30:56'),
+(14, 'Automobile-Sk', 'Automobile-SK.png', '#', '2012-07-11 01:31:25'),
+(15, 'Avtonova Citroen', 'Avtonova-Citroen.png', '#', '2012-07-11 01:31:49'),
+(16, 'Ka-Dis', 'Ka-Dis-seat.png', '#', '2012-07-11 01:33:28'),
+(17, 'dalmet-fu', 'Dal-Met-Fu.png', '#', '2012-07-11 01:33:45'),
+(18, 'Blue Cafe`', 'BlueCafe.png', '#', '2012-07-11 01:34:20'),
+(19, 'papu', 'Papu.png', '#', '2012-07-11 01:34:43'),
+(20, 'Форца', 'Forza.png', '#', '2012-07-11 01:35:02'),
+(21, 'Ресторан 14', 'restoran-14.png', '#', '2012-07-11 01:35:55'),
+(22, 'Ресторан Лира', 'Lira-restoran.png', '#', '2012-07-11 01:36:15'),
+(23, 'World Learning', 'World-Learning.png', '#', '2012-07-11 01:36:37'),
+(24, 'Национална Агенција', 'Nacionalna-agencija.png', '#', '2012-07-11 01:37:02'),
+(25, 'Катастар', 'Katastar.png', '#', '2012-07-11 01:37:25'),
+(26, 'Glaxo-Smith-Kline', 'Glaxo-Smith-Kline.png', '#', '2012-07-11 01:38:09'),
+(27, 'Филип Втори', 'Filip-Vtori.png', '#', '2012-07-11 01:38:38'),
+(28, 'Д-р Пановски', 'Dr-Panovski.png', '#', '2012-07-11 01:39:54'),
+(29, 'Натусана', 'Natusana.png', '#', '2012-07-11 01:40:17'),
+(30, 'belupo', 'belupo.png', '#', '2012-07-11 01:40:49');
+
+
+
+
+
+--
+-- Table structure for table `menu_items`
+--
+
+CREATE TABLE IF NOT EXISTS `menu_items` (
+  `menu_items_id` int(11) NOT NULL AUTO_INCREMENT,
+  `text` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `link` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
+  `parent_id` int(11) NOT NULL DEFAULT '0',
+  `date_created` datetime NOT NULL,
+  `order_index` int(11) NOT NULL,
+  `depth_level` int(11) NOT NULL,
+  PRIMARY KEY (`menu_items_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=23 ;
+
+--
+-- Dumping data for table `menu_items`
+--
+
+INSERT INTO `menu_items` (`menu_items_id`, `text`, `link`, `parent_id`, `date_created`, `order_index`, `depth_level`) VALUES
+(1, 'За нас', 'articles/51-za-nas', 0, '2012-07-12 11:24:14', 100, 0),
+(2, 'Learning', 'category/3-learning', 0, '2012-07-12 11:26:02', 200, 0),
+(3, 'Speakers', 'category/2-speakers', 0, '2012-07-12 11:27:33', 300, 0),
+(4, 'Speaker 1', 'articles/52-speaker-1', 3, '2012-07-12 11:31:22', 301, 1),
+(5, 'Speaker 2', 'articles/53-speaker-2', 4, '2012-07-12 11:31:40', 302, 2);
+
+
+
+INSERT INTO `articles` (`id`, `title`, `description`, `content`, `date_created`, `date_published`, `slug`, `featured_image`, `status`) VALUES 
+(52, 'Speaker 1', 'Статија за Speaker 1', '<p>Ова е статија за Speaker 1</p>', '2012-07-12 11:31:42', '2012-07-12 11:29:00', 'speaker-1', 'default_featured_image.jpg', 1),
+(53, 'Speaker 2', 'Статија за Speaker 2	', '<p>Статија за Speaker 2</p>', '2012-07-12 11:36:47', '2012-07-12 11:35:00', 'speaker-2', 'default_featured_image.jpg', 1);

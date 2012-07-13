@@ -1,8 +1,8 @@
 <style type="text/css">
     #menu li a {
-padding: 5px 10px;
-font-size: 15px;
-}
+        padding: 5px 10px;
+        font-size: 15px;
+    }
 </style>
 <div class="container">
     <ul id="menu" class="clear">
@@ -21,19 +21,23 @@ font-size: 15px;
             </ul>
         </li>
         <li><a href="#">Настани</a>
-             <ul>
+            <ul>
                 <li><a href="<?php echo base_url(); ?>admin/events/new_event">Нов настан</a></li>
                 <li><a href="<?php echo base_url(); ?>admin/events/show_events">Сите настани</a></li>
             </ul>
         </li>
         <li><a href="#">Слајдови</a>
-             <ul>
+            <ul>
                 <li><a href="<?php echo base_url(); ?>admin/slides/new_slide">Нов слајд</a></li>
                 <li><a href="<?php echo base_url(); ?>admin/slides/show_slides">Сите слајдови</a></li>
             </ul>
         </li>
-        <li><a href="#">Мени</a></li>
-        
+        <li><a href="#">Мени</a>
+            <ul>
+                <li><a href="<?php echo base_url(); ?>admin/menu/new_menu_item">Нов линк</a></li>
+                <li><a href="<?php echo base_url(); ?>admin/menu/show_menu_items">Сите линкови</a></li>
+            </ul>
+        </li>
         <li><a href="#">Newsletter</a></li>
         <li><a href="#">Галерии</a>
             <ul>
@@ -47,13 +51,17 @@ font-size: 15px;
                 <li><a href="<?php echo base_url(); ?>admin/quotes/show_quotes">Сите цитати</a></li>
             </ul>
         </li>
-        <li><a href="#">Клиенти</a></li>
+        <li><a href="#">Клиенти</a>
+            <ul>
+                <li><a href="<?php echo base_url(); ?>admin/clients/new_client">Нов клиент</a></li>
+                <li><a href="<?php echo base_url(); ?>admin/clients/show_clients">Сите клиенти</a></li>
+            </ul>
+        </li>
         <li><a href="#">Стрнично мени</a>
             <ul>
                 <li><a href="<?php echo base_url(); ?>admin/sidebar/change_position">Сите Елементи</a></li>
                 <li><a href="<?php echo base_url(); ?>admin/sidebar/add_element">Додади Елемент</a></li>
             </ul>
         </li>
-        
     </ul>   
 </div>

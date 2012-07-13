@@ -1,18 +1,14 @@
 <div class="quotes">
 
     <h3>Quote of the day</h3>
+    <?php if(isset($quote)) : ?>
     <p>
-
-      После обуката Тајни за успех во продажбата вработените станаа многу помотивирани, ентузијастични за своите производи и полни со нови идеи. Секое утро нудеа креативни решенија за работи кои дотогаш само рутински ги работеле.
-
-
+      <?php echo $quote->description; ?>
     </p>
 
     <div>
-        <b>Ана Бураку - Директор</b>
-        
-        <span>Automobile SK (FIAT, LANCIA, ALFA ROMEO)</span>
+        <b><?php echo $quote->author; ?></b>
     </div>
 
-
+    <?php endif; ?>
 </div>

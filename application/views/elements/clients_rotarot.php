@@ -28,24 +28,28 @@
         padding: 5px;
     }
 </style>
+<?php   $current_client_index = 0;
+        $per_row = 5;
+        $rows = count($clients) / $per_row; ?>
 
 <div id="clients_banner">
     <ul id="clients_banner_ul">
-        <li id="clientsbannerimg_1" style="position: absolute; top: 100px; display: list-item; overflow: visible; ">
+        
+        <?php for($i = 1; $i <= $rows; $i++) :?>
+        
+        <li id="clientsbannerimg_<?php echo $i; ?>" style="position: absolute; top: 100px; display: list-item; overflow: visible; ">
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tbody><tr>
                         <td valign="middle" align="center" height="70">
-                            <img src="http://www.tsl.mk/content/pics/klienti/banner/t-mobile.png"> 
-                            <img src="http://www.tsl.mk/content/pics/klienti/banner/t-home.png"> 
-                            <img src="http://www.tsl.mk/content/pics/klienti/banner/one.png"> 
-                            <img src="http://www.tsl.mk/content/pics/klienti/banner/vip.png">
-                            <img src="http://www.tsl.mk/content/pics/klienti/banner/NLB-Tutunska-banka.png">
+                            <?php for($j = $current_client_index; $j < count($clients) and $j < $per_row * $i; $j++, $current_client_index++): ?>
+                            <img src="<?php echo base_url()?>public/uploaded/clients/<?php echo $clients[$j]->image; ?>" alt="" />
+                            <?php endfor; ?>
                         </td>
                     </tr>
                 </tbody></table>
         </li>
-
-        <li id="clientsbannerimg_2" style="position: absolute; top: 100px; display: list-item; overflow: visible; ">
+        <?php endfor; ?>
+       <!-- <li id="clientsbannerimg_2" style="position: absolute; top: 100px; display: list-item; overflow: visible; ">
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tbody><tr>
                         <td valign="middle" align="center" height="70">
@@ -189,7 +193,7 @@
                         </td>
                     </tr>
                 </tbody></table>
-        </li>   
+        </li>   -->
 
     </ul>
 
