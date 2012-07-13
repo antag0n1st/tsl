@@ -10,6 +10,7 @@ class Homepage extends MY_Controller {
                 
                 $this->load->model('articles_model');
                 $this->load->model('slides_model');
+                $this->load->model('sidebar_model');
 
                 $this->load->model('quotes_model');
                 $this->load->model('clients_model');
