@@ -20,7 +20,7 @@ class MY_Controller extends CI_Controller {
         parent::__construct();
        // $this->output->enable_profiler(TRUE);
        
-        Head::instance()->load_css('style', '1.0');
+        Head::instance()->load_css('style', '1.1');
         Head::instance()->load_js('jquery-1.7.2.min', '1.0');
         Head::instance()->load_js('main', '1.0');
         Head::instance()->add('<link href="http://fonts.googleapis.com/css?family=Cuprum:400&subset=latin,cyrillic" rel="stylesheet" type="text/css">');

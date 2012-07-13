@@ -39,7 +39,7 @@
             <div class="separator"></div>
             <input type="hidden" name="id_gallery" value="<?php echo $id_gallery; ?>" />
             <input type="hidden" id="featured_image_hidden" name="featured_image_hidden" value="" />
-            <label class="block">Опис:</label><br /><textarea name="description"></textarea>
+            <label class="block">Опис:</label><textarea name="description"></textarea>
             <div class="separator"></div>
             <input type="submit" value="Зачувај" class="button round" />
         </fieldset>

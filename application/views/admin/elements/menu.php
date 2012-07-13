@@ -1,3 +1,9 @@
+<style type="text/css">
+    #menu li a {
+padding: 5px 10px;
+font-size: 15px;
+}
+</style>
 <div class="container">
     <ul id="menu" class="clear">
         <li>
@@ -27,6 +33,7 @@
             </ul>
         </li>
         <li><a href="#">Мени</a></li>
+        
         <li><a href="#">Newsletter</a></li>
         <li><a href="#">Галерии</a>
             <ul>
@@ -41,5 +48,12 @@
             </ul>
         </li>
         <li><a href="#">Клиенти</a></li>
+        <li><a href="#">Стрнично мени</a>
+            <ul>
+                <li><a href="<?php echo base_url(); ?>admin/sidebar/change_position">Сите Елементи</a></li>
+                <li><a href="<?php echo base_url(); ?>admin/sidebar/add_element">Додади Елемент</a></li>
+            </ul>
+        </li>
+        
     </ul>   
 </div>

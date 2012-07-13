@@ -10,16 +10,17 @@ class Homepage extends MY_Controller {
                 
                 $this->load->model('articles_model');
                 $this->load->model('slides_model');
-                
+                $this->load->model('sidebar_model');
                 
                 
                 $events = $this->articles_model->get_events();                
                 $event_categories = $this->articles_model->get_event_categories();
                 $slides = $this->slides_model->get_slides();
-                
+                $sidebar_elements = $this->sidebar_model->get_sidebar_elements();
                 $latest_news = $this->articles_model->get_latest_news();
                 
                 
+                $data['sidebar_elements'] = $sidebar_elements;
                 $data['main_content'] = 'homepage';
                 $data['events'] = $events;
                 $data['event_categories'] = $event_categories;

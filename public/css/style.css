@@ -182,10 +182,10 @@ fieldset input[type=text]{
     margin: 2px 0 20px 10px;
 }
 fieldset label{
-    /*display: block;
+    display: block;
     text-align: right;
     width: 100px;
-    float: left;*/
+    float: left;
 }
 fieldset select{float: left;
     font-size: 12px;
@@ -197,10 +197,10 @@ fieldset textarea{float: left;
     font-size: 12px;
     padding: 4px 2px;
     border: solid 1px #AACFE4;
-    width: 555px;/*450px;*/
+    width: 450px;
     margin: 2px 0 20px 10px;}
 fieldset input[type=submit]{
-   /* margin-left: 110px;*/
+    margin-left: 110px;
 }
 fieldset input[type=file]{
     float: left;
