@@ -26,7 +26,8 @@ class Menus_model extends CI_Model {
                            link,
                            date_created,
                            parent_id,
-                           order_index');
+                           order_index,
+                           depth_level');
         
         if($limit){
             $this->db->limit($limit);
@@ -44,7 +45,20 @@ class Menus_model extends CI_Model {
         return $result->result();
     }
     
+     public function insert_menu_item($data){
+        $this->db->insert('menu_items', $data);
+        return $this->db->insert_id();
+    }
     
+    public function update_menu_item($data){
+        $this->db->where('menu_items_id', $data->menu_items_id);
+        $this->db->update('menu_items',$data);
+    }
+    
+    public function delete_calendar_event($menu_item_id){
+        $this->db->where('menu_items_id', $menu_item_id);
+        $this->db->delete('menu_items');
+    }
 }
 
 ?>

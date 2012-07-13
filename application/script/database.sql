@@ -343,19 +343,21 @@ CREATE TABLE IF NOT EXISTS `menu_items` (
   `parent_id` int(11) NOT NULL DEFAULT '0',
   `date_created` datetime NOT NULL,
   `order_index` int(11) NOT NULL,
+  `depth_level` int(11) NOT NULL,
   PRIMARY KEY (`menu_items_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `menu_items`
 --
 
-INSERT INTO `menu_items` (`menu_items_id`, `text`, `link`, `parent_id`, `date_created`, `order_index`) VALUES
-(1, 'За нас', 'articles/51-za-nas', 0, '2012-07-12 11:24:14', 100),
-(2, 'Learning', 'category/3-learning', 0, '2012-07-12 11:26:02', 200),
-(3, 'Speakers', 'category/2-speakers', 0, '2012-07-12 11:27:33', 300),
-(4, 'Speaker 1', 'articles/52-speaker-1', 3, '2012-07-12 11:31:22', 301),
-(5, 'Speaker 2', 'articles/53-speaker-2', 3, '2012-07-12 11:31:40', 302);
+INSERT INTO `menu_items` (`menu_items_id`, `text`, `link`, `parent_id`, `date_created`, `order_index`, `depth_level`) VALUES
+(1, 'За нас', 'articles/51-za-nas', 0, '2012-07-12 11:24:14', 100, 0),
+(2, 'Learning', 'category/3-learning', 0, '2012-07-12 11:26:02', 200, 0),
+(3, 'Speakers', 'category/2-speakers', 0, '2012-07-12 11:27:33', 300, 0),
+(4, 'Speaker 1', 'articles/52-speaker-1', 3, '2012-07-12 11:31:22', 301, 1),
+(5, 'Speaker 2', 'articles/53-speaker-2', 4, '2012-07-12 11:31:40', 302, 2);
+
 
 
 INSERT INTO `articles` (`id`, `title`, `description`, `content`, `date_created`, `date_published`, `slug`, `featured_image`, `status`) VALUES 

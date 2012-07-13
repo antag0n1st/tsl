@@ -17,10 +17,12 @@ class MenuItem {
     public $parent_id;
     public $date_created;
     public $order_index;
+    public $depth_level; 
     
     public function __construct($value = '') {
         $this->menu_items_id =
         $this->order_index   =
+        $this->depth_level   =
         $this->parent_id     =  0;
     }
     
