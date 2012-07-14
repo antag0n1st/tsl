@@ -119,6 +119,21 @@ class Menu extends MY_Admin_Controller {
         $this->load->view('admin/layout/layout', $data);
         
     }
+    
+    
+    public function show_menu_items()
+    {
+        $this->load->model('menus_model');
+        
+        $menu_items = $this->menus_model->get_menu_items_with_children();
+        
+        $data['menu_items'] =   $menu_items;
+        $data['main_content']   =   'admin/menu/menu_items';
+        $this->load->view('admin/layout/layout', $data);
+        
+       
+        
+    }
 }
 
 ?>

@@ -45,6 +45,57 @@ class Menus_model extends CI_Model {
         return $result->result();
     }
     
+    public function get_menu_items_with_children(){
+        
+        $all_menu_items = $this->get_menu_items();
+        
+        $top_level_menu_items   =  array();
+        foreach($all_menu_items as  $key => $menu_item) // get all parent menu items and remove them from the array
+        {
+            if($menu_item->parent_id == 0)
+            {
+               $top_level_menu_items[] = $menu_item;
+               unset($all_menu_items[$key]);
+            }
+        }
+        $all_menu_items =   array_values($all_menu_items);
+        
+       
+        foreach($top_level_menu_items as $menu_item)
+        {
+            $menu_item->children = $this->menus_model->get_children($menu_item->menu_items_id,$all_menu_items);
+        }
+
+        return $top_level_menu_items;
+    }
+    
+    
+    public function get_children($parent_id, $menu_items = null)
+    {
+        $children = array();
+        if($menu_items == null or !is_array($menu_items))
+        {
+            return $children;
+        }
+        else
+        {
+            foreach($menu_items as $key => $menu_item)
+            {
+                if($menu_item->parent_id == $parent_id)
+                {
+                    $children[] = $menu_item;
+                    unset($menu_items[$key]);
+                }
+            }
+            $menu_items = array_values($menu_items);
+        }
+        
+        foreach($children as $child){
+            $child->children = $this->get_children($child->menu_items_id, $menu_items);
+        }
+        return $children;
+    }
+    
      public function insert_menu_item($data){
         $this->db->insert('menu_items', $data);
         return $this->db->insert_id();
