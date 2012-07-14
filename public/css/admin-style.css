@@ -121,3 +121,12 @@ select{ padding: 2px 5px 2px 5px;}
     float:left;
     width:350px;
 }
+.menu-grid-text{
+    float:left;
+    width:350px;
+    height:30px;
+}
+.menu-grid-link{
+    float:left;
+    width:350px;
+}

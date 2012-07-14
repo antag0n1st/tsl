@@ -34,6 +34,34 @@ class Menu extends MY_Admin_Controller {
         $this->load->view('admin/layout/layout', $data);
     }
     
+    public function edit_menu_item($menu_item_id)
+    {
+        if(is_numeric($menu_item_id))
+        {
+            $this->load->model('menus_model');
+            $this->load->model('articles_model');
+            $options = array('menu_items_id'    =>  $menu_item_id);
+            $menu_item = $this->menus_model->get_menu_items($options);
+            
+            if(count($menu_item) == 1)
+            {
+                $menu_item = $menu_item[0];
+            }
+            
+            
+            $menu_items = $this->menus_model->get_menu_items();
+            $categories = $this->articles_model->get_categories();
+            $articles   = $this->articles_model->get_articles();
+            
+            $data['categories']     =   $categories;
+            $data['articles']       =   $articles;
+            $data['menu_item']      =   $menu_item;
+            $data['menu_items']     =   $menu_items;
+            $data['main_content']   =   'admin/menu/new';
+            $this->load->view('admin/layout/layout', $data);
+        }
+    }
+    
     public function submit_menu_item()
     {
       //  print_r($_POST);
@@ -111,6 +139,7 @@ class Menu extends MY_Admin_Controller {
     {
         $this->load->model('menus_model');
         
+     //   $options = array('parent_id'    =>  0);
         $menu_items = $this->menus_model->get_menu_items_with_children();
         
         $data['menu_items'] =   $menu_items;
@@ -120,6 +149,55 @@ class Menu extends MY_Admin_Controller {
        
         
     }
+    
+    
+    public function update_menu_order()
+    {
+        $this->load->model('menus_model');
+        
+        $new_positions = explode(',',$this->input->post('order'));
+        foreach ($new_positions as $key => $value) {
+                $id = $value;
+                $order_index = (($key * 100) + 100);
+
+                $menu_item = $this->menus_model->get_menu_items(array('menu_items_id'    =>  $id)); // get the current item
+                
+                
+                $all_menu_items = $this->menus_model->get_menu_items_with_children(); // get all items with their children so that we could update their order index accordingly
+                
+                
+                if(count($menu_item) == 1)
+                {
+                    $menu_item = $menu_item[0];
+                    $menu_item->order_index = $order_index;
+
+                     foreach($all_menu_items as $k => $a_menu_item)
+                     {
+                         if($menu_item->menu_items_id == $a_menu_item->menu_items_id)
+                         {
+                            $this->menus_model->update_children_order($a_menu_item, $order_index, 1);
+                            unset($all_menu_items[$k]);
+                            break;
+                         }
+                     }
+                     $all_menu_items = array_values($all_menu_items);
+                    
+                    $this->menus_model->update_menu_item($menu_item);
+                }     
+         }
+         
+         
+              
+          
+                 
+                    
+
+          
+               
+                 
+        
+    }
+    
 }
 
 ?>

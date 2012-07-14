@@ -45,6 +45,24 @@ class Menus_model extends CI_Model {
         return $result->result();
     }
     
+    public function update_children_order($menu_item, $order_index, $i)
+    {
+        if(isset($menu_item->children)    and 
+           is_array($menu_item->children) and
+           count($menu_item->children)    > 0)
+        {
+            foreach($menu_item->children as $child)
+            {
+                    $child->order_index = $order_index + $i;
+                    $this->update_menu_item($child);
+                    $this->update_children_order($child, $order_index, ++$i);
+            }
+        }
+    }
+    
+    
+    
+    
     public function get_menu_items_with_children(){
         
         $all_menu_items = $this->get_menu_items();

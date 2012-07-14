@@ -45,10 +45,14 @@
         <label class="block" for="parent">Родител:</label>
         <select name="parent" class="parent" style="width: 335px;" >
             <option id="parent_id_0" value="0">-- Нема Родител --</option>
-            <?php foreach($menu_items as $menu_item) :?>
-            <option id="parent_id_<?php echo $menu_item->menu_items_id; ?>" value="<?php echo $menu_item->menu_items_id;?>">
-                <?php echo str_repeat('&nbsp;&nbsp;&nbsp;', $menu_item->depth_level); ?>
-                <?php echo $menu_item->text; ?>
+            <?php foreach($menu_items as $m_i) :?>
+            <option id="parent_id_<?php echo $m_i->menu_items_id; ?>" 
+                    <?php if($menu_item->menu_items_id == $m_i->menu_items_id) : ?>
+                          selected="selected"
+                    <?php endif;?> 
+                    value="<?php echo $m_i->menu_items_id;?>">
+                <?php echo str_repeat('&nbsp;&nbsp;&nbsp;', $m_i->depth_level); ?>
+                <?php echo $m_i->text; ?>
             </option>
             <?php endforeach; ?>
         </select>
@@ -71,9 +75,7 @@
           if(id > 0)
               {
                   $("#link").val(base + '/' + id + '-' + slug);
-              }
-          
-          
+              }          
         })
         .change();
     
@@ -91,8 +93,6 @@
               {
                   $("#link").val(base + '/' + id + '-' + slug);
               }
-          
-          
         })
         .change();
         
