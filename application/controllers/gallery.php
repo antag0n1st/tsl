@@ -13,10 +13,14 @@ class Gallery extends MY_Controller {
                 
                 $this->load->model('articles_model');
                 $this->load->model('gallery_model');
+                $this->load->model('menus_model');
                 
                 $events = $this->articles_model->get_events();                
                 $event_categories = $this->articles_model->get_event_categories();
                 $galleries  = $this->gallery_model->get_galleries_and_photos();
+                
+                $menu_items = $this->menus_model->get_menu_items_with_children();
+                $data['menu_items'] =   $menu_items;
                 
                 $data['galleries'] = $galleries;
                 $data['main_content'] = 'gallery';
