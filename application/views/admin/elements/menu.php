@@ -57,10 +57,10 @@
                 <li><a href="<?php echo base_url(); ?>admin/clients/show_clients">Сите клиенти</a></li>
             </ul>
         </li>
-        <li><a href="#">Стрнично мени</a>
+        <li><a href="#">Странично мени</a>
             <ul>
-                <li><a href="<?php echo base_url(); ?>admin/sidebar/change_position">Сите Елементи</a></li>
-                <li><a href="<?php echo base_url(); ?>admin/sidebar/add_element">Додади Елемент</a></li>
+                <li><a href="<?php echo base_url(); ?>admin/sidebar/add_element">Нов елемент</a></li>
+                <li><a href="<?php echo base_url(); ?>admin/sidebar/change_position">Сите елементи</a></li>
             </ul>
         </li>
     </ul>   

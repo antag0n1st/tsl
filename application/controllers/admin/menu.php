@@ -50,22 +50,13 @@ class Menu extends MY_Admin_Controller {
         
         if($menu_item->parent_id == 0) // top level item
         {
-  /*          if($menu_item->menu_items_id == 0)
-            {*/
                 $options = array('parent_id'    => 0);
                 $max_parent_id_item = $this->menus_model->get_menu_items($options,0,0,'menu_items_id DESC');
                 
-                $menu_item->order_index = $max_parent_id_item[0]->order_index + 100; //($max_parent_id_item[0]->menu_items_id + 1) * 100;
+                $menu_item->order_index = $max_parent_id_item[0]->order_index + 100;
                 $menu_item->depth_level = 0;
-          /*  }
-            else{
-               $menu_item->order_index = $this->input->post('order_index');
-               $menu_item->depth_level = $this->input->post('depth_level');
-            }*/
         }
         else{ // sub level item
-    //        if($menu_item->menu_items_id == 0)
-    //        {
                 $options = array('menu_items_id'    => $menu_item->parent_id);
                 $max_parent_id_item = $this->menus_model->get_menu_items($options,1,0,'order_index DESC');
                
@@ -84,11 +75,6 @@ class Menu extends MY_Admin_Controller {
                 }
                 
                 $menu_item->depth_level = $max_parent_id_item[0]->depth_level + 1;
-     /*       }
-            else{
-                $menu_item->order_index = $this->input->post('order_index');
-                $menu_item->depth_level = $this->input->post('depth_level');
-            }*/
         }
         
         if($menu_item->is_valid())

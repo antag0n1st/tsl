@@ -47,14 +47,9 @@
             <option id="parent_id_0" value="0">-- Нема Родител --</option>
             <?php foreach($menu_items as $menu_item) :?>
             <option id="parent_id_<?php echo $menu_item->menu_items_id; ?>" value="<?php echo $menu_item->menu_items_id;?>">
-                <?php if($menu_item->parent_id > 0) :?>
-                <?php for($i = 0; $i < $menu_item->depth_level; $i++  ) :?>
-                        &nbsp;&nbsp;
-                <?php endfor; ?>
-                <?php endif; ?>
+                <?php echo str_repeat('&nbsp;&nbsp;&nbsp;', $menu_item->depth_level); ?>
                 <?php echo $menu_item->text; ?>
             </option>
-            
             <?php endforeach; ?>
         </select>
         <div class="clear"></div>
