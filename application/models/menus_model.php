@@ -69,8 +69,13 @@ class Menus_model extends CI_Model {
         else{
             foreach($menu_item->children as $child)
             {
-                return $this->traverse($child,$id_to_find);
+                $ret = $this->traverse($child,$id_to_find);
+                if($ret != null and $ret->menu_items_id == $id_to_find)
+                {
+                    return $ret;
+                }
             }
+            return null;
         }
     }
     
