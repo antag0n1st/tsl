@@ -19,6 +19,31 @@ class MenuHelper {
     }
     
     
+    public static function echo_dropdown($menu_array, $selected_id)
+   {
+         foreach ($menu_array as $menu) {
+                    echo '<option id="parent_id_' . $menu->menu_items_id . '" ' ;
+                    if($selected_id == $menu->menu_items_id)
+                    {
+                        echo 'selected="selected"';
+
+                    }
+                    echo ' value="' . $menu->menu_items_id . '">';
+                    echo str_repeat('&nbsp;&nbsp;&nbsp;', $menu->depth_level) . $menu->text;
+                    echo '</option>';
+             
+            if (array_key_exists('children', $menu) and count($menu->children) > 0) 
+            {
+                self::echo_dropdown($menu->children,$selected_id);
+            }
+             
+             
+         }
+         
+    }
+    
+    
+    
     public static function echo_menu_admin($menu_array) 
     {
         //go through each top level menu item

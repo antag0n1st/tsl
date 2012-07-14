@@ -1,3 +1,8 @@
+<link rel="stylesheet" href="<?php echo base_url(); ?>public/js/jquery-ui/css/smoothness/jquery-ui-1.8.14.custom.css" type="text/css" />
+<script type="text/javascript" src="<?php echo base_url(); ?>public/js/jquery-ui/development-bundle/ui/jquery.ui.core.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>public/js/jquery-ui/development-bundle/ui/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>public/js/jquery-ui/development-bundle/ui/jquery.ui.mouse.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>public/js/jquery-ui/development-bundle/ui/jquery.ui.sortable.js"></script>
 <div class="container o">
     <h3>Нов линк во менито (Ова не е довршено ќе го довршам наскоро)</h3>
     <?php echo form_open('admin/menu/submit_menu_item', array('id' => 'submit_menu_form')); ?>
@@ -42,25 +47,77 @@
             <div class="clear"></div>
         </div>
         <div class="separator" ></div>
-        <label class="block" for="parent">Родител:</label>
+        <label class="block" for="parent">Родител:</label>    
         <select name="parent" class="parent" style="width: 335px;" >
             <option id="parent_id_0" value="0">-- Нема Родител --</option>
-            <?php foreach($menu_items as $m_i) :?>
-            <option id="parent_id_<?php echo $m_i->menu_items_id; ?>" 
-                    <?php if($menu_item->menu_items_id == $m_i->menu_items_id) : ?>
-                          selected="selected"
-                    <?php endif;?> 
-                    value="<?php echo $m_i->menu_items_id;?>">
-                <?php echo str_repeat('&nbsp;&nbsp;&nbsp;', $m_i->depth_level); ?>
-                <?php echo $m_i->text; ?>
-            </option>
-            <?php endforeach; ?>
+            
+            <?php MenuHelper::echo_dropdown($menu_items, $menu_item->parent_id);?>
         </select>
         <div class="clear"></div>
         <div class="separator"></div>
         <input type="submit" class="button round" id="submit" value="Зачувај" />
     </div>
     </form>
+    
+    <div style="margin-top:20px">
+        <?php if(isset($menu_item->children) and is_array($menu_item->children) and count($menu_item->children) > 0) : ?>
+        <h3>Подлинкови</h3>
+        <div id="grid-sortable">
+        <?php foreach($menu_item->children as $child) :?>
+                
+             <div id="<?php echo $child->menu_items_id; ?>" name="page_<?php echo $child->parent_id; ?>">
+
+
+                <div class="menu-grid-text">
+                    <?php echo str_repeat('&nbsp;&nbsp;&nbsp;', $child->depth_level); ?>
+                    <a href="<?php echo base_url(); ?>admin/menu/edit_menu_item/<?php echo $child->menu_items_id; ?>" title="Измени">
+                        <?php echo $child->text; ?>
+                    </a>
+                </div>
+                <div class="menu-grid-link">
+                    <a href="<?php echo base_url() . $child->link; ?>" target="_blank">
+                        <?php echo base_url() . mb_substr($child->link, 0, 100); ?>
+                    </a>
+                </div>
+                <div class="article-grid-edit-links">
+                    <a href="<?php echo base_url(); ?>admin/menu/edit_menu_item/<?php echo $child->menu_items_id; ?>" title="Измени">
+                        <img src="<?php echo base_url() ?>public/images/edit_pencil_24_24.png" alt="" /></a>
+                    &nbsp;|&nbsp;
+                    <?php if (count($child->children) == 0): ?>
+                        <a href="#" class="delete-link" title="Избриши" rel="<?php echo $child->menu_items_id; ?>"><img src="<?php echo base_url() ?>public/images/delete_red_24_24.png" alt=""  /></a>
+                    <?php else: ?>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <?php endif; ?>
+                        &nbsp;|&nbsp;
+                        <a href="">
+                            <img src="<?php echo base_url() ?>public/images/drag_24_24.png" alt="" /></a>
+                    
+                </div>
+
+
+                <?php echo $child->menu_items_id; ?>
+                <div class="clear"></div>
+                <div class="separator"></div>
+                
+                <?php if(isset($child->children) and 
+                      is_array($child->children) and
+                      count($child->children)    > 0): ?>
+                <ul>    
+                    <?php MenuHelper::echo_menu_admin($child->children);?>
+                </ul>
+                <div class="clear"></div>
+                <div class="separator"></div>
+                
+                <?php endif; ?>
+            </div>
+        
+        
+        
+        <?php endforeach; ?>
+        </div>
+        <?php endif; ?>
+    </div>
+    
 </div>
 <script type="text/javascript">
     $("#articles").change(function () {
@@ -96,6 +153,16 @@
         })
         .change();
         
+        
+     $( "#grid-sortable" ).sortable({
+            update: function(event, ui) {
+                console.log($(this).sortable('toArray').toString());
+                $.post('<?php echo base_url();?>admin/menu/update_menu_order',
+                       {order:$(this).sortable('toArray').toString(), topLevelItems: 0},function(data){
+                    //alert(data);
+                });
+            }
+        });
         
     
 </script>

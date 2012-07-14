@@ -60,12 +60,24 @@ class Menus_model extends CI_Model {
         }
     }
     
+    public function traverse($menu_item, $id_to_find)
+    {
+        if($menu_item->menu_items_id == $id_to_find)
+        {
+            return $menu_item;
+        }
+        else{
+            foreach($menu_item->children as $child)
+            {
+                return $this->traverse($child,$id_to_find);
+            }
+        }
+    }
     
     
-    
-    public function get_menu_items_with_children(){
+    public function get_menu_items_with_children($options = array()){
         
-        $all_menu_items = $this->get_menu_items();
+        $all_menu_items = $this->get_menu_items($options);
         
         $top_level_menu_items   =  array();
         foreach($all_menu_items as  $key => $menu_item) // get all parent menu items and remove them from the array

@@ -130,3 +130,8 @@ select{ padding: 2px 5px 2px 5px;}
     float:left;
     width:350px;
 }
+
+ul, li
+{
+    list-style-type: none;
+}

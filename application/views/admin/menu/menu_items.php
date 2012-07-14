@@ -69,7 +69,7 @@
             update: function(event, ui) {
                 console.log($(this).sortable('toArray').toString());
                 $.post('<?php echo base_url();?>admin/menu/update_menu_order',
-                       {order:$(this).sortable('toArray').toString()},function(data){
+                       {order:$(this).sortable('toArray').toString(),topLevelItems: 1},function(data){
                     //alert(data);
                 });
             }

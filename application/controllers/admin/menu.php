@@ -24,7 +24,7 @@ class Menu extends MY_Admin_Controller {
         $data['menu_item']  = new MenuItem();
         
         $categories = $this->articles_model->get_categories();
-        $menu_items = $this->menus_model->get_menu_items();
+        $menu_items = $this->menus_model->get_menu_items_with_children();
         $articles   = $this->articles_model->get_articles();
         
         $data['articles']       =   $articles;
@@ -40,16 +40,27 @@ class Menu extends MY_Admin_Controller {
         {
             $this->load->model('menus_model');
             $this->load->model('articles_model');
-            $options = array('menu_items_id'    =>  $menu_item_id);
-            $menu_item = $this->menus_model->get_menu_items($options);
             
-            if(count($menu_item) == 1)
+            $all_items  = $this->menus_model->get_menu_items_with_children();
+            
+            $menu_item = null;
+            foreach($all_items as $a_item)
             {
+                $menu_item = $this->menus_model->traverse($a_item, $menu_item_id);
+                if($menu_item != null){
+                    break;
+                }
+            }
+            
+            if($menu_item == null)
+            {
+                $menu_item = $this->menus_model->get_menu_items(array('menu_items_id' => $menu_item_id));
                 $menu_item = $menu_item[0];
             }
             
             
-            $menu_items = $this->menus_model->get_menu_items();
+            
+            $menu_items = $all_items; //$this->menus_model->get_menu_items();
             $categories = $this->articles_model->get_categories();
             $articles   = $this->articles_model->get_articles();
             
@@ -156,11 +167,44 @@ class Menu extends MY_Admin_Controller {
         $this->load->model('menus_model');
         
         $new_positions = explode(',',$this->input->post('order'));
+        $is_top_level  = (int)$this->input->post('topLevelItems');
+        
+        $max_order_index_item = null;
+        
         foreach ($new_positions as $key => $value) {
                 $id = $value;
-                $order_index = (($key * 100) + 100);
-
+                
                 $menu_item = $this->menus_model->get_menu_items(array('menu_items_id'    =>  $id)); // get the current item
+                
+                
+                
+                if($is_top_level == 1)
+                {
+                    $order_index = (($key * 100) + 100);
+                }
+                elseif ($is_top_level == 0)
+                {
+                    $parent = $this->menus_model->get_menu_items(array('menu_items_id'  => $menu_item[0]->parent_id ));
+                    $parent = $parent[0];
+                    
+                    
+                    if($max_order_index_item == null)
+                    {
+                        $max_order_index_item = $this->menus_model->get_menu_items(array('order_index > ' => $parent->order_index,
+                                                                                     'order_index <'  => (($parent->order_index / 100) * 100) + 100 - ($parent->order_index % 100)
+                                                                                    ),
+                                                                                    1,
+                                                                                    0,
+                                                                                    'order_index DESC'
+                                                                               );
+                        $max_order_index_item = $max_order_index_item[0];
+                        $max_order_index_item->order_index--;
+                    }
+                    $order_index = $max_order_index_item->order_index  + $key;
+                }
+                
+                
+               
                 
                 
                 $all_menu_items = $this->menus_model->get_menu_items_with_children(); // get all items with their children so that we could update their order index accordingly
@@ -185,17 +229,6 @@ class Menu extends MY_Admin_Controller {
                     $this->menus_model->update_menu_item($menu_item);
                 }     
          }
-         
-         
-              
-          
-                 
-                    
-
-          
-               
-                 
-        
     }
     
 }
