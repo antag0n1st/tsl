@@ -66,7 +66,7 @@
           $("#articles option:selected").each(function () {
                 id    =  $(this).attr('value');
                 slug += $(this).attr('rel');
-                base  = 'article';
+                base  = 'articles';
               });
           if(id > 0)
               {

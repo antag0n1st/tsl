@@ -42,6 +42,7 @@ $route['default_controller'] = "homepage";
 $route['404_override'] = '';
 
 $route['articles/(:num)-(:any)'] = "articles/index/$1";
+$route['category/(:num)-(:any)'] = "articles/category/$1";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

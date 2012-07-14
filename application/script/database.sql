@@ -363,7 +363,7 @@ INSERT INTO `menu_items` (`menu_items_id`, `text`, `link`, `parent_id`, `date_cr
 (25, 'Consulting', 'category/5-consulting', 0, '2012-07-14 09:31:47', 500, 0),
 (28, 'Галерија', 'gallery', 0, '2012-07-14 09:35:47', 800, 0),
 (29, 'Новости', 'category/1-novosti', 0, '2012-07-14 09:36:16', 900, 0),
-(30, 'Референци', 'article/54-referenci', 0, '2012-07-14 09:37:59', 1000, 0);
+(30, 'Референци', 'articles/54-referenci', 0, '2012-07-14 09:37:59', 1000, 0);
 
 
 

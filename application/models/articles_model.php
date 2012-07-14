@@ -51,6 +51,43 @@ class Articles_model extends CI_Model {
         return $result->result();
     }
     
+    public function get_articles_by_category($category_id,$options = array(),$limit = 0, $offset = 0, $order_by = 'ID DESC')
+    {
+        $options = $this->_default(array('status <>' => '0'), $options);
+        
+        foreach($options as $key => $option)
+        {
+            $this->db->where($key, $option);
+        }
+        $this->db->where('ac.categories_id',$category_id);
+        $this->db->from('articles a');
+        $this->db->join('articles_categories ac', 'a.id = ac.articles_id');
+        $this->db->select('a.id,
+                           a.title,
+                           a.description,
+                           a.content,
+                           a.date_created,
+                           a.date_published,
+                           a.slug,
+                           a.featured_image,
+                           a.status');
+        
+        if($limit){
+            $this->db->limit($limit);
+        }
+        if($offset){
+            $this->db->offset($offset);
+        }
+        if($order_by)
+        {
+            $this->db->order_by($order_by);
+        }
+        
+        $result = $this->db->get();
+        
+        return $result->result();
+    }
+    
     
     public function get_latest_news() {
 
@@ -181,9 +218,31 @@ class Articles_model extends CI_Model {
     }
     
     
-    public function get_categories()
+    public function get_categories($options = array(),$limit = 0, $offset = 0, $order_by = 'categories_id DESC')
     {
-        $result = $this->db->get('categories');
+        
+        foreach($options as $key => $option)
+        {
+            $this->db->where($key, $option);
+        }
+        $this->db->from('categories');
+        $this->db->select('categories_id,
+                           name,
+                           slug');
+        
+        if($limit){
+            $this->db->limit($limit);
+        }
+        if($offset){
+            $this->db->offset($offset);
+        }
+        if($order_by)
+        {
+            $this->db->order_by($order_by);
+        }
+        
+        $result = $this->db->get();
+        
         
         $categories = array();
         

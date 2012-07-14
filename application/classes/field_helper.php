@@ -28,6 +28,11 @@ class FieldHelper{
     {
         echo date("d.m.Y H:i", strtotime($date) );
     }
+    
+    public static function date_no_time_field($date)
+    {
+        echo date("d.m.Y", strtotime($date) );
+    }
 
 }
 ?>
