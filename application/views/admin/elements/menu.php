@@ -38,7 +38,13 @@
                 <li><a href="<?php echo base_url(); ?>admin/menu/show_menu_items">Сите линкови</a></li>
             </ul>
         </li>
-        <li><a href="#">Newsletter</a></li>
+        <li>
+            <a href="#">Newsletter</a>
+            <ul>
+                <li><a href="<?php echo base_url().'admin/newsletter'; ?>">Сите Писма</a></li>
+                <li><a href="<?php echo base_url().'admin/newsletter/add_new'; ?>">Ново Писмо</a></li>
+            </ul>
+        </li>
         <li><a href="#">Галерии</a>
             <ul>
                 <li><a href="<?php echo base_url(); ?>admin/gallery/new_gallery">Нова галерија</a></li>

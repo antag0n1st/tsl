@@ -120,3 +120,16 @@
                      
     });
 </script>
+<script type="text/javascript">
+    function confirm_delete(){
+        var r=confirm("Дали сте сигурни дека сакате да избришете?");
+            if (r==true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+    }
+</script>

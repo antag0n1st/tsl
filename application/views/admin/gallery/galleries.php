@@ -30,7 +30,7 @@
 </div>  
 <script type="text/javascript">
     function confirm_delete(){
-        var r=confirm("Дали сакате да ја избришете галеријата ?");
+        var r=confirm("Дали сте сигурни дека сакате да избришете?");
             if (r==true)
             {
                 return true;

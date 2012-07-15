@@ -135,3 +135,26 @@ ul, li
 {
     list-style-type: none;
 }
+
+.checkbox-statii{}
+
+.checkbox-statii ul{
+    overflow: hidden;
+}
+.checkbox-statii li{
+    margin-bottom: 3px;
+    overflow: hidden;
+    height: auto;
+}
+
+.checkbox-statii a{ 
+    min-height: 20px;
+    display: inline-block;
+    width: 410px;
+}
+.checkbox-statii input[type=checkbox]{ 
+    margin: 0px 10px 0px 10px;
+    display: block;
+    float: left;
+    height: 13px;
+}
