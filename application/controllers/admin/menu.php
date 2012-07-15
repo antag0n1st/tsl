@@ -73,6 +73,32 @@ class Menu extends MY_Admin_Controller {
         }
     }
     
+    public function delete_menu_item($menu_item_id, $redirect = 'show_menu_items')
+    {
+        if(is_numeric($menu_item_id))
+        {
+            $this->load->model('menus_model');
+            
+            $options = array('parent_id'    =>  $menu_item_id );
+            
+            $children = $this->menus_model->get_menu_items($options);
+            
+            if(count($children) == 0) // we need to make sure that the current node has no children
+            {
+                $this->menus_model->delete_menu_item($menu_item_id);
+                if($redirect == 'show_menu_items')
+                {
+                    redirect(base_url() . 'admin/menu/show_menu_items');
+                }
+                else
+                {
+                    redirect(base_url() . 'admin/menu/edit_menu_item/' . $redirect);
+                }
+            }
+        }
+    }
+    
+    
     public function submit_menu_item()
     {
       //  print_r($_POST);
@@ -190,7 +216,7 @@ class Menu extends MY_Admin_Controller {
     }
     
     
-    public function update_menu_order()
+    public function update_menu_order() // before you say it, I know this needs refactoring
     {
         $this->load->model('menus_model');
         
@@ -198,6 +224,7 @@ class Menu extends MY_Admin_Controller {
         $is_top_level  = (int)$this->input->post('topLevelItems');
         
         $max_order_index_item = null;
+        
         
         foreach ($new_positions as $key => $value) {
                 $id = $value;
@@ -240,6 +267,7 @@ class Menu extends MY_Admin_Controller {
                 
                 if(count($menu_item) == 1)
                 {
+                    $start_index = 1;
                     $menu_item = $menu_item[0];
                     $menu_item->order_index = $order_index;
 
@@ -247,16 +275,44 @@ class Menu extends MY_Admin_Controller {
                      {
                          if($menu_item->menu_items_id == $a_menu_item->menu_items_id)
                          {
-                            $this->menus_model->update_children_order($a_menu_item, $order_index, 1);
-                            unset($all_menu_items[$k]);
-                            break;
+                            $this->menus_model->update_children_order($a_menu_item, $order_index, $start_index); // update the current subtree
+                            //unset($all_menu_items[$k]);
+                            //break;
                          }
                      }
-                     $all_menu_items = array_values($all_menu_items);
+                     $start_index = 1;
+                     foreach($all_menu_items as $a_menu_item)
+                     {
+                         if( (($menu_item->order_index / 100) * 100) == $a_menu_item->order_index)   // update the  whole branch
+                         {
+                             $this->menus_model->update_children_order($a_menu_item, $a_menu_item->order_index, $start_index);
+                         }
+                     }
                     
                     $this->menus_model->update_menu_item($menu_item);
                 }     
          }
+    }
+    
+    public function test($menu_item_id)
+    {
+        $this->load->model('menus_model');
+        
+        $all_menu_items = $this->menus_model->get_menu_items_with_children();
+        $options        = array('menu_items_id' =>  $menu_item_id);
+        $current_item   = $this->menus_model->get_menu_items($options);
+        $current_item   = $current_item[0];
+        
+        foreach($all_menu_items as $a_menu_item)
+        {
+            if($a_menu_item->order_index == (($current_item->order_index / 100) * 100) )
+            {
+                print_r($a_menu_item);
+                return;
+            }
+        }
+        
+        
     }
     
 }

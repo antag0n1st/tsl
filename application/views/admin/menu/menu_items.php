@@ -74,7 +74,14 @@
                 });
             }
         });
+        $(".delete-link").click(function(){
         
+                if(window.confirm('Дали сте сигурни дека сакате да избришете?'))
+                {
+                    var eventId = $(this).attr('rel');
+                    window.location = "<?php echo base_url()?>admin/menu/delete_menu_item/" + eventId;
+                }
+             });
         
     });
 </script>

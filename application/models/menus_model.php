@@ -45,7 +45,7 @@ class Menus_model extends CI_Model {
         return $result->result();
     }
     
-    public function update_children_order($menu_item, $order_index, $i)
+    public function update_children_order($menu_item, $order_index, &$i)
     {
         if(isset($menu_item->children)    and 
            is_array($menu_item->children) and
@@ -141,7 +141,7 @@ class Menus_model extends CI_Model {
         $this->db->update('menu_items',$data);
     }
     
-    public function delete_calendar_event($menu_item_id){
+    public function delete_menu_item($menu_item_id){
         $this->db->where('menu_items_id', $menu_item_id);
         $this->db->delete('menu_items');
     }
