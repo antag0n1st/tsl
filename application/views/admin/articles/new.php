@@ -49,11 +49,9 @@
                 <textarea id="ajaxfilemanager" name="content" style="width: 600px; height: 450px"><?php FieldHelper::field($article->id, $article->content, "Објавете нова статија"); ?></textarea>
             </div>
 
-            <div>
-                <input style="width: 590px;" type="text" id="article_description" name="description" value="<?php FieldHelper::field($article->id, $article->description, "Краток опис"); ?>" />
-            </div>
+            
             <br />
-            <input class="button round" type="submit" name="submit" value="Објави" />
+            <input class="button round" type="submit" name="submit" value="Зачувај" />
 
         </div>
 
@@ -87,9 +85,19 @@
                 </div>
             </div>
             <div class="separator"></div>
-
+            <div style="margin: 10px 0 0 0">
+                <label class="block">Краток опис:</label>
+                <textarea id="article_description" name="description" style="width: 290px; height: 90px"><?php FieldHelper::field($article->id, $article->description, "Краток опис"); ?></textarea>
+            </div>
+            <div class="separator"></div>
+            <?php   if($article->id != 0): ?>
+            <label class="block">Preview</label>
+                    <a href="<?php echo base_url() . 'articles/'. $article->id . '-' . $article->slug; ?>" target="_blank">
+                        <?php echo base_url() . 'articles/' . $article->id . '-'. $article->slug; ?>
+                    </a>
+            <?php  endif; ?>
         </div>
-        <span id="autosave_status"></span>
+        <div id="autosave_status"></div>
     </div>
 </form>
 </div>        

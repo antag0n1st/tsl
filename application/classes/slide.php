@@ -28,7 +28,7 @@ class Slide {
     {
         if(strlen(trim($this->title)) > 0       and
            strlen(trim($this->description))     and
-           strlen(trim($this->link))            and
+ //          strlen(trim($this->link))            and   
            strlen(trim($this->image))           and
            strlen(trim($this->date_created))    and
            is_numeric($this->slides_id)         and

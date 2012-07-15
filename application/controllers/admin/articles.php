@@ -70,6 +70,7 @@ class Articles extends MY_Admin_Controller {
         $article->date_created    =   TimeHelper::DateTimeAdjusted();
         $article->slug            =   CyrillicLatin::seo_friendly($article->title);
         
+        $original_status_request  =
         $article->status          =   $this->input->post('status');
         
         $featured_image_hidden = $this->input->post('featured_image_hidden');
@@ -125,7 +126,7 @@ class Articles extends MY_Admin_Controller {
         $data['categories'] = $this->articles_model->get_categories();
         $data['saved_categories'] = $categories;
         $data['main_content']   =   'admin/articles/new';
-        if($article->status == 2){ // autosave
+        if((int)$original_status_request == 2){ // autosave
             echo json_encode($article);
         }
         else{

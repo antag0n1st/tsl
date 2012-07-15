@@ -25,6 +25,17 @@ class Article {
         $this->id = 0;
     }
     
+    public function is_published()
+    {
+        return $this->status == 1;
+    }
+    
+    public function is_autosaved()
+    {
+        return $this->status == 2;
+    }
+    
+    
 }
 
 ?>
