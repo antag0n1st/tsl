@@ -92,7 +92,14 @@ class Menu extends MY_Admin_Controller {
                 $options = array('parent_id'    => 0);
                 $max_parent_id_item = $this->menus_model->get_menu_items($options,0,0,'menu_items_id DESC');
                 
-                $menu_item->order_index = $max_parent_id_item[0]->order_index + 100;
+                if($menu_item->menu_items_id == 0)
+                {
+                    $menu_item->order_index = $max_parent_id_item[0]->order_index + 100;
+                }
+                else
+                {
+                    $menu_item->order_index = $this->input->post('order_index');
+                }
                 $menu_item->depth_level = 0;
         }
         else{ // sub level item
@@ -103,14 +110,20 @@ class Menu extends MY_Admin_Controller {
                 $options = array('parent_id'    => $menu_item->parent_id);
                 $max_child_id_item = $this->menus_model->get_menu_items($options,1,0,'order_index DESC');
                 
-                
-                if(count($max_child_id_item) > 0)
+                if($menu_item->menu_items_id == 0)
                 {
-                    $menu_item->order_index = $max_child_id_item[0]->order_index + 1;
+                        if(count($max_child_id_item) > 0)
+                        {
+                            $menu_item->order_index = $max_child_id_item[0]->order_index + 1;
+                        }
+                        else
+                        {
+                            $menu_item->order_index = $max_parent_id_item[0]->order_index + 1;
+                        }
                 }
                 else
                 {
-                    $menu_item->order_index = $max_parent_id_item[0]->order_index + 1;
+                    $menu_item->order_index = $this->input->post('order_index');
                 }
                 
                 $menu_item->depth_level = $max_parent_id_item[0]->depth_level + 1;
@@ -132,9 +145,24 @@ class Menu extends MY_Admin_Controller {
         }
         $data['msg']    =   $msg;
         
+        
+        
+        
+        
         $categories = $this->articles_model->get_categories();
-        $menu_items = $this->menus_model->get_menu_items();
+        $menu_items = $this->menus_model->get_menu_items_with_children();//$this->menus_model->get_menu_items();
         $articles   = $this->articles_model->get_articles();
+        
+        $id_to_find = $menu_item->menu_items_id;
+        
+        foreach($menu_items as $m_i)
+        {
+            $menu_item = $this->menus_model->traverse($m_i, $id_to_find);
+            if($menu_item != null){
+                break;
+            }
+        }
+        
         
         $data['articles']       =   $articles;
         $data['menu_item']     =   $menu_item;
