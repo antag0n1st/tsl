@@ -15,6 +15,48 @@ class Newsletter_model extends CI_Model {
         $this->load->database();
     }
     
+    public function get_newsletter_to_send(){
+        
+        
+        $query  = " SELECT * FROM newsletter ";
+        $query .= " WHERE status < 2 ";
+        $query .= " AND date_finished IS NULL ";
+        $query .= " ORDER BY id DESC ";
+        $query .= " LIMIT 1 ";
+        
+        $result = $this->db->query($query);
+        
+        $newsletters = $result->result();
+        return isset($newsletters[0]) ? $newsletters[0] : null;
+        
+    }
+    
+    public function get_emails($newsletter_id,$limit = 100){
+        
+        $query  = " SELECT e.id, e.email FROM emails AS e ";
+        $query .= " LEFT JOIN emails_sent AS s ";
+        $query .= " ON e.id = s.email_id AND s.newsletter_id = ".$this->db->escape($newsletter_id)." ";
+        $query .= " WHERE ";
+        $query .= " s.email_id IS NULL ";
+        $query .= " LIMIT ". ((int)$limit);
+        
+        $result = $this->db->query($query);
+        return $result->result();
+    }
+    
+    public function update_email_sent($newsletter_id,$email_id){
+        
+        $query  = " INSERT INTO emails_sent ";
+        $query .= " (newsletter_id,email_id,date_sent) ";
+        $query .= " VALUES ( ";
+        $query .= " ".$this->db->escape($newsletter_id)." ";
+        $query .= " , ".$this->db->escape($email_id)." ";
+        $query .= " , ".$this->db->escape(TimeHelper::DateTimeAdjusted())." ";
+        $query .= " ) ";
+        
+        $this->db->query($query);
+    }
+    
     
     public function get_newsletters()
     {
@@ -39,16 +81,49 @@ class Newsletter_model extends CI_Model {
         return $result->result();
     }
     
-    public function get_newsletter_articles($id){
+    public function get_newsletter_articles($newsletter_id){
         
         $query  = " SELECT * FROM newsletter_articles ";
         $query .= " WHERE ";
-        $query .= " newsletter_id = ".$this->db->escape($id)." ";
+        $query .= " newsletter_id = ".$this->db->escape($newsletter_id)." ";
         
         $result = $this->db->query($query);
         
         return $result->result();
         
+    }
+    public function set_newsletter_started($newsletter_id){
+        /**
+         * status
+         *  0 - not started
+         *  1 - started
+         *  2 - paused
+         *  3 - finished
+         */
+        $query  = " UPDATE newsletter ";
+        $query .= " SET ";
+        $query .= " status  = 1 ";
+        $query .= " , date_started = ".$this->db->escape(TimeHelper::DateTimeAdjusted())." ";
+        $query .= " WHERE id = ".$this->db->escape($newsletter_id)." ";
+        
+        $this->db->query($query);
+    }
+    
+    public function set_newsletter_finished($newsletter_id){
+        /**
+         * status
+         *  0 - not started
+         *  1 - started
+         *  2 - paused
+         *  3 - finished
+         */
+        $query  = " UPDATE newsletter ";
+        $query .= " SET ";
+        $query .= " status  = 3 ";
+        $query .= " , date_finished = ".$this->db->escape(TimeHelper::DateTimeAdjusted())." ";
+        $query .= " WHERE id = ".$this->db->escape($newsletter_id)." ";
+        
+        $this->db->query($query);
     }
     
     public function insert_newsletter($title,$content,$articles = array()){

@@ -15,6 +15,10 @@ class TimeHelper
     {
         return date("Y-m-d H:i:s", strtotime( self::DatetimeInGMT() . " + 2 hours" ) );
     }
+    static function DateAdjusted()
+    {
+        return date("Y-m-d", strtotime( self::DatetimeInGMT() . " + 2 hours" ) );
+    }
 
     static function LastNMinutes($minutes = 30)
     {
