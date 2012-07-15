@@ -68,7 +68,7 @@ class Newsletter_model extends CI_Model {
         $query .= " , ".$this->db->escape($title)." ";
         $query .= " , ".$this->db->escape($content)." ";
         $query .= " , 0 ";
-        $query .= " , NOW() ";
+        $query .= " , '".TimeHelper::DateTimeAdjusted()."' ";
         $query .= " , NULL ";
         $query .= " , NULL ";
         $query .= " )  ";

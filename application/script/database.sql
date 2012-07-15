@@ -427,7 +427,7 @@ CREATE TABLE IF NOT EXISTS `sidebar` (
   `is_deletable` int(10) unsigned DEFAULT NULL,
   `type` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `sidebar`
@@ -438,3 +438,124 @@ INSERT INTO `sidebar` (`id`, `name`, `content`, `position`, `is_deletable`, `typ
 (2, 'quotes', 'elements/quotes', 1, 0, 'view'),
 (3, 'success_pages', '<a href="#">\r\n        <img alt="" style="float: left;margin-right: 10px;" src="<?php echo base_url().''images/tick.png''; ?>" />    <h3 style="float: left;margin-top: 5px;">Страници на успех</h3>\r\n<div class="clear"></div>\r\n<div style="text-align:center;">\r\n<img src="<?php echo base_url();?>public/images/stranici-na-uspeh.jpg" alt="stranici na uspeh" />\r\n</div>\r\n    </a>', 2, 0, 'content'),
 (4, 'social links', '<h3>Следи не:</h3>\r\n        <a target="_balnk" href="http://www.facebook.com//login.php#!/pages/Triple-S-Learning/321852101858?ref=ts"><img alt="" src="<?php echo base_url().''images/icon-facebook.png''; ?>" /></a>\r\n        <a target="_balnk" href="http://www.linkedin.com/in/tripleslearning"><img alt="" src="<?php echo base_url().''images/icon-linkedin.png''; ?>" /></a>\r\n        <a target="_balnk" href="http://twitter.com/TripleSGroup"><img alt="" src="<?php echo base_url().''images/icon-twitter.png''; ?>" /></a>\r\n        <a target="_balnk" href="http://www.youtube.com/user/TripleSLearning"><img alt="" src="<?php echo base_url().''images/icon-youtube.png''; ?>" /></a>\r\n        <a target="_balnk" href="#"><img alt="" src="<?php echo base_url().''images/icon-rss.png''; ?>" /></a>\r\n', 3, 0, 'content');
+
+
+
+
+
+
+-- phpMyAdmin SQL Dump
+-- version 3.4.10.1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Jul 15, 2012 at 04:48 PM
+-- Server version: 5.5.20
+-- PHP Version: 5.3.10
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `tsl`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `emails`
+--
+
+CREATE TABLE IF NOT EXISTS `emails` (
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `emails`
+--
+
+INSERT INTO `emails` (`id`, `email`, `created_at`) VALUES
+(1, 'trbogazov@gmail.com', '2012-07-15 00:00:00'),
+(2, 'vladimir@gmail.com', '2012-07-15 00:00:00'),
+(3, 'tsl@gmail.com', '2012-07-15 00:00:00'),
+(4, 'farytail@gmail.com', '2012-07-15 00:00:00'),
+(5, 'sample@yahoo.com', '2012-07-15 00:00:00'),
+(6, 'nemo@yahoo.com', '2012-07-15 00:00:00'),
+(7, 'jet-fly@yahoo.com', '2012-07-15 00:00:00'),
+(8, 'panda@hotmal.com', '2012-07-15 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `emails_sent`
+--
+
+CREATE TABLE IF NOT EXISTS `emails_sent` (
+  `newsletter_id` smallint(5) unsigned NOT NULL,
+  `email_id` smallint(5) unsigned NOT NULL,
+  `date_sent` timestamp NULL DEFAULT NULL,
+  KEY `email_ix` (`email_id`),
+  KEY `newsletter_ix` (`newsletter_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `newsletter`
+--
+
+CREATE TABLE IF NOT EXISTS `newsletter` (
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(510) COLLATE utf8_bin NOT NULL,
+  `content` text COLLATE utf8_bin NOT NULL,
+  `status` tinyint(4) NOT NULL,
+  `date_created` datetime NOT NULL,
+  `date_started` datetime DEFAULT NULL,
+  `date_finished` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `newsletter`
+--
+
+INSERT INTO `newsletter` (`id`, `title`, `content`, `status`, `date_created`, `date_started`, `date_finished`) VALUES
+(3, 'sent 0 emails', 'asdgasdgasdga sdgasdgasdg as', 0, '2012-07-15 17:06:49', NULL, NULL),
+(4, 'the paused title', 'with some content', 2, '2012-07-15 17:19:07', NULL, NULL),
+(5, 'the finished newsletter', 'asda sdfasdfasdfasdf', 3, '2012-07-15 17:19:53', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `newsletter_articles`
+--
+
+CREATE TABLE IF NOT EXISTS `newsletter_articles` (
+  `newsletter_id` smallint(5) unsigned NOT NULL,
+  `article_id` int(10) unsigned NOT NULL,
+  KEY `newsletter_ix` (`newsletter_id`),
+  KEY `articles_ix` (`article_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `newsletter_articles`
+--
+
+INSERT INTO `newsletter_articles` (`newsletter_id`, `article_id`) VALUES
+(3, 49),
+(3, 48),
+(3, 47),
+(3, 46),
+(3, 42),
+(4, 49),
+(5, 49),
+(5, 48),
+(5, 47),
+(5, 46),
+(6, 49);
+
+
+
