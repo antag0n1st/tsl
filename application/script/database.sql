@@ -345,7 +345,7 @@ CREATE TABLE IF NOT EXISTS `menu_items` (
   `order_index` int(11) NOT NULL,
   `depth_level` int(11) NOT NULL,
   PRIMARY KEY (`menu_items_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=23 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=32 ;
 
 --
 -- Dumping data for table `menu_items`
@@ -356,14 +356,15 @@ INSERT INTO `menu_items` (`menu_items_id`, `text`, `link`, `parent_id`, `date_cr
 (2, 'Learning', 'category/3-learning', 0, '2012-07-12 11:26:02', 200, 0),
 (3, 'Speakers', 'category/2-speakers', 0, '2012-07-12 11:27:33', 300, 0),
 (4, 'Speaker 1', 'articles/52-speaker-1', 3, '2012-07-12 11:31:22', 301, 1),
-(5, 'Speaker 2', 'articles/53-speaker-2', 4, '2012-07-12 11:31:40', 302, 2);
+(5, 'Speaker 2', 'articles/53-speaker-2', 4, '2012-07-12 11:31:40', 302, 2),
 (26, 'Експертски академии', 'category/6-ekspertski-akademii', 0, '2012-07-14 09:32:15', 600, 0),
 (27, 'Тренери', 'category/7-treneri', 0, '2012-07-14 09:32:34', 700, 0),
 (24, 'Recruitment', 'category/4-recruitment', 0, '2012-07-14 09:31:19', 400, 0),
 (25, 'Consulting', 'category/5-consulting', 0, '2012-07-14 09:31:47', 500, 0),
 (28, 'Галерија', 'gallery', 0, '2012-07-14 09:35:47', 800, 0),
 (29, 'Новости', 'category/1-novosti', 0, '2012-07-14 09:36:16', 900, 0),
-(30, 'Референци', 'articles/54-referenci', 0, '2012-07-14 09:37:59', 1000, 0);
+(30, 'Референци', 'articles/54-referenci', 0, '2012-07-14 09:37:59', 1000, 0),
+(31, 'Speaker 3', 'bezveze-link', 5, '2012-07-14 09:53:03', 303, 3);
 
 
 

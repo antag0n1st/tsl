@@ -14,7 +14,9 @@
             $query = $_SERVER['QUERY_STRING'] ? '?'.$_SERVER['QUERY_STRING'] : '';
             $current_url = $this->config->site_url().$this->uri->uri_string(). $query;
             ?>
-            
+            <br />
+            <a href="">Контактирајте нè за дополнителни информации за изведба на обуката</a>
+            <div class="separator"></div>
             <div class="social-buttons">
                 <h3>Сподели ја оваа страница: </h3>
                 <iframe src="//www.facebook.com/plugins/like.php?href=<?php echo urlencode($current_url); ?>&amp;send=false&amp;layout=button_count&amp;width=100&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=237839832902397" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>

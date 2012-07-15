@@ -58,7 +58,7 @@ line-height: 17px; }
 #menu, #menu ul { list-style: none; margin: 0; padding: 0 ;z-index: 1; }
 
 #menu li { background: white; border-right: 1px solid #fff; position: relative; float: left; white-space: nowrap }
-#menu li a { display: block; padding: 5px 15px; text-decoration: none; color: #4D4D4D; font-size: 16px; }
+#menu li a { display: block; padding: 5px 13px; text-decoration: none; color: #4D4D4D; font-size: 16px; }
 
 #menu ul { background: #fff; display: none; position: absolute }
 #menu ul li { background: white; border-top: 1px solid #bdd2ff; border-right: 0px solid transparent; float: none }
