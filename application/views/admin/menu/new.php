@@ -4,7 +4,7 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>public/js/jquery-ui/development-bundle/ui/jquery.ui.mouse.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>public/js/jquery-ui/development-bundle/ui/jquery.ui.sortable.js"></script>
 <div class="container o">
-    <h3>Нов линк во менито (Ова не е довршено ќе го довршам наскоро)</h3>
+    <h3>Линк во менито</h3>
     <?php echo form_open('admin/menu/submit_menu_item', array('id' => 'submit_menu_form')); ?>
     <input type="hidden" id="menu_item_id" name="menu_item_id" value="<?php FieldHelper::field($menu_item->menu_items_id, $menu_item->menu_items_id, 0); ?>" />
     <input type="hidden" id="order_index" name="order_index" value="<?php FieldHelper::field($menu_item->menu_items_id, $menu_item->order_index, 0); ?>" />

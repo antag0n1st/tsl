@@ -267,3 +267,18 @@ fieldset input[type=button]{
 .gallery .photo:hover{
 background-color: #e5e5e5;
 }
+
+.float-left{
+    float:left;
+}
+.float-right{
+    float:right;
+}
+
+.logo-holder{
+    width:150px
+}
+
+.header-panel-holder{
+    width:520px;
+}
