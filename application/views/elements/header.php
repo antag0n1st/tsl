@@ -10,7 +10,7 @@
         </div>
         <div class="clear"></div>
         <div class="search-box">
-            <input type="text" value="пребарувај..." />
+            <input type="text" id="search-box" value="Пребарување" />
             <span class="search-button"></span>
         </div>
         <div class="clear"></div>

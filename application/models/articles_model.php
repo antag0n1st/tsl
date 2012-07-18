@@ -280,6 +280,138 @@ class Articles_model extends CI_Model {
     }
     
     
+    public function search_articles($keywords,$options = array(),$limit = 0,$offset = 0, $order_by = 'date_published DESC')
+    {
+        $params = array(    $keywords,
+                            $options,
+                            $limit,
+                            $offset,
+                            $order_by
+        );
+        
+        $filters = $this->get_search_filters($params);
+        
+        foreach($filters as $filter)
+        {
+            $results    = $filter->call();
+            if(isset($results) and count($results) > 0)
+            {
+                return $results;
+            }
+        }
+        return array();
+    }
+    
+    protected function get_search_filters($params)
+    {
+        $filters    =   array(
+                        new SearchFilter($this , 'search_articles_default'      , $params),
+                        new SearchFilter($this , 'search_articles_latinic'      , $params),
+                        new SearchFilter($this , 'search_articles_cyrilic'      , $params),
+                        new SearchFilter($this , 'search_articles_by_categories', $params)
+        );
+        return $filters;
+    }
+    
+    
+    public function search_articles_default($params)
+    {
+        $search = implode('* *', (explode('+',$params[0])) ); 
+        $options["MATCH(title,description) AGAINST('*{$search}*' IN BOOLEAN MODE)"] = NULL;
+        $limit    = $params[2];
+        $offset   = $params[3];
+        $order_by = $params[4];
+        
+        $options = array_merge($options,$params[1]);
+                
+        return $this->get_articles($options, $limit, $offset, $order_by); 
+    }
+    
+    
+    public function search_articles_latinic($params)
+    {
+        $search = explode('+',$params[0]);
+        
+        $search_transformed = array();
+        foreach($search as $keyword)
+        {
+            if(CyrillicLatin::is_cyrilic($keyword) == true)
+            $search_transformed[]    = CyrillicLatin::cyrillic2latin($keyword);
+        }
+        $search = implode('* *', $search_transformed );
+        
+        
+        
+        $options["MATCH(title,description) AGAINST('*{$search}*' IN BOOLEAN MODE)"] = NULL;
+        $limit    = $params[2];
+        $offset   = $params[3];
+        $order_by = $params[4];
+        
+        $options = array_merge($options,$params[1]);
+                
+        return $this->get_articles($options, $limit, $offset, $order_by); 
+        
+    }
+    
+    public function search_articles_cyrilic($params)
+    {
+        $search = explode('+',$params[0]);
+        
+        
+        $search_transformed = array();
+        foreach($search as $keyword)
+        {
+            if(CyrillicLatin::is_latin($keyword) == true)
+            $search_transformed[]    = CyrillicLatin::latin2cyrillic ($keyword);
+        }
+        $search = implode('* *', $search_transformed );
+        
+        
+        $options["MATCH(title,description) AGAINST('*{$search}*' IN BOOLEAN MODE)"] = NULL;
+        $limit    = $params[2];
+        $offset   = $params[3];
+        $order_by = $params[4];
+        
+        $options = array_merge($options,$params[1]);
+                
+        return $this->get_articles($options, $limit, $offset, $order_by);
+    }
+    
+    public function search_articles_by_categories($params)
+    {
+        $categories = $this->get_categories();
+        
+        $search = $params[0];
+        
+        $lower_search = mb_strtolower($search,'UTF-8');
+        if(strlen($lower_search) > 0)
+        foreach($categories as $category)
+        {
+            $contains_category = mb_stripos(mb_strtolower($category->name,'UTF-8'), $lower_search);
+            $contains_slug = mb_stripos(mb_strtolower($category->slug,'UTF-8'),$lower_search);
+            if($contains_category === false and $contains_slug === false)
+            {
+                continue;
+            }
+            else
+            {
+                $options  = array();
+                $options  = array_merge($options,$params[1]);
+                $limit    = $params[2];
+                $offset   = $params[3];
+                $order_by = $params[4];
+
+                return $this->get_articles_by_category($category->id,$options, $limit, $offset, $order_by); 
+            }
+        }
+        
+        return array();
+       
+    }
+    
+    
+    
+    
      /**
      * _default method combines the options array with a set of defaults giving the values in the options array priority.
      *

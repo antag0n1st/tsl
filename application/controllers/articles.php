@@ -85,6 +85,45 @@ class Articles extends MY_Controller {
             }
         }
         
+        
+        public function search()
+        {
+            
+            $search = $this->input->get('s');
+            if(isset($search) and strlen(trim($search)))
+            {
+                $search_original = $search;
+                $this->load->model('articles_model');
+                $this->load->model('quotes_model');
+                $this->load->model('menus_model');
+                $this->load->model('sidebar_model');
+            
+                
+                $search = urldecode($search);
+                $search = CyrillicLatin::sanitize($search);
+                $articles = $this->articles_model->search_articles($search);
+                
+                $events = $this->articles_model->get_events();                
+                $event_categories = $this->articles_model->get_event_categories();
+                $sidebar_elements = $this->sidebar_model->get_sidebar_elements();
+                $menu_items = $this->menus_model->get_menu_items_with_children();
+
+                $quote = $this->quotes_model->get_quote_of_the_day();
+                
+                $data['search']     = $search_original;
+                $data['articles']   = $articles;
+                $data['quote']      = $quote;
+                $data['menu_items'] =   $menu_items;
+                $data['sidebar_elements'] = $sidebar_elements;
+                $data['events'] = $events;
+                $data['event_categories'] = $event_categories;                 
+                $data['main_content'] = 'search_results';
+                
+                $this->load->view('layout/layout',$data);
+            }
+        }
+        
+        
 }
 
 ?>
