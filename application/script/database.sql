@@ -29,7 +29,10 @@ CREATE TABLE IF NOT EXISTS `articles` (
   `slug` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `featured_image` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  FULLTEXT KEY `title_2` (`title`),
+  FULLTEXT KEY `description` (`description`),
+  FULLTEXT KEY `content` (`content`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --

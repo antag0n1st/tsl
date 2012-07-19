@@ -243,7 +243,7 @@ class CyrillicLatin {
     
     public static function is_latin($str)
     {
-       if(strtolower($str) == mb_strtolower($str,'UTF-8'))
+       if(strlen($str) == mb_strlen($str,'UTF-8'))
        {
            return true;
        }

@@ -123,7 +123,19 @@ class Articles extends MY_Controller {
             }
         }
         
-        
+        public function test()
+        {
+            $str = 'новости :';
+            echo $str;
+            echo "is cyrilic: " . CyrillicLatin::is_cyrilic($str);
+            echo "is latinic: " . CyrillicLatin::is_latin($str);
+            
+            
+            echo strlen($str) . '<br />';
+            echo mb_strlen($str,'UTF-8');
+            
+            
+        }
 }
 
 ?>

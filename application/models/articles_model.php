@@ -310,6 +310,7 @@ class Articles_model extends CI_Model {
                         new SearchFilter($this , 'search_articles_latinic'      , $params),
                         new SearchFilter($this , 'search_articles_cyrilic'      , $params)
                         
+                        
         );
         return $filters;
     }
@@ -317,14 +318,9 @@ class Articles_model extends CI_Model {
     
     public function search_articles_default($params)
     {
-        $search = implode('* *', (explode('+',$params[0])) ); 
-        $options["MATCH(title,description) AGAINST('*{$search}*' IN BOOLEAN MODE)"] = NULL;
-        $limit    = $params[2];
-        $offset   = $params[3];
-        $order_by = $params[4];
-        
-        $options = array_merge($options,$params[1]);
-                
+        list($search,$options,$limit,$offset,$order_by) = $params;
+        $search = implode('* *', (explode('+',$search)) ); 
+        $options["MATCH(title,description,content) AGAINST('*{$search}*' IN BOOLEAN MODE)"] = NULL;              
         return $this->get_articles($options, $limit, $offset, $order_by); 
     }
     
@@ -343,7 +339,7 @@ class Articles_model extends CI_Model {
         
         
         
-        $options["MATCH(title,description) AGAINST('*{$search}*' IN BOOLEAN MODE)"] = NULL;
+        $options["MATCH(title,description,content) AGAINST('*{$search}*' IN BOOLEAN MODE)"] = NULL;
         $limit    = $params[2];
         $offset   = $params[3];
         $order_by = $params[4];
@@ -368,7 +364,7 @@ class Articles_model extends CI_Model {
         $search = implode('* *', $search_transformed );
         
         
-        $options["MATCH(title,description) AGAINST('*{$search}*' IN BOOLEAN MODE)"] = NULL;
+        $options["MATCH(title,description,content) AGAINST('*{$search}*' IN BOOLEAN MODE)"] = NULL;
         $limit    = $params[2];
         $offset   = $params[3];
         $order_by = $params[4];
