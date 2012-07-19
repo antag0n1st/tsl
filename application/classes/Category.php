@@ -15,6 +15,19 @@ class Category {
     public $name;
     public $slug;
     public $color;
+    
+    public function is_valid()
+    {
+        if(is_numeric($this->id)         and
+           strlen(trim($this->name)) > 0 and 
+           strlen(trim($this->slug)) > 0 )
+        {
+            return true;
+        }
+        return false;
+    }
+    
+    
 }
 
 ?>

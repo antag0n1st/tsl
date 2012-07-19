@@ -305,10 +305,11 @@ class Articles_model extends CI_Model {
     protected function get_search_filters($params)
     {
         $filters    =   array(
+                        new SearchFilter($this , 'search_articles_by_categories', $params),
                         new SearchFilter($this , 'search_articles_default'      , $params),
                         new SearchFilter($this , 'search_articles_latinic'      , $params),
-                        new SearchFilter($this , 'search_articles_cyrilic'      , $params),
-                        new SearchFilter($this , 'search_articles_by_categories', $params)
+                        new SearchFilter($this , 'search_articles_cyrilic'      , $params)
+                        
         );
         return $filters;
     }

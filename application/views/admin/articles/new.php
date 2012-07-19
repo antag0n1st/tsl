@@ -209,7 +209,14 @@
                 
         // ajax file upload
         $("#btn_featured_image").click(function(){
-            $("#upload_image_form").submit();
+            if( $('#featured_image').val() != '' )
+                {
+                    $("#upload_image_form").submit();
+                }
+                else
+                {
+                    alert('Мора да изберете фајл за прикачување ');
+                }
         })
                      
         $("#upload_image_form").iframePostForm
