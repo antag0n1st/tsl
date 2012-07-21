@@ -17,6 +17,7 @@ class Quotes extends MY_Admin_Controller {
     
     public function new_quote()
     {
+        Head::instance()->title = 'Нов цитат';
         $data = array();
         $data['quote']  = new Quote();
         
@@ -28,6 +29,7 @@ class Quotes extends MY_Admin_Controller {
     {
         if(is_numeric($quote_id))
         {
+            Head::instance()->title = 'Уреди цитат';
             $this->load->model('quotes_model');
             $options = array('quotes_id' => $quote_id);
             $quote = $this->quotes_model->get_quotes($options,1);
@@ -79,6 +81,7 @@ class Quotes extends MY_Admin_Controller {
     
     public function show_quotes()
     {
+        Head::instance()->title = 'Сите цитати';
         $this->load->model('quotes_model');
         
         $this->load->library('pagination');

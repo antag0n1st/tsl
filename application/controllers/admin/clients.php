@@ -11,11 +11,12 @@
 class Clients extends MY_Admin_Controller {
     public function index()
     {
-        
+        $this->show_clients();
     }
     
     public function new_client()
     {
+        Head::instance()->title = 'Нов клиент';
         $data = array();
         $data['client']  = new Client();
         
@@ -27,6 +28,7 @@ class Clients extends MY_Admin_Controller {
     {
         if(is_numeric($client_id) )
         {
+            Head::instance()->title = 'Уреди клиент';
             $this->load->model('clients_model');
             $options = array('clients_id'   =>  $client_id);
             $client = $this->clients_model->get_clients($options);
@@ -127,6 +129,7 @@ class Clients extends MY_Admin_Controller {
     
     
      public function show_clients(){
+        Head::instance()->title = 'Сите клиенти';
         $this->load->model('clients_model');
         $this->load->library('pagination');
 

@@ -12,7 +12,7 @@ class Sidebar extends MY_Admin_Controller {
     
     public function change_position(){
         
-        Head::instance()->title = "TSL Admin";
+        Head::instance()->title = "Странични елементи";
         Head::instance()->load_js('jquery-ui/development-bundle/ui/jquery.ui.core');
         Head::instance()->load_js('jquery-ui/development-bundle/ui/jquery.ui.widget');
         Head::instance()->load_js('jquery-ui/development-bundle/ui/jquery.ui.mouse');
@@ -35,6 +35,7 @@ class Sidebar extends MY_Admin_Controller {
     
     public function add_element(){
         
+        Head::instance()->title = 'Нов елемент';
         $data['main_content']   =   'admin/sidebar/add_element';
         $this->load->view('admin/layout/layout', $data);
         
@@ -78,7 +79,7 @@ class Sidebar extends MY_Admin_Controller {
     }
     
     public function edit_element($id){
-        
+        Head::instance()->title = 'Уреди елемент';
         $this->load->model('sidebar_model');
         $elements = $this->sidebar_model->get_sidebar_elements(array('id' => $id));
         $element = $elements[0];

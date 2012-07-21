@@ -18,6 +18,7 @@ class Events extends MY_Admin_Controller {
     
     public function show_events()
     {
+        Head::instance()->title = 'Сите настани';
         $this->load->model('events_model');
         $this->load->library('pagination');
 
@@ -47,6 +48,7 @@ class Events extends MY_Admin_Controller {
     
     public function new_event()
     {
+        Head::instance()->title = 'Нов настан';
         $this->load->model('events_model');
         
         $data['event']  = new CalendarEvent();
@@ -61,6 +63,7 @@ class Events extends MY_Admin_Controller {
     {
         if(is_numeric($event_id))
         {
+            Head::instance()->title = 'Уреди настан';
             $this->load->model('events_model');
             
             $options = array('calendar_events_id' => $event_id);

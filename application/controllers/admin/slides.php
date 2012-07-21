@@ -16,6 +16,7 @@ class Slides extends MY_Admin_Controller {
     
     public function new_slide()
     {
+        Head::instance()->title = 'Нов слајд';
         $data = array();
         $data['slide']  = new Slide();
         
@@ -27,6 +28,7 @@ class Slides extends MY_Admin_Controller {
     {    
         if(is_numeric($slide_id))
         {
+            Head::instance()->title = 'Уреди слајд';
             $this->load->model('slides_model');
             $slide = $this->slides_model->get_slides(array('slides_id'  =>  $slide_id));
             if(count($slide) == 1)
@@ -87,6 +89,7 @@ class Slides extends MY_Admin_Controller {
     
     public function show_slides()
     {
+        Head::instance()->title = 'Сите слајдови';
         $this->load->model('slides_model');
         $slides =  $this->slides_model->get_slides(); 
         

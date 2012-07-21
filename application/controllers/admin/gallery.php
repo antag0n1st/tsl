@@ -16,7 +16,8 @@ class Gallery extends MY_Admin_Controller {
     }
     
     public function show_gallries(){
-        
+       
+        Head::instance()->title = 'Сите галерии';
         $this->load->model('gallery_model');
         
         $galleries = $this->gallery_model->get_galleries();
@@ -28,6 +29,7 @@ class Gallery extends MY_Admin_Controller {
     
     public function new_gallery(){
         
+        Head::instance()->title = 'Нова галерија';
         $this->load->model('gallery_model');
         
         $groups = $this->gallery_model->get_groups();
@@ -162,7 +164,7 @@ class Gallery extends MY_Admin_Controller {
     
     
     public function add_photos($id_gallery){
-        
+        Head::instance()->title = 'Додади слика';
         $this->load->model('gallery_model');
         $photos = $this->gallery_model->get_photos(array('galleries_id_gallery' => $id_gallery));
         
@@ -192,7 +194,7 @@ class Gallery extends MY_Admin_Controller {
     }
     
     public function edit_gallery($gallery_id){
-        
+        Head::instance()->title = 'Уреди галерија';
         $this->load->model('gallery_model');        
         $groups = $this->gallery_model->get_groups();  
         $gallery = $this->gallery_model->get_galleries(array('id_gallery' => $gallery_id),1);
