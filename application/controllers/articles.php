@@ -61,17 +61,53 @@ class Articles extends MY_Controller {
                 $menu_items = $this->menus_model->get_menu_items_with_children();
 
                 $quote = $this->quotes_model->get_quote_of_the_day();
-                
-
-                $articles = $this->articles_model->get_articles_by_category($category_id);
                 $current_category = $this->articles_model->get_categories(array('categories_id' => $category_id));
-                
-               
-                
                 if(count($current_category) == 1)
                 {
                     $current_category = $current_category[0];
                 }
+               // $articles = $this->articles_model->get_articles_by_category($category_id);
+                
+                $this->load->library('pagination');
+
+                $per_page = 5;
+
+                $articles = array();
+                $articles = $this->articles_model->get_articles_by_category($category_id,array(),$per_page,$this->uri->segment(3));
+                $config = array();
+
+                $config['base_url'] =  base_url() . 'category/' . $current_category->id . '-' . $current_category->slug . '/';
+
+
+
+                $config['total_rows'] = count($this->articles_model->get_articles_by_category($category_id));
+                $config['per_page'] = $per_page; 
+                $config['uri_segment'] = '3'; 
+
+                $this->pagination->initialize($config); 
+                
+                
+                
+                if(isset($current_category)){
+                    Head::instance()->title = $current_category->name;
+                    Head::instance()->description  = $current_category->name . ' | Triple S Group';
+                    
+                    Head::instance()->fb_title = $current_category->name;
+                    Head::instance()->fb_description = $current_category->name . ' | Triple S Group';
+                    Head::instance()->fb_image_url = base_url().'public/uploaded/featured/'.$current_category->featured_image;
+                }
+                
+                
+                
+                
+                
+                
+                
+                
+                
+               
+                
+                
                 $data['current_category']   = $current_category;
                 $data['articles']   = $articles;
                 $data['quote']      = $quote;

@@ -15,6 +15,7 @@ class Category {
     public $name;
     public $slug;
     public $color;
+    public $featured_image;
     
     public function is_valid()
     {

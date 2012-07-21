@@ -171,7 +171,7 @@ class Articles extends MY_Admin_Controller {
                     
 
                     $image_helper = new ImageHelper();
-                    $image_helper->save_image(base_url() . $config['upload_path'] . $file_name, $file_name, 650, 250, 150, 150);
+                    $image_helper->save_image(base_url() . $config['upload_path'] . $file_name, $file_name, 608, 250, 150, 150);
                 } else {
                     unlink($data['full_path']);
                     $status = "error";

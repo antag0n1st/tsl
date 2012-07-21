@@ -19,6 +19,12 @@
             <ul>
                 <li><a href="<?php echo base_url(); ?>admin/articles/new_article">Нова статија</a></li>
                 <li><a href="<?php echo base_url(); ?>admin/articles/show_articles">Сите статии</a></li>
+                <li><a href="#">Категории</a>
+                    <ul>
+                        <li><a href="<?php echo base_url(); ?>admin/articles_categories/new_category">Нова категорија</a></li>
+                        <li><a href="<?php echo base_url(); ?>admin/articles_categories/show_categories">Сите категории</a></li>
+                    </ul>
+                </li>
             </ul>
         </li>
         <li><a href="#">Настани</a>

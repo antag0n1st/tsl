@@ -228,7 +228,8 @@ class Articles_model extends CI_Model {
         $this->db->from('categories');
         $this->db->select('categories_id,
                            name,
-                           slug');
+                           slug,
+                           featured_image');
         
         if($limit){
             $this->db->limit($limit);
@@ -248,15 +249,52 @@ class Articles_model extends CI_Model {
         
         foreach($result->result() as $c){
             $category = new Category();
-            $category->id   =  $c->categories_id;
-            $category->name =  $c->name;
-            $category->slug =  $c->slug;
+            $category->id             =  $c->categories_id;
+            $category->name           =  $c->name;
+            $category->slug           =  $c->slug;
+            $category->featured_image = $c->featured_image;
             
             $categories[] = $category;
         }
         
         return $categories;
     }
+    
+    public function insert_category($data){
+        $c  =   array(
+            'categories_id'    =>  $data->id,
+            'name'             =>  $data->name,
+            'slug'             =>  $data->slug,
+            'featured_image'   =>  $data->featured_image
+        );
+        
+        
+        $this->db->insert('categories', $c);
+        return $this->db->insert_id();
+    }
+    
+    public function update_category($data){
+        $c  =   array(
+            'categories_id'    =>  $data->id,
+            'name'             =>  $data->name,
+            'slug'             =>  $data->slug,
+            'featured_image'   =>  $data->featured_image
+        );
+        $this->db->where('categories_id', $c['categories_id']);
+        $this->db->update('categories',$c);
+    }
+    
+    public function delete_category($category_id){
+        
+        $this->db->where('categories_id', $category_id);
+        $this->db->delete('articles_categories');
+        
+        
+        $this->db->where('categories_id', $category_id);
+        $this->db->delete('categories');
+    }
+    
+    
     
     public function get_event_categories()
     {

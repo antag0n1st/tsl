@@ -137,21 +137,23 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `categories_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `slug` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
+  `featured_image` varchar(2500) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`categories_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`categories_id`, `name`, `slug`) VALUES
-(1, 'Новости', 'novosti'),
-(2, 'Speakers', 'speakers'),
-(3, 'Learning', 'learning'),
-(4, 'Recruitment', 'recruitment'),
-(5, 'Consulting', 'consulting'),
-(6, 'Експертски академии', 'ekspertski-akademii'),
-(7, 'Тренери', 'treneri');
+INSERT INTO `categories` (`categories_id`, `name`, `slug`, `featured_image`) VALUES
+(1, 'Новости', 'novosti', 'default_featured_image.jpg'),
+(2, 'Speakers', 'dzpeakers', 'triple-s-speakers.jpg'),
+(3, 'Learning', 'learning', 'triple-s-learning.jpg'),
+(4, 'Recruitment', 'recruitment', 'triple-s-recruitment.jpg'),
+(5, 'Consulting', 'consulting', 'default_featured_image.jpg'),
+(6, 'Експертски академии', 'ekspertski-akademii', 'default_featured_image.jpg'),
+(7, 'Тренери', 'treneri', 'default_featured_image.jpg');
+
 
 
 CREATE TABLE IF NOT EXISTS `slides` (
