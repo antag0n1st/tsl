@@ -7,7 +7,9 @@
     </div>
     <div style="width:960px">
         <div class="dashboard-widget">
+            <div class="title">
             <h3>Најнови статии</h3>
+            </div>
             <div class="body">
                 <?php foreach ($articles as $article): ?>
                     <a href="<?php echo base_url(); ?>admin/articles/edit_article/<?php echo $article->id; ?>" title="Измени">
@@ -30,7 +32,9 @@
             </div>
         </div>
         <div class="dashboard-widget">
+            <div class="title">
             <h3>Најнови настани</h3>
+            </div>
             <div class="body">
                 <?php foreach ($events as $event) : ?>
                     <a href="<?php echo base_url();?>admin/events/edit_event/<?php echo $event->calendar_events_id; ?>" title="Измени">
@@ -53,9 +57,11 @@
             </div>
         </div>
         <div class="dashboard-widget">
+            <div class="title">
             <h3>
                 Најнови галерии
             </h3>
+            </div>
             <div class="body">
                 <?php foreach($galleries as $gallery): ?>
                     <a href="<?php echo base_url().'admin/gallery/add_photos/'.$gallery->id_gallery; ?>">
@@ -78,7 +84,9 @@
                 </div>
         </div>
         <div class="dashboard-widget">
+            <div class="title">
             <h3>Најнови писма</h3>
+            </div>
             <div class="body">
                  <?php foreach($newsletters as $newsletter): ?>
                      <a href="<?php echo base_url().'admin/newsletter/edit_newsletter/'.$newsletter->id; ?>">   
