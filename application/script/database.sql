@@ -616,7 +616,7 @@ INSERT INTO `slides` (`slides_id`, `title`, `description`, `link`, `image`, `dat
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 
-
+DROP TABLE IF EXISTS `footer`;
 CREATE TABLE IF NOT EXISTS `footer` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `content` text COLLATE utf8_unicode_ci NOT NULL,
@@ -629,3 +629,27 @@ CREATE TABLE IF NOT EXISTS `footer` (
 
 INSERT INTO `footer` (`id`, `content`) VALUES
 (1, '<div class="left" style="background-image: none;">\r\n<h3 style="color: white;">Контакт</h3>\r\n<p>Доколку не можете да го пронајдете тоа што Ве интересира или имате дополнително прашање, контактирајте н&egrave; на:</p>\r\n<br />\r\n<div style="float: left; width: 50%; margin: 0px;">\r\n<p><strong>Triple S Group doo</strong> <br /> Ул. Орце Николов бр. 190-3/5 <br /> 1000 Скопје, <br /> Р.Македонија</p>\r\n</div>\r\n<div style="float: left; width: 50%; margin: 0px;">\r\n<p><strong>тел.:</strong> 02/ 3 112 048 <br /> <strong>факс:</strong> 02/ 3 112 395 <br /> <strong>жиро сметка:</strong> 530010100496686 <br /> <strong>депонент:</strong> Охридска Банка, АД Охрид <br /> <strong>даночен број:</strong> МК 4030005533741</p>\r\n</div>\r\n</div>\r\n<div class="right" style="background-image: none; border-color: #747474;"><a href="https://maps.google.com/maps?q=42.006054,21.407708&amp;hl=en&amp;num=1&amp;t=h&amp;z=18" rel="nofollow" target="_blank"> <img src="http://maps.googleapis.com/maps/api/staticmap?center=42.00605,21.407711&amp;zoom=15&amp;size=300x206&amp;sensor=false&amp;maptype=hybrid&amp;markers=color:red%7Ccolor:red%7C42.00605,21.407711" alt="" /> </a></div>');
+
+
+DROP TABLE IF EXISTS `candidates`;
+CREATE TABLE IF NOT EXISTS `candidates` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `profession` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `company` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `event_id` int(10) unsigned NOT NULL,
+  `comment` text COLLATE utf8_unicode_ci,
+  `date_created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `candidates_ix` (`event_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `candidates`
+--
+
+INSERT INTO `candidates` (`id`, `name`, `phone`, `email`, `profession`, `company`, `event_id`, `comment`, `date_created`) VALUES
+(1, 'asdfasdfas', '0237823', 'Trbgogaz@gamcasd.com', 'programer', 'aspekt', 8, 'bash da vidam sho ke ima ', '2012-07-21 16:47:58'),
+(2, 'ushte eden ', 'asdfa', 'sdkj@gas.com', 'sss', 'sdas', 5, 'asdfas', '2012-07-21 16:48:27');
