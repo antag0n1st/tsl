@@ -5,7 +5,9 @@
 
 
     <div class="separator" style="border-color: #747474;"></div>
-    <div class="left" style="background-image: none;">
+    <?php echo $footer->content; ?>
+    
+    <!--<div class="left" style="background-image: none;">
         <h3 style="color: white;">Контакт</h3>
         <p>
             Доколку не можете да го пронајдете тоа што Ве интересира или имате дополнително прашање, контактирајте нè на:
@@ -43,7 +45,7 @@
             <img alt="" src="http://maps.googleapis.com/maps/api/staticmap?center=42.00605,21.407711&zoom=15&size=300x206&sensor=false&maptype=hybrid&markers=color:red%7Ccolor:red%7C42.00605,21.407711" />
         </a>
         
-    </div>
+    </div>-->
 
 </div>
 <div class="container" >

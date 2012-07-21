@@ -15,6 +15,7 @@ class Homepage extends MY_Controller {
                 $this->load->model('quotes_model');
                 $this->load->model('clients_model');
                 $this->load->model('menus_model');
+                $this->load->model('footer_model');
                 
                 $events = $this->articles_model->get_events();                
                 $event_categories = $this->articles_model->get_event_categories();
@@ -23,16 +24,21 @@ class Homepage extends MY_Controller {
                 $latest_news = $this->articles_model->get_latest_news();
                 $quote = $this->quotes_model->get_quote_of_the_day();
                 $clients = $this->clients_model->get_clients();
+                $footer  = $this->footer_model->get_footer();
+                
                 $menu_items = $this->menus_model->get_menu_items_with_children();
         
+                
+                
                 $data['menu_items'] =   $menu_items;
 
+                $data['footer']     =   $footer;
                 
                 $data['sidebar_elements'] = $sidebar_elements;
 
                 $data['quote']      = $quote;
                 $data['clients']    = $clients;
-
+                
                 $data['main_content'] = 'homepage';
                 $data['events'] = $events;
                 $data['event_categories'] = $event_categories;

@@ -17,6 +17,8 @@ class Articles extends MY_Controller {
                 $this->load->model('quotes_model');
                 $this->load->model('menus_model');
                 $this->load->model('sidebar_model');
+                $this->load->model('footer_model');
+                
                 $events = $this->articles_model->get_events();                
                 $event_categories = $this->articles_model->get_event_categories();
                 $sidebar_elements = $this->sidebar_model->get_sidebar_elements();
@@ -34,7 +36,9 @@ class Articles extends MY_Controller {
                 
                 $menu_items = $this->menus_model->get_menu_items_with_children();
 
-                $quote = $this->quotes_model->get_quote_of_the_day();
+                $quote  = $this->quotes_model->get_quote_of_the_day();
+                $footer = $this->footer_model->get_footer();
+                $data['footer'] =   $footer;
                 $data['quote']      = $quote;
                 $data['menu_items'] =   $menu_items;
                 $data['article'] = $article;
@@ -54,7 +58,9 @@ class Articles extends MY_Controller {
                 $this->load->model('quotes_model');
                 $this->load->model('menus_model');
                 $this->load->model('sidebar_model');
+                $this->load->model('footer_model');
                 
+                $footer = $this->footer_model->get_footer();
                 $events = $this->articles_model->get_events();                
                 $event_categories = $this->articles_model->get_event_categories();
                 $sidebar_elements = $this->sidebar_model->get_sidebar_elements();
@@ -107,7 +113,7 @@ class Articles extends MY_Controller {
                 
                
                 
-                
+                $data['footer']             = $footer;
                 $data['current_category']   = $current_category;
                 $data['articles']   = $articles;
                 $data['quote']      = $quote;
@@ -133,7 +139,7 @@ class Articles extends MY_Controller {
                 $this->load->model('quotes_model');
                 $this->load->model('menus_model');
                 $this->load->model('sidebar_model');
-            
+                $this->load->model('footer_model');
                 
                 $search = urldecode($search);
                 $search = CyrillicLatin::sanitize($search);
@@ -145,7 +151,9 @@ class Articles extends MY_Controller {
                 $menu_items = $this->menus_model->get_menu_items_with_children();
 
                 $quote = $this->quotes_model->get_quote_of_the_day();
+                $footer = $this->footer_model->get_footer();
                 
+                $data['footer']     = $footer;
                 $data['search']     = $search_original;
                 $data['articles']   = $articles;
                 $data['quote']      = $quote;
