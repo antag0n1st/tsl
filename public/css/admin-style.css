@@ -36,6 +36,22 @@ select{ padding: 2px 5px 2px 5px;}
 
 .container .right{ margin-top: 25px;}
 
+.dashboard-widget{
+ width:440px;
+ float:left;
+ margin:15px 10px 25px 10px;
+}
+
+.dashboard-widget .body
+{
+    border-top:solid #4C51BB 1px;
+    padding: 10px 0 0 0;
+}
+
+.dashboard-widget h3{
+    font-size:17px
+}
+
 .article-grid-holder{
     margin:20px 0 0 0l
 }

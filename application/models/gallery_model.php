@@ -16,7 +16,7 @@ class Gallery_model extends CI_Model {
         $this->load->database();
     }
     
-    public function get_galleries($options = array(),$limit = 0, $offset = 0)
+    public function get_galleries($options = array(),$limit = 0, $offset = 0, $order_by = 'id_gallery DESC')
     {
         
         //$options = $this->_default(array('status <>' => '0'), $options);
@@ -38,6 +38,10 @@ class Gallery_model extends CI_Model {
         }
         if($offset){
             $this->db->offset($offset);
+        }
+        if($order_by)
+        {
+            $this->db->order_by($order_by);
         }
         
         $result = $this->db->get();
