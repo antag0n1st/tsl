@@ -34,10 +34,21 @@ class MenuItem {
             strlen(trim($this->date_created)) > 0 and
             is_numeric($this->menu_items_id)      and
             is_numeric($this->parent_id)          and
-            is_numeric($this->order_index)        and
-            $this->menu_items_id != $this->parent_id        // can't be my own grandpa ;)
+            is_numeric($this->order_index)                
           )
         {
+            if($this->menu_items_id != 0)
+            {
+                if($this->menu_items_id != $this->parent_id)  // can't be my own grandpa ;)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            } 
+            
             return true;
         }
         return false;
