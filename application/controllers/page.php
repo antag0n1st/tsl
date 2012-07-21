@@ -47,6 +47,10 @@ class Page extends MY_Controller {
         }
         
         public function signup_for_training(){
+            $data = array();
+            if($this->input->post('signup')){
+                $data = $this->save_sign_up();
+            }
             
                 $this->load->model('articles_model');
                 $this->load->model('sidebar_model');
@@ -73,6 +77,51 @@ class Page extends MY_Controller {
               
 		$this->load->view('layout/layout',$data);
             
+        }
+        
+        private function save_sign_up(){
+            
+            $data = array();
+            $data['name'] = $name = $this->input->post('name');
+            $data['phone'] = $phone = $this->input->post('phone');
+            $data['email'] = $email = $this->input->post('email');
+            $data['profession'] = $profession = $this->input->post('profession');
+            $data['company'] = $company = $this->input->post('company');
+            $data['event_id'] = $event_id = $this->input->post('event');
+            $data['comment'] = $comment = $this->input->post('comment');
+            $data['date_created'] = TimeHelper::DateTimeAdjusted();
+            
+            
+
+            $errors = array();
+            
+            if(!$phone){
+                $errors['phone'] = '*Внесете Телефонски Број';
+            }
+            
+            if(!$name){
+                $errors['name'] = "*Внесете го вашето име";
+            }
+            
+            if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+                $errors['email'] = "*Внесете валидна емаил адреса";
+            }
+            
+            if(count($errors) == 0){
+                
+                $this->load->model('candidates_model');
+                $this->candidates_model->save_candidate($data);
+                $data = array(
+                    'success' => true
+                );
+                
+                //TODO send email to admin 
+            }else{
+                $data['errors'] = $errors;
+            }
+            
+            return $data;
+        
         }
         
         

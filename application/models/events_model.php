@@ -47,6 +47,8 @@ class Events_model extends CI_Model {
         return $result->result();
     }
     
+   
+    
     public function count_all_events()
     {
         return $this->db->count_all_results('calendar_events');
