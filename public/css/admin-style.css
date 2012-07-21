@@ -36,6 +36,33 @@ select{ padding: 2px 5px 2px 5px;}
 
 .container .right{ margin-top: 25px;}
 
+.dashboard-widget{
+ width:440px;
+ float:left;
+ margin:15px 10px 25px 10px;
+}
+
+.dashboard-widget .body
+{
+    /*border-top:solid #4C51BB 1px;*/
+    padding: 10px 0 0 0;
+}
+
+.dashboard-widget .title{
+    background: #FAFAFA;
+    background: -moz-linear-gradient(#FAFAFA,#EAEAEA);
+    background: -webkit-linear-gradient(#FAFAFA,#EAEAEA);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa',endColorstr='#eaeaea')";
+    border-bottom: 1px solid #CACACA;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4),0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-widget h3{
+    font-size:17px;
+    padding: 5px 0 3px 5px;
+    margin:0px
+}
+
 .article-grid-holder{
     margin:20px 0 0 0l
 }

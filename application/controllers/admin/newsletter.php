@@ -13,7 +13,7 @@
 class Newsletter extends MY_Admin_Controller {
     public function index()
     {
-        Head::instance()->title = "TSL Admin";
+        Head::instance()->title = "Сите Писма";
         
         $this->load->model('newsletter_model');
         
@@ -35,7 +35,7 @@ class Newsletter extends MY_Admin_Controller {
     }
     public function add_new(){
         
-        Head::instance()->title = "TSL Admin";
+        Head::instance()->title = "Ново писмо";
         
         $this->load->model('articles_model');
         
@@ -63,7 +63,7 @@ class Newsletter extends MY_Admin_Controller {
     
     public function edit_newsletter($id){
         
-        Head::instance()->title = "TSL Admin";
+        Head::instance()->title = "Уреди писмо";
         
         $this->load->model('articles_model');
         $this->load->model('newsletter_model');

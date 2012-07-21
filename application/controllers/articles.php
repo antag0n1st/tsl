@@ -143,7 +143,7 @@ class Articles extends MY_Controller {
                 
                 $search = urldecode($search);
                 $search = CyrillicLatin::sanitize($search);
-                $articles = $this->articles_model->search_articles($search);
+                $articles = $this->articles_model->search_articles($search, array('status' => 1));
                 
                 $events = $this->articles_model->get_events();                
                 $event_categories = $this->articles_model->get_event_categories();

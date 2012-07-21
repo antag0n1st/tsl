@@ -12,13 +12,13 @@ class Articles_categories extends MY_Admin_Controller {
             
     public function index()
     {
-        echo "Hello World";
+        $this->show_categories();
     }
     
     public function new_category()
     {
        // $this->load->model('articles_model');
-        
+        Head::instance()->title = 'Нова категорија';
         $data['category']  = new Category();
         
         
@@ -30,6 +30,7 @@ class Articles_categories extends MY_Admin_Controller {
     {
         if(is_numeric($category_id))
         {
+            Head::instance()->title = 'Уреди категорија';
             $this->load->model('articles_model');
             
             $options = array('categories_id'    => $category_id);
@@ -57,6 +58,7 @@ class Articles_categories extends MY_Admin_Controller {
     
     public function show_categories()
     {
+        Head::instance()->title = 'Сите категории';
         $this->load->model('articles_model');
         $this->load->library('pagination');
 

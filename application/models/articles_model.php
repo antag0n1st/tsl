@@ -101,7 +101,7 @@ class Articles_model extends CI_Model {
             $query .= " WHERE status = 1 ";
             $query .= " AND c.categories_id = 1 ";
             $query .= " ORDER BY a.date_published DESC ";
-            $query .= " LIMIT 4 ";
+            $query .= " LIMIT 6 ";
             
             $result = $this->db->query($query);
             

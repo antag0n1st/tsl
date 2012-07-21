@@ -18,6 +18,8 @@ class Articles extends MY_Admin_Controller {
     
     public function new_article(){
         
+        Head::instance()->title = 'Нова статија';
+        
         $this->load->model('articles_model');
         
         $data['article']  = new Article();
@@ -32,6 +34,7 @@ class Articles extends MY_Admin_Controller {
     {
         if(is_numeric($article_id))
         {
+            Head::instance()->title = 'Уреди статија';
             $this->load->model('articles_model');
             $article = $this->articles_model->get_articles(array('id'   =>  $article_id));
             if(count($article) == 1)
@@ -188,6 +191,7 @@ class Articles extends MY_Admin_Controller {
     
     public function show_articles()
     {
+        Head::instance()->title = 'Статии';
         $this->load->model('articles_model');
         $this->load->library('pagination');
 

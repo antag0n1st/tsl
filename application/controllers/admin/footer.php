@@ -12,6 +12,7 @@ class Footer extends MY_Admin_Controller {
     
     public function view_footer()
     {
+        Head::instance()->title = 'Уреди Footer';
         $this->load->model('footer_model');
         $page_footer = $this->footer_model->get_footer();
         $data['page_footer']    =   $page_footer;
@@ -21,6 +22,7 @@ class Footer extends MY_Admin_Controller {
     
     public function edit_footer()
     {
+        Head::instance()->title = 'Уреди Footer';
         $this->load->model('footer_model');
         $data['id']        = 1;
         $data['content']   = $this->input->post('content');

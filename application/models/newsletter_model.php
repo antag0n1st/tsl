@@ -66,6 +66,7 @@ class Newsletter_model extends CI_Model {
         $query .= " LEFT JOIN emails_sent as s ";
         $query .= " ON n.id = s.newsletter_id ";
         $query .= " GROUP BY n.id ";
+        $query .= " ORDER BY n.id DESC";
         
         $result = $this->db->query($query);
         

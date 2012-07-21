@@ -13,11 +13,12 @@ class Menu extends MY_Admin_Controller {
             
     public function index()
     {
-        echo "Hello World";
+        $this->show_menu_items();
     }
     
     public function new_menu_item()
     {
+        Head::instance()->title = 'Нов линк во менито';
         $this->load->model('articles_model');
         $this->load->model('menus_model');
         $data = array();
@@ -38,6 +39,7 @@ class Menu extends MY_Admin_Controller {
     {
         if(is_numeric($menu_item_id))
         {
+            Head::instance()->title = 'Уреди линк во менито';
             $this->load->model('menus_model');
             $this->load->model('articles_model');
             
@@ -215,6 +217,7 @@ class Menu extends MY_Admin_Controller {
     
     public function show_menu_items()
     {
+        Head::instance()->title = 'Мени';
         $this->load->model('menus_model');
         
      //   $options = array('parent_id'    =>  0);
