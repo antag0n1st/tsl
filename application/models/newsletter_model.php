@@ -35,9 +35,10 @@ class Newsletter_model extends CI_Model {
         
         $query  = " SELECT e.id, e.email FROM emails AS e ";
         $query .= " LEFT JOIN emails_sent AS s ";
-        $query .= " ON e.id = s.email_id AND s.newsletter_id = ".$this->db->escape($newsletter_id)." ";
+        $query .= " ON e.id = s.email_id AND s.newsletter_id = ".$this->db->escape($newsletter_id)."  ";
         $query .= " WHERE ";
         $query .= " s.email_id IS NULL ";
+        $query .= " AND e.is_unsubscribed = 0 ";
         $query .= " LIMIT ". ((int)$limit);
         
         $result = $this->db->query($query);
@@ -83,7 +84,9 @@ class Newsletter_model extends CI_Model {
     
     public function get_newsletter_articles($newsletter_id){
         
-        $query  = " SELECT * FROM newsletter_articles ";
+        $query  = " SELECT * FROM newsletter_articles as n ";
+        $query .= " JOIN articles as a ";
+        $query .= " ON n.article_id = a.id ";
         $query .= " WHERE ";
         $query .= " newsletter_id = ".$this->db->escape($newsletter_id)." ";
         

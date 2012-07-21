@@ -6,6 +6,7 @@
                     <th>ID</th>
                     <th>Наслов</th>
                     <th>Статус</th>
+                    <th style="width: 50px;">Прегледај</th>
                     <th style="width: 50px;">Измени</th>
                     <th style="width: 50px;">Избриши</th>
                 </tr>
@@ -38,6 +39,7 @@
                     }
                     
                     ?></td>
+                    <td><a target="_blank" href="<?php echo base_url().'newsletter/view/'.$newsletter->id; ?>"><img alt="" title="Прегледај" src="<?php echo base_url().'images/preview.png' ?>" /></a></td>
                     <td><a href="<?php echo base_url().'admin/newsletter/edit_newsletter/'.$newsletter->id; ?>"><img alt="" title="Измени" src="<?php echo base_url().'images/edit-7.png' ?>" /></a></td>
                     <td><a onclick="return confirm_delete();" href="<?php echo base_url().'admin/newsletter/delete_newsletter/'.$newsletter->id; ?>"><img alt="" title="Избриши" src="<?php echo base_url().'images/edit-delete-icon.png' ?>" /></a></td>                    
                 </tr>

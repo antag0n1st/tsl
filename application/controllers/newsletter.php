@@ -53,17 +53,42 @@ class Newsletter extends MY_Admin_Controller {
 
             $this->newsletter_model->set_newsletter_finished($newsletter_id);
         } else {
-            $email_body = $this->load->view('newsletter_template', $data, true);
 
             foreach ($emails as $email) {
+                $from = 'info@tsl.mk';
+            
+                $data['unsubscribe_id'] = $email->unsubscribe_id;
+                $body = $this->load->view('newsletter_template', $data, TRUE);
+                
+                if(send_email($email->email, $from, $title, $body)){
+                     $this->newsletter_model->update_email_sent($newsletter_id, $email->id);
+                }
 
-                // TODO send email
-
-
-                $this->newsletter_model->update_email_sent($newsletter_id, $email->id);
                 sleep(8);
             }
         }
+    }
+    
+    public function view($newsletter_id = 0){
+        
+        $this->load->model('newsletter_model');
+
+        $newsletter = $this->newsletter_model->get_newsletter($newsletter_id);
+        
+        if($newsletter){
+            $newsletter = $newsletter[0];
+            $data['newsletter_id'] = $newsletter_id = $newsletter->id;
+            $data['title'] = $title = $newsletter->title;
+            $data['content'] = $content = $newsletter->content;
+            $data['articles'] = $articles = $this->newsletter_model->get_newsletter_articles($newsletter_id);
+
+            $this->load->view('newsletter_template',$data);
+        }
+        
+    }
+    
+    public function unsubscribe($unsubscribe_id){
+        
     }
 
 }
