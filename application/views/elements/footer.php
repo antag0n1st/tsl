@@ -39,7 +39,10 @@
 
     </div>
     <div class="right" style="background-image: none;border-color: #747474;">
-        <img alt="" src="<?php echo base_url() . 'images/adresa.jpg'; ?>" />
+        <a href="https://maps.google.com/maps?q=42.006054,21.407708&hl=en&num=1&t=h&z=18" target="_blank" rel="nofollow">
+            <img alt="" src="http://maps.googleapis.com/maps/api/staticmap?center=42.00605,21.407711&zoom=15&size=300x206&sensor=false&maptype=hybrid&markers=color:red%7Ccolor:red%7C42.00605,21.407711" />
+        </a>
+        
     </div>
 
 </div>

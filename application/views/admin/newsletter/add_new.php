@@ -7,7 +7,7 @@
         <?php echo form_open(base_url() . 'admin/newsletter/newsletter_save', array('id' => 'submit_newsletter')); ?>
         <fieldset>
             <label>Наслов:</label><input name="title" type="text" />
-            <label>Порака:</label><textarea style="height: 50px;" name="content"></textarea>
+            <label>Порака:</label><textarea style="height: 300px;" name="content"></textarea>
             <div class="separator dashed"></div>
             <label>Изберете статија:</label>
             <div style="float: left;overflow: hidden; width: 450px; margin-bottom: 20px;">
@@ -36,3 +36,4 @@
 
 
 </div>
+<?php $this->load->view('admin/elements/tinymce'); ?>

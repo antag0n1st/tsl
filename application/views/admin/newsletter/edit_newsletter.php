@@ -41,3 +41,4 @@
 
 
 </div>
+<?php $this->load->view('admin/elements/tinymce'); ?>
