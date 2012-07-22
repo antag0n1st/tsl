@@ -573,7 +573,7 @@ CREATE TABLE IF NOT EXISTS `sidebar` (
   `is_deletable` int(10) unsigned DEFAULT NULL,
   `type` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=11 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `sidebar`
@@ -582,8 +582,9 @@ CREATE TABLE IF NOT EXISTS `sidebar` (
 INSERT INTO `sidebar` (`id`, `name`, `content`, `position`, `is_deletable`, `type`) VALUES
 (1, 'calendar', 'elements/calendar', 0, 0, 'view'),
 (2, 'quotes', 'elements/quotes', 1, 0, 'view'),
-(3, 'success_pages', '<p><a href="#"> <img style="float: left; margin-right: 10px;" src="/tsl/images/tick.png" alt="" /></a></p>\r\n<h3 style="float: left; margin-top: 5px;">Страници на успех</h3>\r\n<div style="text-align: center;"><img src="/tsl/public/images/stranici-na-uspeh.jpg" alt="stranici na uspeh" /></div>', 2, 0, 'content'),
-(4, 'social links', '<h3>Следи не:</h3>\r\n<p><a href="http://www.facebook.com//login.php#!/pages/Triple-S-Learning/321852101858?ref=ts" target="_balnk"><img src="/tsl/images/icon-facebook.png" alt="" /></a> <a href="http://www.linkedin.com/in/tripleslearning" target="_balnk"><img src="/tsl/images/icon-linkedin.png" alt="" width="29" height="30" /></a> <a href="http://twitter.com/TripleSGroup" target="_blank"><img src="/tsl/images/icon-twitter.png" alt="" width="30" height="30" /></a> <a href="http://www.youtube.com/user/TripleSLearning" target="_balnk"><img src="/tsl/images/icon-youtube.png" alt="" width="26" height="30" /></a> <a href="#" target="_balnk"><img src="/tsl/images/icon-rss.png" alt="" width="30" height="30" /></a></p>', 3, 0, 'content');
+(3, 'success_pages', '<p><a href="/tsl/newsletter/pages_of_success"> \r\n<img style="float: left; margin-right: 10px;" src="/tsl/images/tick.png" alt="" /></a></p>\r\n<a href="/tsl/newsletter/pages_of_success"><h3 style="float: left; margin-top: 5px;">Страници на успех</h3></a>\r\n<div style="text-align: center;"><img src="/tsl/public/images/stranici-na-uspeh.jpg" alt="stranici na uspeh" /></div>', 2, 0, 'content'),
+(4, 'social links', '<div class="social-buttons">\r\n<h3>Следи н&egrave;:</h3>\r\n<p><a href="http://www.facebook.com//login.php#!/pages/Triple-S-Learning/321852101858?ref=ts" target="_balnk"><img src="/tsl/images/icon-facebook.png" alt="" /></a> <a href="http://www.linkedin.com/in/tripleslearning" target="_balnk"><img src="/tsl/images/icon-linkedin.png" alt="" width="29" height="30" /></a> <a href="http://twitter.com/TripleSGroup" target="_blank"><img src="/tsl/images/icon-twitter.png" alt="" width="30" height="30" /></a> <a href="http://www.youtube.com/user/TripleSLearning" target="_balnk"><img src="/tsl/images/icon-youtube.png" alt="" width="26" height="30" /></a> <a href="#" target="_balnk"><img src="/tsl/images/icon-rss.png" alt="" width="30" height="30" /></a></p>\r\n</div>', 3, 0, 'content'),
+(11, 'Newsletter', '<p><img style="float: left; margin-right: 10px;" src="/tsl/images/newsletter.png" alt="newsletter" /></p>\r\n<h3 style="float: left; margin-top: 10px;"><a href="/tsl/newsletter/subscribe">Пријави се за Newsletter</a></h3>', 4, 0, 'content');
 
 -- --------------------------------------------------------
 
