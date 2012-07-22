@@ -101,6 +101,7 @@ CREATE TABLE IF NOT EXISTS `calendar_events` (
   `date_happen` datetime NOT NULL,
   `calendar_link` varchar(1024) COLLATE utf8_unicode_ci NOT NULL,
   `event_categories_id` int(11) NOT NULL,
+  `candidates_num` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`calendar_events_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
 
@@ -108,22 +109,21 @@ CREATE TABLE IF NOT EXISTS `calendar_events` (
 -- Dumping data for table `calendar_events`
 --
 
-INSERT INTO `calendar_events` (`calendar_events_id`, `title`, `date_created`, `date_happen`, `calendar_link`, `event_categories_id`) VALUES
-(1, 'title', '2012-07-07 19:57:07', '2012-07-04 04:35:00', 'http://google.com', 4),
-(2, 'title', '2012-07-07 01:52:21', '2012-07-09 00:00:00', 'http://facebook.com', 2),
-(3, 'Настанот во јули', '2012-07-22 09:33:31', '2012-07-28 14:21:00', 'http://twitter.com', 11),
-(4, 'title', '2012-07-07 15:50:17', '2012-07-26 00:00:00', 'http://youtube.com', 3),
-(5, 'title', '2012-07-07 19:19:46', '2012-07-22 02:20:00', 'http://movies.mk', 4),
-(6, 'title', '2012-07-07 15:54:06', '2012-07-03 00:00:00', 'http://times.com', 1),
-(7, 'title', '2012-07-07 16:32:47', '2002-08-02 12:00:00', 'http://google.com', 10),
-(8, 'Настанот во септември', '2012-07-22 09:27:10', '2012-09-08 00:00:00', 'http://google.com', 10),
-(9, 'title', '2012-07-07 17:18:42', '2004-07-20 12:00:00', 'http://movies.mk', 10),
-(10, 'title', '2012-07-07 17:29:47', '2007-07-20 12:00:00', 'http://times.com', 5),
-(11, 'title', '2012-07-09 21:49:18', '2012-07-07 17:31:00', 'http://movies.mk', 11),
-(12, 'title', '2012-07-09 21:49:25', '2012-07-07 17:43:00', 'http://google.com', 1),
-(13, 'title', '2012-07-07 17:53:58', '2012-07-07 17:53:00', 'http://movies.mk', 4),
-(14, 'title', '2012-07-07 18:03:30', '2012-07-10 17:53:00', 'http://google.com', 1),
-(15, 'title', '2012-07-07 18:05:28', '2012-07-07 18:20:00', 'http://tsl.mk', 1);
+INSERT INTO `calendar_events` (`calendar_events_id`, `title`, `date_created`, `date_happen`, `calendar_link`, `event_categories_id`, `candidates_num`) VALUES
+(1, 'title', '2012-07-07 19:57:07', '2012-07-04 04:35:00', 'http://google.com', 4, 0),
+(2, 'title', '2012-07-07 01:52:21', '2012-07-09 00:00:00', 'http://facebook.com', 2, 0),
+(5, 'title', '2012-07-07 19:19:46', '2012-07-22 02:20:00', 'http://movies.mk', 4, 0),
+(6, 'title', '2012-07-07 15:54:06', '2012-07-03 00:00:00', 'http://times.com', 1, 0),
+(7, 'title', '2012-07-07 16:32:47', '2002-08-02 12:00:00', 'http://google.com', 10, 0),
+(8, 'Настанот во септември', '2012-07-22 09:27:10', '2012-09-08 00:00:00', 'http://google.com', 10, 0),
+(9, 'title', '2012-07-07 17:18:42', '2004-07-20 12:00:00', 'http://movies.mk', 10, 0),
+(10, 'title', '2012-07-07 17:29:47', '2007-07-20 12:00:00', 'http://times.com', 5, 0),
+(11, 'title', '2012-07-09 21:49:18', '2012-07-07 17:31:00', 'http://movies.mk', 11, 0),
+(12, 'title', '2012-07-09 21:49:25', '2012-07-07 17:43:00', 'http://google.com', 1, 0),
+(13, 'title', '2012-07-07 17:53:58', '2012-07-07 17:53:00', 'http://movies.mk', 4, 0),
+(14, 'title', '2012-07-07 18:03:30', '2012-07-10 17:53:00', 'http://google.com', 1, 0),
+(15, 'title', '2012-07-07 18:05:28', '2012-07-07 18:20:00', 'http://tsl.mk', 1, 0);
+
 
 
 -- --------------------------------------------------------
