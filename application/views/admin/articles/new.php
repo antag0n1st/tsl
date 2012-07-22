@@ -124,9 +124,23 @@
         $( "#time_published" ).timepicker({
             showPeriodLabels: false
         });
-                
-        var date =  <?php FieldHelper::field($article->id, "new Date('$article->date_published')", "new Date()"); ?>;
-        var timePublished = date.getHours() + ":" + (date.getMinutes()); 
+
+        var date;
+        var timePublished;
+        <?php if($article->id == 0) :?>
+            date = new Date();
+            timePublished = date.getHours() + ":" + (date.getMinutes()); 
+        <?php else:  ?>
+            timePieces = '<?php echo $article->date_published ?>'.split(' ');
+            hour       =  timePieces[1].split(':')[0];
+            minute     =  timePieces[1].split(':')[1];
+            timePublished = hour + ":" + minute;
+        <?php endif; ?>
+
+
+       // date =  <?php FieldHelper::field($article->id, "new Date('$article->date_published')", "new Date()"); ?>;
+       // console.log(date);
+       // timePublished = date.getHours() + ":" + (date.getMinutes()); 
                    
                     
         ;

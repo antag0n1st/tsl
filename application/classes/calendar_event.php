@@ -11,6 +11,7 @@ class CalendarEvent {
     
      public function __construct($value = '') {
         $this->calendar_events_id = 0;
+        $this->candidates_num    = 0;
     }
     
     

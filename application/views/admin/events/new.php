@@ -59,8 +59,22 @@
             showPeriodLabels: false
         });
         
-        var date =  <?php FieldHelper::field($event->calendar_events_id, "new Date('$event->date_happen')", "new Date()"); ?>;
-        var timePublished = date.getHours() + ":" + (date.getMinutes()); 
+        var date;
+        var timePublished;
+        <?php if($event->calendar_events_id == 0) :?>
+            date = new Date();
+            timePublished = date.getHours() + ":" + (date.getMinutes()); 
+        <?php else:  ?>
+            timePieces = '<?php echo $event->date_happen ?>'.split(' ');
+            hour       =  timePieces[1].split(':')[0];
+            minute     =  timePieces[1].split(':')[1];
+            timePublished = hour + ":" + minute;
+        <?php endif; ?>
+        
+        
+        
+       // var date =  <?php FieldHelper::field($event->calendar_events_id, "new Date('$event->date_happen')", "new Date()"); ?>;
+       // var timePublished = date.getHours() + ":" + (date.getMinutes()); 
 
         $( "#time_published" ).val(timePublished);
           
