@@ -12,13 +12,18 @@
             <div style="float:left;width:350px">
                 <?php echo $event->calendar_link; ?>
             </div>
+            <div style="float:left;width:20px;padding:5px 0 0 0;">
+                <?php echo $event->candidates_num; ?>
+            </div>
             <div class="article-grid-edit-links">
+            <a href="<?php echo base_url();?>admin/events/edit_event/<?php echo $event->calendar_events_id; ?>" title="Пријавени кандидати">
+            <img src="<?php echo base_url()?>public/images/prijaveni_24_24.png" alt="" /></a> &nbsp;|&nbsp;
             <a href="<?php echo base_url();?>admin/events/edit_event/<?php echo $event->calendar_events_id; ?>" title="Измени">
             <img src="<?php echo base_url()?>public/images/edit_pencil_24_24.png" alt="" /></a>&nbsp;|&nbsp;
             <a href="#" class="delete-link" title="Избриши" rel="<?php echo $event->calendar_events_id; ?>"><img src="<?php echo base_url()?>public/images/delete_red_24_24.png" alt=""  /></a>
             </div>
 
-            <?php echo $event->calendar_events_id; ?><br />
+            <?php // echo $event->calendar_events_id; ?><br />
             <div class="clear"></div>
             <hr />
         </div>

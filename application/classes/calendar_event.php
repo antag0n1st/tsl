@@ -7,7 +7,7 @@ class CalendarEvent {
     public $calendar_link;
     public $event_categories_id;
     public $title;
-    
+    public $candidates_num;
     
      public function __construct($value = '') {
         $this->calendar_events_id = 0;

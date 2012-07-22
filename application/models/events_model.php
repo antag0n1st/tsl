@@ -31,7 +31,8 @@ class Events_model extends CI_Model {
                            date_happen,
                            calendar_link,
                            title,
-                           event_categories_id');
+                           event_categories_id,
+                           candidates_num');
         
         if($limit){
             $this->db->limit($limit);

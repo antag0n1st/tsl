@@ -185,3 +185,17 @@ ul, li
     float: left;
     height: 13px;
 }
+
+.candidates{
+    
+}
+.candidates td{
+    border-bottom:1px solid #C7C6C6;
+    padding:3px 3px 15px 3px;
+}
+
+.candidates th{
+    font-weight: bold;
+    border-bottom:1px solid #C7C6C6;
+    padding: 0 0 10px 0;
+}

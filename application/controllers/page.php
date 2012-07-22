@@ -1,5 +1,13 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+/**
+* @property CI_Loader $load
+* @property CI_Form_validation $form_validation
+* @property CI_Input $input
+* @property CI_Email $email
+* @property CI_DB_active_record $db
+* @property CI_DB_forge $dbforge
+* @property Events_model $events_model
+*/
 class Page extends MY_Controller {
     
         public function __construct() {
@@ -84,7 +92,18 @@ class Page extends MY_Controller {
             if(count($errors) == 0){
                 
                 $this->load->model('candidates_model');
+                $this->load->model('events_model');
                 $this->candidates_model->save_candidate($data);
+                
+                $event = $this->events_model->get_events(
+                                                    array('calendar_events_id' => $event_id)
+                                              );
+                if(count($event) == 1){
+                    $event = $event[0];
+                     $event->candidates_num = $event->candidates_num + 1; // we have a new candidate for this event
+                     $this->events_model->update_calendar_event($event);
+                }
+                
                 $data = array(
                     'success' => true
                 );

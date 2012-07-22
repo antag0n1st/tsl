@@ -65,7 +65,8 @@ class Events extends MY_Admin_Controller {
         {
             Head::instance()->title = 'Уреди настан';
             $this->load->model('events_model');
-            
+            $this->load->model('candidates_model');
+                    
             $options = array('calendar_events_id' => $event_id);
             
             $event = $this->events_model->get_events($options);
@@ -77,6 +78,9 @@ class Events extends MY_Admin_Controller {
         
                 $data['event_categories'] = $this->events_model->get_event_categories();
 
+                $data['candidates'] = $this->candidates_model->get_candidates_by_event($event_id);
+                
+                
                 $data['main_content']   =   'admin/events/new';
                 $this->load->view('admin/layout/layout', $data);
             }
@@ -134,8 +138,58 @@ class Events extends MY_Admin_Controller {
         if(is_numeric($event_id))
         {
             $this->load->model('events_model');
+            $this->load->model('candidates_model');
+            
+            $candidates = $this->candidates_model->get_candidates_by_event($event_id);
+            if(count($candidates)) // delete all candidates for this event
+            {
+                foreach($candidates as $candidate){
+                    $this->candidates_model->delete_candidate($candidate->id);
+                }
+            }
+            
             $this->events_model->delete_calendar_event($event_id);
             redirect(base_url() . 'admin/events/show_events');
+        }
+    }
+    
+    public function delete_candidate($candidate_id)
+    {
+        if(is_numeric($candidate_id))
+        {
+            $this->load->model('events_model');
+            $this->load->model('candidates_model');
+            
+            
+            $candidate = $this->candidates_model->get_candidate_by_id($candidate_id);
+            if(count($candidate) == 1)
+            {
+                $candidate = $candidate[0];
+                
+                $deleted = $this->candidates_model->delete_candidate($candidate_id);
+                if($deleted > 0){
+                    $event = $this->events_model->get_events(
+                                                    array(
+                                                          'calendar_events_id' => $candidate->event_id
+                                                         ));
+                    $event = $event[0];
+                    $event->candidates_num = $event->candidates_num - 1;
+                    $this->events_model->update_calendar_event($event);
+                    
+                    
+                    redirect(base_url() . 'admin/events/edit_event/' . $event->calendar_events_id);
+                    
+                }
+                
+                
+            }
+            
+            
+           
+            
+            
+            
+            
         }
     }
     

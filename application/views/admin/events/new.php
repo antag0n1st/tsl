@@ -38,9 +38,13 @@
                 <label for="calendar_link">Линк на календарот:</label>
                 <input type="text" name="calendar_link" style="width: 287px;" value="<?php FieldHelper::field($event->calendar_events_id, $event->calendar_link, 'http://tsl.mk'); ?>"  />
             </div>
-            <input class="button round" type="submit" name="submit" value="Објави" />
+            <input class="button round" type="submit" name="submit" value="Зачувај" />
       </form>
+      
+      
+      
     </div>
+    <?php $data['candidates'] = $candidates; $this->load->view('admin/events/candidates', $data); ?>
 </div>    
 <script type="text/javascript">
     $(document).ready(function() {

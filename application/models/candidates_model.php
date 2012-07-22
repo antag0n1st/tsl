@@ -43,5 +43,25 @@ class Candidates_model extends CI_Model {
         
     }
     
+    public function get_candidate_by_id($candidate_id)
+    {
+        $this->db->where('id',$candidate_id);
+        $result = $this->db->get('candidates');
+        return $result->result();
+    }
+    
+    
+    public function get_candidates_by_event($event_id){
+        $this->db->where('event_id', $event_id);
+        $result = $this->db->get('candidates');
+        return $result->result();
+    }
+    
+    public function delete_candidate($candidate_id){
+        $this->db->where('id', $candidate_id);
+        $this->db->delete('candidates');
+        return $this->db->affected_rows();
+    }
+    
 }
 ?>
