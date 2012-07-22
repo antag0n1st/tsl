@@ -44,7 +44,9 @@
       
       
     </div>
-    <?php $data['candidates'] = $candidates; $this->load->view('admin/events/candidates', $data); ?>
+    <?php if(isset($candidates)) {
+                $data['candidates'] = $candidates; $this->load->view('admin/events/candidates', $data);
+    }?>
 </div>    
 <script type="text/javascript">
     $(document).ready(function() {
