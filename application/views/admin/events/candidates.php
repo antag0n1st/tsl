@@ -5,8 +5,8 @@
         <table >
              <thead>
                 <tr>
-                    <th style="width:100px">Име и презиме</th>
-                    <th style="width:70px">Телефон</th>
+                    <th style="width:120px">Име и презиме</th>
+                    <th style="width:100px">Телефон</th>
                     <th style="width:190px">e-mail</th>
                     <th style="width:100px">Професија</th>
                     <th style="width:150px">Компанија</th>
