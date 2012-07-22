@@ -14,6 +14,9 @@
      <?php echo form_open('admin/events/submit_event', array('id' => 'submit_event_form')); ?>
         <input type="hidden" id="calendar_events_id" name="calendar_events_id" value="<?php FieldHelper::field($event->calendar_events_id, $event->calendar_events_id, 0); ?>" />
         <div class="separator"></div>
+        <label for="title">Наслов:</label>
+        <input type="text" name="title" id="title" value="<?php FieldHelper::field($event->calendar_events_id, $event->title, '')?>" style="width:370px" />
+        <div class="separator"></div>
             <div>                   
                 <label for="calendar">Додади во календар:</label>
                 <input type="text" id="add_calendar" name="calendar" style="width: 130px; cursor: pointer;" />

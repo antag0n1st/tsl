@@ -30,6 +30,7 @@ class Events_model extends CI_Model {
                            date_created,
                            date_happen,
                            calendar_link,
+                           title,
                            event_categories_id');
         
         if($limit){

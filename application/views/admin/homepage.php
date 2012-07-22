@@ -38,7 +38,7 @@
             <div class="body">
                 <?php foreach ($events as $event) : ?>
                     <a href="<?php echo base_url();?>admin/events/edit_event/<?php echo $event->calendar_events_id; ?>" title="Измени">
-                    <?php echo $event->date_happen; ?>
+                        <?php echo $event->title . ' ('; FieldHelper::date_no_time_field($event->date_happen); echo ')'; ?>
                     </a>
                     <div class="separator"></div>
                 <?php endforeach; ?>

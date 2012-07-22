@@ -4,12 +4,12 @@
     <div>
         <?php foreach($events as $event): ?>
         <div>
-            <div style="float:left;width:200px">
+            <div style="float:left;width:450px">
                 <a href="<?php echo base_url();?>admin/events/edit_event/<?php echo $event->calendar_events_id; ?>" title="Измени">
-                    <?php FieldHelper::date_field($event->date_happen); ?>
+                    <?php echo $event->title . ' ('; FieldHelper::date_field($event->date_happen); echo ')'; ?>
                 </a>
             </div>
-            <div style="float:left;width:550px">
+            <div style="float:left;width:350px">
                 <?php echo $event->calendar_link; ?>
             </div>
             <div class="article-grid-edit-links">

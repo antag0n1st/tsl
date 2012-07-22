@@ -22,7 +22,7 @@ class Events extends MY_Admin_Controller {
         $this->load->model('events_model');
         $this->load->library('pagination');
 
-        $per_page = 5;
+        $per_page = 10;
         
         $events = array();
         $events = $this->events_model->get_events(array(),$per_page,$this->uri->segment(4));
@@ -91,6 +91,7 @@ class Events extends MY_Admin_Controller {
          $data = array();
         
         $event = new CalendarEvent();
+        $event->title               = $this->input->post('title');
         $event->calendar_events_id  = $this->input->post('calendar_events_id');
         $event->calendar_link       = $this->input->post('calendar_link');
         $event->date_happen         = TimeHelper::convert_datetime(
