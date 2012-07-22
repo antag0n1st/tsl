@@ -17,7 +17,9 @@
                     <label>Отворена обука/конференција</label>
                     <select name="event">
                         <?php foreach($events as $event): ?>
-                        <option <?php if(isset($event_id) and $event_id == $event->calendar_events_id){ echo ' selected="selected" ';} ?> value="<?php echo $event->calendar_events_id; ?>" ><?php echo $event->date_happen; ?></option>
+                        <option <?php if(isset($event_id) and $event_id == $event->calendar_events_id){ echo ' selected="selected" ';} ?> value="<?php echo $event->calendar_events_id; ?>" >
+                            <?php echo $event->title; ?> (<?php FieldHelper::date_field($event->date_happen); ?>)
+                        </option>
                         <?php endforeach; ?>
                     </select>
                     

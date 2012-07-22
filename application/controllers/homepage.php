@@ -6,6 +6,15 @@ class Homepage extends MY_Controller {
 	{
                 Head::instance()->load_js('jquery.flexslider-min');
                 Head::instance()->load_css('flexslider');
+         
+                Head::instance()->title          = 'Triple S Group - Delivering Success';
+                Head::instance()->description    = Head::instance()->title .
+                                                          ' Triple S Group';
+                Head::instance()->keywords       = 'пријавување,обуки,тренинзи,професионално учење,семинари,маркетинг,продажба,семинари';
+                Head::instance()->fb_title       = Head::instance()->title;
+                Head::instance()->fb_description = Head::instance()->description . ' ' .
+                                                   Head::instance()->keywords;
+                
                 
                 
                 $this->load->model('articles_model');

@@ -15,7 +15,10 @@
             $current_url = $this->config->site_url().$this->uri->uri_string(). $query;
             ?>
             <br />
-            <a href="<?php echo base_url().'page/signup_for_training'; ?>">Контактирајте нè за дополнителни информации за изведба на обуката</a>
+            <!-- Zosto ova da se pojavuva pod sekoj article? Ne sekoj article e obuka. Stranicite "kako Referenci", "Za nas" itn se isto taka articles
+                 i nemaat vrska so obuki
+            -->
+            <!--<a href="<?php echo base_url().'page/signup_for_training'; ?>">Контактирајте нè за дополнителни информации за изведба на обуката</a>-->
             <div class="separator"></div>
             <div class="social-buttons">
                 <h3>Сподели ја оваа страница: </h3>

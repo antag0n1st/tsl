@@ -91,3 +91,6 @@ echo '</style>';
     <div><span style="background-color: <?php echo $event_category->color; ?>;"></span><?php echo $event_category->name; ?></div>
   <?php endforeach; ?>
 </div>
+<div style="margin:10px 0 0 0;font-size:18px;">
+        &raquo; <a href="<?php echo base_url().'page/signup_for_training'; ?>">Пријави се за обука</a>
+</div>

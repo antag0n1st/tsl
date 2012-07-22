@@ -29,7 +29,7 @@ class Head {
         $this->fb_description = "fb description";
         $this->fb_page_url = base_url();
         $this->fb_image_url   = base_url() . "images/logo.jpg";
-        $this->fb_site_name   = "tsl.mk";
+        $this->fb_site_name   = "tsgroup.mk";
         $this->fb_type        = "article";
     }
     /**

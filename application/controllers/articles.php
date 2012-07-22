@@ -26,12 +26,13 @@ class Articles extends MY_Controller {
                 $article = $this->articles_model->get_articles(array('id' => $article_id));
                 if(isset($article[0])){
                     $article = $article[0];
-                    Head::instance()->title = $article->title;
+                    Head::instance()->title = $article->title . ' | Triple S Group';
                     Head::instance()->description  = $article->description;
                     
-                    Head::instance()->fb_title = $article->title;
+                    Head::instance()->fb_title = $article->title . ' | Triple S Group';
                     Head::instance()->fb_description = $article->description;
                     Head::instance()->fb_image_url = base_url().'public/uploaded/featured/'.$article->featured_image;
+                    Head::instance()->fb_page_url  = base_url().'articles/' . $article->id . '-' . $article->slug;
                 }
                 
                 $menu_items = $this->menus_model->get_menu_items_with_children();
@@ -101,6 +102,7 @@ class Articles extends MY_Controller {
                     Head::instance()->fb_title = $current_category->name;
                     Head::instance()->fb_description = $current_category->name . ' | Triple S Group';
                     Head::instance()->fb_image_url = base_url().'public/uploaded/featured/'.$current_category->featured_image;
+                    Head::instance()->fb_page_url  = base_url().'category/' . $current_category->id . '-' . $current_category->slug;
                 }
                 
                 
