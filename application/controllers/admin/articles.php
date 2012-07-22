@@ -198,14 +198,27 @@ class Articles extends MY_Admin_Controller {
         $per_page = 5;
         
         $articles = array();
-        $articles = $this->articles_model->get_articles(array(),$per_page,$this->uri->segment(4));
+        
+        $search = $this->input->get('s');
+        $total_rows = 0;
+        if(isset($search) and strlen($search))
+        {
+            $per_page = $total_rows; // show all search results on one page
+            $articles = $this->articles_model->search_articles($search, array(), $per_page,$this->uri->segment(4));
+            $total_rows = count($this->articles_model->search_articles($search));
+        }
+        else
+        {
+            $articles = $this->articles_model->get_articles(array(),$per_page,$this->uri->segment(4));
+            $total_rows = $this->db->count_all_results('articles');
+        }
         $config = array();
         
         $config['base_url'] =  base_url() . 'admin/articles/show_articles/';
         
         
         
-        $config['total_rows'] = $this->db->count_all_results('articles');
+        $config['total_rows'] = $total_rows;
         $config['per_page'] = $per_page; 
         $config['uri_segment'] = '4'; 
 

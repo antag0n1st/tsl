@@ -199,3 +199,16 @@ ul, li
     border-bottom:1px solid #C7C6C6;
     padding: 0 0 10px 0;
 }
+
+.admin-search-button{
+    width: 22px;
+    height: 22px;
+    background-image: url('../images/search.png');
+    float: right;
+    margin-right: 5px;
+    margin-top: 2px;
+}
+
+.admin-search-box{ float: right; width: 340px; margin-top: 60px; }
+
+.admin-search-box input{width: 300px; color: #ababab; margin-bottom: 5px;}
