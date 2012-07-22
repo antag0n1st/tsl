@@ -100,6 +100,7 @@ class Articles_model extends CI_Model {
             $query .= " ON ac.categories_id = c.categories_id ";
             $query .= " WHERE status = 1 ";
             $query .= " AND c.categories_id = 1 ";
+            $query .= " AND a.date_published <= '" . TimeHelper::DateTimeAdjusted() . "' ";
             $query .= " ORDER BY a.date_published DESC ";
             $query .= " LIMIT 6 ";
             
