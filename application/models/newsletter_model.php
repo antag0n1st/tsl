@@ -45,6 +45,15 @@ class Newsletter_model extends CI_Model {
         return $result->result();
     }
     
+    public function insert_email($data){
+        foreach($data as $key => &$value){
+            $value = $this->db->escape($value);
+        }
+        $query = " INSERT INTO emails (id,".implode(",", array_keys($data)).",unsubscribe_id) ";
+        $query .= " VALUES (NULL,".implode(",", array_values($data)).",UUID()) ";
+        $this->db->query($query);
+    }
+    
     public function update_email_sent($newsletter_id,$email_id){
         
         $query  = " INSERT INTO emails_sent ";
@@ -67,6 +76,19 @@ class Newsletter_model extends CI_Model {
         $query .= " ON n.id = s.newsletter_id ";
         $query .= " GROUP BY n.id ";
         $query .= " ORDER BY n.id DESC";
+        
+        $result = $this->db->query($query);
+        
+        return $result->result();
+    }
+    
+    public function get_finished_newsletters()
+    {
+        $query  = " SELECT * FROM ";
+        $query .= " newsletter as n ";
+        $query .= " WHERE ";
+        $query .= " status = 3 ";
+        $query .= " ORDER BY date_finished DESC ";
         
         $result = $this->db->query($query);
         

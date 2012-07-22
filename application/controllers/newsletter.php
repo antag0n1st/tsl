@@ -10,7 +10,7 @@
  *
  * @author Vladimir
  */
-class Newsletter extends MY_Admin_Controller {
+class Newsletter extends MY_Controller {
 
     public function index($auth_token = '') {
         set_time_limit(0);
@@ -84,6 +84,154 @@ class Newsletter extends MY_Admin_Controller {
 
             $this->load->view('newsletter_template',$data);
         }
+        
+    }
+    
+    public function add_email(){
+        
+        $this->load->model('newsletter_model');
+        
+        $data = array();
+        
+        $errors = array();
+        
+        $data['email'] = $this->input->post('email');
+        if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
+            $errors['email'] = 'Внесовте невалиден емаил';
+           
+        }else{
+            
+            $data['created_at'] = TimeHelper::DateTimeAdjusted();
+            $data['is_unsubscribed'] = 0;
+            $this->newsletter_model->insert_email($data);
+        }
+        
+      
+        return $errors;
+        
+    }
+    
+    public function subscribe(){
+        
+        
+        
+        Head::instance()->load_js('jquery.flexslider-min');
+                Head::instance()->load_css('flexslider');
+         
+                Head::instance()->title          = 'Triple S Group - Delivering Success';
+                Head::instance()->description    = Head::instance()->title .
+                                                          ' Triple S Group';
+                Head::instance()->keywords       = 'пријавување,обуки,тренинзи,професионално учење,семинари,маркетинг,продажба,семинари';
+                Head::instance()->fb_title       = Head::instance()->title;
+                Head::instance()->fb_description = Head::instance()->description . ' ' .
+                                                   Head::instance()->keywords;
+                
+                
+                
+                $this->load->model('articles_model');
+                $this->load->model('slides_model');
+                $this->load->model('sidebar_model');
+
+                $this->load->model('quotes_model');
+             
+                $this->load->model('menus_model');
+                $this->load->model('footer_model');
+                
+                $events = $this->articles_model->get_events();                
+                $event_categories = $this->articles_model->get_event_categories();
+                $slides = $this->slides_model->get_slides();
+                $sidebar_elements = $this->sidebar_model->get_sidebar_elements();
+              
+                $quote = $this->quotes_model->get_quote_of_the_day();
+              
+                $footer  = $this->footer_model->get_footer();
+                
+                $menu_items = $this->menus_model->get_menu_items_with_children();
+        
+                if($this->input->post()){
+                    
+                $errors = $this->add_email();
+                if(count($errors) > 0){
+                    $data['errors'] = $errors;
+                } else{
+                    $data['success'] = 'success';
+                }
+                }
+                
+                $data['menu_items'] =   $menu_items;
+
+                $data['footer']     =   $footer;
+                
+                $data['sidebar_elements'] = $sidebar_elements;
+
+                $data['quote']      = $quote;
+                
+                $data['main_content'] = 'newsletter_subscribe';
+                $data['events'] = $events;
+                $data['event_categories'] = $event_categories;
+                $data['slides'] = $slides;
+                
+                
+           
+		$this->load->view('layout/layout',$data);
+        
+    }
+    
+    public function pages_of_success(){
+        
+        Head::instance()->load_js('jquery.flexslider-min');
+                Head::instance()->load_css('flexslider');
+         
+                Head::instance()->title          = 'Triple S Group - Delivering Success';
+                Head::instance()->description    = Head::instance()->title .
+                                                          ' Triple S Group';
+                Head::instance()->keywords       = 'пријавување,обуки,тренинзи,професионално учење,семинари,маркетинг,продажба,семинари';
+                Head::instance()->fb_title       = Head::instance()->title;
+                Head::instance()->fb_description = Head::instance()->description . ' ' .
+                                                   Head::instance()->keywords;
+                
+                
+                
+                $this->load->model('articles_model');
+                $this->load->model('slides_model');
+                $this->load->model('sidebar_model');
+
+                $this->load->model('quotes_model');
+             
+                $this->load->model('menus_model');
+                $this->load->model('footer_model');
+                $this->load->model('newsletter_model');
+                
+                $events = $this->articles_model->get_events();                
+                $event_categories = $this->articles_model->get_event_categories();
+                $slides = $this->slides_model->get_slides();
+                $sidebar_elements = $this->sidebar_model->get_sidebar_elements();
+              
+                $quote = $this->quotes_model->get_quote_of_the_day();
+              
+                $footer  = $this->footer_model->get_footer();
+                
+                $menu_items = $this->menus_model->get_menu_items_with_children();
+        
+                $finished_newsletters = $this->newsletter_model->get_finished_newsletters();
+                
+                $data['finished_newsletters'] = $finished_newsletters;
+                $data['menu_items'] =   $menu_items;
+
+                $data['footer']     =   $footer;
+                
+                $data['sidebar_elements'] = $sidebar_elements;
+
+                $data['quote']      = $quote;
+                
+                $data['main_content'] = 'pages_of_success';
+                $data['events'] = $events;
+                $data['event_categories'] = $event_categories;
+                $data['slides'] = $slides;
+                
+                
+           
+		$this->load->view('layout/layout',$data);
         
     }
     

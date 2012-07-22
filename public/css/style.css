@@ -169,7 +169,8 @@ border-radius: 5px;
 .img-container{ overflow: hidden; width: 608px ; padding: 0px; margin: 0px;}
 
 .social-buttons{ margin-top: 10px;}
-.social-buttons h3{float: left; margin-right: 20px;}
+.social-buttons h3{float: left; margin-right: 20px; margin-top: 3px;}
+.social-buttons img{ margin-right: 5px;}
 
 
 .container fieldset{ width: 570px;}
