@@ -138,10 +138,19 @@
                 
                 
         // ajax file upload
-        $("#btn_featured_image").click(function(){
-            if( $('#featured_image').val() != '' )
+        $("#btn_featured_image").click(function(){         
+            var fullPath = $('#featured_image').val(); // the full path of the file to upload
+            
+            if( fullPath != '' )
                 {
-                    $("#upload_image_form").submit();
+                    var fileName = getFileName(fullPath);
+                    
+                    if( containsCyrilic(fileName) ){
+                       alert('Името на фајлот мора да биде на латиница');
+                    }
+                    else{
+                        $("#upload_image_form").submit();
+                    }
                 }
                 else
                 {
