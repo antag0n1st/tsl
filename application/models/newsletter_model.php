@@ -45,9 +45,17 @@ class Newsletter_model extends CI_Model {
         return $result->result();
     }
     
-    public function get_all_emails(){
+    public function get_all_emails($limit = 0, $offset = 0){
         $query = " SELECT * FROM emails ";
-        $query .= " LIMIT 30 ";
+        
+        if($limit){
+            $query .= " LIMIT " . $limit;
+        }
+        if($offset){
+            $query .= " OFFSET " . $offset;
+        }
+        
+        
         
         $result = $this->db->query($query);
         return $result->result();
