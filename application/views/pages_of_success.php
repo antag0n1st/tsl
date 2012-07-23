@@ -3,7 +3,7 @@
 
     <div class="left">
      
-            <h3>Pages of Success</h3>
+            <h3>Страници на успех</h3>
             <?php if($finished_newsletters): ?>
             <table class="table">
                 <thead>
