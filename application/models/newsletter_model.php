@@ -45,6 +45,42 @@ class Newsletter_model extends CI_Model {
         return $result->result();
     }
     
+    public function get_all_emails(){
+        $query = " SELECT * FROM emails ";
+        $query .= " LIMIT 30 ";
+        
+        $result = $this->db->query($query);
+        return $result->result();
+    }
+    
+    public function get_email_by_id($id){
+        $query = " SELECT * FROM emails ";
+        $query .= " WHERE ";
+        $query .= " id = ".$this->db->escape($id)." ";
+        $query .= " LIMIT 1 ";
+        
+        $result = $this->db->query($query);
+        return $result->result();
+    }
+    public function update_email($id,$email,$is_unsubscribed){
+        $query = " UPDATE emails ";
+        $query .= " SET ";
+        $query .= " email = ".$this->db->escape($email)." ";
+        $query .= " , is_unsubscribed = ".$this->db->escape($is_unsubscribed)." ";
+        $query .= " WHERE ";
+        $query .= " id = ".$this->db->escape($id)." ";
+        
+        $this->db->query($query);
+    }
+    
+    public function delete_email($id){
+        $query = " DELETE FROM emails ";
+        $query .= " WHERE ";
+        $query .= " id = ".$this->db->escape($id)." ";
+        
+        $this->db->query($query);
+    }
+    
     public function insert_email($data){
         foreach($data as $key => &$value){
             $value = $this->db->escape($value);

@@ -51,6 +51,7 @@
             <ul>
                 <li><a href="<?php echo base_url().'admin/newsletter'; ?>">Сите Писма</a></li>
                 <li><a href="<?php echo base_url().'admin/newsletter/add_new'; ?>">Ново Писмо</a></li>
+                <li><a href="<?php echo base_url().'admin/newsletter/browse_emails'; ?>">Сите емиал Адреси</a></li>
             </ul>
         </li>
         <li><a href="#">Галерии</a>

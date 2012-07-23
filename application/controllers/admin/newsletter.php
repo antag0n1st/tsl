@@ -112,6 +112,51 @@ class Newsletter extends MY_Admin_Controller {
         header('Location: '.base_url().'admin/newsletter');
         exit;
     }
+    
+    public function browse_emails(){
+        
+        Head::instance()->title = "Сите емаил адреси";
+        
+        $this->load->model('newsletter_model');
+        
+        $emails = $this->newsletter_model->get_all_emails();
+        
+        $data['emails'] = $emails;
+        $data['main_content']   =   'admin/newsletter/browse_emails';
+        $this->load->view('admin/layout/layout', $data);
+        
+    }
+    
+    public function edit_email($id){
+        
+       
+        
+        $this->load->model('newsletter_model');
+        $emails = $this->newsletter_model->get_email_by_id($id);
+        $email = $emails[0];
+        
+        
+         if($this->input->post('id')){
+             
+             $this->newsletter_model->update_email($this->input->post('id'),$this->input->post('email'),$this->input->post('status'));
+        
+             header('Location: '.  base_url().'admin/newsletter/browse_emails');
+             exit;
+        }
+        
+        $data['email'] = $email;
+        $data['main_content']   =   'admin/newsletter/edit_email';
+        $this->load->view('admin/layout/layout', $data);
+        
+    }
+    
+    public function delete_email($id){
+        $this->load->model('newsletter_model');
+        $this->newsletter_model->delete_email($id);
+        
+        header('Location: '.  base_url().'admin/newsletter/browse_emails');
+        exit;
+    }
 }
 
 ?>
