@@ -119,8 +119,25 @@
         $( "#date_published" ).datepicker({ dateFormat: 'dd.mm.yy',
             regional: 'mk'
         });
-        $( "#date_published" ).datepicker('setDate', <?php FieldHelper::field($article->id, "new Date('$article->date_published')", "new Date()"); ?> );
-                
+        
+        //$( "#date_published" ).datepicker('setDate', <?php FieldHelper::field($article->id, "new Date('$article->date_published')", "new Date()"); ?> );
+          <?php if($article->id == 0) :?>
+              $( "#date_published" ).datepicker('setDate',new Date());
+          <?php else:  ?>
+              
+              timePieces = '<?php echo $article->date_published ?>'.split(' ');
+              console.log(timePieces);
+              day   =   timePieces[0].split('-')[2];
+              month =   timePieces[0].split('-')[1] - 1; // javascript counts months 0-11
+              year =   timePieces[0].split('-')[0];
+              
+              console.log(day + ',' + month + ',' + year);
+              
+              $( "#date_published" ).datepicker('setDate',new Date(year,month,day,0,0,0,0));
+          <?php endif; ?>
+          
+          
+          
         $( "#time_published" ).timepicker({
             showPeriodLabels: false
         });

@@ -7,16 +7,21 @@
         mode : "exact",
         elements : "<?php echo $element_id; ?>",
         theme : "advanced",
-        plugins : "advimage,advlink,media,contextmenu",
+        plugins : "advimage,advlink,media,contextmenu,table",
         theme_advanced_buttons1_add_before : "newdocument,separator",
         theme_advanced_buttons1_add : "fontselect,fontsizeselect",
         theme_advanced_buttons2_add : "separator,forecolor,backcolor,liststyle",
         theme_advanced_buttons2_add_before: "cut,copy,separator,",
         theme_advanced_buttons3_add_before : "",
-        theme_advanced_buttons3_add : "media",
+        theme_advanced_buttons3_add : "media,table",
         theme_advanced_toolbar_location : "top",
         theme_advanced_toolbar_align : "left",
-        extended_valid_elements : "hr[class|width|size|noshade]",
+    /*    valid_elements :    "-table[border=0|cellspacing|cellpadding|width|frame|rules|" +
+                            "height|align|summary|bgcolor|background|bordercolor|style],-tr[rowspan|width|" +
+                            "height|align|valign|bgcolor|background|bordercolor|style],tbody,thead,tfoot," +
+                            "#td[colspan|rowspan|width|height|align|valign|bgcolor|background|bordercolor" +
+                            "|scope|style],#th[colspan|rowspan|width|height|align|valign|scope|style],img[src|alt|title],strong,b,br",*/
+        extended_valid_elements : "hr[class|width|size|noshade],img[src|alt|title]",
         file_browser_callback : "ajaxfilemanager",
         paste_use_dialog : false,
         theme_advanced_resizing : true,

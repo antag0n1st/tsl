@@ -53,7 +53,25 @@
           $( "#add_calendar" ).datepicker({ dateFormat: 'dd.mm.yy',
             regional: 'mk'
           });
-          $( "#add_calendar" ).datepicker('setDate', <?php FieldHelper::field($event->calendar_events_id, "new Date('$event->date_happen')", "new Date()"); ?> );
+         // $( "#add_calendar" ).datepicker('setDate', <?php FieldHelper::field($event->calendar_events_id, "new Date('$event->date_happen')", "new Date()"); ?> );
+         
+         
+         
+          <?php if($event->calendar_events_id == 0) :?>
+              $( "#add_calendar" ).datepicker('setDate',new Date());
+          <?php else:  ?>
+              
+              timePieces = '<?php echo $event->date_happen ?>'.split(' ');
+              console.log(timePieces);
+              day   =   timePieces[0].split('-')[2];
+              month =   timePieces[0].split('-')[1] - 1; // javascript counts months 0-11
+              year =   timePieces[0].split('-')[0];
+              
+              console.log(day + ',' + month + ',' + year);
+              
+              $( "#add_calendar" ).datepicker('setDate',new Date(year,month,day,0,0,0,0));
+          <?php endif; ?>
+         
         
         $( "#time_published" ).timepicker({
             showPeriodLabels: false
