@@ -419,7 +419,7 @@
                                                 <?php foreach($articles as $article): ?>
                                                 <table border="0" cellpadding="20" cellspacing="0" width="100%" mc:repeatable="siwc_600" mc:variant="content with left image">
                                                     <tr>
-                                                        <td align="center" valign="top">
+                                                        <td align="center" valign="top" style="width:150px">
                                                             <a target="_blank" href="<?php echo base_url() . 'articles/' . $article->id . '-' . $article->slug; ?>">
                                                              <img src="<?php echo base_url().'public/uploaded/featured/thumbnails/'.$article->featured_image; ?>" style="width:150px;" mc:label="image" mc:edit="liwc600_image00" />
                                                             </a>
