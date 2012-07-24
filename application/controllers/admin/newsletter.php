@@ -39,7 +39,7 @@ class Newsletter extends MY_Admin_Controller {
         
         $this->load->model('articles_model');
         
-        $articles = $this->articles_model->get_articles(array(),10);
+        $articles = $this->articles_model->get_articles();
         
         $data['articles'] = $articles;
         $data['main_content']   =   'admin/newsletter/add_new';
@@ -68,7 +68,7 @@ class Newsletter extends MY_Admin_Controller {
         $this->load->model('articles_model');
         $this->load->model('newsletter_model');
         
-        $articles = $this->articles_model->get_articles(array(),10);
+        $articles = $this->articles_model->get_articles();
         
         $selected_articles = $this->newsletter_model->get_newsletter_articles($id);
         $newsletters = $this->newsletter_model->get_newsletter($id);

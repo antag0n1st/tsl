@@ -16,25 +16,23 @@
             </select>
             <div class="separator dashed"></div>
             <label>Изберете статија:</label>
-            <div style="float: left;overflow: hidden; width: 450px; margin-bottom: 20px;">
+            <div style="float: left;overflow-y: scroll; width: 585px; height:200px; margin-bottom: 20px;">
                 <ul class="checkbox-statii">
                     
                     <?php $br=0; foreach($articles as $article): ?>
                     <li>
-                        <a href="#" target="_blank"><?php echo $article->title; ?></a>
                         <input <?php echo (in_array($article->id, $selected_articles))? 'checked="checked"' : ''; ?> name="articles[]" type="checkbox" value="<?php echo $article->id; ?>" />
+                        <a href="<?php echo base_url()?>articles/<?php echo $article->id . '-' . $article->slug; ?>" target="_blank"><?php echo $article->title; ?></a>
                     </li>
                     <?php endforeach; ?>
 
                 </ul>
-                <div>
-                    <p>[painacija]</p> 
-                </div>
 
             </div>
             <input type="hidden" name="newsletter_id" value="<?php echo $newsletter->id; ?>" />
-            <input type="submit" class="button round" value="Зачувај" />
+            
         </fieldset>
+        <input type="submit" class="button round" value="Зачувај" />
         <?php echo form_close(); ?>
 
     </div>
