@@ -40,7 +40,7 @@ class MY_Admin_Controller extends CI_Controller {
          Head::instance()->load_css('style', '1.1');
          Head::instance()->load_css('admin-style', '1.5');
          Head::instance()->load_js('jquery-1.7.2.min', '1.0');
-         Head::instance()->load_js('main', '1.0');
+         Head::instance()->load_js('main', '1.1');
          Head::instance()->load_js('admin-main', '1.3');
        
        

@@ -33,7 +33,7 @@ class Newsletter_model extends CI_Model {
     
     public function get_emails($newsletter_id,$limit = 100){
         
-        $query  = " SELECT e.id, e.email FROM emails AS e ";
+        $query  = " SELECT e.id, e.email, e.unsubscribe_id FROM emails AS e ";
         $query .= " LEFT JOIN emails_sent AS s ";
         $query .= " ON e.id = s.email_id AND s.newsletter_id = ".$this->db->escape($newsletter_id)."  ";
         $query .= " WHERE ";

@@ -31,7 +31,7 @@ class Newsletter extends MY_Controller {
         }
 
         $this->load->model('newsletter_model');
-
+        $this->load->helper('phpmailer');
         $newsletter = $this->newsletter_model->get_newsletter_to_send();
         if ($newsletter == null) {
             die('there is no newsletter to sent');
@@ -103,7 +103,21 @@ class Newsletter extends MY_Controller {
             
             $data['created_at'] = TimeHelper::DateTimeAdjusted();
             $data['is_unsubscribed'] = 0;
-            $this->newsletter_model->insert_email($data);
+            
+            $emails = $this->newsletter_model->get_all_emails();
+            $already_exists = 0;
+            foreach($emails as $e){
+                if(strtolower($e->email) == strtolower($data['email']) ){
+                        $already_exists = 1;
+                        break;
+                }
+            }
+            if($already_exists){
+                $errors['email'] = 'Адресата веќе постои. Обидете се со друга';
+            }
+            else{
+                $this->newsletter_model->insert_email($data);
+            }
         }
         
       
@@ -118,7 +132,7 @@ class Newsletter extends MY_Controller {
         Head::instance()->load_js('jquery.flexslider-min');
                 Head::instance()->load_css('flexslider');
          
-                Head::instance()->title          = 'Triple S Group - Delivering Success';
+                Head::instance()->title          = 'Пријавете се за Newsletter';
                 Head::instance()->description    = Head::instance()->title .
                                                           ' Triple S Group';
                 Head::instance()->keywords       = 'пријавување,обуки,тренинзи,професионално учење,семинари,маркетинг,продажба,семинари';
@@ -176,6 +190,19 @@ class Newsletter extends MY_Controller {
 		$this->load->view('layout/layout',$data);
         
     }
+    
+    public function subscribe_ajax()
+    {
+                $errors = $this->add_email();
+                if(count($errors) > 0){
+                    $data['errors'] = $errors;
+                } else{
+                    $data['success'] = array('success');
+                }
+                 echo json_encode($data);
+    }
+    
+    
     
     public function pages_of_success(){
         

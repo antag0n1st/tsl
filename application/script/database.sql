@@ -584,7 +584,7 @@ INSERT INTO `sidebar` (`id`, `name`, `content`, `position`, `is_deletable`, `typ
 (2, 'quotes', 'elements/quotes', 1, 0, 'view'),
 (3, 'success_pages', '<p><a href="/tsl/newsletter/pages_of_success"> <img style="float: left; margin-right: 10px;" src="/tsl/images/tick.png" alt="" /></a></p>\r\n<h3 style="float: left; margin-top: 5px;">Страници на успех</h3>\r\n<div style="text-align: center;"><a href="/tsl/newsletter/pages_of_success"> <img src="/tsl/public/images/stranici-na-uspeh.jpg" alt="stranici na uspeh" /> </a></div>', 2, 0, 'content'),
 (4, 'social links', '<div class="social-buttons">\r\n<h3>Следи н&egrave;:</h3>\r\n<p><a href="http://www.facebook.com//login.php#!/pages/Triple-S-Learning/321852101858?ref=ts" target="_balnk"><img src="/tsl/images/icon-facebook-color.png" alt="" /></a> <a href="http://www.linkedin.com/in/tripleslearning" target="_balnk"><img src="/tsl/images/icon-linkedin-color.png" alt="" /></a> <a href="http://twitter.com/TripleSGroup" target="_blank"><img src="/tsl/images/icon-twitter-color.png" alt="" /></a> <a href="http://www.youtube.com/user/TripleSLearning" target="_balnk"><img src="/tsl/images/icon-youtube-color.png" alt="" /></a></p>\r\n</div>', 3, 0, 'content'),
-(11, 'Newsletter', '<p><img style="float: left; margin-right: 10px;" src="/tsl/images/newsletter.png" alt="newsletter" /></p>\r\n<h3 style="float: left; margin-top: 10px;"><a href="/tsl/newsletter/subscribe">Пријави се за Newsletter</a></h3>', 4, 0, 'content');
+(11, 'Newsletter', 'elements/newsletter', 4, 0, 'view');
 
 -- --------------------------------------------------------
 
