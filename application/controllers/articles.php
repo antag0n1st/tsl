@@ -96,7 +96,7 @@ class Articles extends MY_Controller {
                 
                 
                 if(isset($current_category)){
-                    Head::instance()->title = $current_category->name;
+                    Head::instance()->title = $current_category->name . ' | Triple S Group';
                     Head::instance()->description  = $current_category->name . ' | Triple S Group';
                     
                     Head::instance()->fb_title = $current_category->name;

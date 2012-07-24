@@ -26,7 +26,7 @@ class Page extends MY_Controller {
                 $data = $this->save_sign_up();
             }
             
-                Head::instance()->title          = 'Пријави се за обука';
+                Head::instance()->title          = 'Пријави се за обука | Triple S Group';
                 Head::instance()->description    = Head::instance()->title .
                                                           ' Triple S Group';
                 Head::instance()->keywords       = 'пријавување,обуки,тренинзи,професионално учење, семинари,маркетинг,продажба';
