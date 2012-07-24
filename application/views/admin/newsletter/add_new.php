@@ -7,7 +7,9 @@
         <?php echo form_open(base_url() . 'admin/newsletter/newsletter_save', array('id' => 'submit_newsletter')); ?>
         <fieldset>
             <label>Наслов:</label><input name="title" type="text" />
+        </fieldset>
             <label>Порака:</label><textarea style="height: 300px;" name="content"></textarea>
+        <fieldset>
             <div class="separator dashed"></div>
             <label>Изберете статија:</label>
             <div style="float: left;overflow-y: scroll; width: 585px; height:200px; margin-bottom: 20px;">

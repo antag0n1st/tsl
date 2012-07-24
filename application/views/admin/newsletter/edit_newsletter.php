@@ -6,7 +6,9 @@
         <?php echo form_open(base_url() . 'admin/newsletter/newsletter_update', array('id' => 'submit_newsletter')); ?>
         <fieldset>
             <label>Наслов:</label><input name="title" type="text" value="<?php echo $newsletter->title; ?>" />
+        </fieldset>
             <label>Порака:</label><textarea style="height: 50px;" name="content"><?php echo $newsletter->content; ?></textarea>
+        <fieldset>
             <label>Статус</label>
             <select name="status">
                 <option <?php echo ($newsletter->status == 0)? 'selected="selected"':''; ?>value="0">не е започнато</option>

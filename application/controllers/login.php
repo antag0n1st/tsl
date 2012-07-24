@@ -18,13 +18,16 @@ class Login extends MY_Controller {
         $this->load->library('session');
         
         $this->load->model('menus_model');
+        $this->load->model('footer_model');
+        $footer  = $this->footer_model->get_footer();
         
         $menu_items = $this->menus_model->get_menu_items_with_children();
         
         if (!$this->session->userdata('admin_loggedIn'))
         {
             $data   =   array('main_content'    =>  'elements/login_form',
-                              'menu_items'      =>  $menu_items);
+                              'menu_items'      =>  $menu_items,
+                              'footer'          =>  $footer);
             $this->load->view('layout/layout',$data);
         }
         else
