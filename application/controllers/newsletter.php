@@ -40,6 +40,7 @@ class Newsletter extends MY_Controller {
         $data['newsletter_id'] = $newsletter_id = $newsletter->id;
         $data['title'] = $title = $newsletter->title;
         $data['content'] = $content = $newsletter->content;
+        $data['date_finished'] = $newsletter->date_finished;
 
         if ($newsletter->status == 0) {
             $this->newsletter_model->set_newsletter_started($newsletter_id);
