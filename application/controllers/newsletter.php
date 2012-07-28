@@ -81,7 +81,7 @@ class Newsletter extends MY_Controller {
             $data['title'] = $title = $newsletter->title;
             $data['content'] = $content = $newsletter->content;
             $data['articles'] = $articles = $this->newsletter_model->get_newsletter_articles($newsletter_id);
-
+            $data['date_finished'] = $newsletter->date_finished;
             $this->load->view('newsletter_template',$data);
         }
         

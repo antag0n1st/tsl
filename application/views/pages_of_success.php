@@ -21,7 +21,7 @@
                                 <?php echo $newsletter->title; ?>
                             </a>
                         </td>
-                        <td><?php echo $newsletter->date_finished; ?></td>
+                        <td><?php echo TimeHelper::format($newsletter->date_finished); ?></td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>

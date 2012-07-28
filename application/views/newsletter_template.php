@@ -390,6 +390,13 @@
                                             	<!-- // End Module: Standard Header Image \\ -->
                                             
                                             </td>
+                                            <td style="vertical-align: top; text-align: right; padding-top: 20px; line-height: 20px;">
+                                                <h4 style="float: none; margin: 0px 20px 0px;display: inline;">Страници на Успех</h4>
+                                                <br />
+                                                <span style="margin-right: 20px; color: #505050;"><?php echo TimeHelper::format($date_finished); ?></span>
+                                                <br />
+                                                <b style="margin-right: 24px; font-size: 18px; color: #505050;">Број.<?php echo $newsletter_id; ?></b>
+                                            </td>
                                         </tr>
                                     </table>
                                     <!-- // End Template Header \\ -->
@@ -472,6 +479,27 @@
                                                             </div>
                                                         </td>
                                                     </tr>
+                                                    <tr style="">
+                                                        <td valign="top" style="width: 100%;border-top: 1px dashed #707070;">
+                                                         
+									
+                                                            <div class="left" style="background-image: none;">
+                                                             
+                                                                <p>Доколку не можете да го пронајдете тоа што Ве интересира или имате дополнително прашање, 
+                                                                    контактирајте н&egrave; на:
+                                                                </p>
+
+                                                                <div style="float: left; width: 50%; margin: 0px;">
+                                                                    <p><strong>Triple S Group doo</strong> <br /> Ул. Орце Николов бр. 190-3/5 <br /> 1000 Скопје, <br /> Р.Македонија</p>
+                                                                </div>
+                                                                <div style="float: left; width: 50%; margin: 0px;">
+                                                                    <p><strong>тел.:</strong> 02/ 3 112 048 <br /> <strong>факс:</strong> 02/ 3 112 395 <br /> <strong>жиро сметка:</strong> 530010100496686 <br /> <strong>депонент:</strong> Охридска Банка, АД Охрид <br /> <strong>даночен број:</strong> МК 4030005533741</p>
+                                                                </div>
+                                                            </div>
+
+                                                            
+                                                        </td>
+                                                    </tr>
                                                     <?php if(isset($unsubscribe_id)): ?>
                                                     <tr>
                                                         <td colspan="2" valign="middle" id="utility">
@@ -485,6 +513,7 @@
                                                         </td>
                                                     </tr>
                                                     <?php endif; ?>
+                                                    
                                                 </table>
                                                 <!-- // End Module: Standard Footer \\ -->
                                             
