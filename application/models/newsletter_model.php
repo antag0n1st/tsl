@@ -81,6 +81,16 @@ class Newsletter_model extends CI_Model {
         $this->db->query($query);
     }
     
+    public function unsibscribe($unsubscribe_id){
+        $query = " UPDATE emails ";
+        $query .= " SET ";      
+        $query .= " is_unsubscribed = 1 ";
+        $query .= " WHERE ";
+        $query .= " unsubscribe_id = ".$this->db->escape($unsubscribe_id)." ";
+        
+        $this->db->query($query);
+    }
+    
     public function delete_email($id){
         $query = " DELETE FROM emails ";
         $query .= " WHERE ";
@@ -95,6 +105,7 @@ class Newsletter_model extends CI_Model {
         }
         $query = " INSERT INTO emails (id,".implode(",", array_keys($data)).",unsubscribe_id) ";
         $query .= " VALUES (NULL,".implode(",", array_values($data)).",UUID()) ";
+        $query .= " ON DUPLICATE KEY UPDATE is_unsubscribed = 0  ";
         $this->db->query($query);
     }
     

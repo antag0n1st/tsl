@@ -108,7 +108,7 @@ class Newsletter extends MY_Controller {
             $emails = $this->newsletter_model->get_all_emails();
             $already_exists = 0;
             foreach($emails as $e){
-                if(strtolower($e->email) == strtolower($data['email']) ){
+                if(strtolower($e->email) == strtolower($data['email']) and $e->is_unsubscribed == 0 ){
                         $already_exists = 1;
                         break;
                 }
@@ -207,7 +207,7 @@ class Newsletter extends MY_Controller {
     
     public function pages_of_success(){
         
-        Head::instance()->load_js('jquery.flexslider-min');
+                Head::instance()->load_js('jquery.flexslider-min');
                 Head::instance()->load_css('flexslider');
          
                 Head::instance()->title          = 'Triple S Group - Delivering Success';
@@ -264,6 +264,72 @@ class Newsletter extends MY_Controller {
     }
     
     public function unsubscribe($unsubscribe_id){
+        
+        
+        
+        
+        
+        
+        
+        
+        Head::instance()->load_js('jquery.flexslider-min');
+                Head::instance()->load_css('flexslider');
+         
+                Head::instance()->title          = 'Triple S Group - Delivering Success';
+                Head::instance()->description    = Head::instance()->title .
+                                                          ' Triple S Group';
+                Head::instance()->keywords       = 'пријавување,обуки,тренинзи,професионално учење,семинари,маркетинг,продажба,семинари';
+                Head::instance()->fb_title       = Head::instance()->title;
+                Head::instance()->fb_description = Head::instance()->description . ' ' .
+                                                   Head::instance()->keywords;
+                
+                
+                
+                $this->load->model('articles_model');
+                $this->load->model('slides_model');
+                $this->load->model('sidebar_model');
+
+                $this->load->model('quotes_model');
+             
+                $this->load->model('menus_model');
+                $this->load->model('footer_model');
+                $this->load->model('newsletter_model');
+                
+                $events = $this->articles_model->get_events();                
+                $event_categories = $this->articles_model->get_event_categories();
+                $slides = $this->slides_model->get_slides();
+                $sidebar_elements = $this->sidebar_model->get_sidebar_elements();
+              
+                $quote = $this->quotes_model->get_quote_of_the_day();
+              
+                $footer  = $this->footer_model->get_footer();
+                
+                $menu_items = $this->menus_model->get_menu_items_with_children();
+        
+           
+                
+                $this->newsletter_model->unsibscribe($unsubscribe_id);
+                
+          
+                $data['menu_items'] =   $menu_items;
+                $data['footer']     =   $footer;                
+                $data['sidebar_elements'] = $sidebar_elements;
+                $data['quote']      = $quote;
+                
+            
+                $data['events'] = $events;
+                $data['event_categories'] = $event_categories;
+                $data['slides'] = $slides;
+        
+     
+       
+         
+               $data['main_content'] = 'unsubscribe_success';
+               $this->load->view('layout/layout',$data);
+      
+        
+        
+       
         
     }
 
