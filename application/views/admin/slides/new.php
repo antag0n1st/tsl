@@ -21,7 +21,7 @@
         </div><!-- featured image end -->
      <?php echo form_open('admin/slides/submit_slide', array('id' => 'submit_article_form')); ?>
         <input type="hidden" id="slides_id" name="slides_id" value="<?php echo $slide->slides_id; ?>" />
-        <input type="hidden" id="order_index" name="order_index" value="<?php FieldHelper::field($slide->slides_id,$slide->order_index,1); ?>" />
+        <input type="hidden" id="order_index" name="order_index" value="<?php FieldHelper::field($slide->slides_id,$slide->order_index,0); ?>" />
         
         <input type="hidden" id="featured_image_hidden" name="featured_image_hidden" value="<?php FieldHelper::field($slide->slides_id, $slide->image, ""); ?>" />
         <div class="separator"></div>
