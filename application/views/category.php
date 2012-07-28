@@ -5,6 +5,9 @@
         </div>
         <br />
         <h3><?php echo $current_category->name; ?></h3>
+        <div style="padding:5px 0 5px 0">
+            <?php echo $current_category->description; ?>
+        </div>
         <div class="latest-news">
             <?php foreach ($articles as $article) : ?>
                 <?php $data['article'] = $article; $this->load->view('elements/article_item_row', $data); ?>

@@ -27,10 +27,13 @@
         <label>Име на категоријата</label>
         <input type="text" id="name" name="name" value="<?php FieldHelper::field($category->id, $category->name, ''); ?>" />
         <div class="separator"></div>
+        <textarea id="content" name="content" style="width:608px;height:400px"><?php FieldHelper::field($category->id, $category->description, ''); ?></textarea>
+        <div class="separator"></div>
         <input class="round button" type="submit" name="submit" value="Зачувај" />
         </form>
     </div>
 </div>
+<?php $this->load->view('admin/elements/tinymce'); ?>
 <script src="<?php echo base_url() ?>public/js/jquery.iframe-post-form.js" type="text/javascript"></script>
 <script type="text/javascript">
     // ajax file upload

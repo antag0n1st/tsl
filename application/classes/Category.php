@@ -13,9 +13,11 @@
 class Category {
     public $id;
     public $name;
+    public $description;
     public $slug;
     public $color;
     public $featured_image;
+    public $logo;
     
     public function is_valid()
     {

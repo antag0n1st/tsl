@@ -169,8 +169,10 @@ DROP TABLE IF EXISTS `categories`;
 CREATE TABLE IF NOT EXISTS `categories` (
   `categories_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
   `slug` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `featured_image` varchar(2500) COLLATE utf8_unicode_ci NOT NULL,
+  `logo` varchar(2500) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`categories_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
 
@@ -178,14 +180,14 @@ CREATE TABLE IF NOT EXISTS `categories` (
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`categories_id`, `name`, `slug`, `featured_image`) VALUES
-(1, 'Новости', 'novosti', 'default_featured_image.jpg'),
-(2, 'Speakers', 'dzpeakers', 'triple-s-speakers.jpg'),
-(3, 'Learning', 'learning', 'triple-s-learning.jpg'),
-(4, 'Recruitment', 'recruitment', 'triple-s-recruitment.jpg'),
-(5, 'Consulting', 'consulting', 'default_featured_image.jpg'),
-(6, 'Експертски академии', 'ekspertski-akademii', 'default_featured_image.jpg'),
-(7, 'Тренери', 'treneri', 'default_featured_image.jpg');
+INSERT INTO `categories` (`categories_id`, `name`, `description`, `slug`, `featured_image`, `logo`) VALUES
+(1, 'Новости', '', 'novosti', 'default_featured_image.jpg', 'logo.png'),
+(2, 'Speakers', '', 'speakers', 'triple-s-speakers.jpg', 'logo-speakers.jpg'),
+(3, 'Learning', '<p>Opis</p>', 'learning', 'triple-s-learning.jpg', 'logo-learning.jpg'),
+(4, 'Recruitment', '', 'recruitment', 'triple-s-recruitment.jpg', 'logo-recruitment.jpg'),
+(5, 'Consulting', '', 'consulting', 'default_featured_image.jpg', 'logo.png'),
+(6, 'Експертски академии', '', 'ekspertski-akademii', 'default_featured_image.jpg', 'logo.png'),
+(7, 'Тренери', '', 'treneri', 'default_featured_image.jpg', 'logo.png');
 
 -- --------------------------------------------------------
 
@@ -582,9 +584,10 @@ CREATE TABLE IF NOT EXISTS `sidebar` (
 INSERT INTO `sidebar` (`id`, `name`, `content`, `position`, `is_deletable`, `type`) VALUES
 (1, 'calendar', 'elements/calendar', 0, 0, 'view'),
 (2, 'quotes', 'elements/quotes', 1, 0, 'view'),
-(3, 'success_pages', '<p><a href="/tsl/newsletter/pages_of_success"> <img style="float: left; margin-right: 10px;" src="/tsl/images/tick.png" alt="" /></a></p>\r\n<h3 style="float: left; margin-top: 5px;">Страници на успех</h3>\r\n<div style="text-align: center;"><a href="/tsl/newsletter/pages_of_success"> <img src="/tsl/public/images/stranici-na-uspeh.jpg" alt="stranici na uspeh" /> </a></div>', 2, 0, 'content'),
-(4, 'social links', '<div class="social-buttons">\r\n<h3>Следи н&egrave;:</h3>\r\n<p><a href="http://www.facebook.com//login.php#!/pages/Triple-S-Learning/321852101858?ref=ts" target="_balnk"><img src="/tsl/images/icon-facebook-color.png" alt="" /></a> <a href="http://www.linkedin.com/in/tripleslearning" target="_balnk"><img src="/tsl/images/icon-linkedin-color.png" alt="" /></a> <a href="http://twitter.com/TripleSGroup" target="_blank"><img src="/tsl/images/icon-twitter-color.png" alt="" /></a> <a href="http://www.youtube.com/user/TripleSLearning" target="_balnk"><img src="/tsl/images/icon-youtube-color.png" alt="" /></a></p>\r\n</div>', 3, 0, 'content'),
-(11, 'Newsletter', 'elements/newsletter', 4, 0, 'view');
+(3, 'success_pages', '<div style="text-align: center;"><a href="/tsl/newsletter/pages_of_success"> <img src="/tsl/public/images/stranici_na_uspeh.jpg" alt="stranici na uspeh" /> </a></div>', 2, 0, 'content'),
+(4, 'social links', '<div class="social-buttons">\r\n<h3>Следи н&egrave;:</h3>\r\n<p><a href="http://www.facebook.com//login.php#!/pages/Triple-S-Learning/321852101858?ref=ts" target="_balnk"><img src="/tsl/images/icon-facebook-color.png" alt="" /></a> <a href="http://www.linkedin.com/in/tripleslearning" target="_balnk"><img src="/tsl/images/icon-linkedin-color.png" alt="" /></a> <a href="http://twitter.com/TripleSGroup" target="_blank"><img src="/tsl/images/icon-twitter-color.png" alt="" /></a> <a href="http://www.youtube.com/user/TripleSLearning" target="_balnk"><img src="/tsl/images/icon-youtube-color.png" alt="" /></a></p>\r\n</div>', 4, 0, 'content'),
+(11, 'Newsletter', 'elements/newsletter', 3, 0, 'view');
+
 
 -- --------------------------------------------------------
 
@@ -602,17 +605,18 @@ CREATE TABLE IF NOT EXISTS `slides` (
   `date_created` datetime NOT NULL,
   `order_index` int(11) NOT NULL,
   PRIMARY KEY (`slides_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `slides`
 --
 
 INSERT INTO `slides` (`slides_id`, `title`, `description`, `link`, `image`, `date_created`, `order_index`) VALUES
-(2, 'Добредојдовте', '<p>      Можете да се надевате на успех, a можете и да                          се обучите за успех.</p>                                          <p>                         Triple S Learning - брзи, интезивни тренинг                      програми дизајнирани за Вашиот успех...</p>', '', 'slider1.jpg', '2012-07-08 12:44:02', 0),
-(3, 'Ние сме дел од секоја успешна приказна!', 'Нашите обуки и конференции ќе ви помогнат да ги остварите Вашите цели', '', 'slider2.jpg', '2012-07-15 17:54:54', 1),
-(4, 'Успехот се учи!', 'Колку повеќе работи знаете, толку повеќе врати Ви се отвораат!', '', 'slider3.jpg', '2012-07-15 17:21:33', 2),
-(5, 'Delivering Success...', 'Тоа е она што најдобро го правиме! Пријавете се и бидете успешни!', '', 'slider4.jpg', '2012-07-15 17:19:42', 3);
+(2, 'Добредојдовте', '<p>      Можете да се надевате на успех, a можете и да                          се обучите за успех.</p>                                          <p>                         Triple S Learning - брзи, интезивни тренинг                      програми дизајнирани за Вашиот успех...</p>', '', 'slider1.jpg', '2012-07-08 12:44:02', 2),
+(4, 'Успехот се учи!', 'Колку повеќе работи знаете, толку повеќе врати Ви се отвораат!', '', 'slider3.jpg', '2012-07-15 17:21:33', 3),
+(5, 'Delivering Success...', '<p>Тоа е она што најдобро го правиме! Пријавете се и бидете успешни!</p>', '', 'slider4.jpg', '2012-07-28 14:58:48', 4),
+(7, 'Triple S Group', '<p>- <strong>Лидери </strong>во Македонија за неформално образование<br />- Над <strong>10.000</strong> обучени менаџери и претприемачи<br />- Водечки регионални <strong>практичари</strong><br />- Најпознатите <strong>светски бизнис гуруа</strong><br />- Присутни на пазарите на <strong>Македонија, Србија, Хрватска и Словенија</strong></p>', '', 'kolaz.jpg', '2012-07-28 15:11:31', 1);
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

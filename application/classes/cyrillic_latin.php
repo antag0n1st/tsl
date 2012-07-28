@@ -148,9 +148,10 @@ class CyrillicLatin {
         $urlPart = str_replace("\\n", "", $urlPart);
         $urlPart = str_replace("\\r", "", $urlPart);
         
-
-        $urlPart = self::cyrillic2latin($urlPart);
-
+        if(self::is_cyrilic($urlPart))
+        {
+            $urlPart = self::cyrillic2latin($urlPart);
+        }
 
         $end = 70;
             

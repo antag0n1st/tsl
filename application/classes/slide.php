@@ -31,8 +31,8 @@ class Slide {
  //          strlen(trim($this->link))            and   
            strlen(trim($this->image))           and
            strlen(trim($this->date_created))    and
-           is_numeric($this->slides_id)         and
-           is_numeric($this->order_index)
+           is_numeric($this->slides_id)        
+//           is_numeric($this->order_index)
            ){
                 return true;
            }
