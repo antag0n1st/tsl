@@ -364,7 +364,7 @@
                                             <!-- *|IFNOT:ARCHIVE_PAGE|* -->
 											<td valign="top" width="190">
                                             	<div mc:edit="std_preheader_links">
-                                                	Доколку неможете да го прегледате овој емаил уредно<br />
+                                                	Доколку не можете да го прегледате овој емаил уредно<br />
                                                         <a href="<?php echo base_url().'newsletter/view/'.$newsletter_id; ?>" target="_blank">кликнете тука</a>.
                                                 </div>
                                             </td>
@@ -391,7 +391,7 @@
                                             
                                             </td>
                                             <td style="vertical-align: top; text-align: right; padding-top: 20px; line-height: 20px;">
-                                                <h4 style="float: none; margin: 0px 20px 0px;display: inline;">Страници на Успех</h4>
+                                                <h4 style="float: none; margin: 0px 20px 0px;display: inline;">Страници за Успех</h4>
                                                 <br />
                                                 <span style="margin-right: 20px; color: #505050;"><?php echo TimeHelper::format($date_finished); ?></span>
                                                 <br />
@@ -427,13 +427,21 @@
                                                 <table border="0" cellpadding="20" cellspacing="0" width="100%" mc:repeatable="siwc_600" mc:variant="content with left image">
                                                     <tr>
                                                         <td align="center" valign="top" style="width:150px">
+                                                            <?php if(!isset($email)): ?>
                                                             <a target="_blank" href="<?php echo base_url() . 'articles/' . $article->id . '-' . $article->slug; ?>">
+                                                            <?php else:  ?>
+                                                             <a target="_blank" href="<?php echo base_url() . 'newsletter/click/' . $newsletter_id . '/' . $article->id . '/' . $email->id; ?>">
+                                                            <?php endif; ?>
                                                              <img src="<?php echo base_url().'public/uploaded/featured/thumbnails/'.$article->featured_image; ?>" style="width:150px;" mc:label="image" mc:edit="liwc600_image00" />
                                                             </a>
                                                         </td>
                                                         <td valign="top">
                                                             <div mc:edit="liwc600_content00">
-                                                                <a target="_blank" href="<?php echo base_url() . 'articles/' . $article->id . '-' . $article->slug; ?>">
+                                                                <?php if(!isset($email)): ?>
+                                                            <a target="_blank" href="<?php echo base_url() . 'articles/' . $article->id . '-' . $article->slug; ?>">
+                                                            <?php else:  ?>
+                                                             <a target="_blank" href="<?php echo base_url() . 'newsletter/click/' . $newsletter_id . '/' . $article->id . '/' . $email->id; ?>">
+                                                            <?php endif; ?>
  	                                                           <h4 class="h4"><?php echo $article->title; ?></h4>
                                                                 </a>
                                                                    <?php echo $article->description; ?>
@@ -504,7 +512,7 @@
                                                     <tr>
                                                         <td colspan="2" valign="middle" id="utility">
                                                             <div mc:edit="std_utility">
-                                                                Го добивте овој mail бидејќи сте зачленети на tsl.mk
+                                                                Го добивте овој mail бидејќи сте зачленети
                                                                 <br />
                                                                 Доколку не сакате да добивате пораки во иднина, ве молиме 
                                                                 &nbsp;<a href="<?php echo base_url().'newsletter/unsubscribe/'.$unsubscribe_id; ?>">отчленете се</a> .

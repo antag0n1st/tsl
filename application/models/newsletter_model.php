@@ -313,6 +313,70 @@ class Newsletter_model extends CI_Model {
     {
         return $this->db->count_all_results('emails');
     }
+    
+    
+    public function insert_newsletter_click($data)
+    {
+        $this->db->insert('newsletter_clicks', $data);
+        return $this->db->insert_id(); 
+    }
+    
+    public function delete_newsletter_click($options = array())
+    {
+        foreach($options as $key => $option)
+        {
+            $this->db->where($key,$option);
+        }
+        $this->db->delete('newsletter_clicks');
+    }
+    
+    public function get_newsletter_clicks($options = array(),$limit = 0, $offset = 0, $order_by = 'email DESC, date_clicked DESC', $result_only = 0)
+    {
+        foreach($options as $key => $option)
+        {
+            $this->db->where($key,$option);
+        }
+        
+        $this->db->from('newsletter_clicks as nc');
+        $this->db->join('newsletter n', 'nc.newsletter_id = n.id');
+        $this->db->join('articles   a', 'nc.article_id    = a.id');
+        $this->db->join('emails     e', 'nc.email_id      = e.id');
+        
+        $this->db->select('nc.date_created  as date_clicked,
+                       n.id             as newsletter_id,
+                       n.title          as newsletter_title,
+                       a.id             as article_id,
+                       a.title          as article_title,
+                       a.slug           as article_slug,
+                       e.id             as email_id,
+                       e.email          as email');
+        
+        
+        if($limit){
+            $this->db->limit($limit);
+        }
+        if($offset){
+            $this->db->offset($offset);
+        }
+        if($order_by)
+        {
+            $this->db->order_by($order_by);
+        }
+        
+        $result = $this->db->get();
+        
+        if($result_only)
+        {
+            return $result;
+        }
+        else
+        {
+            return $result->result();
+        }
+        
+    }
+    
+    
 }
 
 ?>
