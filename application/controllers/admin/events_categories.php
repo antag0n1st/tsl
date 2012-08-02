@@ -34,6 +34,10 @@ class events_categories extends MY_Admin_Controller {
             if(count($event_category) == 1)
                 $event_category = $event_category[0];
             $data['event_category'] = $event_category;
+            
+            $options = array('event_categories_id' => $category_id);
+            $data['events'] = $this->events_model->get_events($options);
+            
             $data['main_content']   =   'admin/events/categories/new';
             $this->load->view('admin/layout/layout', $data);
         }
@@ -88,6 +92,46 @@ class events_categories extends MY_Admin_Controller {
         $data['main_content']   =   'admin/events/categories/categories';
         $this->load->view('admin/layout/layout', $data);
     }
+    
+    public function delete_events_categories($category_id)
+    {
+        if(is_numeric($category_id))
+        {
+             $this->load->model('events_model');
+             $event_category = $this->events_model->get_event_categories(array('calendar_events_categories_id'=>$category_id));
+             if(count($event_category) == 1)
+             {
+                $event_category = $event_category[0];
+             }
+             if($event_category->num_events == 0)
+             {
+                 $this->events_model->delete_event_category($category_id);
+                 redirect(base_url() . 'admin/events_categories/show_events_categories');
+             }
+            
+        }
+    }
+    
+     public function delete_event($event_id, $category_id)
+    {
+        if(is_numeric($event_id) and is_numeric($category_id))
+        {
+            $this->load->model('events_model');
+            $this->load->model('candidates_model');
+            
+            $candidates = $this->candidates_model->get_candidates_by_event($event_id);
+            if(count($candidates)) // delete all candidates for this event
+            {
+                foreach($candidates as $candidate){
+                    $this->candidates_model->delete_candidate($candidate->id);
+                }
+            }
+            
+            $this->events_model->delete_calendar_event($event_id);
+            redirect(base_url() . 'admin/events_categories/edit_event_category/' . $category_id);
+        }
+    }
+    
     
 }
 
