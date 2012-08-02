@@ -222,6 +222,8 @@ class Newsletter extends MY_Admin_Controller {
                         
                         $report_result = $data['report'] =  $this->newsletter_model->get_newsletter_clicks($options,0,0,'email DESC, date_clicked DESC',1);
                         
+                        
+                        
                         $data['csv']    = $this->dbutil->csv_from_result($report_result, $delimiter, $newline);
                         $this->load->view('admin/newsletter/reports/clicks_csv', $data);
                    }

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 02, 2012 at 09:39 AM
+-- Generation Time: Aug 02, 2012 at 02:36 PM
 -- Server version: 5.1.36
 -- PHP Version: 5.3.0
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `articles` (
   FULLTEXT KEY `title_2` (`title`),
   FULLTEXT KEY `description` (`description`),
   FULLTEXT KEY `content` (`content`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=69 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=71 ;
 
 --
 -- Dumping data for table `articles`
@@ -104,24 +104,22 @@ CREATE TABLE IF NOT EXISTS `calendar_events` (
   `event_categories_id` int(11) NOT NULL,
   `candidates_num` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`calendar_events_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `calendar_events`
 --
 
 INSERT INTO `calendar_events` (`calendar_events_id`, `title`, `date_created`, `date_happen`, `calendar_link`, `event_categories_id`, `candidates_num`) VALUES
-(1, 'title', '2012-07-07 19:57:07', '2012-07-04 04:35:00', 'http://google.com', 4, 0),
 (2, 'title', '2012-07-07 01:52:21', '2012-07-09 00:00:00', 'http://facebook.com', 2, 0),
 (5, 'title', '2012-07-23 21:43:35', '2012-07-24 02:20:00', 'http://movies.mk', 4, 0),
 (6, 'title', '2012-07-07 15:54:06', '2012-07-03 00:00:00', 'http://times.com', 1, 0),
-(7, 'title', '2012-07-07 16:32:47', '2002-08-02 12:00:00', 'http://google.com', 10, 0),
+(7, 'title', '2012-08-02 13:16:29', '2002-08-02 12:00:00', 'http://google.com', 2, 0),
 (8, 'Настанот во септември', '2012-07-22 09:27:10', '2012-09-08 00:00:00', 'http://google.com', 10, 1),
 (9, 'title', '2012-07-07 17:18:42', '2004-07-20 12:00:00', 'http://movies.mk', 10, 0),
 (10, 'title', '2012-07-07 17:29:47', '2007-07-20 12:00:00', 'http://times.com', 5, 0),
 (11, 'title', '2012-07-09 21:49:18', '2012-07-07 17:31:00', 'http://movies.mk', 11, 0),
 (12, 'title', '2012-07-09 21:49:25', '2012-07-07 17:43:00', 'http://google.com', 1, 0),
-(13, 'title', '2012-07-07 17:53:58', '2012-07-07 17:53:00', 'http://movies.mk', 4, 0),
 (14, 'title', '2012-07-07 18:03:30', '2012-07-10 17:53:00', 'http://google.com', 1, 0),
 (15, 'title', '2012-07-07 18:05:28', '2012-07-07 18:20:00', 'http://tsl.mk', 1, 0);
 
@@ -138,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `calendar_events_categories` (
   `slug` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `color_name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`calendar_events_categories_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data for table `calendar_events_categories`
@@ -155,7 +153,8 @@ INSERT INTO `calendar_events_categories` (`calendar_events_categories_id`, `name
 (8, 'Деловни вештини', '#eca72f', 'delovni-veshtini', 'portokalova'),
 (9, 'Тим билдинг', '#10125f', 'tim-bilding', 'teget'),
 (10, 'Конференции', '#186752', 'konferencii', 'temno zelena'),
-(11, 'Експертски академии', '#000000', 'ekspertski-akademii', 'crna');
+(11, 'Експертски академии', '#000000', 'ekspertski-akademii', 'crna'),
+(17, 'kategorija taa e taa', '#abc000', 'kategorija-taa-e-taa', 'crna');
 
 -- --------------------------------------------------------
 
@@ -294,8 +293,7 @@ INSERT INTO `emails` (`id`, `email`, `created_at`, `is_unsubscribed`, `unsubscri
 (6, 'nemo@yahoo.com', '2012-07-15 00:00:00', 0, 'db2498eb-d31f-11e1-895c-0019dbf8832c'),
 (7, 'jet-fly@yahoo.com', '2012-07-15 00:00:00', 0, 'db249a76-d31f-11e1-895c-0019dbf8832c'),
 (8, 'panda@hotmal.com', '2012-07-15 00:00:00', 0, 'db249c01-d31f-11e1-895c-0019dbf8832c'),
-(16, 'vladimir.apostolski@gmail.com', '2012-07-24 09:17:39', 0, '09e55b42-d569-11e1-a080-f486bf2ea9c3'),
-(17, 'vld_apo@yahoo.com', '2012-07-24 09:34:53', 0, '7277e427-d56b-11e1-a080-f486bf2ea9c3');
+(16, 'vladimir.apostolski@gmail.com', '2012-07-24 09:17:39', 0, '09e55b42-d569-11e1-a080-f486bf2ea9c3');
 
 -- --------------------------------------------------------
 
@@ -418,7 +416,7 @@ CREATE TABLE IF NOT EXISTS `gallery_photos` (
   `description` text COLLATE utf8_unicode_ci,
   `date_created` datetime DEFAULT NULL,
   PRIMARY KEY (`id_gallery_photos`,`galleries_id_gallery`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=30 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=32 ;
 
 --
 -- Dumping data for table `gallery_photos`
@@ -504,7 +502,7 @@ CREATE TABLE IF NOT EXISTS `newsletter` (
   `date_started` datetime DEFAULT NULL,
   `date_finished` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `newsletter`
@@ -514,7 +512,8 @@ INSERT INTO `newsletter` (`id`, `title`, `content`, `status`, `date_created`, `d
 (3, 'sent 0 emails', '<p>okej e</p>', 3, '2012-07-15 17:06:49', '2012-07-24 09:28:09', '2012-07-24 09:31:54'),
 (4, 'the paused title', '<p>with some content</p>', 0, '2012-07-15 17:19:07', '2012-07-24 09:26:12', '0000-00-00 00:00:00'),
 (5, 'the finished newsletter', 'asda sdfasdfasdfasdf', 3, '2012-07-15 17:19:53', NULL, NULL),
-(7, 'raboti li ova be', '<p>raboti li ova cudo</p>', 1, '2012-07-25 21:34:16', '2012-07-25 21:35:10', NULL);
+(7, 'raboti li ova be', '<p>raboti li ova cudo</p>', 1, '2012-07-25 21:34:16', '2012-07-25 21:35:10', NULL),
+(9, 'test pismo', '<p>test pismo</p>', 0, '2012-08-02 14:07:31', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -550,7 +549,38 @@ INSERT INTO `newsletter_articles` (`newsletter_id`, `article_id`) VALUES
 (7, 64),
 (7, 61),
 (7, 54),
-(7, 53);
+(7, 53),
+(9, 64),
+(9, 66),
+(9, 67),
+(9, 68),
+(9, 70);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `newsletter_clicks`
+--
+
+CREATE TABLE IF NOT EXISTS `newsletter_clicks` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `newsletter_id` int(11) NOT NULL,
+  `article_id` int(11) NOT NULL,
+  `email_id` int(11) NOT NULL,
+  `date_created` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
+
+--
+-- Dumping data for table `newsletter_clicks`
+--
+
+INSERT INTO `newsletter_clicks` (`id`, `newsletter_id`, `article_id`, `email_id`, `date_created`) VALUES
+(1, 7, 67, 2, '2012-08-02 13:58:16'),
+(8, 9, 67, 8, '2012-08-02 14:10:24'),
+(7, 9, 68, 8, '2012-08-02 14:10:19'),
+(11, 9, 68, 7, '2012-08-01 14:50:19'),
+(9, 9, 66, 8, '2012-08-02 14:10:27');
 
 -- --------------------------------------------------------
 

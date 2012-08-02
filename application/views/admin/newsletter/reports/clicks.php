@@ -5,8 +5,9 @@
         <a title="Експорт во Excel" href="<?php echo base_url()?>admin/newsletter/report/<?php echo $newsletter_id; ?>/1">
             <img src="<?php echo base_url();?>public/images/heo_excel.jpg" alt="" />
         </a>
+        <!-- hidden until issue solved with UTF-8 characters
         <a title="Експорт во CSV" href="<?php echo base_url()?>admin/newsletter/report/<?php echo $newsletter_id; ?>/2"><img src="<?php echo base_url();?>public/images/csv.png" alt="" /></a>
-        
+        -->
     </div>
     <div class="separator"></div>
     <div class="candidates">    
