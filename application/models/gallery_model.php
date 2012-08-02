@@ -94,6 +94,24 @@ class Gallery_model extends CI_Model {
         return $result->result();
     }
     
+    public function add_group($title){
+        $query  = " INSERT INTO gallery_groups  ";
+        $query .= " (id_gallery_group,name,date_created) ";
+        $query .= " VALUES ";
+        $query .= " (NULL,".$this->db->escape($title).",'".TimeHelper::DateTimeAdjusted()."') ";
+        $this->db->query($query);
+    }
+    
+    public function update_group($id,$title){
+        
+        $query  = " UPDATE gallery_groups  ";
+        $query .= " SET name = ".$this->db->escape($title)." ";
+        $query .= " WHERE ";
+        $query .= " id_gallery_group = ".$this->db->escape($id)." ";
+        
+        $this->db->query($query);
+    }
+    
     public function get_photos($options = array()){
         $this->db->from('gallery_photos');
         $this->db->select('id_gallery_photos,
@@ -130,7 +148,10 @@ class Gallery_model extends CI_Model {
         $this->db->delete('galleries');
     }
     
-    
+    public function delete_group($id){
+        $this->db->where('id_gallery_group', $id);
+        $this->db->delete('gallery_groups');
+    }
     
     public function insert_gallery_photo($data){
      

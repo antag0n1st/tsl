@@ -206,5 +206,58 @@ class Gallery extends MY_Admin_Controller {
         $data['main_content']   =   'admin/gallery/edit_gallery';
         $this->load->view('admin/layout/layout', $data);
     }
+    
+    public function add_group(){
+        
+        if($this->input->post('title')){
+         
+            $this->load->model('gallery_model');
+            
+            if($this->input->post('id')){
+                $this->gallery_model->update_group($this->input->post('id'),$this->input->post('title'));
+            }else{
+                $this->gallery_model->add_group($this->input->post('title'));
+            }
+            
+            
+            header('Location: '.base_url().'admin/gallery/browse_groups');
+            exit;
+        }
+        
+        $data['main_content']   =   'admin/gallery/add_group';
+        $this->load->view('admin/layout/layout', $data);
+    }
+    
+    public function browse_groups(){
+        
+        $this->load->model('gallery_model');
+        $gallery_groups = $this->gallery_model->get_groups();
+        
+        $data['groups'] = $gallery_groups;
+        $data['main_content']   =   'admin/gallery/browse_groups';
+        $this->load->view('admin/layout/layout', $data);
+    }
+    
+    public function edit_group($id){
+        
+        
+        $this->load->model('gallery_model');
+        $gallery_groups = $this->gallery_model->get_groups(array('id_gallery_group' => $id));
+        $gallery_group = $gallery_groups[0];
+        $data['title'] = $gallery_group->name;
+        $data['id'] = $gallery_group->id_gallery_group;
+        
+        $data['main_content']   =   'admin/gallery/add_group';
+        $this->load->view('admin/layout/layout', $data);
+    }
+    
+    public function delete_group($id){
+        $this->load->model('gallery_model');
+        
+        $this->gallery_model->delete_group($id);
+        
+        header('Location: '.base_url().'admin/gallery/browse_groups');
+            exit;
+    }
 }
 ?>

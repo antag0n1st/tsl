@@ -64,6 +64,8 @@
             <ul>
                 <li><a href="<?php echo base_url(); ?>admin/gallery/new_gallery">Нова галерија</a></li>
                 <li><a href="<?php echo base_url(); ?>admin/gallery">Сите галерии</a></li>
+                <li><a href="<?php echo base_url(); ?>admin/gallery/add_group">Нова Група</a></li>
+                <li><a href="<?php echo base_url(); ?>admin/gallery/browse_groups">Сите Групи</a></li>
             </ul>
         </li>
         <li><a href="#">Цитати</a>
