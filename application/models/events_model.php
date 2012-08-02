@@ -115,6 +115,11 @@ class Events_model extends CI_Model {
         $this->db->update('calendar_events_categories', $data);
     }
     
+    public function delete_event_category($category_id)
+    {
+        $this->db->where('calendar_events_categories_id', $category_id);
+        $this->db->delete('calendar_events_categories');
+    }
     
     
     public function insert_calendar_event($data){
