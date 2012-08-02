@@ -365,7 +365,7 @@
 											<td valign="top" width="190">
                                             	<div mc:edit="std_preheader_links">
                                                 	Доколку не можете да го прегледате овој емаил уредно<br />
-                                                        <a href="<?php echo base_url().'newsletter/view/'.$newsletter_id; ?>" target="_blank">кликнете тука</a>.
+                                                        <a href="<?php echo base_url().'newsletter/view/'.$newsletter_id; if(isset($email)) echo '/' . $email->id; ?>" target="_blank">кликнете тука</a>.
                                                 </div>
                                             </td>
 											<!-- *|END:IF|* -->

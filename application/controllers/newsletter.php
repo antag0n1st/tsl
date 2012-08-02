@@ -70,7 +70,7 @@ class Newsletter extends MY_Controller {
         }
     }
     
-    public function view($newsletter_id = 0){
+    public function view($newsletter_id = 0, $email_id = 0){
         
         $this->load->model('newsletter_model');
 
@@ -83,6 +83,18 @@ class Newsletter extends MY_Controller {
             $data['content'] = $content = $newsletter->content;
             $data['articles'] = $articles = $this->newsletter_model->get_newsletter_articles($newsletter_id);
             $data['date_finished'] = $newsletter->date_finished;
+            
+            if(is_numeric($email_id) and $email_id > 0)
+            {
+                $email = $this->newsletter_model->get_email_by_id($email_id);
+                if($email)
+                {
+                    $email = $email[0];
+                    $data['email']  = $email;
+                }
+            }
+            
+            
             $this->load->view('newsletter_template',$data);
         }
         
