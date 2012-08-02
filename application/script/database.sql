@@ -1,20 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.10.1
+-- version 3.2.0.1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 21, 2012 at 10:56 AM
--- Server version: 5.5.20
--- PHP Version: 5.3.10
+-- Generation Time: Aug 02, 2012 at 09:39 AM
+-- Server version: 5.1.36
+-- PHP Version: 5.3.0
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `tsl`
@@ -26,7 +19,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `articles`
 --
 
-DROP TABLE IF EXISTS `articles`;
 CREATE TABLE IF NOT EXISTS `articles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(2500) COLLATE utf8_unicode_ci NOT NULL,
@@ -41,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `articles` (
   FULLTEXT KEY `title_2` (`title`),
   FULLTEXT KEY `description` (`description`),
   FULLTEXT KEY `content` (`content`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=61 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=69 ;
 
 --
 -- Dumping data for table `articles`
@@ -50,12 +42,16 @@ CREATE TABLE IF NOT EXISTS `articles` (
 INSERT INTO `articles` (`id`, `title`, `description`, `content`, `date_created`, `date_published`, `slug`, `featured_image`, `status`) VALUES
 (51, 'За нас', 'Ова ќе биде страницата за нас', '<p><strong>Triple S Learning<br /><br /></strong>Triple S Learning е прв и единствен специјализиран тренинг центар во Македонија во областите на продажба, услуга и успех. Знаењето и методологијата кои се содржани во тренинг програмите, кои ги користат и светските лидерски компании, ги издвојува Triple S Learning како единствени и иновативни во современите услови на работење.<br />Тренинг програмите на Triple S Learning се персонализираат и приспособуваат на бизнис потребите на секој клиент. Обезбедуваат насоки, вештини и одговори за секојдневните ситуации, интеракции, можности, проблеми и предизвици на вработените.<br />Triple S Learning е компанија која успешно делува и во Србија, Хрватска и Словенија, каде се вбројува меѓу првите во индустријата на обуки, чии клиенти се најдобриите компании, кои нешто значат на пазарот.<strong><br />&nbsp;<br /><br />Визија<br /></strong>Triple S Learning ќе <strong>иницира промени и развој на луѓето, нивните компании и квалитетот на животот</strong> преку дизајнирање на современи тренинг програми и пренесување на технологиите на работење на светски најуспешните компании и поединци.<br /><br /><strong>Мисија</strong><br />Да обезбедуваме информации и одговори од реалниот свет кои лесно се применуваат во практиката и се претвораат во пари.<br /><br /><strong>Принципи</strong><br />Вработените на Triple S Learning ќе живеат според принципите содржани во тренинг програмите. Инкорпорирањето на филозофијата на тренинг програмите во секојдневното работење ќе допринесе за остварување на долгорочните цели.&nbsp;</p>', '2012-07-19 09:55:50', '2012-07-12 11:22:00', 'za-nas', 'default_featured_image.jpg', 1),
 (54, 'Референци', 'Краток преглед на сите референци на Triple S Learning', '<p>Oвде ќе бидат ставени референците</p>', '2012-07-15 17:14:36', '2012-07-14 09:37:00', 'referenci', 'default_featured_image.jpg', 1),
-(52, 'Brian Tracy', 'Ова е статија за Brian Tracy', '<p>Ова е статија за Brian Tracy</p>', '2012-07-21 08:37:57', '2012-07-12 11:29:00', 'brian-tracy', 'default_featured_image.jpg', 1),
-(42, 'БРЕНД МАРКЕТИНГ', 'Научете што е бренд маркетинг!', '<p>Брендот претставува едно од највредните средства што го поседува секоја компанија. Во последно време, кога производствените и другите организациски процеси лесно се копираат, брендот претставува единствена алатка која тешко се копира, а која креира нови можности и успешна диференцијација на компаниите. Современото пазарно окружување станува се покомплексно и добрите стари маркетинг техники не се повеќе ефективни.<br /><br />Оваа дводневна обука за брендирање и бренд менаџмент ќе ви овозможи да ја запознаете суштината на брендирањето и кои се критичните точки при градење успешен бренд во модерно време. Ќе ви помогне детално да ги осознаете сите етапи во процесот на градење на бренд и ќе ве научи како самите успешно да одлучувате и управувате со нив. Низ обуката се интегрирани најдобрите практични совети од светски познатите, но и локални брендови, кои ќе ве инспирираат да правите подобри бренд стратегии и ќе ви откријат како истите успешно да ги имплементирате.<br /><br /><strong>&nbsp;Дел од она што ќе го научат учесниците</strong>:</p>\n<ul>\n<li>Вовед во бренд маркетинг и брендирање</li>\n<li>Суштина на брендирањето</li>\n<li>Принципи за бренд супериорност</li>\n<li>Чекор по чекор, процес за градење на бренд</li>\n<li>Идентификување на брендотсо Име, Лого, Слоган</li>\n</ul>\n<div>Контактирајте н&egrave; за дополнителни информации за изведба на обуката ..</div>', '2012-07-09 21:20:40', '2013-07-08 17:30:00', 'brend-marketing', 'brand_marketing.jpg', 1),
+(52, 'Brian Tracy', 'Ова е статија за Brian Tracy', '<p>Ова е статија за Brian Tracy</p>', '2012-07-28 13:39:08', '2012-07-12 11:29:00', 'brian-tracy', 'default_featured_image.jpg', 1),
+(42, 'БРЕНД МАРКЕТИНГ', 'Научете што е бренд маркетинг!', '<p>Брендот претставува едно од највредните средства што го поседува секоја компанија. Во последно време, кога производствените и другите организациски процеси лесно се копираат, брендот претставува единствена алатка која тешко се копира, а која креира нови можности и успешна диференцијација на компаниите. Современото пазарно окружување станува се покомплексно и добрите стари маркетинг техники не се повеќе ефективни.<br /><br />Оваа дводневна обука за брендирање и бренд менаџмент ќе ви овозможи да ја запознаете суштината на брендирањето и кои се критичните точки при градење успешен бренд во модерно време. Ќе ви помогне детално да ги осознаете сите етапи во процесот на градење на бренд и ќе ве научи како самите успешно да одлучувате и управувате со нив. Низ обуката се интегрирани најдобрите практични совети од светски познатите, но и локални брендови, кои ќе ве инспирираат да правите подобри бренд стратегии и ќе ви откријат како истите успешно да ги имплементирате.<br /><br /><strong>&nbsp;Дел од она што ќе го научат учесниците</strong>:</p>\n<ul>\n<li>Вовед во бренд маркетинг и брендирање</li>\n<li>Суштина на брендирањето</li>\n<li>Принципи за бренд супериорност</li>\n<li>Чекор по чекор, процес за градење на бренд</li>\n<li>Идентификување на брендотсо Име, Лого, Слоган</li>\n</ul>\n<div>Контактирајте н&egrave; за дополнителни информации за изведба на обуката ..</div>', '2012-07-22 20:49:08', '2012-07-22 12:30:00', 'brend-marketing', 'brand_marketing.jpg', 1),
 (53, 'Jay Conrad Levinson', 'Статија за Jay Conrad Levinson', '<p>Статија за Jay Conrad Levinson</p>', '2012-07-18 21:19:58', '2012-07-12 11:35:00', 'jay-conrad-levinson', 'default_featured_image.jpg', 1),
 (46, 'ГЕРИЛА МАРКЕТИНГ И ПРОДАЖБА', 'Револуционерниот систем на герила пристапот Ви го опишува арсеналот на оружја за маркетинг и продажба, во форма на обука која Ви ги открива моќните тајни на маркетингот', '<p>Револуционерниот систем на герила пристапот Ви го опишува арсеналот на оружја за маркетинг и продажба, во форма на обука која Ви ги открива моќните тајни на маркетингот и продажбата во нивна практична форма.Конкуренцијата веќе се бори да превземе што е можно повеќе клиенти. Возвратете со Герила маркетинг и продажба. Дајте му на Вашиот тим неконвенционални стратегии и тактики кои се креативни, проверени и недвосмислено ефективни.<br /><br /><strong>Дел од она што ќе го научат учесниците:</strong><br /><br /></p>\r\n<ul>\r\n<li>&bdquo;Оружјата&ldquo; на герила маркетингот</li>\r\n<li>Герила маркетинг план</li>\r\n<li>Герила адвертајзинг</li>\r\n<li>Герила маркетинг стратегија</li>\r\n</ul>\r\n<div><strong>Цели и придобивки од тренинг програмата:<br /><br /></strong>\r\n<ul>\r\n<li>Осознавање и градење на маркетиншкиот идентитет на производ</li>\r\n<li>Откривање на најдобрите начини за промовирање</li>\r\n<li>Развивање на способност за употреба на 100-те герила маркетинг оружја</li>\r\n<li>Развивање и употреба на комплементарен систем на продажба - герила продажба</li>\r\n</ul>\r\n<div><br /><br /></div>\r\n</div>', '2012-07-07 20:21:06', '2012-07-07 20:17:00', 'gerila-marketing-i-prodazhba', 'guerilla_marketing.jpg', 1),
-(47, 'TSL CONFERENCE', 'Иновативни стратегии за раст и профит во услови на рецесија – како да се зголеми профитот во услови на глобална економска криза', '<p><strong>Иновативни стратегии за раст и профит во услови на рецесија &ndash; како да се зголеми профитот во услови на глобална економска криза<br /></strong><br />Авторот на бизнис бестселерот &bdquo;Иновација до корен&ldquo; и водечкиот експерт за бизнис иновација, г-динот Rowan Gibson пред македонската бизнис елита ги презентираше своите решенија и идеи како да се надмине рецесијата и уште повеќе, како да се профитра во услови на глобална економска криза.<br /><br />Неговото општопризнаено искуство во оваа тема и експертизата во полето на бизнис иновации се веќе успешно докажани преку работата на г-динот Gibson со многу Fortune 500 компании. Македонската бизнис елита имаше непроценлива шанса да слушне многу практични совети, идеи и решенија уникатни по својата лесна применливост во секој бизнис сектор и во секаква бизнис клима. Ова искуство беше збогатено со можноста посетителите на оваа конференција да му поставуваат директни прашања на г-динот Gibson.<br /><br />Трите сесии на конференцијата беа дизајнирани да го пружат оптималниот бизнис пакет како да се справиме со глобалната економска криза: целосен увид во стратегиите за победа во тешки економски времиња, иновација до корен: како да се претвори компанијата во лидер за иновации и со тоа да се зголеми продажбата во тековните економски трендови.<br /><br />&nbsp;Елитната бизнис конференција го привлече вниманието и на медиумите, кои ја обележаа како &bdquo;најдоброто решение за македонските бизнисмени во услови на рецесија&ldquo;, истакнувајќи ја по бројот на споделени корисни и лесно применливи примери и искуства кои треба да ја збогатат и македонската бизнис заедница.<br /><br />Г-динот Гибсон ја започна конференцијата со следнта реченица: &bdquo;Во секоја економија постојат моменти на криза во продажбата или финансиски турболенции. Ќе ви покажам дека дури и економски најтешките времиња можат да претставуваат одлична шанса за напредок на вашиот бизнис и потиснување на конкуренцијата.&ldquo; Презентирајќи го неговиот бизнис изум &bdquo;Четирите леќи на иновацијата&ldquo; (предизвикување на втемелените обичаи, применување на трендовите, мерење на способностите и адресирање на недопрените потреби) г-динот Gibson ја инспирираше публиката да &bdquo;Бидете победници на 21-от век, и дури и во економски најтешките времиња бидете отворени за промени, постојано редефинирајте ја вашата индустрија, создавајте нови пазари, едноставно кажано: постојано предизвикувајте ја позицијата на статус кво.&ldquo;<br /><br />&nbsp;Освен во Скопје, г-динот Gibson гостуваше и во Белград (2 јуни) исто така во организација на локалното претставништво на Triple S Learning.<br /><br />Им благодариме на сите кои покажаа интерес и беа дел од Конференцијата. Им благодариме на сите кои остварувајќи ја својата Визија се дел од нашата Визија - да внесеме позитивна промена во начинот на деловното работење и живеење.<br /><br />Ве очекуваме на гостувањето на нови атрактивни говорници и познати светски гуруа од светот на бизнисот кои следат.<br /><br /><strong>Продолжуваме понатаму - заедно...</strong><br />&nbsp;</p>', '2012-07-07 20:24:22', '2012-07-07 20:21:00', 'tsl-conference', 'rowan_gibson.jpg', 1),
-(60, 'Наслов на статијата', 'Краток опис', '<p>Објавете нова статија</p>', '2012-07-21 12:56:12', '2012-07-21 12:50:00', 'naslov-na-statijata', 'default_featured_image.jpg', 2);
+(47, 'TSL CONFERENCE', 'Иновативни стратегии за раст и профит во услови на рецесија – како да се зголеми профитот во услови на глобална економска криза', '<p><strong>Иновативни стратегии за раст и профит во услови на рецесија &ndash; како да се зголеми профитот во услови на глобална економска криза<br /></strong><br />Авторот на бизнис бестселерот &bdquo;Иновација до корен&ldquo; и водечкиот експерт за бизнис иновација, г-динот Rowan Gibson пред македонската бизнис елита ги презентираше своите решенија и идеи како да се надмине рецесијата и уште повеќе, како да се профитра во услови на глобална економска криза.<br /><br />Неговото општопризнаено искуство во оваа тема и експертизата во полето на бизнис иновации се веќе успешно докажани преку работата на г-динот Gibson со многу Fortune 500 компании. Македонската бизнис елита имаше непроценлива шанса да слушне многу практични совети, идеи и решенија уникатни по својата лесна применливост во секој бизнис сектор и во секаква бизнис клима. Ова искуство беше збогатено со можноста посетителите на оваа конференција да му поставуваат директни прашања на г-динот Gibson.<br /><br />Трите сесии на конференцијата беа дизајнирани да го пружат оптималниот бизнис пакет како да се справиме со глобалната економска криза: целосен увид во стратегиите за победа во тешки економски времиња, иновација до корен: како да се претвори компанијата во лидер за иновации и со тоа да се зголеми продажбата во тековните економски трендови.<br /><br />&nbsp;Елитната бизнис конференција го привлече вниманието и на медиумите, кои ја обележаа како &bdquo;најдоброто решение за македонските бизнисмени во услови на рецесија&ldquo;, истакнувајќи ја по бројот на споделени корисни и лесно применливи примери и искуства кои треба да ја збогатат и македонската бизнис заедница.<br /><br />Г-динот Гибсон ја започна конференцијата со следнта реченица: &bdquo;Во секоја економија постојат моменти на криза во продажбата или финансиски турболенции. Ќе ви покажам дека дури и економски најтешките времиња можат да претставуваат одлична шанса за напредок на вашиот бизнис и потиснување на конкуренцијата.&ldquo; Презентирајќи го неговиот бизнис изум &bdquo;Четирите леќи на иновацијата&ldquo; (предизвикување на втемелените обичаи, применување на трендовите, мерење на способностите и адресирање на недопрените потреби) г-динот Gibson ја инспирираше публиката да &bdquo;Бидете победници на 21-от век, и дури и во економски најтешките времиња бидете отворени за промени, постојано редефинирајте ја вашата индустрија, создавајте нови пазари, едноставно кажано: постојано предизвикувајте ја позицијата на статус кво.&ldquo;<br /><br />&nbsp;Освен во Скопје, г-динот Gibson гостуваше и во Белград (2 јуни) исто така во организација на локалното претставништво на Triple S Learning.<br /><br />Им благодариме на сите кои покажаа интерес и беа дел од Конференцијата. Им благодариме на сите кои остварувајќи ја својата Визија се дел од нашата Визија - да внесеме позитивна промена во начинот на деловното работење и живеење.<br /><br />Ве очекуваме на гостувањето на нови атрактивни говорници и познати светски гуруа од светот на бизнисот кои следат.<br /><br /><strong>Продолжуваме понатаму - заедно...</strong><br />&nbsp;</p>', '2012-07-21 13:20:13', '2012-07-07 20:21:00', 'tdzl-conference', 'rowan_gibson.jpg', 1),
+(61, 'onaka', 'Краток опис', '<p>Објавете нова статија<br /><br /><img src="/tsl/public/uploaded/uspeh.jpg" alt="gdfg" width="400" height="300" />fdslfsdfsdfsdfsdfsfl;<br /><br /><img src="/tsl/public/uploaded/clients/t-home.png" alt="fdgfd" width="110" height="25" /><strong>Македонски Телеком АД-Скопје</strong>&nbsp;<br />Национален оператор за електронски комуникации<br /><br />&nbsp;</p>', '2012-07-22 21:40:49', '2012-07-21 16:58:00', 'onaka', 'default_featured_image.jpg', 1),
+(64, 'Наслов на статијата', 'Краток опис', '<p><br />Текст на статијата</p>', '2012-07-24 08:22:34', '1970-01-01 01:00:00', 'naslov-na-statijata', 'default_featured_image.jpg', 1),
+(66, 'Statija vo Speakers', 'Statija vo Speakers', '<p>Објавете нова статија</p>', '2012-07-28 13:50:20', '2012-07-28 13:42:00', 'statija-vo-speakers', 'default_featured_image.jpg', 1),
+(67, 'Statija vo Learning', 'Statija vo Learning', '<p>Објавете нова статија</p>', '2012-07-28 13:50:12', '2012-07-28 13:44:00', 'statija-vo-learning', 'default_featured_image.jpg', 1),
+(68, 'Statija vo Recruitment', 'Statija vo Recruitment', '<p>Објавете нова статија<br /> <iframe src="http://www.youtube.com/embed/BckjLxWjRAU" frameborder="0" width="560" height="315"></iframe><br /><br /><br /><img src="/tsl/public/uploaded/uspeh.jpg" /></p>', '2012-07-28 14:46:59', '2012-07-28 13:46:00', 'statija-vo-recruitment', 'default_featured_image.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -63,29 +59,35 @@ INSERT INTO `articles` (`id`, `title`, `description`, `content`, `date_created`,
 -- Table structure for table `articles_categories`
 --
 
-DROP TABLE IF EXISTS `articles_categories`;
 CREATE TABLE IF NOT EXISTS `articles_categories` (
   `articles_categories_id` int(11) NOT NULL AUTO_INCREMENT,
   `articles_id` int(11) NOT NULL,
   `categories_id` int(11) NOT NULL,
   PRIMARY KEY (`articles_categories_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=124 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=233 ;
 
 --
 -- Dumping data for table `articles_categories`
 --
 
 INSERT INTO `articles_categories` (`articles_categories_id`, `articles_id`, `categories_id`) VALUES
+(184, 66, 1),
+(182, 67, 1),
+(232, 68, 1),
+(231, 68, 4),
+(181, 67, 3),
+(183, 66, 2),
+(174, 64, 1),
 (60, 39, 4),
 (59, 39, 3),
 (66, 41, 5),
 (65, 41, 4),
 (64, 41, 3),
-(117, 42, 1),
-(123, 52, 2),
+(149, 42, 1),
+(175, 52, 2),
 (122, 53, 2),
 (81, 46, 1),
-(82, 47, 1);
+(125, 47, 1);
 
 -- --------------------------------------------------------
 
@@ -93,7 +95,6 @@ INSERT INTO `articles_categories` (`articles_categories_id`, `articles_id`, `cat
 -- Table structure for table `calendar_events`
 --
 
-DROP TABLE IF EXISTS `calendar_events`;
 CREATE TABLE IF NOT EXISTS `calendar_events` (
   `calendar_events_id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(2500) COLLATE utf8_unicode_ci NOT NULL,
@@ -103,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `calendar_events` (
   `event_categories_id` int(11) NOT NULL,
   `candidates_num` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`calendar_events_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `calendar_events`
@@ -112,10 +113,10 @@ CREATE TABLE IF NOT EXISTS `calendar_events` (
 INSERT INTO `calendar_events` (`calendar_events_id`, `title`, `date_created`, `date_happen`, `calendar_link`, `event_categories_id`, `candidates_num`) VALUES
 (1, 'title', '2012-07-07 19:57:07', '2012-07-04 04:35:00', 'http://google.com', 4, 0),
 (2, 'title', '2012-07-07 01:52:21', '2012-07-09 00:00:00', 'http://facebook.com', 2, 0),
-(5, 'title', '2012-07-07 19:19:46', '2012-07-22 02:20:00', 'http://movies.mk', 4, 0),
+(5, 'title', '2012-07-23 21:43:35', '2012-07-24 02:20:00', 'http://movies.mk', 4, 0),
 (6, 'title', '2012-07-07 15:54:06', '2012-07-03 00:00:00', 'http://times.com', 1, 0),
 (7, 'title', '2012-07-07 16:32:47', '2002-08-02 12:00:00', 'http://google.com', 10, 0),
-(8, 'Настанот во септември', '2012-07-22 09:27:10', '2012-09-08 00:00:00', 'http://google.com', 10, 0),
+(8, 'Настанот во септември', '2012-07-22 09:27:10', '2012-09-08 00:00:00', 'http://google.com', 10, 1),
 (9, 'title', '2012-07-07 17:18:42', '2004-07-20 12:00:00', 'http://movies.mk', 10, 0),
 (10, 'title', '2012-07-07 17:29:47', '2007-07-20 12:00:00', 'http://times.com', 5, 0),
 (11, 'title', '2012-07-09 21:49:18', '2012-07-07 17:31:00', 'http://movies.mk', 11, 0),
@@ -124,15 +125,12 @@ INSERT INTO `calendar_events` (`calendar_events_id`, `title`, `date_created`, `d
 (14, 'title', '2012-07-07 18:03:30', '2012-07-10 17:53:00', 'http://google.com', 1, 0),
 (15, 'title', '2012-07-07 18:05:28', '2012-07-07 18:20:00', 'http://tsl.mk', 1, 0);
 
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `calendar_events_categories`
 --
 
-DROP TABLE IF EXISTS `calendar_events_categories`;
 CREATE TABLE IF NOT EXISTS `calendar_events_categories` (
   `calendar_events_categories_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
@@ -140,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `calendar_events_categories` (
   `slug` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `color_name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`calendar_events_categories_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `calendar_events_categories`
@@ -154,7 +152,7 @@ INSERT INTO `calendar_events_categories` (`calendar_events_categories_id`, `name
 (5, 'Човечки ресурси', '#d7ed1f', 'covecki-resursi', 'zolta'),
 (6, 'Финансии', '#ab348b', 'finansii', 'violetova'),
 (7, 'Производство и дистрибуција', '#2ada74', 'proizvodstvo-i-distribucija', 'svetlo zelena'),
-(8, 'Деловни вештини', '#eca72f', 'delovni-vestini', 'portokalova'),
+(8, 'Деловни вештини', '#eca72f', 'delovni-veshtini', 'portokalova'),
 (9, 'Тим билдинг', '#10125f', 'tim-bilding', 'teget'),
 (10, 'Конференции', '#186752', 'konferencii', 'temno zelena'),
 (11, 'Експертски академии', '#000000', 'ekspertski-akademii', 'crna');
@@ -162,10 +160,36 @@ INSERT INTO `calendar_events_categories` (`calendar_events_categories_id`, `name
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `candidates`
+--
+
+CREATE TABLE IF NOT EXISTS `candidates` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `profession` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `company` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `event_id` int(10) unsigned NOT NULL,
+  `comment` text COLLATE utf8_unicode_ci,
+  `date_created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `candidates_ix` (`event_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
+
+--
+-- Dumping data for table `candidates`
+--
+
+INSERT INTO `candidates` (`id`, `name`, `phone`, `email`, `profession`, `company`, `event_id`, `comment`, `date_created`) VALUES
+(10, 'Vladimir Apostolski', '070 123 456', 'vladimir.apostolski@gmail.com', 'Profesionalec', 'Google', 8, 'sdfgfdg;fdlgfdg gldfdlkg fgl;fdg kdg;ld gdfl;gfdg;l dg gdfdfg dfkg; gdkf;lgfdl;gdf;gl d;g;dkg ;dkfg', '2012-07-22 12:29:58');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `categories`
 --
 
-DROP TABLE IF EXISTS `categories`;
 CREATE TABLE IF NOT EXISTS `categories` (
   `categories_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
@@ -195,7 +219,6 @@ INSERT INTO `categories` (`categories_id`, `name`, `description`, `slug`, `featu
 -- Table structure for table `clients`
 --
 
-DROP TABLE IF EXISTS `clients`;
 CREATE TABLE IF NOT EXISTS `clients` (
   `clients_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
@@ -239,7 +262,7 @@ INSERT INTO `clients` (`clients_id`, `name`, `image`, `link`, `date_created`) VA
 (27, 'Филип Втори', 'Filip-Vtori.png', '#', '2012-07-11 01:38:38'),
 (28, 'Д-р Пановски', 'Dr-Panovski.png', '#', '2012-07-11 01:39:54'),
 (29, 'Натусана', 'Natusana.png', '#', '2012-07-11 01:40:17'),
-(31, 'belupo', 'belupo.png', '#', '2012-07-11 21:30:31');
+(31, 'belupo', 'belupo.png', '#', '2012-07-28 13:52:06');
 
 -- --------------------------------------------------------
 
@@ -247,7 +270,6 @@ INSERT INTO `clients` (`clients_id`, `name`, `image`, `link`, `date_created`) VA
 -- Table structure for table `emails`
 --
 
-DROP TABLE IF EXISTS `emails`;
 CREATE TABLE IF NOT EXISTS `emails` (
   `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(255) COLLATE utf8_bin DEFAULT NULL,
@@ -255,22 +277,25 @@ CREATE TABLE IF NOT EXISTS `emails` (
   `is_unsubscribed` tinyint(4) NOT NULL DEFAULT '0',
   `unsubscribe_id` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `email_uq` (`email`),
   KEY `emails_unsubscribe_id_idx` (`unsubscribe_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data for table `emails`
 --
 
 INSERT INTO `emails` (`id`, `email`, `created_at`, `is_unsubscribed`, `unsubscribe_id`) VALUES
-(1, 'trbogazov@gmail.com', '2012-07-15 00:00:00', 0, 'db2487bb-d31f-11e1-895c-0019dbf8832c'),
+(1, 'trbogazov1@gmail.com', '2012-07-15 00:00:00', 0, 'db2487bb-d31f-11e1-895c-0019dbf8832c'),
 (2, 'vladimir@gmail.com', '2012-07-15 00:00:00', 0, 'db24926f-d31f-11e1-895c-0019dbf8832c'),
 (3, 'tsl@gmail.com', '2012-07-15 00:00:00', 0, 'db249430-d31f-11e1-895c-0019dbf8832c'),
 (4, 'farytail@gmail.com', '2012-07-15 00:00:00', 0, 'db2495ce-d31f-11e1-895c-0019dbf8832c'),
 (5, 'sample@yahoo.com', '2012-07-15 00:00:00', 0, 'db24975c-d31f-11e1-895c-0019dbf8832c'),
 (6, 'nemo@yahoo.com', '2012-07-15 00:00:00', 0, 'db2498eb-d31f-11e1-895c-0019dbf8832c'),
 (7, 'jet-fly@yahoo.com', '2012-07-15 00:00:00', 0, 'db249a76-d31f-11e1-895c-0019dbf8832c'),
-(8, 'panda@hotmal.com', '2012-07-15 00:00:00', 0, 'db249c01-d31f-11e1-895c-0019dbf8832c');
+(8, 'panda@hotmal.com', '2012-07-15 00:00:00', 0, 'db249c01-d31f-11e1-895c-0019dbf8832c'),
+(16, 'vladimir.apostolski@gmail.com', '2012-07-24 09:17:39', 0, '09e55b42-d569-11e1-a080-f486bf2ea9c3'),
+(17, 'vld_apo@yahoo.com', '2012-07-24 09:34:53', 0, '7277e427-d56b-11e1-a080-f486bf2ea9c3');
 
 -- --------------------------------------------------------
 
@@ -278,7 +303,6 @@ INSERT INTO `emails` (`id`, `email`, `created_at`, `is_unsubscribed`, `unsubscri
 -- Table structure for table `emails_sent`
 --
 
-DROP TABLE IF EXISTS `emails_sent`;
 CREATE TABLE IF NOT EXISTS `emails_sent` (
   `newsletter_id` smallint(5) unsigned NOT NULL,
   `email_id` smallint(5) unsigned NOT NULL,
@@ -287,13 +311,55 @@ CREATE TABLE IF NOT EXISTS `emails_sent` (
   KEY `newsletter_ix` (`newsletter_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Dumping data for table `emails_sent`
+--
+
+INSERT INTO `emails_sent` (`newsletter_id`, `email_id`, `date_sent`) VALUES
+(4, 1, '2012-07-24 09:21:58'),
+(4, 2, '2012-07-24 09:22:09'),
+(4, 3, '2012-07-24 09:22:20'),
+(4, 4, '2012-07-24 09:22:31'),
+(4, 5, '2012-07-24 09:22:42'),
+(4, 6, '2012-07-24 09:22:54'),
+(4, 7, '2012-07-24 09:23:05'),
+(4, 8, '2012-07-24 09:23:16'),
+(4, 16, '2012-07-24 09:23:27'),
+(3, 1, '2012-07-24 09:28:13'),
+(3, 2, '2012-07-24 09:28:24'),
+(3, 3, '2012-07-24 09:28:35'),
+(3, 4, '2012-07-24 09:28:46'),
+(3, 5, '2012-07-24 09:28:57'),
+(3, 6, '2012-07-24 09:29:09'),
+(3, 7, '2012-07-24 09:29:20'),
+(3, 8, '2012-07-24 09:29:31'),
+(3, 16, '2012-07-24 09:29:42');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `footer`
+--
+
+CREATE TABLE IF NOT EXISTS `footer` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `content` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `footer`
+--
+
+INSERT INTO `footer` (`id`, `content`) VALUES
+(1, '<div class="left" style="background-image: none;">\r\n<h3 style="color: white;">Контакт</h3>\r\n<p>Доколку не можете да го пронајдете тоа што Ве интересира или имате дополнително прашање, контактирајте н&egrave; на:</p>\r\n<br />\r\n<div style="float: left; width: 50%; margin: 0px;">\r\n<p><strong>Triple S Group doo</strong> <br /> Ул. Орце Николов бр. 190-3/5 <br /> 1000 Скопје, <br /> Р.Македонија</p>\r\n</div>\r\n<div style="float: left; width: 50%; margin: 0px;">\r\n<p><strong>тел.:</strong> 02/ 3 112 048 <br /> <strong>факс:</strong> 02/ 3 112 395 <br /> <strong>жиро сметка:</strong> 530010100496686 <br /> <strong>депонент:</strong> Охридска Банка, АД Охрид <br /> <strong>даночен број:</strong> МК 4030005533741</p>\r\n</div>\r\n</div>\r\n<div class="right" style="background-image: none; border-color: #747474;"><a href="https://maps.google.com/maps?q=42.006054,21.407708&amp;hl=en&amp;num=1&amp;t=h&amp;z=18" rel="nofollow" target="_blank"> <img src="http://maps.googleapis.com/maps/api/staticmap?center=42.00605,21.407711&amp;zoom=15&amp;size=300x206&amp;sensor=false&amp;maptype=hybrid&amp;markers=color:red%7Ccolor:red%7C42.00605,21.407711" alt="" /> </a></div>');
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `galleries`
 --
 
-DROP TABLE IF EXISTS `galleries`;
 CREATE TABLE IF NOT EXISTS `galleries` (
   `id_gallery` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `gallery_group_id` int(10) NOT NULL,
@@ -323,7 +389,6 @@ INSERT INTO `galleries` (`id_gallery`, `gallery_group_id`, `description`, `date_
 -- Table structure for table `gallery_groups`
 --
 
-DROP TABLE IF EXISTS `gallery_groups`;
 CREATE TABLE IF NOT EXISTS `gallery_groups` (
   `id_gallery_group` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -346,7 +411,6 @@ INSERT INTO `gallery_groups` (`id_gallery_group`, `name`, `date_created`) VALUES
 -- Table structure for table `gallery_photos`
 --
 
-DROP TABLE IF EXISTS `gallery_photos`;
 CREATE TABLE IF NOT EXISTS `gallery_photos` (
   `id_gallery_photos` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `galleries_id_gallery` int(10) unsigned NOT NULL,
@@ -385,8 +449,7 @@ INSERT INTO `gallery_photos` (`id_gallery_photos`, `galleries_id_gallery`, `imag
 (24, 11, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
 (25, 12, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
 (26, 12, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
-(27, 13, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00'),
-(28, 1, 'test.jpg', 'testiram nova fotka', '2012-07-08 19:02:56');
+(27, 13, 'b-02.jpg', 'test image ', '2012-07-08 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -394,7 +457,6 @@ INSERT INTO `gallery_photos` (`id_gallery_photos`, `galleries_id_gallery`, `imag
 -- Table structure for table `menu_items`
 --
 
-DROP TABLE IF EXISTS `menu_items`;
 CREATE TABLE IF NOT EXISTS `menu_items` (
   `menu_items_id` int(11) NOT NULL AUTO_INCREMENT,
   `text` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
@@ -404,7 +466,7 @@ CREATE TABLE IF NOT EXISTS `menu_items` (
   `order_index` int(11) NOT NULL,
   `depth_level` int(11) NOT NULL,
   PRIMARY KEY (`menu_items_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=41 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=49 ;
 
 --
 -- Dumping data for table `menu_items`
@@ -415,7 +477,7 @@ INSERT INTO `menu_items` (`menu_items_id`, `text`, `link`, `parent_id`, `date_cr
 (2, 'Learning', 'category/3-learning', 0, '2012-07-12 11:26:02', 200, 0),
 (3, 'Speakers', 'category/2-speakers', 0, '2012-07-12 11:27:33', 300, 0),
 (4, 'Brian Tracy', 'articles/52-brian-tracy', 3, '2012-07-18 21:16:26', 302, 1),
-(5, 'Speaker 2', 'articles/53-jay-conrad-levinson', 3, '2012-07-18 21:20:14', 304, 1),
+(5, 'Jay Conrad Levinson', 'articles/53-jay-conrad-levinson', 3, '2012-07-28 13:43:40', 304, 1),
 (26, 'Експертски академии', 'category/6-ekspertski-akademii', 0, '2012-07-14 09:32:15', 600, 0),
 (27, 'Тренери', 'category/7-treneri', 0, '2012-07-14 09:32:34', 700, 0),
 (24, 'Recruitment', 'category/4-recruitment', 0, '2012-07-14 13:23:29', 400, 0),
@@ -423,14 +485,9 @@ INSERT INTO `menu_items` (`menu_items_id`, `text`, `link`, `parent_id`, `date_cr
 (28, 'Галерија', 'gallery', 0, '2012-07-14 09:35:47', 800, 0),
 (29, 'Новости', 'category/1-novosti', 0, '2012-07-14 09:36:16', 900, 0),
 (30, 'Референци', 'articles/54-referenci', 0, '2012-07-14 09:37:59', 1000, 0),
-(31, 'Speaker 3', 'bezveze-link', 5, '2012-07-15 01:55:10', 306, 3),
-(32, 'Speaker 4			', 'bezveze', 4, '2012-07-15 11:36:02', 303, 2),
-(33, 'Speaker 5', 'bezveze-stvarno', 5, '2012-07-14 19:41:31', 305, 3),
-(34, 'Speaker 6', 'ma-nikade', 3, '2012-07-15 11:32:29', 301, 1),
-(35, 'simpel test', 'category/3-learning', 27, '2012-07-21 11:13:07', 401, 1),
-(36, 'asdfasd', 'category/4-recruitment', 24, '2012-07-21 11:13:53', 401, 1),
-(37, 'asdasg', 'articles/52-brian-tracy', 26, '2012-07-21 11:14:39', 601, 1),
-(39, 'ddddd', 'articles/46-gerila-marketing-i-prodazhba', 25, '2012-07-21 11:15:47', 501, 1);
+(46, 'Statija vo Speakers', 'articles/66-dztatija-vo-dzpeakers', 3, '2012-07-28 13:42:54', 305, 1),
+(48, 'Statija vo Recruitment', 'articles/68-statija-vo-recruitment', 24, '2012-07-28 13:48:13', 401, 1),
+(47, 'Statija vo Learning', 'articles/67-dztatija-vo-learning', 2, '2012-07-28 13:44:55', 201, 1);
 
 -- --------------------------------------------------------
 
@@ -438,7 +495,6 @@ INSERT INTO `menu_items` (`menu_items_id`, `text`, `link`, `parent_id`, `date_cr
 -- Table structure for table `newsletter`
 --
 
-DROP TABLE IF EXISTS `newsletter`;
 CREATE TABLE IF NOT EXISTS `newsletter` (
   `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(510) COLLATE utf8_bin NOT NULL,
@@ -448,16 +504,17 @@ CREATE TABLE IF NOT EXISTS `newsletter` (
   `date_started` datetime DEFAULT NULL,
   `date_finished` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `newsletter`
 --
 
 INSERT INTO `newsletter` (`id`, `title`, `content`, `status`, `date_created`, `date_started`, `date_finished`) VALUES
-(3, 'ГЕРИЛА МАРКЕТИНГ И ПРОДАЖБА', '                                                        <strong>Getting started:</strong> Customize your template by clicking on the style editor tabs up above. Set your fonts, colors, and styles. After setting your styling is all done you can click here in this area, delete the text, and start adding your own awesome content!\r\n                                                                <br>\r\n                                                                <br>\r\n                                                                After you enter your content, highlight the text you want to style and select the options you set in the style editor in the "styles" drop down box. Want to <a href="http://www.mailchimp.com/kb/article/im-using-the-style-designer-and-i-cant-get-my-formatting-to-change" target="_blank">get rid of styling on a bit of text</a>, but having trouble doing it? Just use the "remove formatting" button to strip the text of any formatting and reset your style.\r\n', 0, '2012-07-15 17:06:49', NULL, NULL),
-(4, 'the paused title', 'with some content', 2, '2012-07-15 17:19:07', NULL, NULL),
-(5, 'the finished newsletter', 'asda sdfasdfasdfasdf', 3, '2012-07-15 17:19:53', NULL, NULL);
+(3, 'sent 0 emails', '<p>okej e</p>', 3, '2012-07-15 17:06:49', '2012-07-24 09:28:09', '2012-07-24 09:31:54'),
+(4, 'the paused title', '<p>with some content</p>', 0, '2012-07-15 17:19:07', '2012-07-24 09:26:12', '0000-00-00 00:00:00'),
+(5, 'the finished newsletter', 'asda sdfasdfasdfasdf', 3, '2012-07-15 17:19:53', NULL, NULL),
+(7, 'raboti li ova be', '<p>raboti li ova cudo</p>', 1, '2012-07-25 21:34:16', '2012-07-25 21:35:10', NULL);
 
 -- --------------------------------------------------------
 
@@ -465,7 +522,6 @@ INSERT INTO `newsletter` (`id`, `title`, `content`, `status`, `date_created`, `d
 -- Table structure for table `newsletter_articles`
 --
 
-DROP TABLE IF EXISTS `newsletter_articles`;
 CREATE TABLE IF NOT EXISTS `newsletter_articles` (
   `newsletter_id` smallint(5) unsigned NOT NULL,
   `article_id` int(10) unsigned NOT NULL,
@@ -478,17 +534,23 @@ CREATE TABLE IF NOT EXISTS `newsletter_articles` (
 --
 
 INSERT INTO `newsletter_articles` (`newsletter_id`, `article_id`) VALUES
-(3, 49),
-(3, 48),
+(4, 46),
 (3, 47),
-(3, 46),
-(3, 42),
-(4, 49),
+(3, 53),
+(3, 61),
+(3, 64),
+(4, 53),
 (5, 49),
 (5, 48),
 (5, 47),
 (5, 46),
-(6, 49);
+(6, 49),
+(4, 61),
+(4, 64),
+(7, 64),
+(7, 61),
+(7, 54),
+(7, 53);
 
 -- --------------------------------------------------------
 
@@ -496,7 +558,6 @@ INSERT INTO `newsletter_articles` (`newsletter_id`, `article_id`) VALUES
 -- Table structure for table `quotes`
 --
 
-DROP TABLE IF EXISTS `quotes`;
 CREATE TABLE IF NOT EXISTS `quotes` (
   `quotes_id` int(11) NOT NULL AUTO_INCREMENT,
   `description` varchar(5000) COLLATE utf8_unicode_ci NOT NULL,
@@ -566,7 +627,6 @@ INSERT INTO `quotes` (`quotes_id`, `description`, `author`, `date_created`) VALU
 -- Table structure for table `sidebar`
 --
 
-DROP TABLE IF EXISTS `sidebar`;
 CREATE TABLE IF NOT EXISTS `sidebar` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_bin DEFAULT NULL,
@@ -588,14 +648,12 @@ INSERT INTO `sidebar` (`id`, `name`, `content`, `position`, `is_deletable`, `typ
 (4, 'social links', '<div class="social-buttons">\r\n<h3>Следи н&egrave;:</h3>\r\n<p><a href="http://www.facebook.com//login.php#!/pages/Triple-S-Learning/321852101858?ref=ts" target="_balnk"><img src="/tsl/images/icon-facebook-color.png" alt="" /></a> <a href="http://www.linkedin.com/in/tripleslearning" target="_balnk"><img src="/tsl/images/icon-linkedin-color.png" alt="" /></a> <a href="http://twitter.com/TripleSGroup" target="_blank"><img src="/tsl/images/icon-twitter-color.png" alt="" /></a> <a href="http://www.youtube.com/user/TripleSLearning" target="_balnk"><img src="/tsl/images/icon-youtube-color.png" alt="" /></a></p>\r\n</div>', 4, 0, 'content'),
 (11, 'Newsletter', 'elements/newsletter', 3, 0, 'view');
 
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `slides`
 --
 
-DROP TABLE IF EXISTS `slides`;
 CREATE TABLE IF NOT EXISTS `slides` (
   `slides_id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(2500) COLLATE utf8_unicode_ci NOT NULL,
@@ -605,58 +663,14 @@ CREATE TABLE IF NOT EXISTS `slides` (
   `date_created` datetime NOT NULL,
   `order_index` int(11) NOT NULL,
   PRIMARY KEY (`slides_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `slides`
 --
 
 INSERT INTO `slides` (`slides_id`, `title`, `description`, `link`, `image`, `date_created`, `order_index`) VALUES
-(2, 'Добредојдовте', '<p>      Можете да се надевате на успех, a можете и да                          се обучите за успех.</p>                                          <p>                         Triple S Learning - брзи, интезивни тренинг                      програми дизајнирани за Вашиот успех...</p>', '', 'slider1.jpg', '2012-07-08 12:44:02', 2),
+(2, 'Добредојдовте', '<p>      Можете да се надевате на успех, a можете и да                          се обучите за успех.</p>                                          <p>                         Triple S Learning - брзи, интезивни тренинг                      програми дизајнирани за Вашиот успех...</p>', '', 'slider1.jpg', '2012-07-08 12:44:02', 4),
 (4, 'Успехот се учи!', 'Колку повеќе работи знаете, толку повеќе врати Ви се отвораат!', '', 'slider3.jpg', '2012-07-15 17:21:33', 3),
-(5, 'Delivering Success...', '<p>Тоа е она што најдобро го правиме! Пријавете се и бидете успешни!</p>', '', 'slider4.jpg', '2012-07-28 14:58:48', 4),
-(7, 'Triple S Group', '<p>- <strong>Лидери </strong>во Македонија за неформално образование<br />- Над <strong>10.000</strong> обучени менаџери и претприемачи<br />- Водечки регионални <strong>практичари</strong><br />- Најпознатите <strong>светски бизнис гуруа</strong><br />- Присутни на пазарите на <strong>Македонија, Србија, Хрватска и Словенија</strong></p>', '', 'kolaz.jpg', '2012-07-28 15:11:31', 1);
-
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
-DROP TABLE IF EXISTS `footer`;
-CREATE TABLE IF NOT EXISTS `footer` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `content` text COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `footer`
---
-
-INSERT INTO `footer` (`id`, `content`) VALUES
-(1, '<div class="left" style="background-image: none;">\r\n<h3 style="color: white;">Контакт</h3>\r\n<p>Доколку не можете да го пронајдете тоа што Ве интересира или имате дополнително прашање, контактирајте н&egrave; на:</p>\r\n<br />\r\n<div style="float: left; width: 50%; margin: 0px;">\r\n<p><strong>Triple S Group doo</strong> <br /> Ул. Орце Николов бр. 190-3/5 <br /> 1000 Скопје, <br /> Р.Македонија</p>\r\n</div>\r\n<div style="float: left; width: 50%; margin: 0px;">\r\n<p><strong>тел.:</strong> 02/ 3 112 048 <br /> <strong>факс:</strong> 02/ 3 112 395 <br /> <strong>жиро сметка:</strong> 530010100496686 <br /> <strong>депонент:</strong> Охридска Банка, АД Охрид <br /> <strong>даночен број:</strong> МК 4030005533741</p>\r\n</div>\r\n</div>\r\n<div class="right" style="background-image: none; border-color: #747474;"><a href="https://maps.google.com/maps?q=42.006054,21.407708&amp;hl=en&amp;num=1&amp;t=h&amp;z=18" rel="nofollow" target="_blank"> <img src="http://maps.googleapis.com/maps/api/staticmap?center=42.00605,21.407711&amp;zoom=15&amp;size=300x206&amp;sensor=false&amp;maptype=hybrid&amp;markers=color:red%7Ccolor:red%7C42.00605,21.407711" alt="" /> </a></div>');
-
-
-DROP TABLE IF EXISTS `candidates`;
-CREATE TABLE IF NOT EXISTS `candidates` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `phone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `profession` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `company` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `event_id` int(10) unsigned NOT NULL,
-  `comment` text COLLATE utf8_unicode_ci,
-  `date_created` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `candidates_ix` (`event_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `candidates`
---
-
-INSERT INTO `candidates` (`id`, `name`, `phone`, `email`, `profession`, `company`, `event_id`, `comment`, `date_created`) VALUES
-(1, 'asdfasdfas', '0237823', 'Trbgogaz@gamcasd.com', 'programer', 'aspekt', 8, 'bash da vidam sho ke ima ', '2012-07-21 16:47:58'),
-(2, 'ushte eden ', 'asdfa', 'sdkj@gas.com', 'sss', 'sdas', 5, 'asdfas', '2012-07-21 16:48:27');
+(5, 'Delivering Success...', '<p>Тоа е она што најдобро го правиме! Пријавете се и бидете успешни!</p>', '', 'slider4.jpg', '2012-07-28 14:58:48', 2),
+(7, 'Triple S Group', '<p>- <strong>Лидери </strong>во Македонија за неформално образование<br />- Над <strong>10.000</strong> обучени менаџери и претприемачи<br />- Водечки регионални <strong>практичари</strong><br />- Најпознатите <strong>светски бизнис гуруа</strong><br />- Присутни на пазарите на <strong>Македонија, Србија, Хрватска и Словенија</strong></p>', '', 'kolaz.jpg', '2012-07-28 15:38:10', 1);

@@ -32,6 +32,12 @@
             <ul>
                 <li><a href="<?php echo base_url(); ?>admin/events/new_event">Нов настан</a></li>
                 <li><a href="<?php echo base_url(); ?>admin/events/show_events">Сите настани</a></li>
+                <li><a href="#">Категории</a>
+                    <ul>
+                       <li><a href="<?php echo base_url(); ?>admin/events_categories/new_event_category">Нова категорија</a></li>
+                       <li><a href="<?php echo base_url(); ?>admin/events_categories/show_events_categories">Сите категории</a></li>
+                    </ul>
+                </li>
             </ul>
         </li>
         <li><a href="#">Слајдови</a>
