@@ -238,8 +238,15 @@ class Articles extends MY_Admin_Controller {
         if(is_numeric($article_id))
         {
             $this->load->model('articles_model');
+            $this->load->model('newsletter_model');
             $this->articles_model->delete_article_categories($article_id);
             $this->articles_model->delete_article($article_id);
+            
+            // delete all click data for that article
+            $options = array('article_id' => $article_id);
+            $this->newsletter_model->delete_newsletter_click($options);
+            
+            
             redirect(base_url() . 'admin/articles/show_articles');
         }
     }

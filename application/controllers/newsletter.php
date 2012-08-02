@@ -1,15 +1,14 @@
-<?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
- * Description of home
- *
- * @author Vladimir
- */
+* @property CI_Loader $load
+* @property CI_Form_validation $form_validation
+* @property CI_Input $input
+* @property CI_Email $email
+* @property CI_DB_active_record $db
+* @property CI_DB_forge $dbforge
+* @property Newsletter_model $newsletter_model
+* @property Articles_model $articles_model
+*/
 class Newsletter extends MY_Controller {
 
     public function index($auth_token = '') {
@@ -58,6 +57,7 @@ class Newsletter extends MY_Controller {
                 $from = 'info@tsl.mk';
             
                 $data['unsubscribe_id'] = $email->unsubscribe_id;
+                $data['email']          = $email;
                 $body = $this->load->view('newsletter_template', $data, TRUE);
                 
                 if(send_email($email->email, $from, $title, $body)){
@@ -86,6 +86,44 @@ class Newsletter extends MY_Controller {
         }
         
     }
+    
+    public function click($newsletter_id,$article_id,$email_id)
+    {
+        
+        if(is_numeric($newsletter_id) and
+           is_numeric($article_id)    and
+           is_numeric($email_id)         )
+        {
+            $this->load->model('newsletter_model');
+            $this->load->model('articles_model');
+            
+            
+           $newsletter = $this->newsletter_model->get_newsletter($newsletter_id);
+           $article    = $this->articles_model->get_articles(array('id' =>  $article_id));
+           $email      = $this->newsletter_model->get_email_by_id($email_id);
+           
+           if( count($newsletter)    and
+               count($article)       and
+               count($email)    
+                   )
+           {
+               $data = array(
+                   'newsletter_id'  =>  $newsletter_id,
+                   'article_id'     =>  $article_id,
+                   'email_id'       =>  $email_id,
+                   'date_created'   =>  TimeHelper::DateTimeAdjusted()
+               );
+               
+               
+                $this->newsletter_model->insert_newsletter_click($data);
+           }
+           
+        }
+        
+        
+    }
+    
+    
     
     public function add_email(){
         

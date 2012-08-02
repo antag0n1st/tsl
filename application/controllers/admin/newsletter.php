@@ -1,15 +1,14 @@
-<?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
- * Description of home
- *
- * @author Vladimir
- */
+* @property CI_Loader $load
+* @property CI_Form_validation $form_validation
+* @property CI_Input $input
+* @property CI_Email $email
+* @property CI_DB_active_record $db
+* @property CI_DB_forge $dbforge
+* @property Newsletter_model $newsletter_model
+* @property Articles_model $articles_model
+*/
 class Newsletter extends MY_Admin_Controller {
     public function index()
     {
@@ -109,6 +108,11 @@ class Newsletter extends MY_Admin_Controller {
         
         $this->newsletter_model->delete_newsletter($id);
         
+        // delete all click data for that newsletter
+        $options = array('newsletter_id' => $id);
+        $this->newsletter_model->delete_newsletter_click($options);
+        
+        
         header('Location: '.base_url().'admin/newsletter');
         exit;
     }
@@ -174,9 +178,70 @@ class Newsletter extends MY_Admin_Controller {
         $this->load->model('newsletter_model');
         $this->newsletter_model->delete_email($id);
         
+        // delete all click data for that email
+        $options = array('email_id' => $id);
+        $this->newsletter_model->delete_newsletter_click($options);
+        
+        
         header('Location: '.  base_url().'admin/newsletter/browse_emails');
         exit;
     }
+    
+    
+    
+    public function report($newsletter_id, $excel = 0)
+    {
+        if(is_numeric($newsletter_id))
+        {
+            $this->load->model('newsletter_model');
+            
+            $newsletter = $this->newsletter_model->get_newsletter($newsletter_id);
+            
+            if(count($newsletter) == 1)
+            {
+                $newsletter = $newsletter[0];
+                
+                $options = array(
+                    'newsletter_id' =>  $newsletter->id
+                );
+               
+               $data['newsletter_id']   = $newsletter_id;
+
+               if(isset($excel) and $excel > 0)
+               {
+                   if($excel == 1) // excel
+                   {
+                    $data['report'] =  $this->newsletter_model->get_newsletter_clicks($options);
+                    $this->load->view('admin/newsletter/reports/clicks_excel', $data);
+                   }
+                   else if($excel == 2) // csv
+                   {
+                        $this->load->dbutil();
+                        $delimiter = ",";
+                        $newline = "\r\n";
+                        
+                        $report_result = $data['report'] =  $this->newsletter_model->get_newsletter_clicks($options,0,0,'email DESC, date_clicked DESC',1);
+                        
+                        $data['csv']    = $this->dbutil->csv_from_result($report_result, $delimiter, $newline);
+                        $this->load->view('admin/newsletter/reports/clicks_csv', $data);
+                   }
+               }
+               else
+               {
+                   $data['report'] =  $this->newsletter_model->get_newsletter_clicks($options);
+                   $data['main_content']   =   'admin/newsletter/reports/clicks';
+                   $this->load->view('admin/layout/layout', $data);
+               }
+               
+               
+            }
+            
+        }
+        
+        
+    }
+    
+    
 }
 
 ?>
