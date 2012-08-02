@@ -12,7 +12,7 @@ class Articles extends MY_Controller {
 
 	public function index($article_id = 0)
 	{
-            
+                $data = array();
                 $this->load->model('articles_model');
                 $this->load->model('quotes_model');
                 $this->load->model('menus_model');
@@ -24,6 +24,30 @@ class Articles extends MY_Controller {
                 $sidebar_elements = $this->sidebar_model->get_sidebar_elements();
                 
                 $article = $this->articles_model->get_articles(array('id' => $article_id));
+                
+                $article_categories = $this->articles_model->get_article_categories($article_id);
+                
+               // print_r($article_categories);
+                
+                $triple_s_groups = array( 2, // learning
+                                          3, // speakers
+                                          4);// recruitment
+                
+                if(is_array($article_categories) and count($article_categories))
+                {
+                    foreach($article_categories as $c)
+                    {
+                        if( in_array($c, $triple_s_groups) )
+                        {
+                            $category = $this->articles_model->get_categories(array('categories_id' => $c));
+                            $category = $category[0];
+                            $data['logo']   =   $category->logo;
+                            break;
+                        }
+                    }
+                }
+                
+                
                 if(isset($article[0])){
                     $article = $article[0];
                     Head::instance()->title = $article->title . ' | Triple S Group';
@@ -112,7 +136,7 @@ class Articles extends MY_Controller {
                 
                 
                 
-                
+                $data['logo']   = $current_category->logo;
                
                 
                 $data['footer']             = $footer;

@@ -56,9 +56,19 @@ class Events_model extends CI_Model {
         return $this->db->count_all_results('calendar_events');
     }
     
-     public function get_event_categories()
+     public function get_event_categories($options = array())
     {
-        $result = $this->db->get('calendar_events_categories');
+         foreach($options as $key => $option)
+         {
+             $this->db->where($key,$option);
+         }
+         $this->db->from('calendar_events_categories ec');
+         $this->db->join('calendar_events c','event_categories_id = calendar_events_categories_id','left');
+         $this->db->select('ec.*,
+                            COUNT(c.calendar_events_id) as num_events');
+         $this->db->group_by('ec.calendar_events_categories_id');
+         
+         $result = $this->db->get();
         
         $categories = array();
         
@@ -69,6 +79,7 @@ class Events_model extends CI_Model {
             $category->slug  =  $c->slug;
             $category->color =  $c->color;
             $category->color_name = $c->color_name;
+            $category->num_events = $c->num_events;
             
             $categories[] = $category;
         }
@@ -76,6 +87,35 @@ class Events_model extends CI_Model {
         return $categories;
         return $result->result();
     }
+    
+    
+    public function insert_event_category($event_category)
+    {
+        $data = array(
+            'calendar_events_categories_id' =>  $event_category->id,
+            'name'                          =>  $event_category->name,
+            'slug'                          =>  $event_category->slug,
+            'color'                         =>  $event_category->color,
+            'color_name'                    =>  $event_category->color_name
+        );
+        
+        $this->db->insert('calendar_events_categories', $data);
+        return $this->db->insert_id(); 
+    }
+    
+    public function update_event_category($event_category)
+    {
+        $data = array(
+            'name'                          =>  $event_category->name,
+            'slug'                          =>  $event_category->slug,
+            'color'                         =>  $event_category->color,
+            'color_name'                    =>  $event_category->color_name
+        );
+        $this->db->where('calendar_events_categories_id', $event_category->id);
+        $this->db->update('calendar_events_categories', $data);
+    }
+    
+    
     
     public function insert_calendar_event($data){
         $this->db->insert('calendar_events', $data);

@@ -229,8 +229,10 @@ class Articles_model extends CI_Model {
         $this->db->from('categories');
         $this->db->select('categories_id,
                            name,
+                           description,
                            slug,
-                           featured_image');
+                           featured_image,
+                           logo');
         
         if($limit){
             $this->db->limit($limit);
@@ -252,8 +254,10 @@ class Articles_model extends CI_Model {
             $category = new Category();
             $category->id             =  $c->categories_id;
             $category->name           =  $c->name;
+            $category->description    =  $c->description;
             $category->slug           =  $c->slug;
-            $category->featured_image = $c->featured_image;
+            $category->featured_image =  $c->featured_image;
+            $category->logo           =  $c->logo;
             
             $categories[] = $category;
         }
@@ -266,7 +270,9 @@ class Articles_model extends CI_Model {
             'categories_id'    =>  $data->id,
             'name'             =>  $data->name,
             'slug'             =>  $data->slug,
-            'featured_image'   =>  $data->featured_image
+            'featured_image'   =>  $data->featured_image,
+            'logo'             =>  'logo.png',
+            'description'      =>  $data->description
         );
         
         
@@ -278,6 +284,7 @@ class Articles_model extends CI_Model {
         $c  =   array(
             'categories_id'    =>  $data->id,
             'name'             =>  $data->name,
+            'description'      =>  $data->description,
             'slug'             =>  $data->slug,
             'featured_image'   =>  $data->featured_image
         );

@@ -118,7 +118,7 @@ class Slides extends MY_Admin_Controller {
         
         foreach ($pageOrder['page'] as $key => $value) {
                 $id = $value;
-                $order_index = $key;
+                $order_index = $key + 1;
             
                 $slide = $this->slides_model->get_slides(array('slides_id'    =>  $id));
                 

@@ -93,6 +93,7 @@ class Articles_categories extends MY_Admin_Controller {
         $category = new Category();
         $category->id             = $this->input->post('id');
         $category->name           = $this->input->post('name');
+        $category->description    = $this->input->post('content');
         $category->slug           = CyrillicLatin::seo_friendly($category->name);
         $category->featured_image = $this->input->post('featured_image_hidden');
         

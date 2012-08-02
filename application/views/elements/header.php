@@ -1,7 +1,9 @@
+<?php if(!isset($logo)) $logo = 'logo.png'; ?>
+
 <div class="container" style="padding: 10px 5px 0px 5px;">
     <div class="logo-holder float-left">
         <a href="<?php echo base_url(); ?>" style="text-decoration: none;">
-            <img style="border: none;" alt="tsl logo" src="<?php echo base_url() . 'images/logo.png'; ?>" />
+            <img style="border: none;" alt="tsl logo" src="<?php echo base_url() . 'images/' . $logo; ?>" />
         </a>
     </div>
     <div class="header-panel-holder float-right">
