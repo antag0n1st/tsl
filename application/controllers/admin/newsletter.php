@@ -210,9 +210,98 @@ class Newsletter extends MY_Admin_Controller {
                if(isset($excel) and $excel > 0)
                {
                    if($excel == 1) // excel
-                   {
-                    $data['report'] =  $this->newsletter_model->get_newsletter_clicks($options);
-                    $this->load->view('admin/newsletter/reports/clicks_excel', $data);
+                  {
+                       
+                       
+                       $report_rows = $this->newsletter_model->get_newsletter_clicks($options);
+                       //load our new PHPExcel library
+                        $this->load->library('excel');
+                        //activate worksheet number 1
+                        $this->excel->setActiveSheetIndex(0);
+                        //name the worksheet
+                        $this->excel->getActiveSheet()->setTitle('Кликови по newsletter');
+                        //set cell A1 content with some text
+                      //  $this->excel->getActiveSheet()->setCellValue('A1', 'Владимир me text value');
+                        
+                        $column_names = array('e-mail',
+                                              'newsletter',
+                                              'статија',
+                                              //'линк',
+                                              'датум');
+                        $column_names = array_reverse($column_names);
+                        
+                        $keys = array_keys($column_names); // Get the Column Names
+                        $min = ord("A"); // ord returns the ASCII value of the first character of string.
+                        $max = $min + count($keys); 
+                        $firstChar = ""; // Initialize the First Character
+                        $abc = $min;   // Initialize our alphabetical counter
+                        for($j = $min; $j <= $max; ++$j)
+                        {
+                        $col = $firstChar.chr($abc);   // This is the Column Label. 
+                        $last_char = substr($col, -1);
+                        if ($last_char> "Z") // At the end of the alphabet. Time to Increment the first column letter.
+                        {   
+                            $abc = $min; // Start Over
+                            if ($firstChar == "") // Deal with the first time.
+                                $firstChar = "A";
+                            else
+                            {
+                                $fchrOrd = ord($firstChar);// Get the value of the first character
+                                $fchrOrd++; // Move to the next one.
+                                $firstChar = chr($fchrOrd); // Reset the first character.
+                            }     
+                            $col = $firstChar.chr($abc); // This is the column identifier
+                        }
+                        /* 
+                            Use the $col here.
+                        */
+                        $this->excel->getActiveSheet()->setCellValue($col."1", array_pop($column_names));
+                        $this->excel->getActiveSheet()->getStyle($col."1")->getFont()->setBold(true);
+                        $this->excel->getActiveSheet()->getStyle($col."1")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                        
+                        $abc++; // Move on to the next letter
+                        }
+                        
+                            
+                       
+                            for($i = 0; $i < count($report_rows); $i++)
+                            {
+                                $x = 0;
+                                $y = 2;
+                                foreach($report_rows as $row)
+                                {
+                                    $this->excel->getActiveSheet()->setCellValueByColumnAndRow($x++, $y, $row->email);
+                                    $this->excel->getActiveSheet()->setCellValueByColumnAndRow($x++, $y, $row->newsletter_title);
+                                    $this->excel->getActiveSheet()->setCellValueByColumnAndRow($x++, $y, $row->article_title);
+                                   /* $this->excel->getActiveSheet()->setCellValueByColumnAndRow($x++, $y, base_url() . 'articles/'. 
+                                                                                                         $row->article_id . '-' . 
+                                                                                                         $row->article_slug);*/
+                                    $this->excel->getActiveSheet()->setCellValueByColumnAndRow($x++, $y, TimeHelper::format($row->date_clicked));
+                                    $y++;
+                                    $x = 0;
+                                }
+                            }
+
+                        $filename='klikovi_po_newsletter' . time() .  '.xls'; //save our workbook as this file name
+                        header('Content-Type: application/vnd.ms-excel'); //mime type
+                        header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
+                        header('Cache-Control: max-age=0'); //no cache
+
+                        //save it to Excel5 format (excel 2003 .XLS file), change this to 'Excel2007' (and adjust the filename extension)
+                        //if you want to save it as .XLSX Excel 2007 format
+                        $objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel5');  
+                        //force user to download the Excel file without writing it to server's HD
+                        $objWriter->save('php://output');
+
+
+                    //$data['report'] =  $this->newsletter_model->get_newsletter_clicks($options);
+                    //$this->load->view('admin/newsletter/reports/clicks_excel', $data);
+                       
+                       
+                       
+                       
+                       
+                       
                    }
                    else if($excel == 2) // csv
                    {
@@ -239,11 +328,8 @@ class Newsletter extends MY_Admin_Controller {
             }
             
         }
-        
-        
+    
     }
-    
-    
 }
 
 ?>
