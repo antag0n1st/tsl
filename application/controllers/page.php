@@ -103,6 +103,9 @@ class Page extends MY_Controller {
                      $event->candidates_num = $event->candidates_num + 1; // we have a new candidate for this event
                      $this->events_model->update_calendar_event($event);
                 }
+                else{
+                    return $data;
+                }
                 
                 $data = array(
                     'success' => true
