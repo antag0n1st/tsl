@@ -55,7 +55,7 @@ class Newsletter extends MY_Controller {
         } else {
 
             foreach ($emails as $email) {
-                $from = 'info@tsl.mk';
+                $from = 'info@tsgroup.mk';
             
                 $data['unsubscribe_id'] = $email->unsubscribe_id;
                 $data['email']          = $email;

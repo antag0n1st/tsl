@@ -109,6 +109,20 @@ class Page extends MY_Controller {
                 );
                 
                 //TODO send email to admin 
+                $data['event']  =   $event;
+                
+                $from       =   'info@tsgroup.mk';
+                $to         =   'vladimir.apostolski@gmail.com';//'verce@csa-triples.com';
+                $title      =   $data['name'] . ' се пријави за настанот "' . $event->title . '"'; 
+                $body       =   $this->load->view('event_notification_template', $data, TRUE);
+                
+                
+                if(send_email($to, $from, $title, $body)){
+                    ;
+                }
+                
+                
+                
             }else{
                 $data['errors'] = $errors;
             }
