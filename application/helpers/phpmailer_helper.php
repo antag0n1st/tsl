@@ -8,7 +8,7 @@ function send_email($recipient, $sender, $subject, $message)
 
     $mail->CharSet = 'utf-8';
     $mail->ContentType = 'text/html';
-    $mail->FromName = 'info@tsl.mk';
+    $mail->FromName = 'info@tsgroup.mk';
     $mail->From = $sender;
     $mail->Subject = $subject;
     $mail->AltBody = strip_tags($message);
