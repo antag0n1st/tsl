@@ -109,7 +109,9 @@ class Page extends MY_Controller {
                 );
                 
                 //TODO send email to admin 
+                $this->load->helper('phpmailer');
                 $data['event']  =   $event;
+                $data['name']   =   $this->input->post('name');
                 
                 $from       =   'info@tsgroup.mk';
                 $to         =   'vladimir.apostolski@gmail.com';//'verce@csa-triples.com';
