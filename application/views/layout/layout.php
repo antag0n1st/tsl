@@ -4,7 +4,7 @@
       xmlns:fb="http://www.facebook.com/2008/fbml"
       >
 <head>
-
+<link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>images/favicon triple s.ico">
 <?php Head::instance()->display(); ?>
 
 </head>    
