@@ -31,7 +31,7 @@
             
         <label for="description" class="block">Опис:</label>
         
-        <input type="text" id="description" name="description" value="<?php FieldHelper::field($slide->slides_id, $slide->description, ""); ?>" class="full" />
+        <textarea id="description" name="description" style="width: 600px; height: 450px"><?php FieldHelper::field($slide->slides_id, $slide->description, ""); ?></textarea>
         <div class="separator"></div>
         
         <label for="link" class="block">Линк:</label>
