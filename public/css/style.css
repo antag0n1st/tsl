@@ -119,9 +119,9 @@ display: inline;
 .legend div{ float: left; width: 150px; margin-bottom: 3px;}
 .legend span{ width: 15px; display: block; float: left; height: 10px; margin-top: 2px; margin-right: 5px;}
 
-.quotes{}
 
-.quotes p{ padding-left: 40px; background-image: url('../images/quote.gif'); background-repeat: no-repeat;}
+.quotes {  background-image: url('../images/quote.gif'); background-repeat: no-repeat;}
+.quotes p{ padding-left: 40px;}
 .quotes div{ margin-top: 10px;}
 .quotes b{ display: block;}
 .quotes span{ display: block; margin-top: 5px;}
@@ -283,3 +283,26 @@ background-color: #e5e5e5;
 .header-panel-holder{
     width:520px;
 }
+
+em {
+    font-style: italic;
+}
+
+li {
+    line-height: 17px !important;
+}
+
+
+img.align-left {
+    float:left;
+    margin-right: 10px;
+    margin-bottom:5px;
+}
+
+img.align-right {
+    float:right;
+    margin-left: 10px;
+    margin-bottom:5px;
+}
+
+tr, td { vertical-align: top } 

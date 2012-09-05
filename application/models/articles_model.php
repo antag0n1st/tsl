@@ -368,7 +368,7 @@ class Articles_model extends CI_Model {
         list($search,$options,$limit,$offset,$order_by) = $params;
         $search = implode('* *', (explode('+',$search)) ); 
         
-        $match_criteria = "MATCH(`title`,`description`,`content`) AGAINST('*{$search}*' IN BOOLEAN MODE)";
+        $match_criteria = "MATCH(`title`) AGAINST('*{$search}*' IN BOOLEAN MODE)";
         
         $options[ $match_criteria ] = NULL;              
         return $this->get_articles($options, $limit, $offset, $order_by, "({$match_criteria}) AS relevance" ); 
@@ -387,7 +387,7 @@ class Articles_model extends CI_Model {
         }
         $search = implode('* *', $search_transformed );
         
-        $match_criteria = "MATCH(`title`,`description`,`content`) AGAINST('*{$search}*' IN BOOLEAN MODE)";
+        $match_criteria = "MATCH(`title`) AGAINST('*{$search}*' IN BOOLEAN MODE)";
         
         $options[ $match_criteria ] = NULL;
         $limit    = $params[2];
@@ -413,7 +413,7 @@ class Articles_model extends CI_Model {
         }
         $search = implode('* *', $search_transformed );
         
-        $match_criteria = "MATCH(`title`,`description`,`content`) AGAINST('*{$search}*' IN BOOLEAN MODE)";
+        $match_criteria = "MATCH(`title`) AGAINST('*{$search}*' IN BOOLEAN MODE)";
         
         $options[ $match_criteria ] = NULL;
         $limit    = $params[2];
