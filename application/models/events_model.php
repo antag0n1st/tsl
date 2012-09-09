@@ -29,6 +29,7 @@ class Events_model extends CI_Model {
         $this->db->select('calendar_events_id,
                            date_created,
                            date_happen,
+                           date_ends,
                            calendar_link,
                            title,
                            event_categories_id,

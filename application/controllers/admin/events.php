@@ -102,6 +102,11 @@ class Events extends MY_Admin_Controller {
                                             $this->input->post('calendar') . ' ' .
                                             $this->input->post('time_published')
                                             );
+        $event->date_ends           = TimeHelper::convert_datetime(
+                                            $this->input->post('calendar_ends') . ' ' .
+                                            $this->input->post('time_ends')
+                                            );
+        
         
         
         $event->event_categories_id = $this->input->post('calendar_category');

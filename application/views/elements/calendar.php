@@ -26,7 +26,14 @@ echo '</style>';
         <?php 
         $_events = array(); foreach($events as $event){
            
-            $_events[] = '{ Date: new Date("'.$event->d.'"), link : "'.$event->calendar_link.'" , color: "'.$event->color.'" , slug: "'.$event->slug.'" }';
+            $date_started = $event->d;
+            while($date_started < $event->date_ends)
+            {                
+                $_events[] = '{ Date: new Date("'.$date_started.'"), link : "'.$event->calendar_link.'" , color: "'.$event->color.'" , slug: "'.$event->slug.'", 
+                                 title: "' . $event->title . '" }';
+                $date_started = date('Y-m-d H:i:s', strtotime($date_started . ' + 1 day'));
+            }
+
         }
        
         ?>
@@ -43,7 +50,7 @@ echo '</style>';
             dayNamesMin:["Нед", "Пон", "Вто", "Сре", "Чет", "Пет", "Саб"] ,
             dayNamesShort:["Нед", "Пон", "Вто", "Сре", "Чет", "Пет", "Саб"] , 
             firstDay: 1 , 
-            monthNames:["Јануари", "Фебруари", "Март", "Април", "Мај", "Јуни", "Јули", "Август", "Септември", "Октомври", "Ноември", "Декември"] , 
+            monthNames:["Јануари", "Февруари", "Март", "Април", "Мај", "Јуни", "Јули", "Август", "Септември", "Октомври", "Ноември", "Декември"] , 
             
             beforeShowDay: function(date) {
                 
@@ -53,8 +60,20 @@ echo '</style>';
                 });
                 
                 if (matching.length) {
-                    result = [true, matching[0].slug, null];
+                    
+                    var title = '';
+                    
+                    for(i = 0; i < matching.length; i++){
+                        title += matching[i].title + '\n';
+                    }
+                    
+                    result = [true, matching[0].slug, title];
                 }
+                
+                
+                
+                
+                
                 return result;
             },
             

@@ -23,6 +23,13 @@
                 <input type="text" id="time_published" readonly="true" name="time_published" style="width: 130px; cursor: pointer;" />
             </div>
             <div class="separator"></div>
+            <div>
+                <label for="calendar_ends">Настанот трае до:</label>
+                <input type="text" id="calendar_ends" name="calendar_ends" style="margin-left:22px; width: 130px; cursor: pointer;" />
+                <input type="text" id="time_ends" readonly="true" name="time_ends" style="width: 130px; cursor: pointer;" />
+            </div>
+            
+            <div class="separator"></div>
             <div> 
                 <label for="calendar_category">Настан:</label>
                 <select name="calendar_category" style="width: 235px;" >
@@ -50,30 +57,48 @@
 </div>    
 <script type="text/javascript">
     $(document).ready(function() {
-          $( "#add_calendar" ).datepicker({ dateFormat: 'dd.mm.yy',
-            regional: 'mk'
+          var dates = $( "#add_calendar, #calendar_ends" ).datepicker({ dateFormat: 'dd.mm.yy',
+            regional: 'mk',
+            onSelect: function( selectedDate ) {
+				var option = this.id == "add_calendar" ? "minDate" : "maxDate",
+					instance = $( this ).data( "datepicker" ),
+					date = $.datepicker.parseDate(
+						instance.settings.dateFormat ||
+						$.datepicker._defaults.dateFormat,
+						selectedDate, instance.settings );
+				dates.not( this ).datepicker( "option", option, date );
+			}
           });
-         // $( "#add_calendar" ).datepicker('setDate', <?php FieldHelper::field($event->calendar_events_id, "new Date('$event->date_happen')", "new Date()"); ?> );
-         
-         
-         
+          
+        /*  $( "#calendar_ends" ).datepicker({ dateFormat: 'dd.mm.yy',
+            regional: 'mk',
+            onSelect: function( selectedDate ) {
+				var option = this.id == "add_calendar" ? "minDate" : "maxDate",
+					instance = $( this ).data( "datepicker" ),
+					date = $.datepicker.parseDate(
+						instance.settings.dateFormat ||
+						$.datepicker._defaults.dateFormat,
+						selectedDate, instance.settings );
+				dates.not( this ).datepicker( "option", option, date );
+			}
+            
+            
+          });*/
+          
           <?php if($event->calendar_events_id == 0) :?>
               $( "#add_calendar" ).datepicker('setDate',new Date());
+              $( "#calendar_ends" ).datepicker('setDate',new Date());
           <?php else:  ?>
-              
-              timePieces = '<?php echo $event->date_happen ?>'.split(' ');
-              console.log(timePieces);
-              day   =   timePieces[0].split('-')[2];
-              month =   timePieces[0].split('-')[1] - 1; // javascript counts months 0-11
-              year =   timePieces[0].split('-')[0];
-              
-              console.log(day + ',' + month + ',' + year);
-              
-              $( "#add_calendar" ).datepicker('setDate',new Date(year,month,day,0,0,0,0));
+              setCalendarDate('#add_calendar', '<?php echo $event->date_happen; ?>' );
+              setCalendarDate('#calendar_ends', '<?php echo $event->date_ends; ?>' );
           <?php endif; ?>
          
         
         $( "#time_published" ).timepicker({
+            showPeriodLabels: false
+        });
+        
+         $( "#time_ends" ).timepicker({
             showPeriodLabels: false
         });
         
@@ -82,11 +107,11 @@
         <?php if($event->calendar_events_id == 0) :?>
             date = new Date();
             timePublished = date.getHours() + ":" + (date.getMinutes()); 
+            $( "#time_published" ).val(timePublished);
+            $( '#time_ends' ).val(timePublished);
         <?php else:  ?>
-            timePieces = '<?php echo $event->date_happen ?>'.split(' ');
-            hour       =  timePieces[1].split(':')[0];
-            minute     =  timePieces[1].split(':')[1];
-            timePublished = hour + ":" + minute;
+            setTime('#time_published', '<?php echo $event->date_happen ?>');
+            setTime('#time_ends',  '<?php echo $event->date_ends ?>');
         <?php endif; ?>
         
         
@@ -94,8 +119,30 @@
        // var date =  <?php FieldHelper::field($event->calendar_events_id, "new Date('$event->date_happen')", "new Date()"); ?>;
        // var timePublished = date.getHours() + ":" + (date.getMinutes()); 
 
-        $( "#time_published" ).val(timePublished);
+        
           
           
     });
+    
+    
+    function setCalendarDate(calendarId, dateToSet){
+              timePieces = dateToSet.split(' ');
+              console.log(timePieces);
+              day   =   timePieces[0].split('-')[2];
+              month =   timePieces[0].split('-')[1] - 1; // javascript counts months 0-11
+              year =   timePieces[0].split('-')[0];
+              
+              console.log(day + ',' + month + ',' + year);
+              
+              $( calendarId ).datepicker('setDate',new Date(year,month,day,0,0,0,0));
+    }
+    
+    function setTime(timePickerId, eventDateTime){
+            timePieces =  eventDateTime.split(' ');
+            hour       =  timePieces[1].split(':')[0];
+            minute     =  timePieces[1].split(':')[1];
+            timePublished = hour + ":" + minute;
+             $( timePickerId ).val(timePublished);
+    }
+    
 </script>    
