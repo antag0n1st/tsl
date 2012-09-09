@@ -1,10 +1,10 @@
 <?php
 if (isset($_COOKIE['number_of_pageviews2'])) {
     $number_of_page_views = $_COOKIE['number_of_pageviews2'];
-    setcookie("number_of_pageviews2", ++$number_of_page_views, time() + (60 * 60 * 24 * 365), '/');
+    setcookie("number_of_pageviews2", ++$number_of_page_views, time() + (60 * 60 * 24), '/');
 } else {
     
-    setcookie("number_of_pageviews2", "0", time() + (60 * 60 * 24 * 365),'/');
+    setcookie("number_of_pageviews2", "0", time() + (60 * 60 * 24),'/');
     $number_of_page_views = 0;
 }
 ?>

@@ -6,7 +6,8 @@
 <head>
 <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>images/favicon triple s.ico">
 <?php Head::instance()->display(); ?>
-
+<?php $this->load->view('elements/google_analytics'); ?>
+    
 </head>    
     <body>
         <?php $this->load->view('elements/header'); ?>
