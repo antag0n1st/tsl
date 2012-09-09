@@ -27,11 +27,11 @@ echo '</style>';
         $_events = array(); foreach($events as $event){
            
             $date_started = $event->d;
-            while($date_started < $event->date_ends)
+            while($date_started < $event->d_ends)
             {                
                 $_events[] = '{ Date: new Date("'.$date_started.'"), link : "'.$event->calendar_link.'" , color: "'.$event->color.'" , slug: "'.$event->slug.'", 
                                  title: "' . $event->title . '" }';
-                $date_started = date('Y-m-d H:i:s', strtotime($date_started . ' + 1 day'));
+                $date_started = date('m/d/Y H:i:s', strtotime($date_started . ' + 1 day'));
             }
 
         }

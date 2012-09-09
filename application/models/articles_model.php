@@ -199,7 +199,9 @@ class Articles_model extends CI_Model {
             
     {       
             // 07/25/2012
-            $query  = " SELECT * , DATE_FORMAT(date_happen,'%m/%d/%Y') as d ";
+            $query  = " SELECT * ,
+                        DATE_FORMAT(date_happen,'%m/%d/%Y') as d,
+                        DATE_FORMAT(date_ends,'%m/%d/%Y %H:%i:%s') as d_ends ";
             $query .= " FROM calendar_events ce ";
             $query .= " JOIN `calendar_events_categories` c ";
             $query .= " ON `c`.`calendar_events_categories_id` = `ce`.`event_categories_id` ";
