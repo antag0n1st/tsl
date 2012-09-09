@@ -18,6 +18,7 @@ class Articles extends MY_Controller {
                 $this->load->model('menus_model');
                 $this->load->model('sidebar_model');
                 $this->load->model('footer_model');
+                $this->load->model('popup_model');
                 
                 $events = $this->articles_model->get_events();                
                 $event_categories = $this->articles_model->get_event_categories();
@@ -63,6 +64,11 @@ class Articles extends MY_Controller {
 
                 $quote  = $this->quotes_model->get_quote_of_the_day();
                 $footer = $this->footer_model->get_footer();
+                
+                $popup  =   $this->popup_model->get_popup();
+                $popup  =   $popup[0];
+                
+                $data['popup']  =   $popup;
                 $data['footer'] =   $footer;
                 $data['quote']      = $quote;
                 $data['menu_items'] =   $menu_items;
@@ -84,6 +90,7 @@ class Articles extends MY_Controller {
                 $this->load->model('menus_model');
                 $this->load->model('sidebar_model');
                 $this->load->model('footer_model');
+                $this->load->model('popup_model');
                 
                 $footer = $this->footer_model->get_footer();
                 $events = $this->articles_model->get_events();                
@@ -132,8 +139,10 @@ class Articles extends MY_Controller {
                 
                 
                 
+                $popup  =   $this->popup_model->get_popup();
+                $popup  =   $popup[0];
                 
-                
+                $data['popup']  =   $popup;
                 
                 
                 $data['logo']   = $current_category->logo;
@@ -167,6 +176,7 @@ class Articles extends MY_Controller {
                 $this->load->model('sidebar_model');
                 $this->load->model('footer_model');
                 
+                
                 $search = urldecode($search);
                 $search = CyrillicLatin::sanitize($search);
                 $articles = $this->articles_model->search_articles($search, array('status' => 1),0,0,'relevance DESC');
@@ -178,6 +188,9 @@ class Articles extends MY_Controller {
 
                 $quote = $this->quotes_model->get_quote_of_the_day();
                 $footer = $this->footer_model->get_footer();
+                
+               
+                
                 
                 $data['footer']     = $footer;
                 $data['search']     = $search_original;

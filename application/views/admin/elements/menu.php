@@ -11,6 +11,7 @@
             <ul>
                 <li><a href="<?php echo base_url(); ?>">&laquo; tsgroup.mk</a></li>
                 <li><a href="<?php echo base_url(); ?>admin/home">Админ почетна</a></li>
+                <li><a href="<?php echo base_url(); ?>admin/popups">Pop-up</a></li>
                 <li><a href="<?php echo base_url(); ?>admin/footer/view_footer">Footer</a></li>
                 <li><a href="<?php echo base_url(); ?>login/logout">Одјава</a></li>
             </ul>

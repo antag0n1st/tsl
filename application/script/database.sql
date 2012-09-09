@@ -704,3 +704,18 @@ INSERT INTO `slides` (`slides_id`, `title`, `description`, `link`, `image`, `dat
 (4, 'Успехот се учи!', 'Колку повеќе работи знаете, толку повеќе врати Ви се отвораат!', '', 'slider3.jpg', '2012-07-15 17:21:33', 3),
 (5, 'Delivering Success...', '<p>Тоа е она што најдобро го правиме! Пријавете се и бидете успешни!</p>', '', 'slider4.jpg', '2012-07-28 14:58:48', 2),
 (7, 'Triple S Group', '<p>- <strong>Лидери </strong>во Македонија за неформално образование<br />- Над <strong>10.000</strong> обучени менаџери и претприемачи<br />- Водечки регионални <strong>практичари</strong><br />- Најпознатите <strong>светски бизнис гуруа</strong><br />- Присутни на пазарите на <strong>Македонија, Србија, Хрватска и Словенија</strong></p>', '', 'kolaz.jpg', '2012-07-28 15:38:10', 1);
+
+CREATE TABLE IF NOT EXISTS `popup` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `image_url` varchar(2500) COLLATE utf8_unicode_ci NOT NULL,
+  `link` varchar(5000) COLLATE utf8_unicode_ci NOT NULL,
+  `is_active` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `popup`
+--
+
+INSERT INTO `popup` (`id`, `image_url`, `link`, `is_active`) VALUES
+(1, 'test1.jpg', 'http://www.tsgroup.mk/articles/116-planiranje-i-realiziranje-na-efektivni-promocii-i-akcii-na-proizvodi', 1);

@@ -25,6 +25,7 @@ class Homepage extends MY_Controller {
                 $this->load->model('clients_model');
                 $this->load->model('menus_model');
                 $this->load->model('footer_model');
+                $this->load->model('popup_model');
                 
                 $events = $this->articles_model->get_events();                
                 $event_categories = $this->articles_model->get_event_categories();
@@ -37,7 +38,9 @@ class Homepage extends MY_Controller {
                 
                 $menu_items = $this->menus_model->get_menu_items_with_children();
         
+                $popup              =   $this->popup_model->get_popup();
                 
+                $data['popup']      =   $popup[0];
                 
                 $data['menu_items'] =   $menu_items;
 

@@ -13,5 +13,6 @@
         <?php $this->load->view('elements/menu'); ?>
         <?php $this->load->view($main_content); ?>
         <?php $this->load->view('elements/footer'); ?>   
+        <?php $this->load->view('elements/like_us'); ?>   
     </body>    
 </html>
