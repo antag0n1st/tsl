@@ -89,6 +89,11 @@ class Page extends MY_Controller {
                 $errors['email'] = "*Внесете валидна емаил адреса";
             }
             
+            if(!$company){
+                $errors['company'] = "*Внесете го името на компанијата во која работите";
+            }
+            
+            
             if(count($errors) == 0){
                 
                 $this->load->model('candidates_model');
@@ -116,8 +121,8 @@ class Page extends MY_Controller {
                 $data['event']  =   $event;
                 $data['name']   =   $this->input->post('name');
                 
-                $from       =   'info@tsgroup.mk';
-                $to         =   'vladimir.apostolski@gmail.com';//'verce@csa-triples.com';
+                $from       =   'office@tsgroup.mk';
+                $to         =   'office@tsgroup.mk';//'verce@csa-triples.com';
                 $title      =   $data['name'] . ' се пријави за настанот "' . $event->title . '"'; 
                 $body       =   $this->load->view('event_notification_template', $data, TRUE);
                 

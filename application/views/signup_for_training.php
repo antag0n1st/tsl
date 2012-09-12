@@ -8,13 +8,13 @@
             
             <?php echo form_open(''); ?>
                 <fieldset>
-                    <label>Име и презиме</label><input type="text" name="name" value="<?php echo isset($name) ? $name : ''; ?>" />
+                    <label>Име и презиме*</label><input type="text" name="name" value="<?php echo isset($name) ? $name : ''; ?>" />
                     <label>Телефон*</label><input type="text" name="phone" value="<?php echo isset($phone) ? $phone : ''; ?>" />
                     <label>E-mail*</label><input type="text" name="email" value="<?php echo isset($email) ? $email : ''; ?>" />
                     <label>Професија</label><input type="text" name="profession" value="<?php echo isset($profession) ? $profession : ''; ?>" />
-                    <label>Компанија</label><input type="text" name="company" value="<?php echo isset($company) ? $company : ''; ?>" />
+                    <label>Компанија*</label><input type="text" name="company" value="<?php echo isset($company) ? $company : ''; ?>" />
                     
-                    <label>Отворена обука/конференција</label>
+                    <label>Отворена обука/конференција*</label>
                     <select name="event">
                         <?php foreach($events as $event): ?>
                         <option <?php if(isset($event_id) and $event_id == $event->calendar_events_id){ echo ' selected="selected" ';} ?> value="<?php echo $event->calendar_events_id; ?>" >
