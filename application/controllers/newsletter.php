@@ -19,11 +19,11 @@ class Newsletter extends MY_Controller {
         $start_time = new DateTime(TimeHelper::DateAdjusted() . ' 8:00:00');
         $end_time = new DateTime(TimeHelper::DateAdjusted() . ' 15:00:00');
 
-        if ($current_time > $start_time and $current_time < $end_time) {
+       /* if ($current_time > $start_time and $current_time < $end_time) {
             // we can begin , the time is right
         } else {
             die('the time is not right yet');
-        }
+        } */
 
         if ($auth_token != 'thepasswordfortsl123') {
             die();
@@ -65,7 +65,7 @@ class Newsletter extends MY_Controller {
                      $this->newsletter_model->update_email_sent($newsletter_id, $email->id);
                 }
 
-                sleep(8);
+                sleep(3);
             }
         }
     }

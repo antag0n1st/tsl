@@ -1,6 +1,9 @@
 <div class="container o">
     <h3>Извештај: Кликови по newsletter</h3>
     <?php if(count($report) > 0) :?>
+    <div class="float-left" style="margin: 15px 0 0 10px">
+        <strong><?php echo count($report); ?> кликови</strong>
+    </div>
     <div class="float-right" style="margin: 0 0 10px 0">
         <a title="Експорт во Excel" href="<?php echo base_url()?>admin/newsletter/report/<?php echo $newsletter_id; ?>/1">
             <img src="<?php echo base_url();?>public/images/heo_excel.jpg" alt="" />
@@ -15,9 +18,9 @@
              <thead>
                 <tr>
                     <th style="width:240px">e-mail</th>
-                    <th style="width:250px">Newsletter</th>
-                    <th style="width:370px">Статија</th>
-                    <th style="width:100px">Датум</th>
+                    <th style="width:260px">Newsletter</th>
+                    <th style="width:330px">Статија</th>
+                    <th style="width:130px">Датум</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,7 +42,7 @@
                         </a>
                     </td>
                     <td>
-                        <?php echo FieldHelper::date_no_time_field($row->date_clicked); ?>
+                        <?php echo FieldHelper::date_field($row->date_clicked); ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>

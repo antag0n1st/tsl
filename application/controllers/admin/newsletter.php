@@ -125,7 +125,7 @@ class Newsletter extends MY_Admin_Controller {
         
         $this->load->library('pagination');
 
-        $per_page = 5;
+        $per_page = 10;
         
         $emails = array();
         $emails = $this->newsletter_model->get_all_emails($per_page,$this->uri->segment(4));
@@ -276,7 +276,7 @@ class Newsletter extends MY_Admin_Controller {
                                    /* $this->excel->getActiveSheet()->setCellValueByColumnAndRow($x++, $y, base_url() . 'articles/'. 
                                                                                                          $row->article_id . '-' . 
                                                                                                          $row->article_slug);*/
-                                    $this->excel->getActiveSheet()->setCellValueByColumnAndRow($x++, $y, TimeHelper::format($row->date_clicked));
+                                    $this->excel->getActiveSheet()->setCellValueByColumnAndRow($x++, $y, TimeHelper::format($row->date_clicked,"d.m.Y H:i"));
                                     $y++;
                                     $x = 0;
                                 }
@@ -329,6 +329,30 @@ class Newsletter extends MY_Admin_Controller {
             
         }
     
+    }
+    
+    
+    public function import_csv()
+    {
+         $this->load->library('csvreader');  
+         $this->load->model('newsletter_model');
+         $filePath = './public/csv/triple s emailovi.csv';  
+      
+         $data['csvData'] = $this->csvreader->parse_file($filePath);  
+         
+         foreach($data['csvData'] as $row)
+         {
+             $email =  array_shift($row);
+             $email_data  =  array(
+                       'email'          =>  $email,
+                       'created_at'     => TimeHelper::DateTimeAdjusted(),
+                       'is_unsubscribed'=>  0
+             );
+             $this->newsletter_model->insert_email($email_data);
+         }
+         
+  
+         $this->load->view('admin/newsletter/csv_view', $data);  
     }
 }
 

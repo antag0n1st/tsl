@@ -393,7 +393,7 @@
                                             <td style="vertical-align: top; text-align: right; padding-top: 20px; line-height: 20px;">
                                                 <h4 style="float: none; margin: 0px 20px 0px;display: inline;">Страници за Успех</h4>
                                                 <br />
-                                                <span style="margin-right: 20px; color: #505050;"><?php echo TimeHelper::format($date_finished); ?></span>
+                                                <span style="margin-right: 20px; color: #505050;"><?php echo TimeHelper::format( ($date_finished == null ?  date('Y-m-d') : $date_finished) ); ?></span>
                                                 <br />
                                                 <b style="margin-right: 24px; font-size: 18px; color: #505050;">Број.<?php echo $newsletter_id; ?></b>
                                             </td>
@@ -478,7 +478,7 @@
                                                     <tr>
                                                         <td valign="top" width="350">
                                                             <div mc:edit="std_footer">
-																<em>Copyright &copy; <?php echo date('Y'); ?> TSL Group, Сите права се задржани.</em>
+																<em>Copyright &copy; <?php echo date('Y'); ?> Triple S Group, Сите права се задржани.</em>
 																
                                                             </div>
                                                         </td>

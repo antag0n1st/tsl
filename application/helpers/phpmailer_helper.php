@@ -21,11 +21,11 @@ function send_email($recipient, $sender, $subject, $message)
         // added by jerome 5th June 2011
         //$mail->SMTPAuth   = true;                  // enable SMTP authentication
       //  $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
-        $mail->Host       = "mail.bagatela.mk";//"smtp.gmail.com";      // sets GMAIL as the SMTP server
-        $mail->Port       = 26;                   // set the SMTP port
+        $mail->Host       = "mail.tsgroup.mk";//"smtp.gmail.com";      // sets GMAIL as the SMTP server
+        $mail->Port       = 25;                   // set the SMTP port
 
-        $mail->Username   = "info";  // GMAIL username
-        $mail->Password   = "bagatela123!@#";            // GMAIL password
+        $mail->Username   = "office";//"info";  // GMAIL username
+        $mail->Password   = "office123";//"bagatela123!@#";            // GMAIL password
 
         // end of added by jerome
     if ( ! $mail->Send())
