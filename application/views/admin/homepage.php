@@ -13,7 +13,7 @@
             <div class="body">
                 <?php foreach ($articles as $article): ?>
                     <a href="<?php echo base_url(); ?>admin/articles/edit_article/<?php echo $article->id; ?>" title="Измени">
-                        <?php echo $article->title; ?>
+                        <?php echo mb_substr($article->title, 0, 65, 'UTF-8') . (mb_strlen($article->title, 'UTF-8') > 65 ? '...' : ''); ?>
                     </a>
                     <div class="separator"></div>
                 <?php endforeach; ?>
@@ -38,7 +38,9 @@
             <div class="body">
                 <?php foreach ($events as $event) : ?>
                     <a href="<?php echo base_url();?>admin/events/edit_event/<?php echo $event->calendar_events_id; ?>" title="Измени">
-                        <?php echo $event->title . ' ('; FieldHelper::date_no_time_field($event->date_happen); echo ')'; ?>
+                        
+                        <?php echo mb_substr($event->title, 0, 55, 'UTF-8'); ?>
+                        <?php echo ' ('; FieldHelper::date_no_time_field($event->date_happen); echo ')'; ?>
                     </a>
                     <div class="separator"></div>
                 <?php endforeach; ?>
@@ -65,7 +67,7 @@
             <div class="body">
                 <?php foreach($galleries as $gallery): ?>
                     <a href="<?php echo base_url().'admin/gallery/add_photos/'.$gallery->id_gallery; ?>">
-                    <?php echo $gallery->description; ?>
+                        <?php echo mb_substr($gallery->description, 0, 65, 'UTF-8') . (mb_strlen($gallery->description, 'UTF-8') > 65 ? '...' : ''); ?>
                     </a>
                 <div class="separator"></div>
                 <?php endforeach; ?>
@@ -90,7 +92,7 @@
             <div class="body">
                  <?php foreach($newsletters as $newsletter): ?>
                      <a href="<?php echo base_url().'admin/newsletter/edit_newsletter/'.$newsletter->id; ?>">   
-                     <?php echo $newsletter->title; ?>
+                     <?php echo mb_substr($newsletter->title, 0, 65, 'UTF-8') . (mb_strlen($newsletter->title, 'UTF-8') > 65 ? '...' : ''); ?>
                      <a/>
                 <div class="separator"></div>
                  <?php endforeach; ?>
