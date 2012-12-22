@@ -55,7 +55,7 @@ class Newsletter extends MY_Controller {
         } else {
 
             foreach ($emails as $email) {
-                $from = 'info@tsgroup.mk';
+                $from = 'debug@tsgroup.mk';
             
                 $data['unsubscribe_id'] = $email->unsubscribe_id;
                 $data['email']          = $email;
@@ -387,6 +387,155 @@ class Newsletter extends MY_Controller {
         
     }
 
+    // deactivates emails that are bounced. These emails are taken from 
+    // the mailbox where they arrive.
+    public function cleanup()
+    {
+         $this->load->model('newsletter_model');
+         $emails = $this->mailbox_get_emails();
+         $unsubscribed_count = $this->unsubscribe_emails($emails);
+         echo '<br />-------------------<br/>';
+         echo $unsubscribed_count;
+    }
+    
+    private function mailbox_get_emails($mailbox_address = "{mail.tsgroup.mk:143/notls}INBOX", $username = "debug@tsgroup.mk", $password = "debug123")
+    {
+        
+        
+        $fetched_emails = array();
+        
+        
+
+       
+            $mailbox = imap_open($mailbox_address, $username, $password);  //connects to mailbox on your server    
+            if ($mailbox == false) {
+            echo "<p>Error: Can't open mailbox!</p>";
+            //echo imap_last_error();
+            } else
+            {
+            //Check number of messages
+            $num = imap_num_msg($mailbox);
+
+            //if there is a message in your inbox
+            if ($num > 0) { //this just reads the most recent email. In order to go through all the emails, you'll have to loop through the number of messages
+                
+                for($msgno = 1; $msgno <= $num; $msgno++) {
+                            $email = imap_fetchheader($mailbox, $msgno); //get email header
+
+                            $headers = imap_headerinfo($mailbox, $msgno);
+                            if($headers->Unseen != 'U') {
+                                continue;
+                            }
+
+                            
+                            $lines = explode("\n", $email);
+
+                            // data we are looking for
+                            $from = "";
+                            $subject = "";
+                            $to = "";
+                            $splittingheaders = true;
+
+                            for ($i = 0; $i < count($lines); $i++) {
+                                if ($splittingheaders) {
+                                    // this is a header
+                                    $email .= $lines[$i] . "\n";
+
+                                    // look out for special headers
+                                    if (preg_match("/^Subject: (.*)/", $lines[$i], $matches)) {
+                                        $subject = $matches[1];
+                                    }
+                                    if (preg_match("/^From: (.*)/", $lines[$i], $matches)) {
+                                        $from = $matches[1];
+                                    }
+                                    if (preg_match("/^To: (.*)/", $lines[$i], $matches)) {
+                                        $to = $matches[1];
+                                    }
+                                }
+                            }
+
+                            $body = utf8_decode(imap_utf8((imap_body($mailbox, $msgno))) );
+
+
+                            $emails = $this->extract_emails(htmlentities($body));
+                            
+                        foreach($emails as $read_email)
+                        {
+                            if(     !in_array($read_email, $fetched_emails) and
+                                    strpos($read_email, '@tsgroup.mk') === false and
+                                    strpos($read_email, 'MAILER-DAEMON') === false and
+                                    strpos($read_email,'@gateway' ) === false and
+                                    strpos($read_email, '@gator') === false
+                                    //strpos($read_email, 'postmaster@') === false
+                                    )
+                            {
+                                $fetched_emails[] = $read_email;
+                            }
+                        }
+                       
+                }
+                
+               
+                
+              //  imap_clearflag_full($mailbox,$num,'\\Seen');
+                
+                //delete message
+                //imap_delete($mailbox, $num);
+                //imap_expunge($mailbox);
+                
+                    } else {
+                        echo "No more messages";
+                        imap_close($mailbox);
+                        break;
+                    }
+             } // endfor;
+             
+             imap_errors();
+             imap_alerts();
+             
+            imap_close($mailbox);
+            
+             echo "<br />Fetched emails: <br /><pre>";
+                        print_r($fetched_emails);
+             echo "</pre><br />";
+            
+        return $fetched_emails;
+    }
+    
+      public function extract_emails(& $text)
+    {
+                $pattern='/[a-z0-9_\-\+\.]+@[a-z0-9\-]+\.([a-z]{2,3})(?:\.[a-z]{2})?/i';
+                preg_match_all($pattern, $text, $matches);
+                
+                return $matches[0];
+    }
+    
+    
+    private function unsubscribe_emails($emails)
+    {
+         $this->load->model('newsletter_model');
+        $unsubscribed_count = 0;
+         
+        foreach($emails as $email)
+        {
+        
+                $email_from_db = $this->newsletter_model->get_email_by_address($email);
+                if(count($email_from_db))
+                {
+                    $email_from_db = $email_from_db[0];
+                    $is_unsubscribed  = 1;
+                    if($this->newsletter_model->update_email($email_from_db->id, $email_from_db->email, $is_unsubscribed))
+                        {
+                            $unsubscribed_count++;
+                            echo "unsubscribed: " . $email . '<br />';
+                        }
+                }
+        }
+        return $unsubscribed_count;
+    }
+    
+    
+    
 }
 
 ?>

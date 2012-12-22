@@ -70,6 +70,18 @@ class Newsletter_model extends CI_Model {
         $result = $this->db->query($query);
         return $result->result();
     }
+    
+    public function get_email_by_address($email)
+    {
+        $query = " SELECT * FROM emails ";
+        $query .= " WHERE ";
+        $query .= " email = ".$this->db->escape($email)." ";
+        $query .= " LIMIT 1 ";
+        
+        $result = $this->db->query($query);
+        return $result->result();
+    }
+    
     public function update_email($id,$email,$is_unsubscribed){
         $query = " UPDATE emails ";
         $query .= " SET ";
@@ -79,6 +91,8 @@ class Newsletter_model extends CI_Model {
         $query .= " id = ".$this->db->escape($id)." ";
         
         $this->db->query($query);
+        
+        return $this->db->affected_rows();
     }
     
     public function unsibscribe($unsubscribe_id){
