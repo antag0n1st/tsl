@@ -29,7 +29,7 @@ class Videos extends MY_Admin_Controller {
     public function submit_video()
     {
         $video = new Video();
-        $video->id              =   $this->inout->post('video_id');
+        $video->id              =   $this->input->post('video_id');
         $video->title           =   $this->input->post('title');
         $video->description     =   $this->input->post('description');
         $video->embed_code      =   $this->input->post('embed_code');
@@ -52,6 +52,8 @@ class Videos extends MY_Admin_Controller {
         {
             $msg = 'Видеото не беше зачувано. Проверете дали сте ги пополниле правилно полињата';
         }
+        
+          $data['viewers'] = $viewers = $this->videos_model->get_viewers_for_video($video->id);
         
         $data['msg']    =   $msg;
         $data['video']  =   $video;

@@ -52,7 +52,7 @@ class Videos_model extends CI_Model {
     }
     
     public function update_video($data){
-        $this->db->where('id', $data->slides_id);
+        $this->db->where('id', $data->id);
         $this->db->update('videos',$data);
     }
     
