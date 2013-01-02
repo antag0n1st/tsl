@@ -10,6 +10,8 @@
      <label for="embed_code" class="block">Код за вметнување на видеото (Embed Code)</label>
      <input type="text" id="embed_code" name="embed_code" value="<?php FieldHelper::field($video->id, htmlentities($video->embed_code, ENT_QUOTES, 'UTF-8'), ""); ?>" class="full" />
      <?php $data['element_id'] = 'description'; $this->load->view('admin/elements/tinymce', $data); ?>
+     
+     <input type="hidden" value="<?php echo $video->id; ?>" name="video_id" />
 <br />
 
      <input class="button round" type="submit" name="submit" value="Објави" />

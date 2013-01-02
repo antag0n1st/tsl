@@ -29,6 +29,7 @@ class Videos extends MY_Admin_Controller {
     public function submit_video()
     {
         $video = new Video();
+        $video->id              =   $this->inout->post('video_id');
         $video->title           =   $this->input->post('title');
         $video->description     =   $this->input->post('description');
         $video->embed_code      =   $this->input->post('embed_code');
