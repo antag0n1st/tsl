@@ -21,7 +21,7 @@
                             "height|align|valign|bgcolor|background|bordercolor|style],tbody,thead,tfoot," +
                             "#td[colspan|rowspan|width|height|align|valign|bgcolor|background|bordercolor" +
                             "|scope|style],#th[colspan|rowspan|width|height|align|valign|scope|style],img[src|alt|title],strong,b,br",*/
-        extended_valid_elements : "hr[class|width|size|noshade],img[src|alt|title|style],ifame[*]",
+        extended_valid_elements : "hr[class|width|size|noshade],img[src|alt|title|style],iframe[*]",
         file_browser_callback : "ajaxfilemanager",
         paste_use_dialog : false,
         theme_advanced_resizing : true,

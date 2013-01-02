@@ -212,3 +212,19 @@ ul, li
 .admin-search-box{ float: right; width: 340px; margin-top: 60px; }
 
 .admin-search-box input{width: 300px; color: #ababab; margin-bottom: 5px;}
+
+.video-registrants
+{
+    width: 100%;
+}
+
+.video-registrants th
+{
+    font-weight: bold;
+    padding-bottom: 15px
+}
+
+.video-registrants td
+{
+    height: 25px;
+}

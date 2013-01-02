@@ -43,6 +43,7 @@ $route['404_override'] = '';
 
 $route['articles/(:num)-(:any)'] = "articles/index/$1";
 $route['category/(:num)-(:any)'] = "articles/category/$1";
+$route['videos/(:num)-(:any)'] = "videos/index/$1-$2";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
