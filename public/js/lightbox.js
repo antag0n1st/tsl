@@ -52,8 +52,8 @@ lightbox = new Lightbox options
       this.fileCloseImage = '../../images/lightbox/close.png';
       this.resizeDuration = 700;
       this.fadeDuration = 500;
-      this.labelImage = "Image";
-      this.labelOf = "of";
+      this.labelImage = "Слика";
+      this.labelOf = "од";
     }
 
     return LightboxOptions;
@@ -130,8 +130,13 @@ lightbox = new Lightbox options
       });
       $lightbox = $('#lightbox');
       $lightbox.hide().on('click', function(e) {
-        if ($(e.target).attr('id') === 'lightbox') _this.end();
-        return false;
+        if ($(e.target).attr('id') === 'lightbox'){
+            _this.end();
+            return false;
+        } 
+        else{
+            return true;
+        }
       });
       $lightbox.find('.lb-outerContainer').on('click', function(e) {
         if ($(e.target).attr('id') === 'lightbox') _this.end();

@@ -40,7 +40,7 @@ class Gallery extends MY_Controller {
         public function browse_gallery($id_gallery){
             
                 Head::instance()->load_css('lightbox');
-                head::instance()->load_js('lightbox');
+                head::instance()->load_js('lightbox', '1.1');
             
                 $this->load->model('articles_model');
                 $this->load->model('gallery_model');
