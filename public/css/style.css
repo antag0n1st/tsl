@@ -93,7 +93,7 @@ line-height: 17px; }
 
 
 
-.latest-news{ float: left; margin-bottom: 10px; width: 608px; padding: 0px;}
+.latest-news{ float: left; margin-bottom: 16px; width: 608px; padding: 0px;}
 .thumb {
 float: left;
 position: relative;
@@ -104,10 +104,14 @@ margin-right: 10px;
 
 .latest-news .title {
 display: inline;
-font-family: Georgia, serif;
-font-style: italic;
-font-size: 13px;
+font-family: Cuprum, Arial, Verdana, sans-serif;
+font-size: 18px;
 }
+
+.latest-news p{
+    padding-top:5px;
+}
+
 .latest-news .date {
 text-transform: uppercase;
 font-weight: bold;
