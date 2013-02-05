@@ -17,6 +17,9 @@ class Gallery extends MY_Controller {
                 $this->load->model('quotes_model');
                 $this->load->model('sidebar_model');
                 $this->load->model('footer_model');
+                $this->load->model('videos_model');
+                
+                
                 
                 $events = $this->articles_model->get_events();                
                 $event_categories = $this->articles_model->get_event_categories();
@@ -33,6 +36,7 @@ class Gallery extends MY_Controller {
                 $data['main_content'] = 'gallery';
                 $data['events'] = $events;
                 $data['event_categories'] = $event_categories;
+                $data['videos']           = $this->videos_model->get_videos();
               
 		$this->load->view('layout/layout',$data);
         }

@@ -15,7 +15,22 @@
                 </div>
                 <?php endforeach; ?>                
             </div>
-
+            <div class="clear"></div>
+            <hr />
+            <h3>Видеа</h3>
+            <div class="gallery">
+                <?php foreach($videos as $video) :  ?>
+                <div class="photo round" style="width:132px">
+                    <a href="<?php echo base_url(); ?>videos/<?php echo $video->id . '-' . $video->slug; ?>">
+                        <img src="http://img.youtube.com/vi/<?php echo Video::get_preview_image_by_embed_code($video->embed_code); ?>/2.jpg" alt="<?php echo $video->title; ?>" />
+                    </a>
+                    <span>
+                        <?php echo $video->title; ?>
+                    </span>
+                
+                </div>
+                <?php endforeach; ?>
+            </div>
     </div>
 
     <div class="right">

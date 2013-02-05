@@ -17,11 +17,11 @@ class Videos extends MY_Controller {
     
      public function index($slug)
      {
-         if(!$this->session->userdata('viewer_registered') or
+         /*if(!$this->session->userdata('viewer_registered') or
              $this->session->userdata('viewer_registered') != $slug)
          {
              redirect(base_url() . 'videos/register/' . $slug);
-         }
+         }*/
          
          
          $data = array();
