@@ -64,7 +64,7 @@ class Gallery_model extends CI_Model {
         $this->db->join('gallery_groups as gg', 'g.gallery_group_id = gg.id_gallery_group');
         $this->db->join('gallery_photos as gp','g.id_gallery = gp.galleries_id_gallery');
         $this->db->group_by('g.id_gallery');
-        $this->db->order_by('g.gallery_group_id,g.id_gallery');
+        $this->db->order_by('g.gallery_group_id ASC,g.id_gallery DESC');
 
         if ($limit) {
             $this->db->limit($limit);
@@ -112,7 +112,7 @@ class Gallery_model extends CI_Model {
         $this->db->query($query);
     }
     
-    public function get_photos($options = array()){
+    public function get_photos($options = array(), $order_by = null){
         $this->db->from('gallery_photos');
         $this->db->select('id_gallery_photos,
                            image,
@@ -122,6 +122,12 @@ class Gallery_model extends CI_Model {
         {
             $this->db->where($key, $option);
         }
+        
+        if($order_by)
+        {
+            $this->db->order_by($order_by);
+        }
+        
         $result = $this->db->get();
         
         return $result->result();

@@ -166,7 +166,7 @@ class Gallery extends MY_Admin_Controller {
     public function add_photos($id_gallery){
         Head::instance()->title = 'Додади слика';
         $this->load->model('gallery_model');
-        $photos = $this->gallery_model->get_photos(array('galleries_id_gallery' => $id_gallery));
+        $photos = $this->gallery_model->get_photos(array('galleries_id_gallery' => $id_gallery), 'id_gallery_photos DESC');
         
         $gallery = $this->gallery_model->get_galleries(array('id_gallery' => $id_gallery),1);
         $gallery = $gallery[0];

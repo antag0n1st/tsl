@@ -58,7 +58,7 @@ class Gallery extends MY_Controller {
                 $quote = $this->quotes_model->get_quote_of_the_day();
                 $events = $this->articles_model->get_events();                
                 $event_categories = $this->articles_model->get_event_categories();
-                $photos  = $this->gallery_model->get_photos(array('galleries_id_gallery' => $id_gallery));
+                $photos  = $this->gallery_model->get_photos(array('galleries_id_gallery' => $id_gallery), 'id_gallery_photos DESC');
                 $sidebar_elements = $this->sidebar_model->get_sidebar_elements();
                 $menu_items = $this->menus_model->get_menu_items_with_children();
                 $footer     =   $this->footer_model->get_footer();
