@@ -1,13 +1,16 @@
 <?php $this->load->view('elements/slidebar'); ?>
 <div class="container o" style="margin-top: 30px;">
 
+    <?php $this->load->view('elements/home_banner'); ?>
     <div class="left">
      
             <h3>Најнови вести</h3>
             
+            
             <?php foreach($latest_news as $news): ?>
                     <?php $data['article'] = $news; $this->load->view('elements/article_item_row', $data); ?>
             <?php endforeach; ?>
+
             <div class="separator"></div>
             <h3>Наши Клиенти</h3>
             

@@ -17,6 +17,7 @@
                         <li><a href="<?php echo base_url(); ?>admin/videos/new_video">Новo видео</a></li>
                         <li><a href="<?php echo base_url(); ?>admin/videos/show_videos">Сите видеоклипови</a></li>
                     </ul></li>
+                    <li><a href="<?php echo base_url(); ?>admin/home_banner">Почетен банер</a></li>
                 <li><a href="<?php echo base_url(); ?>admin/footer/view_footer">Footer</a></li>
                 <li><a href="<?php echo base_url(); ?>login/logout">Одјава</a></li>
             </ul>

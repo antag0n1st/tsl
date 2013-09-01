@@ -38,6 +38,7 @@ class Videos extends MY_Admin_Controller {
         if($video->is_valid())
         {
             $this->load->model('videos_model');
+            $video->embed_code = str_replace('src="//www','src="http://www', $video->embed_code);
             if($video->id == 0)
             {
                 $video->id =  $this->videos_model->insert_video($video);

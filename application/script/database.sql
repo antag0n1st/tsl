@@ -719,3 +719,53 @@ CREATE TABLE IF NOT EXISTS `popup` (
 
 INSERT INTO `popup` (`id`, `image_url`, `link`, `is_active`) VALUES
 (1, 'test1.jpg', 'http://www.tsgroup.mk/articles/116-planiranje-i-realiziranje-na-efektivni-promocii-i-akcii-na-proizvodi', 1);
+
+
+-- phpMyAdmin SQL Dump
+-- version 3.5.1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Sep 01, 2013 at 07:14 PM
+-- Server version: 5.5.24-log
+-- PHP Version: 5.4.17
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `tsl`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `home_banner`
+--
+
+CREATE TABLE IF NOT EXISTS `home_banner` (
+  `home_banner_id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` text NOT NULL,
+  `date_created` datetime NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `is_active` tinyint(1) NOT NULL,
+  PRIMARY KEY (`home_banner_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `home_banner`
+--
+
+INSERT INTO `home_banner` (`home_banner_id`, `title`, `date_created`, `link`, `image`, `is_active`) VALUES
+(1, '0', '2013-09-01 21:12:37', 'http://www.google.com', 'baner-akademii-x960-nov1.png', 1);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

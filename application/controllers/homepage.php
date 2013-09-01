@@ -26,6 +26,8 @@ class Homepage extends MY_Controller {
                 $this->load->model('menus_model');
                 $this->load->model('footer_model');
                 $this->load->model('popup_model');
+                $this->load->model('home_banner_model');
+                
                 
                 $events = $this->articles_model->get_events();                
                 $event_categories = $this->articles_model->get_event_categories();
@@ -39,7 +41,9 @@ class Homepage extends MY_Controller {
                 $menu_items = $this->menus_model->get_menu_items_with_children();
         
                 $popup              =   $this->popup_model->get_popup();
+                $home_banner =  $this->home_banner_model->get_home_banner(); 
                 
+                $data['home_banner'] = $home_banner[0];
                 $data['popup']      =   $popup[0];
                 
                 $data['menu_items'] =   $menu_items;
